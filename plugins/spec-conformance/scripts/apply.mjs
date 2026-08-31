@@ -39,6 +39,25 @@ try {
 }
 
 const rejected = [];
+// A rename changes an id, and a relation written against the old name points at
+// nothing afterwards. Every decision's destination is known before any file is
+// written, so relations are repointed here rather than left for a reader to
+// notice as a broken link.
+const finalId = new Map();
+for (const decision of decisions) {
+  const dossier = dossiers.get(decision.source);
+  if (!dossier) continue;
+  const from = decision.source.split("/").pop().replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, "");
+  const to = (decision.path ?? dossier.proposedPath).split("/").pop().replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, "");
+  finalId.set(from, to);
+}
+for (const decision of decisions) {
+  for (const field of ["supersedes", "supersededBy", "references"]) {
+    if (!Array.isArray(decision[field])) continue;
+    decision[field] = decision[field].map((v) => finalId.get(v) ?? v);
+  }
+}
+
 const written = [];
 
 for (const decision of decisions) {
