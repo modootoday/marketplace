@@ -67,9 +67,11 @@ recorded each other. One side alone delivers nothing.
 | `LLM_PEER_BRIDGE_HOLD_MS` | how long Stop waits for a reply; default `0`, capped at 120000  |
 | `LLM_PEER_BRIDGE_RUNTIME` | label for this runtime when it cannot be detected               |
 
-Holding costs a real turn: while Stop waits, that session answers nobody,
-including its operator. Start at zero and raise it only for a session whose whole
-purpose is the conversation.
+Holding costs a turn, not the session. Measured in an interactive terminal, a
+20 second hold ran its full length and the interface stayed responsive:
+keystrokes typed during the wait appeared normally. What waits is the next turn,
+including the operator's. Start at zero and raise it only for a session whose
+whole purpose is the conversation.
 
 To stop talking, `unpair` from either side. To stop entirely, disable the plugin.
 
