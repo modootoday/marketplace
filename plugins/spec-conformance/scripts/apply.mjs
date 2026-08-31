@@ -99,6 +99,15 @@ for (const decision of decisions) {
     header.push(`${field}:`);
     for (const v of values) header.push(`  - ${v}`);
   }
+  // Fields a kind requires that no derivation can produce -- a page's route and
+  // the file it is implemented by are read off the document, not off the tree.
+  for (const [field, value] of Object.entries(decision.frontmatter ?? {})) {
+    if (value === null || value === undefined || value === "") continue;
+    if (Array.isArray(value)) {
+      header.push(`${field}:`);
+      for (const v of value) header.push(`  - ${v}`);
+    } else header.push(`${field}: ${value}`);
+  }
   header.push(`source: ${decision.source}`);
   // The reason the status was chosen belongs with the status. Keeping it only
   // in the decisions file leaves a reader looking at "archived" with no way to
