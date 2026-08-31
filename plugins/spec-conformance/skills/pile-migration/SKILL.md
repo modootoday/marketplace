@@ -32,6 +32,22 @@ Write the verdict as one line per file, `kind` naming a configured kind or
 carried through regardless of where it sits or what it is called, and a document
 you leave out is not silently reconsidered later.
 
+## A status is not always where you look for it
+
+Frontmatter and a prose line are two of the places a pile declares status. There
+are others, and they are easy to miss because a search for them comes back
+clean: a metadata table (`| Status | Draft |`), a status appended after a
+timestamp on the same line, a word inside a header that also carries the owner
+and the scope.
+
+Measured on the reference migration: after classifying every document that
+declared a status, 22 documents in the batch treated as declaring none turned
+out to declare one in a table, and 7 of them carried an evidence sentence
+saying the opposite. The verdicts held; the evidence was wrong, which in this
+pipeline is the same kind of failure.
+
+Search the header for the word, not for a shape.
+
 ## Read the document before deciding anything about it
 
 Not the title, not the headings, not the commit subjects. Those are in the
