@@ -1,0 +1,10 @@
+{
+  "name": "build-concurrency-guard",
+  "version": "0.1.0",
+  "description": "Cap the concurrency of build and test commands an agent starts, advising by default and rewriting only when asked.",
+  "author": {
+    "name": "modootoday"
+  },
+  "hooks": "./hooks/hooks.json",
+  "skills": "./skills/"
+}

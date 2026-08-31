@@ -1,0 +1,14 @@
+{
+  "description": "Carry messages between paired agent sessions at turn boundaries.",
+  "hooks": {
+    "SessionStart": [
+      { "hooks": [ { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/handlers.mjs\" session", "timeout": 15 } ] }
+    ],
+    "PostToolUse": [
+      { "matcher": "*", "hooks": [ { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/handlers.mjs\" drain", "timeout": 15 } ] }
+    ],
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/handlers.mjs\" exchange", "timeout": 150 } ] }
+    ]
+  }
+}

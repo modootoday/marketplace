@@ -1,0 +1,41 @@
+{
+  "blocked": [
+    "sed -i 's/a/b/' file.txt",
+    "sed --in-place 's/a/b/' file.txt",
+    "sed -i.bak 's/a/b/' file.txt",
+    "perl -i -pe 's/a/b/' file.txt",
+    "awk -i inplace '{print}' file.txt",
+    "echo hi && sed -i 's/a/b/' file.txt",
+    "cat file.txt; gawk -i inplace '{print}' file.txt",
+    "FOO=1 sed -i 's/a/b/' file.txt",
+    "git push --no-verify",
+    "git push -n origin main",
+    "git push origin HEAD:main --no-verify",
+    "docker compose down",
+    "docker compose down -v",
+    "docker compose --profile web down",
+    "docker compose stop",
+    "docker compose rm -f",
+    "docker compose kill",
+    "docker compose stop -t 5",
+    "docker compose kill -s SIGTERM"
+  ],
+  "allowed": [
+    "sed -n '1,20p' file.txt",
+    "cat file.txt | sed 's/a/b/'",
+    "grep -R pattern .",
+    "perl -pe 's/a/b/' file.txt",
+    "git push",
+    "git push origin main",
+    "git commit -m 'no-verify mentioned in the message'",
+    "docker compose up -d web",
+    "docker compose build web",
+    "docker compose restart web",
+    "docker compose stop web",
+    "docker compose rm -f web",
+    "docker compose kill -s SIGTERM web",
+    "docker compose -f compose.yml stop web",
+    "docker stop some-container",
+    "echo 'sed -i is discussed here'"
+  ]
+}

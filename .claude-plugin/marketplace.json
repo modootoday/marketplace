@@ -16,6 +16,51 @@
         "name": "modootoday"
       },
       "source": "./plugins/hook-contract-matrix"
+    },
+    {
+      "name": "agent-guardrails",
+      "description": "Refuse a small, measured set of shell commands whose damage is hard to undo: in-place stream edits, verification-skipping pushes, and project-wide container teardown.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/agent-guardrails"
+    },
+    {
+      "name": "spec-authoring",
+      "description": "Write plans, source-of-truth documents and decision records that can be proven stale, superseded without deletion, and told apart from one another.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/spec-authoring"
+    },
+    {
+      "name": "agent-rule-projection",
+      "description": "Keep one rule source per package and project it into the filename each coding agent expects, with a lint for rule documents that have started holding something else.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/agent-rule-projection"
+    },
+    {
+      "name": "build-concurrency-guard",
+      "description": "Cap the concurrency of build and test commands an agent starts, advising by default and rewriting only when asked.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/build-concurrency-guard"
+    },
+    {
+      "name": "llm-peer-bridge",
+      "description": "Let two already-running coding-agent sessions talk to each other at turn boundaries, with no daemon and no proxy, over a mailbox both sides agreed to open.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/llm-peer-bridge"
     }
   ]
 }

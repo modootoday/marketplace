@@ -1,0 +1,10 @@
+{
+  "name": "llm-peer-bridge",
+  "version": "0.1.0",
+  "description": "Let two already-running coding-agent sessions talk to each other at turn boundaries, with no daemon and no proxy, over a mailbox both sides agreed to open.",
+  "author": {
+    "name": "modootoday"
+  },
+  "hooks": "./hooks/hooks.json",
+  "skills": "./skills/"
+}

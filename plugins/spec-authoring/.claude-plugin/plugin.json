@@ -1,0 +1,9 @@
+{
+  "name": "spec-authoring",
+  "version": "0.1.0",
+  "description": "Write plans, source-of-truth documents and decision records that can be proven stale, superseded without deletion, and told apart from one another.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

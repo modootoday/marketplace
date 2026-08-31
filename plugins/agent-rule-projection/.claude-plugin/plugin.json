@@ -1,0 +1,9 @@
+{
+  "name": "agent-rule-projection",
+  "version": "0.1.0",
+  "description": "Keep one rule source per package and project it into the filename each coding agent expects, with a lint for rule documents that have started holding something else.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}
