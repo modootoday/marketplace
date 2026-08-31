@@ -33,7 +33,11 @@ export function parseFrontmatter(text) {
     // decided yet" arrive downstream as a truthy object, so every deliberately
     // blank field reported as a bad one. A list becomes a list when an item
     // follows it.
-    out[key] = value === "" ? "" : unquote(value);
+    // An inline empty list is a list. Reading it as the string "[]" made every
+    // document that writes supersedes: [] declare a supersede of a document
+    // literally named "[]".
+    if (value === "[]") out[key] = [];
+    else out[key] = value === "" ? "" : unquote(value);
   }
   return out;
 }
@@ -95,7 +99,11 @@ function walkFiles(dir, ignore, out = []) {
     return out;
   }
   for (const entry of entries) {
-    if (ignore.has(entry.name) || entry.name.startsWith("_")) continue;
+    // Only the ignore list decides. A leading underscore is a sort-order habit,
+    // not a marker for "not a document": hiding those files silently dropped the
+    // four most-linked sources of truth in the reference repository.
+    if (ignore.has(entry.name)) continue;
+    if (entry.isDirectory() && entry.name.startsWith(".")) continue;
     const path = join(dir, entry.name);
     if (entry.isDirectory()) walkFiles(path, ignore, out);
     else if (entry.name.endsWith(".md")) out.push(path);

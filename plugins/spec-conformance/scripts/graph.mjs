@@ -37,12 +37,29 @@ for (const doc of docs) {
 // A link resolves in its own spec root first and the repository second. That is
 // how a wikilink behaves, and it is what lets two packages both hold a document
 // called overview without either needing a prefix.
+// A migration renames documents, and links written before it still point at the
+// old name. Every document records where it came from, so the name it used to
+// have resolves too -- otherwise adopting the layout breaks the links adopting
+// it was supposed to fix.
+const formerNames = new Map();
+for (const d of docs) {
+  const source = d.frontmatter?.source;
+  if (!source) continue;
+  const former = String(source).split("/").pop().replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, "");
+  if (former === d.id) continue;
+  if (!formerNames.has(former)) formerNames.set(former, []);
+  formerNames.get(former).push(d);
+}
+
 function resolveLink(from, id) {
   const local = nodes.get(`${from.specRoot}::${id}`);
   if (local) return { doc: local, scope: "local" };
   const global = docs.filter((d) => d.id === id);
   if (global.length === 1) return { doc: global[0], scope: "repo" };
   if (global.length > 1) return { ambiguous: global };
+  const former = formerNames.get(id) ?? [];
+  if (former.length === 1) return { doc: former[0], scope: "former-name" };
+  if (former.length > 1) return { ambiguous: former };
   return null;
 }
 
