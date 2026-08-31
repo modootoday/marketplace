@@ -47,7 +47,8 @@ for (const decision of decisions) {
     rejected.push({ source: decision.source, why: "no dossier: this document was not derived" });
     continue;
   }
-  const spec = config.kinds[dossier.derived.kind];
+  // The kind a decision corrects to is the one whose vocabulary applies.
+  const spec = config.kinds[decision.kind ?? dossier.derived.kind] ?? config.kinds[dossier.derived.kind];
 
   // A decision that reports no evidence is a guess wearing a decision's clothes.
   if (!decision.evidence || String(decision.evidence).trim().length < 8) {
@@ -73,12 +74,16 @@ for (const decision of decisions) {
   }
 
   const d = dossier.derived;
+  // The reading pass can correct the kind. A document's location said plan
+  // because it sat under plan/, and an adr/ subdirectory full of accepted
+  // decisions is not that; the derivation could only report where it sits.
+  const kind = decision.kind ?? d.kind;
   // The id is the filename stem, so a decision that renames the file renames the
   // id with it. Writing the old id under a new name is the one thing this layout
   // cannot survive: a link would resolve to a file that does not exist.
   const outPath = decision.path ?? dossier.proposedPath;
   const writtenId = outPath.split("/").pop().replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, "");
-  const header = ["---", `kind: ${d.kind}`, `id: ${writtenId}`];
+  const header = ["---", `kind: ${kind}`, `id: ${writtenId}`];
   if (d.domain) header.push(`domain: ${d.domain}`);
   header.push(`status: ${decision.status ?? ""}`);
   if (d.created) header.push(`created: "${d.created}"`);
