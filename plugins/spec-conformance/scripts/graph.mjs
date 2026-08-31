@@ -174,7 +174,14 @@ if (history.length > 0) {
   }
 
   for (const doc of docs) {
-    const born = createdAt.get(doc.rel) ?? 0;
+    // A normalised copy is born the day it is written, so its own history says
+    // every commit predates it and the whole join collapses. The document's
+    // birth is where it came from: the source path it records, then the created
+    // field, and only then the file itself.
+    const fm = doc.frontmatter ?? {};
+    const fromSource = fm.source ? createdAt.get(String(fm.source)) : undefined;
+    const fromField = fm.created ? Date.parse(`${String(fm.created).slice(0, 4)}-${String(fm.created).slice(4, 6)}-${String(fm.created).slice(6, 8)}`) : NaN;
+    const born = fromSource ?? (Number.isNaN(fromField) ? (createdAt.get(doc.rel) ?? 0) : fromField);
     const seen = new Set();
     for (const path of namedPaths(doc.text)) {
       for (const commit of byPrefix.get(path) ?? []) {
