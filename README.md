@@ -44,14 +44,19 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 
 ## Plugins
 
-| Plugin                    | What it does                                                                     | Hooks |
-| ------------------------- | -------------------------------------------------------------------------------- | ----- |
-| `agent-guardrails`        | Refuse shell commands whose damage is hard to undo                               | yes   |
-| `llm-peer-bridge`         | Let two running agent sessions talk to each other at turn boundaries             | yes   |
-| `build-concurrency-guard` | Notice uncapped build concurrency and say what capping it looks like             | yes   |
-| `hook-contract-matrix`    | Report which lifecycle hook events a runtime actually delivers                   | yes   |
-| `agent-rule-projection`   | Keep one rule source per package and project it into each agent's filename       | no    |
-| `spec-authoring`          | Write plans, sources of truth and decision records as three distinct things      | no    |
+| Plugin                      | What it does                                                                  | Hooks |
+| --------------------------- | ----------------------------------------------------------------------------- | ----- |
+| `agent-guardrails`          | Refuse shell commands whose damage is hard to undo                            | yes   |
+| `secret-exfil-guard`        | Refuse commands that would print or send a credential file                    | yes   |
+| `llm-peer-bridge`           | Let two running agent sessions talk to each other at turn boundaries          | yes   |
+| `worktree-awareness`        | Say which checkout a session is in, and who else is in it                     | yes   |
+| `build-concurrency-guard`   | Notice uncapped build concurrency and say what capping it looks like          | yes   |
+| `monorepo-package-validate` | After an edit, run that package's own check and report only failures          | yes   |
+| `hook-contract-matrix`      | Report which lifecycle hook events a runtime actually delivers                | yes   |
+| `rule-enforcement-audit`    | Report which written agent rules are actually enforced                        | no    |
+| `agent-rule-projection`     | Keep one rule source per package and project it into each agent's filename    | no    |
+| `spec-authoring`            | Write plans, sources of truth and decision records as three distinct things   | no    |
+| `agent-prompt-discipline`   | What belongs in a tool-using agent's prompt, and the symptom of each omission | no    |
 
 ## Trust
 

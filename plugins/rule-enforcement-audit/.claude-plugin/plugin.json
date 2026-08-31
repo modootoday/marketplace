@@ -1,0 +1,7 @@
+{
+  "name": "rule-enforcement-audit",
+  "version": "0.1.0",
+  "description": "Report which of a project's written agent rules are actually enforced by a hook and which hold only while someone remembers them.",
+  "author": { "name": "modootoday" },
+  "skills": "./skills/"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "agent-prompt-discipline",
+  "version": "0.1.0",
+  "description": "Decide what belongs in the system prompt of a tool-using agent and what to leave out, with the symptom each omission produces.",
+  "author": { "name": "modootoday" },
+  "skills": "./skills/"
+}

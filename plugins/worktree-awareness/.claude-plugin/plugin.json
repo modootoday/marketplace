@@ -1,0 +1,8 @@
+{
+  "name": "worktree-awareness",
+  "version": "0.1.0",
+  "description": "Tell a session which checkout it is standing in, and whether other working trees or another session's uncommitted files are present.",
+  "author": { "name": "modootoday" },
+  "hooks": "./hooks/hooks.json",
+  "skills": "./skills/"
+}

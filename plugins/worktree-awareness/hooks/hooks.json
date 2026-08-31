@@ -1,0 +1,12 @@
+{
+  "description": "Say which checkout this session is standing in, before it acts.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/state.mjs\"", "timeout": 15 }
+        ]
+      }
+    ]
+  }
+}

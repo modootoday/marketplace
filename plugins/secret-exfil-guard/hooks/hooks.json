@@ -1,0 +1,13 @@
+{
+  "description": "Keep credential values off stdout and off the wire.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/guard.mjs\"", "timeout": 15 }
+        ]
+      }
+    ]
+  }
+}

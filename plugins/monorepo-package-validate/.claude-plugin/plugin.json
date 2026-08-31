@@ -1,0 +1,7 @@
+{
+  "name": "monorepo-package-validate",
+  "version": "0.1.0",
+  "description": "After an edit, run the check belonging to the package that was edited, once per debounce window, and report only failures.",
+  "author": { "name": "modootoday" },
+  "hooks": "./hooks/hooks.json"
+}

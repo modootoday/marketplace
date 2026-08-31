@@ -61,6 +61,51 @@
         "name": "modootoday"
       },
       "source": "./plugins/llm-peer-bridge"
+    },
+    {
+      "name": "secret-exfil-guard",
+      "description": "Refuse shell commands that would print a credential file or send one over the network, while leaving metadata about those files reachable.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/secret-exfil-guard"
+    },
+    {
+      "name": "worktree-awareness",
+      "description": "Tell a session which checkout it is standing in, and whether other working trees or another session's uncommitted files are present.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/worktree-awareness"
+    },
+    {
+      "name": "monorepo-package-validate",
+      "description": "After an edit, run the check belonging to the package that was edited, once per debounce window, and report only failures.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/monorepo-package-validate"
+    },
+    {
+      "name": "agent-prompt-discipline",
+      "description": "Decide what belongs in the system prompt of a tool-using agent and what to leave out, with the symptom each omission produces.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/agent-prompt-discipline"
+    },
+    {
+      "name": "rule-enforcement-audit",
+      "description": "Report which of a project's written agent rules are actually enforced by a hook and which hold only while someone remembers them.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/rule-enforcement-audit"
     }
   ]
 }

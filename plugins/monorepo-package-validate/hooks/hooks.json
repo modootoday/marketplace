@@ -1,0 +1,13 @@
+{
+  "description": "Run a package's own check after that package is edited.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/validate.mjs\"", "timeout": 150 }
+        ]
+      }
+    ]
+  }
+}
