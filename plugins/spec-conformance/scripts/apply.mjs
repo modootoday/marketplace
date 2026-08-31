@@ -120,7 +120,10 @@ for (const decision of decisions) {
 
   // The body crosses unchanged. Anything the original header held that did not
   // become a field is appended, never dropped.
-  const body = text.replace(/^---\n[\s\S]*?\n---\n?/, "");
+  // Only strip a leading block that actually parsed as frontmatter; otherwise
+  // the document opens with a horizontal rule and the body starts at the top.
+  const hadFrontmatter = Object.keys(dossier.originalFrontmatter ?? {}).length > 0;
+  const body = hadFrontmatter ? text.replace(/^---\n[\s\S]*?\n---\n?/, "") : text;
   const carried = [];
   const original = dossier.declared.status ?? null;
   const freeText = dossier.unknown.find((u) => u.field === "status" && u.why.startsWith("free text"));
