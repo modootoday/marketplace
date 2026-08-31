@@ -228,17 +228,37 @@ Prove it can fail: rename a document so its stem no longer matches its declared
 id, and `check` must report it. Then hand `apply` a decision with no evidence
 field and confirm it is refused rather than written.
 
-Measured on the repository this was written in, at 1,517 documents and 466
-chapters: 2,012 schema findings, 851 graph findings, and 1,611 subject clusters
-of five or more documents — with two of the largest holding 223 and 212
-documents between which almost no relationship was declared.
+Measured on the repository this was written in, carried through to the end.
 
-The derivation stage recovered a creation date for all 1,517, found 145 statuses
-already inside a vocabulary and 156 written as free text, 195 documents with a
-relationship declared somewhere, and implementation traces for 940: of those,
-242 name paths that all still exist, 698 name at least one that does not, 738
-had their area touched after they were written, and 42 are cited by a commit
-subject. Every one of the 1,517 still needed reading.
+Discovery found 9,029 document-shaped files where the convention-bound scan saw
+1,517. Of the 1,548 the derivation reaches, 1,532 were normalised and 17 were
+classified as not design documents -- evidence files a plan produced, a
+template, and one runtime instruction file an agent reads by path.
+
+The normalised set is 1,231 plans, 147 decisions, 124 sources of truth and 30
+pages, with no filename, id, kind or placement violations. 2,944 document edges
+and 75,560 commit edges. Thirty-eight statuses are empty because nobody could
+decide them, and every document is unreviewed, because migrating a document is
+not reviewing it.
+
+Graph findings fell from 129 to 29 as the boundary closed, and the 29 that
+remain are true: three superseded files that no longer exist, references into
+source code, and names belonging to layers outside this layout.
+
+Every body was compared against its source with frontmatter stripped from both
+sides: 1,532 identical. That check is worth running, because two things were
+breaking it -- the repository's own formatter realigning tables in the copies,
+and a document opening with a horizontal rule losing 146 lines to a writer that
+took the rule for frontmatter.
+
+Reading changed the answer often enough to be the point. Three of the first six
+briefs still described themselves as waiting, four months after a roadmap's
+change register recorded them complete. Eighty-five sources of truth were
+addressed by an id their filename did not carry, across 1,390 wikilinks, none of
+which used the filename. A shutdown plan's frontend phase went further than
+written while its backend phase never happened. Two persist plans were reversed
+two days later by a successor whose title calls the earlier decision a
+misjudgement.
 
 ## License
 
