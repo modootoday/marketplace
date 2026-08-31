@@ -123,7 +123,10 @@ never have seen it, and the reading pass admits it in one line.
 Migrating an existing pile is five stages and the two that matter are not
 scripts.
 
-`derive.mjs` proves what filenames, directories and git can prove: ids, kinds,
+`derive.mjs` searches history in the window between a document's first and last
+edit -- the only period it was demonstrably alive -- and widens past it only when
+that comes back empty, saying so when it does. Beyond that it proves what
+filenames, directories and git can prove: ids, kinds,
 domains, creation and modification dates, rename lineage, relationships someone
 already wrote down, and implementation traces — which paths a document names,
 whether they still exist, whether they were touched after it was written, and

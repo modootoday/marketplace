@@ -79,6 +79,28 @@ When the register and the document disagree, the register wins and you say so in
 the evidence. When there is no register, say that too -- it is the difference
 between "no one recorded this" and "no one did this".
 
+## Search the window the document was alive in, first
+
+A document has two dates history can prove: when it first appeared and when it
+was last edited. Between them is the only period it was demonstrably being
+worked on, and commits in that window touching the paths it names are the
+tightest evidence available that the work described actually happened.
+
+The derivation searches that window first and only widens when it comes back
+empty, recording that it widened and why. Take the widening seriously: a plan
+whose named areas were untouched while it was live, and only changed months
+later, is a plan the area moved on without. That is a different story from one
+whose window is full of commits naming its own sections.
+
+Measured on the reference repository's 1,517 documents: 739 matched inside their
+own window, 128 needed widening, and 650 matched nothing at all -- either they
+name no paths or nothing ever touched the paths they name.
+
+None of this decides anything. The candidates arrive with dates, subjects and
+the path that matched, and whether any of them is this document being carried
+out is yours to read. A commit touching the area is not the plan being executed,
+and the plan may have been executed under a name that shares no words with it.
+
 ## Judging whether the work happened
 
 A plan says what was going to be done. Whether it was is a separate question,

@@ -163,6 +163,40 @@ function citationIndex(repoRoot) {
 const history = historyIndex();
 const citations = citationIndex(repoRoot);
 
+// Commits indexed by every prefix of every path they touch, so a document can
+// ask what happened to the areas it names inside a given window. The window is
+// what makes the answer worth having: commits between a document's first and
+// last edit are the ones written while it was live, and those are the ones that
+// might be its execution rather than the area merely moving on afterwards.
+const commitsByPrefix = new Map();
+try {
+  const out = execFileSync("git", ["log", "--format=C|%ct|%s", "--name-only"], {
+    cwd: repoRoot, encoding: "utf8", maxBuffer: 512 * 1024 * 1024,
+  });
+  let at = null;
+  let subject = "";
+  for (const line of out.split("\n")) {
+    if (line.startsWith("C|")) {
+      const [, ts, ...rest] = line.split("|");
+      at = Number(ts) * 1000;
+      subject = rest.join("|");
+      continue;
+    }
+    if (!line.trim() || !at) continue;
+    const entry = { at, subject };
+    let node = line;
+    for (;;) {
+      if (!commitsByPrefix.has(node)) commitsByPrefix.set(node, []);
+      commitsByPrefix.get(node).push(entry);
+      const cut = node.lastIndexOf("/");
+      if (cut === -1) break;
+      node = node.slice(0, cut);
+    }
+  }
+} catch {
+  // history unavailable; the window block reports nothing rather than guessing
+}
+
 // One pass for path -> last touch, so "was this area worked on after the
 // document was written" costs nothing per document.
 const pathTouched = new Map();
@@ -253,10 +287,56 @@ for (const doc of docs) {
         // appeared on as the evidence for deciding.
         return { ...c, exists, touchedAfter };
       });
+      // Candidates for "what carried this out", narrowest first. The window a
+      // document was live in is the tightest honest scope; widening past it is
+      // only done when it is empty, and the fact that it was widened travels
+      // with the answer. Which candidate is the work -- if any is -- is read,
+      // not decided here.
+      const openedAt = history.created.get(doc.rel) ?? 0;
+      const closedAt = history.updated.get(doc.rel) ?? openedAt;
+      const inWindow = new Map();
+      const afterWindow = new Map();
+      for (const c of candidates) {
+        for (const entry of commitsByPrefix.get(c.token) ?? []) {
+          const key = `${entry.at}|${entry.subject}`;
+          if (entry.at >= openedAt && entry.at <= closedAt) inWindow.set(key, { ...entry, path: c.token });
+          else if (entry.at > closedAt) afterWindow.set(key, { ...entry, path: c.token });
+        }
+      }
+      const shape = (m) => [...m.values()].sort((a, b) => a.at - b.at).slice(0, 10)
+        .map((c) => ({ on: day(c.at), subject: c.subject.slice(0, 110), path: c.path }));
+
+      let scope = "none";
+      let widenedBecause = null;
+      let commitCandidates = [];
+      if (inWindow.size > 0) {
+        scope = "in-window";
+        commitCandidates = shape(inWindow);
+      } else if (afterWindow.size > 0) {
+        scope = "widened-past-window";
+        widenedBecause = "no commit touched the paths this document names while it was still being edited";
+        commitCandidates = shape(afterWindow);
+      } else if (candidates.length === 0) {
+        widenedBecause = "the document names no paths to search on";
+      } else {
+        widenedBecause = "no commit in history touched the paths this document names";
+      }
+
       const slug = doc.id.replace(/^\d{4,14}[-_]?/, "");
       const cited = (citations.get(slug) ?? []).slice(-5).map((c) => ({ on: day(c.at), subject: c.subject.slice(0, 110) }));
       const boxes = doc.text.match(/^\s*[-*] \[[ xX]\]/gm) ?? [];
       return {
+        commitSearch: {
+          window: {
+            opened: day(openedAt),
+            closed: day(closedAt),
+            days: openedAt ? Math.round((closedAt - openedAt) / 86400000) : null,
+          },
+          scope,
+          widenedBecause,
+          counts: { inWindow: inWindow.size, afterWindow: afterWindow.size },
+          candidates: commitCandidates,
+        },
         pathCandidates: candidates,
         candidatesPresent: candidates.filter((c) => c.exists).length,
         candidatesTouchedAfterWriting: candidates.filter((c) => c.touchedAfter).length,
