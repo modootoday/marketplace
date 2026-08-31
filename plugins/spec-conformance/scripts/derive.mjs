@@ -12,7 +12,7 @@ import { execFileSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
 import { loadConfig } from "./config.mjs";
-import { parseFrontmatter, scan } from "./scan.mjs";
+import { proseOnly, parseFrontmatter, scan } from "./scan.mjs";
 
 const args = process.argv.slice(2);
 const repoRoot = resolve(args.find((a) => !a.startsWith("-")) ?? process.cwd());
@@ -196,7 +196,7 @@ for (const doc of docs) {
   const statusUsable = fm.status && spec.status.includes(fm.status) ? fm.status : null;
   const declared = {
     supersedes: list(fm.supersedes).map(idFrom),
-    references: [...new Set([...[config.referenceField, ...(config.referenceAliases ?? [])].flatMap((f) => list(fm[f])).map(idFrom), ...[...doc.text.matchAll(/\[\[([a-z0-9-]+)\]\]/g)].map((m) => m[1])])],
+    references: [...new Set([...[config.referenceField, ...(config.referenceAliases ?? [])].flatMap((f) => list(fm[f])).map(idFrom), ...[...proseOnly(doc.text).matchAll(/\[\[([a-z0-9-]+)\]\]/g)].map((m) => m[1])])],
   };
 
   // Named honestly so the reading pass knows what it is being asked for, rather

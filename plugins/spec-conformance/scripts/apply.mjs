@@ -90,6 +90,13 @@ for (const decision of decisions) {
     for (const v of values) header.push(`  - ${v}`);
   }
   header.push(`source: ${decision.source}`);
+  // The reason the status was chosen belongs with the status. Keeping it only
+  // in the decisions file leaves a reader looking at "archived" with no way to
+  // tell an argued judgement from a guess, which is the failure this pipeline
+  // exists to avoid.
+  const reason = String(decision.evidence).replace(/\s+/g, " ").trim();
+  header.push("decided_because: >-");
+  for (const line of reason.match(/.{1,96}(\s|$)/g) ?? [reason]) header.push(`  ${line.trim()}`);
   header.push("---");
 
   // The body crosses unchanged. Anything the original header held that did not

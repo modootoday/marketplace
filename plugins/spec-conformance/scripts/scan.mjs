@@ -113,6 +113,13 @@ export function kindOf(filename, config) {
   return null;
 }
 
+// Prose only. A document about configuration quotes configuration, and TOML's
+// array-of-tables header is spelled exactly like a wikilink; reading code spans
+// as links invents references to files nobody ever wrote.
+export function proseOnly(text) {
+  return text.replace(/```[\s\S]*?```/g, "").replace(/`[^`\n]*`/g, "");
+}
+
 export const idOf = (filename) => filename.replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, "");
 
 export function scan(repoRoot, config) {

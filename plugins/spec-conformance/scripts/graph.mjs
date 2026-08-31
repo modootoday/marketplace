@@ -7,7 +7,7 @@
 import { execFileSync } from "node:child_process";
 import { resolve } from "node:path";
 import { loadConfig } from "./config.mjs";
-import { scan } from "./scan.mjs";
+import { proseOnly, scan } from "./scan.mjs";
 
 const args = process.argv.slice(2);
 const repoRoot = resolve(args.find((a) => !a.startsWith("-")) ?? process.cwd());
@@ -91,7 +91,7 @@ const findings = [];
 for (const doc of docs) {
   const fm = doc.frontmatter ?? {};
 
-  for (const match of doc.text.matchAll(/\[\[([a-z0-9-]+)\]\]/g)) {
+  for (const match of proseOnly(doc.text).matchAll(/\[\[([a-z0-9-]+)\]\]/g)) {
     const target = match[1];
     const found = resolveLink(doc, target);
     if (!found) findings.push({ code: "LINK_DANGLING", path: doc.rel, detail: `[[${target}]] resolves to nothing` });
