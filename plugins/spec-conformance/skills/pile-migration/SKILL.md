@@ -27,6 +27,11 @@ Classify from the content, and be willing to answer "not a design document" for
 most of them. A migration that sweeps every markdown file into the schema
 produces a tidy directory full of things that do not belong there.
 
+Write the verdict as one line per file, `kind` naming a configured kind or
+`none`. Everything downstream reads that file, so a document you admit here is
+carried through regardless of where it sits or what it is called, and a document
+you leave out is not silently reconsidered later.
+
 ## Read the document before deciding anything about it
 
 Not the title, not the headings, not the commit subjects. Those are in the

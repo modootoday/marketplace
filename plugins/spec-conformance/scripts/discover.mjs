@@ -136,7 +136,7 @@ for (const path of files) {
   });
 }
 
-const full = join(repoRoot, outPath);
+const full = resolve(repoRoot, outPath);
 mkdirSync(dirname(full), { recursive: true });
 writeFileSync(full, `${candidates.map((c) => JSON.stringify(c)).join("\n")}\n`);
 

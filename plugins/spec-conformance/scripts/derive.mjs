@@ -9,10 +9,10 @@
 // declared somewhere, and an explicit list of what is still unknown and why.
 
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
 import { loadConfig } from "./config.mjs";
-import { scan } from "./scan.mjs";
+import { parseFrontmatter, scan } from "./scan.mjs";
 
 const args = process.argv.slice(2);
 const repoRoot = resolve(args.find((a) => !a.startsWith("-")) ?? process.cwd());
@@ -23,7 +23,46 @@ const flag = (name, fallback) => {
 const outPath = flag("out", join(".spec", "_work", "dossier.jsonl"));
 
 const config = loadConfig(repoRoot);
-const { documents } = scan(repoRoot, config);
+
+// Two ways in, and the second one is the general case. A repository that has
+// already adopted the layout can be scanned; a repository that has not is read
+// from a classification the reading pass produced, because in that repository
+// there is no directory or filename shape entitled to say what a document is.
+function fromClassification(path) {
+  const rows = readFileSync(path, "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l));
+  const docs = [];
+  for (const row of rows) {
+    if (!row.kind || row.kind === "none") continue;
+    const abs = join(repoRoot, row.path);
+    if (!existsSync(abs)) continue;
+    const text = readFileSync(abs, "utf8");
+    const spec = config.kinds[row.kind];
+    if (!spec) continue;
+    docs.push({
+      rel: row.path,
+      package: row.package ?? ".",
+      declaredKind: row.kind,
+      id: row.id ?? basename(row.path).replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, ""),
+      filename: basename(row.path),
+      frontmatter: parseFrontmatter(text) ?? {},
+      directoryDomain: row.domain ?? null,
+      text,
+      lines: text.split("\n").length,
+      isChapter: Boolean(row.chapterOf),
+      chapterOf: row.chapterOf ?? null,
+    });
+  }
+  return docs;
+}
+
+const classifiedAt = resolve(repoRoot, flag("classified", join(".spec", "_work", "classifications.jsonl")));
+let documents;
+if (existsSync(classifiedAt)) {
+  documents = fromClassification(classifiedAt);
+  console.log(`reading classification  ${documents.length} documents the reading pass identified`);
+} else {
+  documents = scan(repoRoot, config).documents;
+}
 const docs = documents.filter((d) => !d.isChapter);
 
 // One pass over history for every file. A per-file git log would take an hour at
@@ -234,7 +273,7 @@ for (const doc of docs) {
   });
 }
 
-const full = join(repoRoot, outPath);
+const full = resolve(repoRoot, outPath);
 mkdirSync(dirname(full), { recursive: true });
 writeFileSync(full, `${dossiers.map((d) => JSON.stringify(d)).join("\n")}\n`);
 

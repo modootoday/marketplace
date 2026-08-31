@@ -50,6 +50,7 @@ Gemini CLI: clone and
 | script | `scripts/cluster.mjs`     | documents that share a subject, and what each group declares    |
 | script | `scripts/graph.mjs`       | graph invariants and five scoped views                          |
 | script | `scripts/discover.mjs`    | every document-shaped file, with signals and no classification  |
+| script | `scripts/derive.mjs --classified` | evidence for whatever the reading pass identified, layout or not |
 | script | `scripts/derive.mjs`      | evidence for a migration: timeline, declared relations, implementation traces |
 | script | `scripts/apply.mjs`       | writes the normalised copy from decisions, refusing unevidenced ones |
 | skill  | `pile-migration`          | how to read a pile and decide, including judging whether work happened |
@@ -96,6 +97,26 @@ convention never mentioned.
 `check.mjs` and `graph.mjs` apply **after** adoption, to documents that are in
 the layout. Running them on an unconverted repository is expected to report
 almost everything, and that is not useful.
+
+## The classification is the handoff
+
+The reading pass writes one line per file to
+`.spec/_work/classifications.jsonl`:
+
+```json
+{ "path": "notes/gateway-rewrite.md", "kind": "plan" }
+{ "path": "README.md", "kind": "none" }
+```
+
+`derive.mjs` reads it when it exists and scans the layout when it does not, so
+the same pipeline serves a repository that has adopted the convention and one
+that has never heard of it. `kind: "none"` drops the file, which is the expected
+answer for most of them.
+
+A file the classification accepts is derived even when nothing about its name or
+location would have qualified it. On the reference repository `sots/INDEX.md` is
+a source of truth whose filename matches no configured shape; the scanner would
+never have seen it, and the reading pass admits it in one line.
 
 ## Derive, decide, apply
 
@@ -186,7 +207,9 @@ node scripts/graph.mjs . --view timeline --id <document-id>
 ```
 
 ```
-node scripts/derive.mjs .
+node scripts/discover.mjs .
+node scripts/derive.mjs .                     # scans the layout
+node scripts/derive.mjs . --classified <file> # or takes the reading pass output
 node scripts/apply.mjs .            # plan only
 node scripts/apply.mjs . --write
 ```
