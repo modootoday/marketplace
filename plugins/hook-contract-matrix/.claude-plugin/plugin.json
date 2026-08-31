@@ -1,0 +1,9 @@
+{
+  "name": "hook-contract-matrix",
+  "version": "0.1.0",
+  "description": "Measure which lifecycle hook events actually fire in each agent runtime, and prove context injection and stop-blocking really reach the model.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}
