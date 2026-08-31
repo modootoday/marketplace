@@ -20,7 +20,7 @@ const format = flag("format", "mermaid");
 
 let config;
 try {
-  config = loadConfig(repoRoot);
+  config = loadConfig(repoRoot, flag("config", null));
 } catch (error) {
   console.error(error.message);
   process.exit(2);
@@ -127,11 +127,13 @@ for (const doc of docs) {
     findings.push({ code: "SUCCESSOR_MISSING", path: doc.rel, detail: "status is superseded but no successor is named" });
   }
 
-  for (const ref of toList(fm.sot_ref)) {
+  const referenceFields = [config.referenceField, ...(config.referenceAliases ?? [])];
+  const referenced = referenceFields.flatMap((f) => toList(fm[f]));
+  for (const ref of referenced) {
     const id = ref.replace(/^.*\//, "").replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, "");
     const found = resolveLink(doc, id);
     if (!found || found.ambiguous) {
-      findings.push({ code: "REF_DANGLING", path: doc.rel, detail: `sot_ref "${ref}" resolves to nothing` });
+      findings.push({ code: "REF_DANGLING", path: doc.rel, detail: `reference "${ref}" resolves to nothing` });
     } else edges.push({ from: doc, to: found.doc, type: "ref" });
   }
 }

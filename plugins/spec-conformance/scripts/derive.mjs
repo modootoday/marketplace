@@ -22,7 +22,7 @@ const flag = (name, fallback) => {
 };
 const outPath = flag("out", join(".spec", "_work", "dossier.jsonl"));
 
-const config = loadConfig(repoRoot);
+const config = loadConfig(repoRoot, flag("config", null));
 
 // Two ways in, and the second one is the general case. A repository that has
 // already adopted the layout can be scanned; a repository that has not is read
@@ -196,7 +196,7 @@ for (const doc of docs) {
   const statusUsable = fm.status && spec.status.includes(fm.status) ? fm.status : null;
   const declared = {
     supersedes: list(fm.supersedes).map(idFrom),
-    references: [...new Set([...list(fm.sot_ref).map(idFrom), ...[...doc.text.matchAll(/\[\[([a-z0-9-]+)\]\]/g)].map((m) => m[1])])],
+    references: [...new Set([...[config.referenceField, ...(config.referenceAliases ?? [])].flatMap((f) => list(fm[f])).map(idFrom), ...[...doc.text.matchAll(/\[\[([a-z0-9-]+)\]\]/g)].map((m) => m[1])])],
   };
 
   // Named honestly so the reading pass knows what it is being asked for, rather

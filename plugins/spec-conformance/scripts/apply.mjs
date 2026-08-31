@@ -20,7 +20,7 @@ const flag = (name, fallback) => {
 
 const dossierPath = join(repoRoot, flag("dossier", join(".spec", "_work", "dossier.jsonl")));
 const decisionPath = join(repoRoot, flag("decisions", join(".spec", "_work", "decisions.jsonl")));
-const config = loadConfig(repoRoot);
+const config = loadConfig(repoRoot, flag("config", null));
 
 const read = (path) =>
   readFileSync(path, "utf8")

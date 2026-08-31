@@ -55,6 +55,30 @@ with, because it looks authoritative.
 Good evidence is specific: "closing section says superseded by the Phase 3
 rewrite, which is document X", not "seems old".
 
+## Find the register before you judge any of them
+
+Most piles contain one document that records what happened to the others: a
+change log, a roadmap with a history section, a status table, a release note.
+It is usually the document the others cite, and it is usually the only place the
+answer was written down.
+
+Find it first, because **a document's own header goes stale and the register does
+not**. Nobody edits a brief after finishing the work it describes; they record
+the completion where completions are recorded and move on. A header saying
+"waiting" four months after the work shipped is the normal state of a pile, not
+evidence of anything.
+
+Measured on the reference migration: of six briefs, three still said "waiting"
+or "not yet written" in their own headers, and the roadmap's change register
+recorded all three as complete, naming the successor document for each. Judging
+from the documents alone would have left half the cluster undecided; judging
+from file existence would have got it wrong in the other direction, because the
+paths they scoped had been relocated by an unrelated reorganisation.
+
+When the register and the document disagree, the register wins and you say so in
+the evidence. When there is no register, say that too -- it is the difference
+between "no one recorded this" and "no one did this".
+
 ## Judging whether the work happened
 
 A plan says what was going to be done. Whether it was is a separate question,
@@ -68,6 +92,7 @@ answer.
 | a commit subject cites the document | strong | — | citing is not completing |
 | named paths are missing | — | supports | the work landed somewhere else under another name |
 | checkboxes unchecked | — | supports | many documents never used them |
+| a register records it complete | strong | — | it may record a partial scope; read which |
 
 Read the document and see which story it tells, then check the evidence against
 it. When they disagree, the disagreement is the finding: say the plan claims one

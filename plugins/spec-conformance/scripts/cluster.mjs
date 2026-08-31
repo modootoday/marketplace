@@ -18,7 +18,7 @@ const flag = (name, fallback) => {
 
 let config;
 try {
-  config = loadConfig(repoRoot);
+  config = loadConfig(repoRoot, flag("config", null));
 } catch (error) {
   console.error(error.message);
   process.exit(2);

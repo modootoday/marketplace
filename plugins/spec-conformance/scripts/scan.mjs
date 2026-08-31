@@ -29,7 +29,11 @@ export function parseFrontmatter(text) {
     if (!pair) continue;
     key = pair[1];
     const value = pair[2].trim();
-    out[key] = value === "" ? [] : unquote(value);
+    // An empty value is an empty value. Reading it as an empty list made "not
+    // decided yet" arrive downstream as a truthy object, so every deliberately
+    // blank field reported as a bad one. A list becomes a list when an item
+    // follows it.
+    out[key] = value === "" ? "" : unquote(value);
   }
   return out;
 }
@@ -51,6 +55,11 @@ export function findSpecRoots(repoRoot, config) {
     roots.push({ path: join(repoRoot, config.root), package: "." });
   }
 
+  // The configured root at the top level is added above; the walk reaches it
+  // again on its first step, and a root counted twice makes every document in
+  // it collide with itself.
+  const seen = new Set(roots.map((r) => r.path));
+
   function walk(dir, depth) {
     if (depth > 6) return;
     let entries;
@@ -63,7 +72,10 @@ export function findSpecRoots(repoRoot, config) {
       if (!entry.isDirectory() || ignore.has(entry.name)) continue;
       const path = join(dir, entry.name);
       if (entry.name === config.root) {
-        roots.push({ path, package: relative(repoRoot, dir) || "." });
+        if (!seen.has(path)) {
+          seen.add(path);
+          roots.push({ path, package: relative(repoRoot, dir) || "." });
+        }
         continue;
       }
       if (entry.name.startsWith(".") && entry.name !== config.root) continue;
@@ -111,7 +123,8 @@ export function scan(repoRoot, config) {
 
   for (const root of roots) {
     for (const [kind, spec] of Object.entries(config.kinds)) {
-      const kindRoot = join(root.path, spec.dir);
+      for (const dirName of [spec.dir, ...(spec.sourceDirs ?? [])]) {
+      const kindRoot = join(root.path, dirName);
       if (!existsSync(kindRoot)) continue;
 
       for (const path of walkFiles(kindRoot, ignore)) {
@@ -153,6 +166,7 @@ export function scan(repoRoot, config) {
           lines: text.split("\n").length,
           mtime: statSync(path).mtimeMs,
         });
+      }
       }
     }
   }

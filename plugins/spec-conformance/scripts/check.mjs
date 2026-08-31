@@ -9,10 +9,14 @@ import { scan } from "./scan.mjs";
 
 const args = process.argv.slice(2);
 const repoRoot = resolve(args.find((a) => !a.startsWith("-")) ?? process.cwd());
+const flag = (name, fallback) => {
+  const i = args.indexOf(`--${name}`);
+  return i === -1 ? fallback : args[i + 1];
+};
 
 let config;
 try {
-  config = loadConfig(repoRoot);
+  config = loadConfig(repoRoot, flag("config", null));
 } catch (error) {
   console.error(error.message);
   process.exit(2);
@@ -92,10 +96,18 @@ for (const doc of documents) {
   }
 
   for (const field of spec.required) {
+    // status has its own code below; reporting it twice makes an undecided
+    // document look like two problems.
+    if (field === "status") continue;
     if (fm[field] === undefined || fm[field] === "") add("FIELD_MISSING", doc, `required field: ${field}`);
   }
 
-  if (fm.status && !spec.status.includes(fm.status)) {
+  // Undecided and wrong are different states and get different codes. A
+  // migration leaves fields blank on purpose, and a blank one reported as a bad
+  // value pushes the reader towards inventing a value to silence it.
+  if (fm.status === "" || fm.status === undefined) {
+    add("STATUS_UNDECIDED", doc, "nobody has decided this document's status");
+  } else if (!spec.status.includes(fm.status)) {
     add("STATUS_UNKNOWN", doc, `"${fm.status}" is not one of: ${spec.status.join(" · ")}`);
   }
 
@@ -124,7 +136,9 @@ for (const doc of documents) {
 
   // Confirming a document still holds must not require editing it, which is why
   // these are two fields.
-  if (fm.reviewed && fm.updated && String(fm.updated) > String(fm.reviewed)) {
+  if (!fm.reviewed) {
+    add("NEVER_REVIEWED", doc, "no reviewer has confirmed this document holds");
+  } else if (fm.updated && String(fm.updated) > String(fm.reviewed)) {
     add("REVIEW_STALE", doc, `updated ${fm.updated} is newer than reviewed ${fm.reviewed}`);
   }
 }

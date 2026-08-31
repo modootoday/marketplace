@@ -136,6 +136,13 @@ documents**, guided by the `pile-migration` skill.
 evidence, any status outside the vocabulary, and any supersede without a named
 successor. It never modifies the source pile.
 
+Measured on the reference repository's first migrated cluster: six documents,
+bodies byte-identical to their originals, and three of the six statuses decided
+against what the documents said about themselves -- their headers still read
+"waiting" long after a roadmap's change register recorded them complete. Neither
+the filenames, the frontmatter nor the file tree carried that; it came from
+reading the register those documents cited.
+
 The split exists so the boundary between what was proven and what was judged
 stays visible in the output. A single script doing all three would produce a
 normalised pile whose confident fields nobody can audit.

@@ -6,7 +6,7 @@
 // change, because a directory name has no bearing on whether a link resolves.
 
 import { existsSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 
 export const CONFIG_FILE = "spec-conformance.json";
 
@@ -17,6 +17,10 @@ export const DEFAULTS = {
   kinds: {
     decision: {
       dir: "decisions",
+      // Where documents of this kind currently sit, if that is not where they
+      // belong. dir is the destination and stays canonical; a migration reads from
+      // here so the old location never becomes the new convention by inertia.
+      sourceDirs: [],
       // MADR: a consecutive number, never reused, and a dashed lowercase title.
       file: "^(\\d{4})-([a-z][a-z0-9]*(?:-[a-z0-9]+)*)\\.md$",
       required: ["status"],
@@ -27,6 +31,10 @@ export const DEFAULTS = {
     },
     plan: {
       dir: "plans",
+      // Where documents of this kind currently sit, if that is not where they
+      // belong. dir is the destination and stays canonical; a migration reads from
+      // here so the old location never becomes the new convention by inertia.
+      sourceDirs: [],
       file: "^(\\d{14})-([a-z][a-z0-9]*(?:-[a-z0-9]+)*)\\.md$",
       required: ["status"],
       idField: "id",
@@ -39,6 +47,10 @@ export const DEFAULTS = {
     },
     sot: {
       dir: "sots",
+      // Where documents of this kind currently sit, if that is not where they
+      // belong. dir is the destination and stays canonical; a migration reads from
+      // here so the old location never becomes the new convention by inertia.
+      sourceDirs: [],
       file: "^([a-z][a-z0-9]*(?:-[a-z0-9]+)*)\\.sot\\.md$",
       required: ["status", "domain"],
       // Projects name this field differently; the rule is the value, not the key.
@@ -50,6 +62,10 @@ export const DEFAULTS = {
     },
     page: {
       dir: "pages",
+      // Where documents of this kind currently sit, if that is not where they
+      // belong. dir is the destination and stays canonical; a migration reads from
+      // here so the old location never becomes the new convention by inertia.
+      sourceDirs: [],
       file: "^([a-z][a-z0-9]*(?:-[a-z0-9]+)*)\\.page\\.md$",
       // `implements` is the point of this kind: the checker confirms the file
       // exists, so a deleted or renamed screen turns its document red by itself.
@@ -75,6 +91,13 @@ export const DEFAULTS = {
     "netlify.toml",
     "vercel.json",
   ],
+  // The field a document uses to point at another. Repositories arrive with
+  // their own name for it, so the canonical one is a default and the aliases
+  // are read too -- a reference the graph cannot see is a relationship that
+  // silently stops existing at migration time.
+  referenceField: "references",
+  referenceAliases: ["sot_ref", "refs", "related", "see_also"],
+
   cluster: {
     // Tokens too generic to mean a shared subject.
     stopwords: ["plan", "design", "sot", "and", "the", "for", "with", "from", "into", "v2", "v3"],
@@ -85,8 +108,11 @@ export const DEFAULTS = {
   },
 };
 
-export function loadConfig(root) {
-  const path = join(root, CONFIG_FILE);
+// An explicit config lets a repository check a candidate tree while its own
+// documents still live under the old settings, which is the whole of a
+// migration's middle.
+export function loadConfig(root, override) {
+  const path = override ? resolve(root, override) : join(root, CONFIG_FILE);
   if (!existsSync(path)) return { ...DEFAULTS, source: "defaults" };
 
   let parsed;
