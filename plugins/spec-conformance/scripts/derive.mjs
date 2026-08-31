@@ -218,8 +218,13 @@ const list = (v) => (v ? (Array.isArray(v) ? v : [v]).map(String).filter(Boolean
 // A reference into a directory-form document names one of its chapters, and a
 // chapter is a part rather than a document. The thing being referenced is the
 // document the directory is.
+// A reference often points into a document rather than at it: a section number,
+// an anchor, a parenthetical. The document is what is being referenced.
+const stripLocator = (text) =>
+  String(text).trim().replace(/\s*\(.*\)\s*$/, "").replace(/\s*[§#].*$/, "").replace(/[.,;)]+$/, "").trim();
+
 const idFrom = (ref) => {
-  const text = String(ref);
+  const text = stripLocator(ref);
   const container = basename(dirname(text));
   if (/^\d{8,14}-/.test(container)) return container.replace(/\.md$/, "");
   return basename(text).replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, "");

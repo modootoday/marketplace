@@ -130,13 +130,14 @@ for (const doc of docs) {
   const referenceFields = [config.referenceField, ...(config.referenceAliases ?? [])];
   const referenced = referenceFields.flatMap((f) => toList(fm[f]));
   for (const ref of referenced) {
-    const id = ref.replace(/^.*\//, "").replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, "");
+    const located = String(ref).trim().replace(/\s*\(.*\)\s*$/, "").replace(/\s*[§#].*$/, "").replace(/[.,;)]+$/, "").trim();
+    const id = located.replace(/^.*\//, "").replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, "");
     let found = resolveLink(doc, id);
     // A reference can name a chapter of a directory-form document. Chapters are
     // parts, not documents, so they have no id of their own and would dangle
     // forever; the thing being referenced is the document they belong to.
     if (!found || found.ambiguous) {
-      const container = ref.includes("/") ? ref.replace(/\/[^/]*$/, "").replace(/^.*\//, "") : null;
+      const container = located.includes("/") ? located.replace(/\/[^/]*$/, "").replace(/^.*\//, "") : null;
       if (container) found = resolveLink(doc, container);
     }
     if (!found || found.ambiguous) {
