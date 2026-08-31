@@ -13,7 +13,7 @@ boundaries.
 | Claude Code | yes       | 2.1.251                  |
 | Codex CLI   | yes       | 0.151.0                  |
 | Grok CLI    | untested  | manifest reads on 1.0.13 |
-| Gemini CLI  | untested  | manifest reads on 0.57.0 |
+| Gemini CLI  | skills only | hook contract differs; see the repository README |
 
 The transport is symmetric; how each model treats an arriving message is not.
 Some evaluate a peer message and decline to act on it, which is the intended

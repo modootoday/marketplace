@@ -12,7 +12,7 @@ whether context a hook returns really reaches the model.
 | Claude Code | yes       | 2.1.251                |
 | Codex CLI   | yes       | 0.151.0                |
 | Grok CLI    | untested  | manifest reads on 1.0.13 |
-| Gemini CLI  | untested  | manifest reads on 0.57.0 |
+| Gemini CLI  | skills only | hook contract differs; see the repository README |
 
 "Untested" means the manifest is accepted and nothing more was measured. It does
 not mean the plugin works there.

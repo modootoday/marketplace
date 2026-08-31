@@ -12,7 +12,7 @@ and tells the agent what to do instead.
 | Claude Code | yes       | 2.1.251                  |
 | Codex CLI   | yes       | 0.151.0                  |
 | Grok CLI    | untested  | manifest reads on 1.0.13 |
-| Gemini CLI  | untested  | manifest reads on 0.57.0 |
+| Gemini CLI  | skills only | hook contract differs; see the repository README |
 
 Every rule here targets shell commands, which is also the only tool Codex sends
 to this event, so the plugin loses nothing there.

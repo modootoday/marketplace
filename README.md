@@ -29,11 +29,16 @@ grok plugin marketplace add modootoday/marketplace
 grok plugin install <plugin> --trust
 ```
 
-Gemini CLI has no marketplace. Clone this repository and link a plugin
-directory:
+Grok reads the same manifest as Claude Code and Codex CLI. Installing and
+enumerating are verified; whether the hooks fire there has not been measured.
+
+Gemini CLI has no marketplace, and reads only the skills a plugin carries. Its
+hook contract differs in event names, timeout units and path variables, so the
+hook-bearing plugins here reach Gemini as skills and nothing more. Clone this
+repository and link a plugin directory:
 
 ```
-gemini extensions link <repo>/plugins/<plugin>
+gemini extensions link <repo>/plugins/<plugin> --consent
 ```
 
 ## Plugins
