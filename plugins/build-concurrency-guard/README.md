@@ -11,8 +11,8 @@ what capping them would look like. It rewrites the command only if you ask it to
 | ----------- | --------- | ------------------------ |
 | Claude Code | yes       | 2.1.251                  |
 | Codex CLI   | untested  | manifest reads on 0.151.0 |
-| Grok CLI    | untested  | manifest reads on 1.0.13 |
-| Gemini CLI  | skills only | hook contract differs; see the repository README |
+| Grok CLI    | skills only | 1.0.13 — registers plugin hooks but never runs them |
+| Gemini CLI  | skills only | 0.57.0 — different hook event names, units and variables |
 
 The advise path uses `additionalContext`, and the apply path uses
 `updatedInput`, which was measured working in Claude Code only. On a runtime

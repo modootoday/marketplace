@@ -1,5 +1,5 @@
 {
-  "description": "Records which lifecycle events this runtime actually delivers.",
+  "description": "Records which lifecycle events this runtime delivers.",
   "hooks": {
     "SessionStart": [
       {

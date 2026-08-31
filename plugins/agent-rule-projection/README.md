@@ -12,8 +12,8 @@ notes, task lists or changelogs.
 | ----------- | --------- | ------------------------ |
 | Claude Code | yes       | 2.1.251                  |
 | Codex CLI   | yes       | 0.151.0                  |
-| Grok CLI    | untested  | manifest reads on 1.0.13 |
-| Gemini CLI  | untested  | linked and enabled; session blocked on account tier |
+| Grok CLI    | yes       | 1.0.13                   |
+| Gemini CLI  | yes       | 0.57.0                   |
 
 The scripts are plain Node and run anywhere; the skill is the one surface all
 four runtimes read.

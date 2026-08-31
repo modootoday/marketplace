@@ -29,13 +29,14 @@ grok plugin marketplace add modootoday/marketplace
 grok plugin install <plugin> --trust
 ```
 
-Grok reads the same manifest as Claude Code and Codex CLI. Installing and
-enumerating are verified; whether the hooks fire there has not been measured.
+Grok reads the same manifest and loads a plugin's skills. It registers a
+plugin's hooks and then never runs them, so the hook-bearing plugins here reach
+Grok as skills only.
 
-Gemini CLI has no marketplace, and reads only the skills a plugin carries. Its
-hook contract differs in event names, timeout units and path variables, so the
-hook-bearing plugins here reach Gemini as skills and nothing more. Clone this
-repository and link a plugin directory:
+Gemini CLI has no marketplace and loads a plugin's skills only: it runs hooks,
+but with different event names, timeouts in milliseconds rather than seconds, and
+no plugin-root variable, so handlers written for the others fail there. Clone
+this repository and link a plugin directory:
 
 ```
 gemini extensions link <repo>/plugins/<plugin> --consent
@@ -53,6 +54,9 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `spec-authoring`          | Write plans, sources of truth and decision records as three distinct things      | no    |
 
 ## Trust
+
+All four plugin surfaces load skills. Hooks run in Claude Code and Codex CLI
+only; the table above says which plugins that limits.
 
 Every runtime here gates hooks behind an explicit trust step, because a hook
 runs commands on your machine. Codex asks in its interactive session, Grok wants
