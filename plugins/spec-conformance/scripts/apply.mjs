@@ -73,7 +73,12 @@ for (const decision of decisions) {
   }
 
   const d = dossier.derived;
-  const header = ["---", `kind: ${d.kind}`, `id: ${d.id}`];
+  // The id is the filename stem, so a decision that renames the file renames the
+  // id with it. Writing the old id under a new name is the one thing this layout
+  // cannot survive: a link would resolve to a file that does not exist.
+  const outPath = decision.path ?? dossier.proposedPath;
+  const writtenId = outPath.split("/").pop().replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, "");
+  const header = ["---", `kind: ${d.kind}`, `id: ${writtenId}`];
   if (d.domain) header.push(`domain: ${d.domain}`);
   header.push(`status: ${decision.status ?? ""}`);
   if (d.created) header.push(`created: "${d.created}"`);
@@ -117,7 +122,7 @@ for (const decision of decisions) {
     carried.push(`\n## Carried from the original frontmatter\n\n${lines.join("\n")}\n`);
   }
 
-  const outRel = decision.path ?? dossier.proposedPath;
+  const outRel = outPath;
   written.push({ from: decision.source, to: outRel, text: `${header.join("\n")}\n${body}${carried.join("")}` });
 }
 
