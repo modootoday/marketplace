@@ -60,6 +60,12 @@ function resolveLink(from, id) {
   const former = formerNames.get(id) ?? [];
   if (former.length === 1) return { doc: former[0], scope: "former-name" };
   if (former.length > 1) return { ambiguous: former };
+  // Documents are talked about by their subject, not by the timestamp in front
+  // of it. A reference to community-mission means the document whose id ends
+  // that way, and refusing to see that reports a broken link that is not broken.
+  const bySlug = docs.filter((d) => d.id.replace(/^\d{4,14}-/, "") === id);
+  if (bySlug.length === 1) return { doc: bySlug[0], scope: "slug" };
+  if (bySlug.length > 1) return { ambiguous: bySlug };
   return null;
 }
 
@@ -146,7 +152,11 @@ for (const doc of docs) {
 
   const referenceFields = [config.referenceField, ...(config.referenceAliases ?? [])];
   const referenced = referenceFields.flatMap((f) => toList(fm[f]));
+  // Documents cite code as often as they cite each other. A reference ending in
+  // a source extension is a pointer into the tree, not a broken document link.
+  const CODE = /\.(ts|tsx|js|jsx|mjs|cjs|sh|py|sql|json|ya?ml|toml|css|html)$/i;
   for (const ref of referenced) {
+    if (!ref || ref === "null" || CODE.test(String(ref).trim())) continue;
     const located = String(ref).trim().replace(/\s*\(.*\)\s*$/, "").replace(/\s*[§#].*$/, "").replace(/[.,;)]+$/, "").trim();
     const id = located.replace(/^.*\//, "").replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, "");
     let found = resolveLink(doc, id);
