@@ -1,0 +1,7 @@
+{
+  "name": "spec-conformance",
+  "version": "0.1.0",
+  "description": "Make an existing pile of design documents navigable: check their schema, naming and placement, group the ones sharing a subject, draw the graph they form, and guide review of stale ones.",
+  "author": { "name": "modootoday" },
+  "skills": "./skills/"
+}

@@ -55,6 +55,7 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `hook-contract-matrix`      | Report which lifecycle hook events a runtime actually delivers                | yes   |
 | `rule-enforcement-audit`    | Report which written agent rules are actually enforced                        | no    |
 | `agent-rule-projection`     | Keep one rule source per package and project it into each agent's filename    | no    |
+| `spec-conformance`         | Make an existing pile of design documents navigable                           | no    |
 | `spec-authoring`            | Write plans, sources of truth and decision records as three distinct things   | no    |
 | `agent-prompt-discipline`   | What belongs in a tool-using agent's prompt, and the symptom of each omission | no    |
 
