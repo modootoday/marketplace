@@ -98,6 +98,22 @@ The split exists so the boundary between what was proven and what was judged
 stays visible in the output. A single script doing all three would produce a
 normalised pile whose confident fields nobody can audit.
 
+## History is part of the graph
+
+A graph of documents can only report what documents say about each other. This
+one also carries commits: a document names paths, history says who touched them
+afterwards, and commit subjects sometimes cite the document by name.
+
+`--view timeline --id <document>` draws that chain — the document, then every
+commit since it was written that touched an area it named or cited it, in order.
+It is the evidence for whether the work described actually happened, and it is
+evidence rather than a verdict: a commit touching the area is not the plan being
+carried out, and a plan can be completed under an entirely different name.
+
+On the reference repository this adds 75,384 commit edges to 609 document edges,
+which is the proportion to expect: documents say little about each other and
+history says a great deal about them.
+
 ## It groups; it does not pick
 
 `cluster.mjs` shows which documents share a subject and what each group has
@@ -145,6 +161,7 @@ node scripts/cluster.mjs . --subject <name>
 node scripts/graph.mjs . --findings
 node scripts/graph.mjs . --view domains
 node scripts/graph.mjs . --view neighborhood --id <document-id> --depth 2
+node scripts/graph.mjs . --view timeline --id <document-id>
 ```
 
 ```
