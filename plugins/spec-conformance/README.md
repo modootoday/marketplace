@@ -49,6 +49,9 @@ Gemini CLI: clone and
 | script | `scripts/check.mjs`       | schema, naming, placement, and the page-to-code link            |
 | script | `scripts/cluster.mjs`     | documents that share a subject, and what each group declares    |
 | script | `scripts/graph.mjs`       | graph invariants and five scoped views                          |
+| script | `scripts/derive.mjs`      | evidence for a migration: timeline, declared relations, implementation traces |
+| script | `scripts/apply.mjs`       | writes the normalised copy from decisions, refusing unevidenced ones |
+| skill  | `pile-migration`          | how to read a pile and decide, including judging whether work happened |
 
 ## Document kinds
 
@@ -73,6 +76,27 @@ root cannot share an id.
 Everything else — root location, directory names, pluralisation, sharding,
 vocabularies, review intervals — is configuration, because none of it affects
 whether a link resolves.
+
+## Derive, decide, apply
+
+Migrating an existing pile is three stages and the middle one is not a script.
+
+`derive.mjs` proves what filenames, directories and git can prove: ids, kinds,
+domains, creation and modification dates, rename lineage, relationships someone
+already wrote down, and implementation traces — which paths a document names,
+whether they still exist, whether they were touched after it was written, and
+whether any commit cites it.
+
+A reader then decides status, relationships and placement **by reading the
+documents**, guided by the `pile-migration` skill.
+
+`apply.mjs` writes the normalised copy and refuses any decision that records no
+evidence, any status outside the vocabulary, and any supersede without a named
+successor. It never modifies the source pile.
+
+The split exists so the boundary between what was proven and what was judged
+stays visible in the output. A single script doing all three would produce a
+normalised pile whose confident fields nobody can audit.
 
 ## It groups; it does not pick
 
@@ -103,7 +127,14 @@ runtime disables plugins; there is nothing to clean up.
 
 ## Data written
 
-None. Every script reads.
+`check`, `cluster` and `graph` write nothing at all.
+
+`derive` writes one dossier file under the work directory. `apply` writes the
+normalised copies, and only with `--write`.
+
+**Neither ever modifies the source pile.** During a migration the originals stay
+exactly where they are, so the normalised copy can be thrown away and redone
+without having lost anything.
 
 ## Verify
 
@@ -116,13 +147,27 @@ node scripts/graph.mjs . --view domains
 node scripts/graph.mjs . --view neighborhood --id <document-id> --depth 2
 ```
 
+```
+node scripts/derive.mjs .
+node scripts/apply.mjs .            # plan only
+node scripts/apply.mjs . --write
+```
+
 Prove it can fail: rename a document so its stem no longer matches its declared
-id, and `check` must report it.
+id, and `check` must report it. Then hand `apply` a decision with no evidence
+field and confirm it is refused rather than written.
 
 Measured on the repository this was written in, at 1,517 documents and 466
 chapters: 2,012 schema findings, 851 graph findings, and 1,611 subject clusters
 of five or more documents — with two of the largest holding 223 and 212
 documents between which almost no relationship was declared.
+
+The derivation stage recovered a creation date for all 1,517, found 145 statuses
+already inside a vocabulary and 156 written as free text, 195 documents with a
+relationship declared somewhere, and implementation traces for 940: of those,
+242 name paths that all still exist, 698 name at least one that does not, 738
+had their area touched after they were written, and 42 are cited by a commit
+subject. Every one of the 1,517 still needed reading.
 
 ## License
 
