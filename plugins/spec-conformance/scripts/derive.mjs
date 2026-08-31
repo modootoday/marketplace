@@ -80,15 +80,22 @@ function historyIndex() {
 // their presence is a fact.
 const PATH_RE = /`([a-z0-9._@/-]*\/[a-z0-9._@/-]+)`/gi;
 
-function namedPaths(text) {
-  const out = new Set();
-  for (const m of text.matchAll(PATH_RE)) {
-    const p = m[1].replace(/^\.\//, "").replace(/\*+$/, "").replace(/\/$/, "");
-    if (p.length < 4 || p.startsWith("http") || p.includes("://")) continue;
-    if (!/^(apps|core|packages|tools|scripts|sots|plan|docs|src|\.agent|\.claude)\//.test(p)) continue;
-    out.add(p);
-  }
-  return [...out].slice(0, 40);
+// Candidates, not conclusions. Whether a path-shaped token names a real
+// location, a placeholder in an instruction, or an example is a reading
+// judgement, and every heuristic added here is that judgement smuggled into a
+// regular expression -- where the next exception cannot see it.
+function pathCandidates(text) {
+  const lines = text.split("\n");
+  const found = new Map();
+  lines.forEach((line, index) => {
+    for (const m of line.matchAll(PATH_RE)) {
+      const token = m[1].replace(/^\.\//, "").replace(/\*+$/, "").replace(/\/$/, "");
+      if (token.length < 4 || token.includes("://")) continue;
+      if (found.has(token)) continue;
+      found.set(token, { token, line: index + 1, context: line.trim().slice(0, 160) });
+    }
+  });
+  return [...found.values()].slice(0, 40);
 }
 
 // Commits whose subject cites the document, by id or by its slug. A plan that
@@ -192,23 +199,28 @@ for (const doc of docs) {
     // Implementation evidence: facts about the code, never a verdict on whether
     // the document's work happened. That verdict needs the document read.
     implementation: (() => {
-      const paths = namedPaths(doc.text);
-      const present = paths.filter((p) => existsSync(join(repoRoot, p)));
       const createdAt = history.created.get(doc.rel) ?? 0;
-      const touchedAfter = paths.filter((p) => {
+      const candidates = pathCandidates(doc.text).map((c) => {
+        const exists = existsSync(join(repoRoot, c.token));
+        let touchedAfter = false;
         for (const [f, at] of pathTouched) {
-          if ((f === p || f.startsWith(`${p}/`)) && at > createdAt) return true;
+          if ((f === c.token || f.startsWith(`${c.token}/`)) && at > createdAt) {
+            touchedAfter = true;
+            break;
+          }
         }
-        return false;
+        // exists and touchedAfter are facts about the tree. Whether this token
+        // was ever meant to be a path is left to the reader, with the line it
+        // appeared on as the evidence for deciding.
+        return { ...c, exists, touchedAfter };
       });
       const slug = doc.id.replace(/^\d{4,14}[-_]?/, "");
       const cited = (citations.get(slug) ?? []).slice(-5).map((c) => ({ on: day(c.at), subject: c.subject.slice(0, 110) }));
       const boxes = doc.text.match(/^\s*[-*] \[[ xX]\]/gm) ?? [];
       return {
-        pathsNamed: paths.length,
-        pathsPresent: present.length,
-        pathsMissing: paths.filter((p) => !present.includes(p)).slice(0, 10),
-        pathsTouchedAfterWriting: touchedAfter.length,
+        pathCandidates: candidates,
+        candidatesPresent: candidates.filter((c) => c.exists).length,
+        candidatesTouchedAfterWriting: candidates.filter((c) => c.touchedAfter).length,
         commitsCitingSlug: cited,
         tasks: { done: boxes.filter((b) => /\[[xX]\]/.test(b)).length, open: boxes.filter((b) => /\[ \]/.test(b)).length },
       };

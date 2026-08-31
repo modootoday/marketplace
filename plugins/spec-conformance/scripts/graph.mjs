@@ -55,6 +55,7 @@ const namedPaths = (text) => {
   const out = new Set();
   for (const m of text.matchAll(PATH_RE)) {
     const p = m[1].replace(/^\.\//, "").replace(/[*\/]+$/, "");
+    if (/YYYY|NNNN|<[^>]+>|\{/.test(p)) continue;
     if (p.length >= 4 && /^(apps|core|packages|tools|scripts|sots|plan|docs|src|\.agent|\.claude)\//.test(p)) out.add(p);
   }
   return [...out].slice(0, 40);

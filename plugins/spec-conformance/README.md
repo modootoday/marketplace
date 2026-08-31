@@ -49,6 +49,7 @@ Gemini CLI: clone and
 | script | `scripts/check.mjs`       | schema, naming, placement, and the page-to-code link            |
 | script | `scripts/cluster.mjs`     | documents that share a subject, and what each group declares    |
 | script | `scripts/graph.mjs`       | graph invariants and five scoped views                          |
+| script | `scripts/discover.mjs`    | every document-shaped file, with signals and no classification  |
 | script | `scripts/derive.mjs`      | evidence for a migration: timeline, declared relations, implementation traces |
 | script | `scripts/apply.mjs`       | writes the normalised copy from decisions, refusing unevidenced ones |
 | skill  | `pile-migration`          | how to read a pile and decide, including judging whether work happened |
@@ -77,9 +78,29 @@ Everything else — root location, directory names, pluralisation, sharding,
 vocabularies, review intervals — is configuration, because none of it affects
 whether a link resolves.
 
+## Discover before you check
+
+A checker that only sees documents already in the layout cannot see the pile it
+exists to sort out. `discover.mjs` therefore assumes nothing — not a directory,
+not a filename shape, not a frontmatter field — and reports every document-shaped
+file in the repository with the signals a reader would want.
+
+It classifies nothing. Whether a file is a proposal, a decision, a readme or a
+meeting note is a reading judgement, and a heuristic deciding it here would be a
+convention imposed on a repository that has not chosen one.
+
+The difference is not small. On the reference repository the convention-bound
+scan saw 1,517 documents; discovery found 9,029, most of them in directories the
+convention never mentioned.
+
+`check.mjs` and `graph.mjs` apply **after** adoption, to documents that are in
+the layout. Running them on an unconverted repository is expected to report
+almost everything, and that is not useful.
+
 ## Derive, decide, apply
 
-Migrating an existing pile is three stages and the middle one is not a script.
+Migrating an existing pile is five stages and the two that matter are not
+scripts.
 
 `derive.mjs` proves what filenames, directories and git can prove: ids, kinds,
 domains, creation and modification dates, rename lineage, relationships someone

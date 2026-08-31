@@ -12,6 +12,21 @@ a judgement, and judgements come from reading the document.
 
 Your job is the reading. Three rules make it safe.
 
+## First decide what these files even are
+
+Before any of the rest, the discovery stage hands you every document-shaped file
+in the repository with no opinion about it. Your first pass decides, per file:
+is this a design document at all, and if so of what kind.
+
+Nothing in the signals decides it for you. A leading timestamp appears on
+proposals and on meeting notes. Frontmatter appears on published pages and on
+internal rules. A file in a directory called `docs` may be a public manual and a
+file in `notes` may be the only record of an architecture decision.
+
+Classify from the content, and be willing to answer "not a design document" for
+most of them. A migration that sweeps every markdown file into the schema
+produces a tidy directory full of things that do not belong there.
+
 ## Read the document before deciding anything about it
 
 Not the title, not the headings, not the commit subjects. Those are in the
