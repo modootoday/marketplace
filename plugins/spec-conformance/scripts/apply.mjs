@@ -107,6 +107,16 @@ for (const decision of decisions) {
   const freeText = dossier.unknown.find((u) => u.field === "status" && u.why.startsWith("free text"));
   if (!original && freeText) carried.push(`\n## Carried from the original header\n\n- ${freeText.why}\n`);
 
+  // The normalised header holds the fields this schema knows. Anything else the
+  // author wrote is still theirs: dropping it during a migration is the
+  // compression this pipeline exists to avoid.
+  const KNOWN = new Set(["kind", "id", "domain", "status", "created", "updated", "reviewed", "supersedes", "supersededBy", "references", "source", "sot_ref", "title"]);
+  const leftover = Object.entries(dossier.originalFrontmatter ?? {}).filter(([k]) => !KNOWN.has(k));
+  if (leftover.length > 0) {
+    const lines = leftover.map(([k, v]) => `- ${k}: ${Array.isArray(v) ? v.join(", ") : v}`);
+    carried.push(`\n## Carried from the original frontmatter\n\n${lines.join("\n")}\n`);
+  }
+
   const outRel = decision.path ?? dossier.proposedPath;
   written.push({ from: decision.source, to: outRel, text: `${header.join("\n")}\n${body}${carried.join("")}` });
 }

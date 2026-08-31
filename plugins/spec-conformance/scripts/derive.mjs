@@ -275,6 +275,9 @@ for (const doc of docs) {
     },
     // Declared: someone wrote it down; carrying it across is derivation.
     declared: { status: statusUsable, ...declared },
+    // Everything the author wrote in the header, so the apply stage can carry
+    // across whatever this schema has no field for.
+    originalFrontmatter: fm,
     // Unknown: requires reading the document. Left for a person or a model.
     unknown,
     // Evidence for that reading, not a substitute for it.
