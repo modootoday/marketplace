@@ -215,7 +215,15 @@ try {
 }
 const day = (ms) => (ms ? new Date(ms).toISOString().slice(0, 10).replace(/-/g, "") : null);
 const list = (v) => (v ? (Array.isArray(v) ? v : [v]).map(String).filter(Boolean) : []);
-const idFrom = (ref) => basename(String(ref)).replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, "");
+// A reference into a directory-form document names one of its chapters, and a
+// chapter is a part rather than a document. The thing being referenced is the
+// document the directory is.
+const idFrom = (ref) => {
+  const text = String(ref);
+  const container = basename(dirname(text));
+  if (/^\d{8,14}-/.test(container)) return container.replace(/\.md$/, "");
+  return basename(text).replace(/\.(sot|page)\.md$/, "").replace(/\.md$/, "");
+};
 
 const dossiers = [];
 const summary = { withCreated: 0, statusUsable: 0, statusFreeText: 0, withDeclared: 0, needsReading: 0 };

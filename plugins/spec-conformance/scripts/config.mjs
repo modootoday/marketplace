@@ -96,7 +96,7 @@ export const DEFAULTS = {
   // are read too -- a reference the graph cannot see is a relationship that
   // silently stops existing at migration time.
   referenceField: "references",
-  referenceAliases: ["sot_ref", "refs", "related", "see_also"],
+  referenceAliases: ["sot_ref", "refs", "related", "see_also", "parent"],
 
   cluster: {
     // Tokens too generic to mean a shared subject.
