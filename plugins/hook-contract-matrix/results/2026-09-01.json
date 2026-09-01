@@ -1,12 +1,16 @@
 {
   "measured": "2026-09-01",
+  "probe_events": ["SessionStart", "UserPromptSubmit", "PreToolUse", "PostToolUse", "Stop"],
   "method": "One minimal session per runtime with this plugin loaded, one shell command and one reply. An event counts as delivered only when the probe wrote a line for it, and injected context counts as delivered only when the run's random token appears in the model's own reply. Each runtime was measured in its own invocation, so each carries its own token.",
+  "instrument_note": "An earlier run the same day probed three events. It was widened to five after a census found that the marketplace registers PreToolUse in three plugins and UserPromptSubmit in one, so four of the seven hook-bearing plugins sat outside the instrument that several of their designs named as a release condition.",
   "rows": [
     {
       "runtime": "claude",
       "version": "2.1.251 (Claude Code)",
-      "token": "HCM102440",
+      "token": "HCM390793",
       "session_start": true,
+      "user_prompt_submit": true,
+      "pre_tool_use": true,
       "post_tool_use": true,
       "stop": true,
       "injection_reached_model": true,
@@ -19,8 +23,10 @@
     {
       "runtime": "codex",
       "version": "codex-cli 0.151.0",
-      "token": "HCM920705",
+      "token": "HCM907377",
       "session_start": true,
+      "user_prompt_submit": true,
+      "pre_tool_use": true,
       "post_tool_use": true,
       "stop": true,
       "injection_reached_model": true,
@@ -35,8 +41,9 @@
     "CLAUDE_PROJECT_DIR is set under Claude Code and not under Codex CLI. Everything else measured the same on both."
   ],
   "not_measured": [
+    "Whether a PreToolUse refusal actually stops the tool. This probe observes that the event is delivered, which is not the same claim: a refusal that arrives and is ignored looks identical to one that was honoured until something destructive gets through. Three plugins here depend on the stronger property.",
+    "Whether a hook can block a Stop, which this probe observes without exercising.",
     "Grok CLI and Gemini CLI, which are recorded in the README as skills-only from a separate reading of their manifests rather than from this probe.",
-    "Whether a hook can block a Stop, which this probe observes but does not exercise.",
     "Codex without the hook trust bypass. A runtime that has not been trusted runs no hook at all, so the untrusted state is a configuration answer rather than a contract one."
   ]
 }

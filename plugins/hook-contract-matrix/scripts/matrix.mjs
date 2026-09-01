@@ -53,6 +53,11 @@ function summarise(runtime, versionText, log, transcript, note) {
     runtime,
     version: versionText,
     session_start: fired.has("SessionStart"),
+    user_prompt_submit: fired.has("UserPromptSubmit"),
+    // Firing, not blocking. Three plugins in this marketplace refuse commands
+    // here, and a refusal that is delivered but ignored looks identical to one
+    // that was honoured until something destructive gets through.
+    pre_tool_use: fired.has("PreToolUse"),
     post_tool_use: fired.has("PostToolUse"),
     stop: fired.has("Stop"),
     injection_reached_model: transcript.includes(TOKEN),
@@ -151,6 +156,8 @@ if (args.includes("--json")) {
   for (const row of rows) {
     console.log(`\n${row.runtime}  (${row.version})`);
     console.log(`  SessionStart fired            ${mark(row.session_start)}`);
+    console.log(`  UserPromptSubmit fired        ${mark(row.user_prompt_submit)}`);
+    console.log(`  PreToolUse fired              ${mark(row.pre_tool_use)}`);
     console.log(`  PostToolUse fired             ${mark(row.post_tool_use)}`);
     console.log(`  Stop fired                    ${mark(row.stop)}`);
     console.log(`  injected context reached model ${mark(row.injection_reached_model)}`);
