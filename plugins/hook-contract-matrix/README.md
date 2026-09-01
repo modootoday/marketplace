@@ -7,15 +7,16 @@ whether context a hook returns really reaches the model.
 
 ## Runtime support
 
-| Runtime     | Supported | Measured on            |
-| ----------- | --------- | ---------------------- |
-| Claude Code | yes       | 2.1.251                |
-| Codex CLI   | yes       | 0.151.0                |
-| Grok CLI    | skills only | 1.0.13 — registers plugin hooks but never runs them |
-| Gemini CLI  | skills only | 0.57.0 — different hook event names, units and variables |
+| Runtime     | Supported   | Measured on                                                     |
+| ----------- | ----------- | ---------------------------------------------------------------- |
+| Claude Code | yes         | 2.1.251                                                          |
+| Codex CLI   | yes         | 0.151.0                                                          |
+| Grok CLI    | skills only | 1.0.13 — installs, reports a hooks component, delivers no event  |
+| Gemini CLI  | skills only | 0.57.0 — reads the hooks and rejects them for three reasons      |
 
-"Untested" means the manifest is accepted and nothing more was measured. It does
-not mean the plugin works there.
+All four rows are now this probe's own measurement rather than a reading of
+manifests. "Untested" would mean the manifest is accepted and nothing more was
+measured; nothing here is untested any more.
 
 ## Install
 
@@ -168,9 +169,35 @@ model.
 The Codex row was taken with hook trust bypassed. An untrusted Codex runs no hook
 at all, which is a configuration answer rather than a contract one.
 
-Grok and Gemini are absent from the table on purpose: their rows in Runtime
-support come from reading their manifests, not from this probe, and a table that
-mixed the two would make a weaker claim look like this one.
+### The two that run no hook
+
+Both were installed into an isolated home with credentials copied in and given
+the same prompt. Neither wrote a single probe line, so neither appears in the
+tables above: there is nothing to put in the cells.
+
+**Grok 1.0.13** refuses to install a local plugin without `--trust`. Once
+trusted, `grok plugin details` lists the components as one skill directory plus
+hooks, so the declaration is registered. No event arrived, not even
+`SessionStart`. Registered and never run.
+
+**Gemini 0.57.0** links the extension and warns that it contains hooks, so it
+reads the declaration too. Three things then stop it, and the runtime names each
+one itself:
+
+| What differs | What Gemini said                                                    |
+| ------------ | ------------------------------------------------------------------- |
+| event names  | `PreToolUse`, `PostToolUse` and `Stop` rejected as invalid. `SessionStart` accepted and attempted |
+| units        | "Hook timed out after 15ms" — it reads `timeout: 15` as milliseconds where Claude Code reads seconds |
+| variables    | raised to 15000 it failed on module resolution instead: `${CLAUDE_PLUGIN_ROOT}` is not substituted, so the command cannot find its own path |
+
+That is worth stating carefully. It does not show these runtimes cannot run
+hooks. It shows a manifest written for Claude Code does not run on them
+unchanged, and it names the three edits that would be needed to find out.
+
+**Every runtime here gates hooks behind trust, and each gates them somewhere
+else.** Codex refuses to run an untrusted plugin's hooks, Grok refuses to install
+without `--trust`, and Gemini refuses a headless run outside a trusted directory.
+A hook that appears to do nothing is more often untrusted than broken.
 
 ## Security
 
