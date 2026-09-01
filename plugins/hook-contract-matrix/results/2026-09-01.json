@@ -63,8 +63,41 @@
     ],
     "scope": "This establishes that the runtime stops the tool, on Bash, when the hook returns a deny. The prompt instructed the model to accept a refusal rather than retry or route around it, so it does not establish that a model which wants to proceed cannot reach the same result another way."
   },
+  "runtimes_that_run_no_hook": {
+    "method": "Each was installed into an isolated home with credentials copied in, then given the same one-command prompt. An event counts as delivered only when the probe wrote a line. Neither wrote one.",
+    "rows": [
+      {
+        "runtime": "grok",
+        "version": "grok 1.0.13 (5e9a58528b76) [stable]",
+        "plugin_installed": true,
+        "reports_a_hooks_component": true,
+        "any_event_fired": false,
+        "detail": "Installation requires an explicit --trust flag, and afterwards `grok plugin details` lists the plugin's components as one skill directory plus hooks. No event reached the probe, not even SessionStart, so the hooks component is registered and never run."
+      },
+      {
+        "runtime": "gemini",
+        "version": "0.57.0",
+        "extension_installed": true,
+        "reports_a_hooks_component": true,
+        "any_event_fired": false,
+        "detail": "The extension links and the CLI warns that it contains hooks, so the declaration is read. Three things then stop it, and the runtime names each one itself.",
+        "findings": [
+          "Event names: PreToolUse, PostToolUse and Stop are rejected as invalid event names. SessionStart is accepted and was attempted; UserPromptSubmit was not rejected.",
+          "Units: the manifest's timeout of 15 is read as 15 milliseconds. The runtime reported 'Hook timed out after 15ms'. Claude Code reads the same number as seconds.",
+          "Variables: with the timeout raised to 15000 the hook still failed, this time on Node module resolution, because ${CLAUDE_PLUGIN_ROOT} is not substituted and the command cannot resolve its own path."
+        ]
+      }
+    ],
+    "note": "This measures the probe's Claude-shaped manifest under each runtime. It does not establish that these runtimes cannot run hooks, only that a manifest written for Claude Code does not run on them unchanged."
+  },
+  "trust_gates": [
+    "Codex CLI: hooks do not run until the plugin is trusted; the measurement used --dangerously-bypass-hook-trust and says so.",
+    "Grok CLI: installation itself is refused without --trust.",
+    "Gemini CLI: headless runs are refused outside a trusted directory unless GEMINI_CLI_TRUST_WORKSPACE is set or --skip-trust is passed."
+  ],
   "differences": [
-    "CLAUDE_PROJECT_DIR is set under Claude Code and not under Codex CLI. Everything else measured the same on both, in both modes."
+    "CLAUDE_PROJECT_DIR is set under Claude Code and not under Codex CLI. Everything else measured the same on both, in both modes.",
+    "Grok and Gemini both accept the plugin and report a hooks component, and neither delivers an event to it."
   ],
   "not_measured": [
     "Whether a refusal holds for tools other than Bash. The three guards here only claim Bash.",
