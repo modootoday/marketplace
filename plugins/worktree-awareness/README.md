@@ -68,6 +68,19 @@ In a clean single-worktree repository it prints nothing, which is correct: a
 notice that appears every prompt regardless of state is noise, and noise gets
 turned off. Create a second worktree, or leave a file modified, and it speaks.
 
+## Security
+
+It reads git state and writes nothing, but reading is the thing to understand: it
+puts the names of another working tree's uncommitted files into this session's
+context. That is the point — a session needs to know whose changes it is standing
+next to — and it is still a small flow of information between sessions.
+
+Filenames only, never contents. If a filename in a sibling worktree would itself
+be sensitive, that name reaches this session's model.
+
+The git commands it runs are read-only, so a repository it inspects cannot be
+changed by inspecting it.
+
 ## License
 
 MIT

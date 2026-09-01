@@ -80,6 +80,20 @@ matters: a hook that fires on everything gets turned off.
 Whether a cap helps on your machine is a separate question the skill tells you
 how to answer. Do not take a number from this README as your own.
 
+## Security
+
+The capability worth thinking about is `apply`, which rewrites a command before
+it runs. That is why `advise` is the default and why the rewrite is announced in
+the same message: a command that changes with nothing saying so is
+indistinguishable from tampering, and an agent is right to report it as such.
+
+What `apply` changes is bounded to concurrency variables prefixed onto the
+command you already wrote. It adds no arguments, removes none, and cannot turn
+one program into another.
+
+It reads command text and returns a decision. Nothing is written and nothing is
+sent.
+
 ## License
 
 MIT

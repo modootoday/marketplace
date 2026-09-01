@@ -79,6 +79,20 @@ The skills themselves are judged by use, not by a test: apply `sot-authoring` to
 a rule you already hold and see whether you can write its check command. If you
 cannot, the rule was not an invariant.
 
+## Security
+
+It is three skills: text the model reads. It runs nothing, reads no file and
+opens no connection.
+
+One thing it teaches is worth reading twice. It asks every rule to carry a command
+that proves the rule still holds, and those commands end up committed and run by
+whoever opens the repository. Write them read-only. A check that deletes,
+deploys or publishes turns a document into a trigger, and the next reader will
+run it without thinking because a check is supposed to be safe.
+
+Design documents are also the place internal hostnames, account identifiers and
+paths accumulate. They are usually the most quotable files in a repository.
+
 ## License
 
 MIT

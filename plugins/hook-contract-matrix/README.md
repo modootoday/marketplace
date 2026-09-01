@@ -95,6 +95,21 @@ To convince yourself the tool can fail, remove a handler from `hooks/hooks.json`
 and run it again: that row must turn to `NO`. A checker that never reports a
 failure has not been shown to work.
 
+## Security
+
+Measuring costs a real model turn: the runner starts an agent session against
+whichever runtime you name, with whatever credentials that runtime already has.
+It is not a dry run, and it is billed like any other turn.
+
+The probe log records one line per hook invocation, and a hook invocation carries
+the tool event that triggered it. Command text can end up there. You choose the
+path through `HCM_LOG`, so choose one you would not commit, and delete it when
+the run is over.
+
+The temporary runtime home exists so the measurement does not read or disturb
+your real agent configuration. It is removed when the run ends; an interrupted
+run can leave it behind under the system temporary directory.
+
 ## License
 
 MIT

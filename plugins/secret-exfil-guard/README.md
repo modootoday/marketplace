@@ -88,6 +88,25 @@ node scripts/test.mjs
 the same project command is allowed with no configuration and refused once
 configured.
 
+## Security
+
+This is a speed bump, not a boundary, and the distinction matters more here than
+anywhere else in this marketplace. It reads the text of a command; an equivalent
+command spelled differently passes. It runs as the same user as the credentials
+it is protecting, from a file that user can edit. A process determined to read a
+secret has already won before this hook is consulted.
+
+What it buys is the accident: a credential pasted into a message, a file printed
+into a transcript, an upload typed without thinking.
+
+The list of value-printing commands ships empty on purpose. What a project blocks
+is itself a description of what that project holds, and a default list would put
+that description in everyone's repository. Fill it in locally.
+
+An agent trusted with a deployment or container tool can destroy production
+without reading a single secret. That is a different problem, and this plugin
+does not touch it.
+
 ## License
 
 MIT

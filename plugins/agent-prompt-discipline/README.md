@@ -67,6 +67,19 @@ Then use it on a prompt you already have: for each line, name the symptom that
 appears without it. Lines with no symptom are the ones to delete, and that
 exercise is the whole point.
 
+## Security
+
+It is a skill: text the model reads. It runs nothing, reads no file and opens no
+connection, so it adds no attack surface of its own.
+
+The surface it talks about is real, though. A system prompt is not a private
+place: it reaches the provider, it is often echoed back when a model is asked to
+explain itself, and it survives in transcripts and logs. Credentials, hostnames
+and internal identifiers put there are disclosed, not configured.
+
+A model can be talked into repeating its instructions. Write the prompt as if the
+person on the other side will read it, because sometimes they will.
+
 ## License
 
 MIT

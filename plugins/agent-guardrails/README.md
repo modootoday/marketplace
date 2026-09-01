@@ -103,6 +103,20 @@ around is a guard everybody turns off.
 To see it refuse for real, ask your agent to run `sed -i 's/a/b/' somefile` in a
 session with the plugin trusted.
 
+## Security
+
+This is a speed bump, not a boundary. It matches the text of a command, so the
+same destruction spelled differently walks past it, and it runs as the same user
+as the files it protects. Treat it as a way to stop an accident, never as a
+control that contains a determined process.
+
+It only ever refuses. Nothing here can turn a command the runtime would have
+denied into one it allows, so a mistake in these rules costs you a refusal rather
+than an execution.
+
+The command text it reads may contain a credential someone typed. It writes
+nothing and sends nothing, so that text goes no further than the decision.
+
 ## License
 
 MIT
