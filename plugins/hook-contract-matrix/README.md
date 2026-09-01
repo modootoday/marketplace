@@ -54,7 +54,7 @@ gemini extensions link <repo>/plugins/hook-contract-matrix
 | ----- | -------------- | -------------------------------------------------- |
 | hook  | SessionStart     | records the event                                  |
 | hook  | UserPromptSubmit | records the event                                  |
-| hook  | PreToolUse       | records the event, and refuses nothing              |
+| hook  | PreToolUse       | records the event, and refuses only in blocking mode |
 | hook  | PostToolUse      | records the event, returns a token as extra context |
 | hook  | Stop             | records the event                                   |
 | skill | `hook-compat`    | how to judge whether a hook works across runtimes   |
@@ -75,6 +75,10 @@ be the reason a session stops.
 nothing at all, which is the normal state: the log is only set by the runner for
 the duration of a measurement.
 
+`HCM_DENY_TOKEN` turns on blocking mode, and the probe then refuses exactly the
+commands containing that token. The runner sets it for a `--blocking` run and
+nothing else does. Unset, as it is by default, the probe refuses nothing.
+
 Disable the plugin the way your runtime disables plugins. There is no
 plugin-specific switch, and nothing to clean up.
 
@@ -84,22 +88,33 @@ One JSON line per hook invocation, to the path in `HCM_LOG`, and nothing else.
 No network. The runner writes its temporary runtime home under the system
 temporary directory and removes it when the run ends.
 
+A blocking run also lets the measured session write two small files into its own
+temporary working directory, because whether those files exist is the evidence.
+That directory is removed with the rest.
+
 ## Verify
 
 ```
 node scripts/matrix.mjs --runtime claude
 node scripts/matrix.mjs --runtime codex
 node scripts/matrix.mjs --json
+node scripts/matrix.mjs --runtime claude --blocking
 ```
 
 Each row is an observation. An event counts as delivered only when the probe
 wrote a line for it, and injected context counts as delivered only when the
 random token appears in the model's own reply. A run costs one short model turn
-per runtime.
+per runtime, and `--blocking` is a second run because it asks a different
+question.
+
+In blocking mode the probe refuses exactly one command, named by a token the
+runner generates. Outside that mode it refuses nothing: an instrument that
+blocked commands while measuring would be measuring itself.
 
 To convince yourself the tool can fail, remove a handler from `hooks/hooks.json`
-and run it again: that row must turn to `NO`. A checker that never reports a
-failure has not been shown to work.
+and run it again: that row must turn to `NO`. For blocking, unset the deny
+token so nothing is refused, and `refused command ran anyway` must turn to
+`yes`. A checker that never reports a failure has not been shown to work.
 
 ## Measured contract
 
@@ -131,9 +146,24 @@ three plugins register `PreToolUse` and one registers `UserPromptSubmit`. Four o
 the seven hook-bearing plugins were outside an instrument that several of their
 own designs named as a release condition, so the probe was widened to five.
 
-**Firing is not blocking.** These rows say the event was delivered. They do not
-say a refusal returned from `PreToolUse` stops the tool, which is the property
-the three guards actually depend on, and which this probe does not exercise.
+**Firing is not blocking**, so blocking is a second run:
+
+| Observation                 | Claude Code 2.1.251 | Codex CLI 0.151.0 |
+| --------------------------- | ------------------- | ----------------- |
+| refusal emitted by the hook | yes                 | yes               |
+| control command ran         | yes                 | yes               |
+| refused command ran anyway  | **no**              | **no**            |
+| refusal stopped the tool    | **yes**             | **yes**           |
+
+The evidence is which files exist when the session ends, not what the model says
+happened. The control matters as much as the refusal: without a command that was
+allowed and did run, a missing file would equally mean the refusal held or the
+model never tried.
+
+This establishes that the runtime stops the tool on Bash. It does not establish
+that a model determined to proceed cannot reach the same result another way: the
+prompt told it to accept a refusal, which measures the runtime rather than the
+model.
 
 The Codex row was taken with hook trust bypassed. An untrusted Codex runs no hook
 at all, which is a configuration answer rather than a contract one.
@@ -156,6 +186,12 @@ the run is over.
 The temporary runtime home exists so the measurement does not read or disturb
 your real agent configuration. It is removed when the run ends; an interrupted
 run can leave it behind under the system temporary directory.
+
+Blocking mode makes the probe refuse commands, which is the one situation where
+this plugin can stop work rather than only watch it. It refuses only commands
+carrying the token the runner generated for that run, and only while
+`HCM_DENY_TOKEN` is set, so it cannot interfere with a session it is not
+measuring. Do not set that variable by hand in a session you are working in.
 
 ## License
 
