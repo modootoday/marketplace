@@ -91,6 +91,19 @@ forgot you had, which is itself the finding.
 Measured on the repository this plugin was written in: 1,415 rule-shaped
 statements against 7 enforcement points.
 
+## Security
+
+Its output is a map of where your project is unguarded. That is exactly what it
+is for, and it is also a document worth thinking about before publishing: a list
+of the rules that hold only while someone remembers them is a list of the rules
+nothing will stop you breaking.
+
+It reads rule documents and configuration and writes one file, and only with
+`--init`. No network.
+
+It reports what exists. A rule it counts as enforced is enforced only as well as
+the thing enforcing it, and this audit does not test that thing.
+
 ## License
 
 MIT

@@ -272,6 +272,25 @@ written while its backend phase never happened. Two persist plans were reversed
 two days later by a successor whose title calls the earlier decision a
 misjudgement.
 
+## Security
+
+It copies document bodies verbatim into a second location. Whatever a document
+holds, its copy holds too, and the copy usually gets committed — so a credential
+or an internal detail that was in one file is now in two, and a directory someone
+ignored is now a directory someone reviews. Look at what you are normalising
+before you commit the result.
+
+The originals are never modified. A migration that goes wrong is thrown away by
+deleting the destination, which is the property that makes the rest of it safe to
+attempt.
+
+`derive` runs git read-only to recover dates and commit evidence, so inspecting a
+repository cannot change it. Nothing here opens a network connection.
+
+Reading a document is a judgement, and this tool does not make it. The evidence it
+gathers is evidence; a status written without someone having read the document is
+a guess with a citation attached, which is worse than an empty field.
+
 ## License
 
 MIT

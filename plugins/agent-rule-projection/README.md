@@ -92,6 +92,21 @@ node scripts/project.mjs . --write    # apply
 Prove it can fail: delete one projection and run the lint again; it must report
 `missing`. Then run the writer twice and confirm the second run plans nothing.
 
+## Security
+
+A projection is a symbolic link, and a symbolic link is a redirect. Whoever can
+write the rule source decides what every agent reading that filename sees, in
+every package the projection reaches. That is the point of having one source, and
+it is also the whole of the risk: the blast radius of editing one file is every
+runtime that reads its projections.
+
+The writer never replaces a real file. A regular file sitting where a link would
+go is reported as a skip, with instructions, because replacing it would destroy
+content this tool did not write. The only thing it unlinks is a link it would
+have created itself.
+
+Nothing happens without `--write`. The lint writes nothing at all.
+
 ## License
 
 MIT
