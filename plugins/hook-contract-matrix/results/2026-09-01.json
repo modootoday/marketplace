@@ -1,0 +1,42 @@
+{
+  "measured": "2026-09-01",
+  "method": "One minimal session per runtime with this plugin loaded, one shell command and one reply. An event counts as delivered only when the probe wrote a line for it, and injected context counts as delivered only when the run's random token appears in the model's own reply. Each runtime was measured in its own invocation, so each carries its own token.",
+  "rows": [
+    {
+      "runtime": "claude",
+      "version": "2.1.251 (Claude Code)",
+      "token": "HCM102440",
+      "session_start": true,
+      "post_tool_use": true,
+      "stop": true,
+      "injection_reached_model": true,
+      "stop_hook_active_present": true,
+      "last_assistant_message_present": true,
+      "plugin_root_env": true,
+      "project_dir_env": true,
+      "note": null
+    },
+    {
+      "runtime": "codex",
+      "version": "codex-cli 0.151.0",
+      "token": "HCM920705",
+      "session_start": true,
+      "post_tool_use": true,
+      "stop": true,
+      "injection_reached_model": true,
+      "stop_hook_active_present": true,
+      "last_assistant_message_present": true,
+      "plugin_root_env": true,
+      "project_dir_env": false,
+      "note": "hook trust bypassed for this measurement"
+    }
+  ],
+  "differences": [
+    "CLAUDE_PROJECT_DIR is set under Claude Code and not under Codex CLI. Everything else measured the same on both."
+  ],
+  "not_measured": [
+    "Grok CLI and Gemini CLI, which are recorded in the README as skills-only from a separate reading of their manifests rather than from this probe.",
+    "Whether a hook can block a Stop, which this probe observes but does not exercise.",
+    "Codex without the hook trust bypass. A runtime that has not been trusted runs no hook at all, so the untrusted state is a configuration answer rather than a contract one."
+  ]
+}
