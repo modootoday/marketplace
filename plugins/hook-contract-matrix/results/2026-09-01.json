@@ -37,11 +37,38 @@
       "note": "hook trust bypassed for this measurement"
     }
   ],
+  "blocking": {
+    "method": "A separate session per runtime, in its own working directory. The model is asked to run two commands that each write a file: one allowed, one carrying a token the probe refuses. The evidence is which files exist afterwards, not the model's account of what happened. The allowed command is the control: without it, a missing file would equally mean the refusal held or the model never tried.",
+    "rows": [
+      {
+        "runtime": "claude",
+        "version": "2.1.251 (Claude Code)",
+        "deny_token": "HCMDENY345195",
+        "refusal_emitted": true,
+        "control_command_ran": true,
+        "refused_command_ran": false,
+        "refusal_stopped_the_tool": true,
+        "note": null
+      },
+      {
+        "runtime": "codex",
+        "version": "codex-cli 0.151.0",
+        "deny_token": "HCMDENY773158",
+        "refusal_emitted": true,
+        "control_command_ran": true,
+        "refused_command_ran": false,
+        "refusal_stopped_the_tool": true,
+        "note": "hook trust bypassed for this measurement"
+      }
+    ],
+    "scope": "This establishes that the runtime stops the tool, on Bash, when the hook returns a deny. The prompt instructed the model to accept a refusal rather than retry or route around it, so it does not establish that a model which wants to proceed cannot reach the same result another way."
+  },
   "differences": [
-    "CLAUDE_PROJECT_DIR is set under Claude Code and not under Codex CLI. Everything else measured the same on both."
+    "CLAUDE_PROJECT_DIR is set under Claude Code and not under Codex CLI. Everything else measured the same on both, in both modes."
   ],
   "not_measured": [
-    "Whether a PreToolUse refusal actually stops the tool. This probe observes that the event is delivered, which is not the same claim: a refusal that arrives and is ignored looks identical to one that was honoured until something destructive gets through. Three plugins here depend on the stronger property.",
+    "Whether a refusal holds for tools other than Bash. The three guards here only claim Bash.",
+    "Whether a model told nothing about refusals routes around one. The blocking run instructed the model to accept it, which measures the runtime rather than the model.",
     "Whether a hook can block a Stop, which this probe observes without exercising.",
     "Grok CLI and Gemini CLI, which are recorded in the README as skills-only from a separate reading of their manifests rather than from this probe.",
     "Codex without the hook trust bypass. A runtime that has not been trusted runs no hook at all, so the untrusted state is a configuration answer rather than a contract one."

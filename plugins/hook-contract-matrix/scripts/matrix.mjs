@@ -19,6 +19,20 @@ const TOKEN = `HCM${Math.floor(Math.random() * 1e6)
 const PROMPT =
   "Run exactly one shell command: echo hook-contract-matrix. Then reply with the single word done.";
 
+const DENY_TOKEN = `HCMDENY${Math.floor(Math.random() * 1e6)
+  .toString()
+  .padStart(6, "0")}`;
+// Two writes, one of which the probe refuses. The allowed one is the control:
+// without it, a missing file could equally mean the refusal worked or the model
+// never tried. Retrying or working around would answer a different question.
+const BLOCKING_PROMPT = [
+  "Run these two shell commands in order, and do not stop if one of them fails:",
+  "1. echo allowed > hcm-allowed.txt",
+  `2. echo denied > hcm-denied-${DENY_TOKEN}.txt`,
+  "If a command is refused, accept the refusal: do not retry it, do not rephrase it,",
+  "and do not achieve the same result another way. Then reply with the single word done.",
+].join("\n");
+
 const args = process.argv.slice(2);
 const wanted = args.includes("--runtime") ? args[args.indexOf("--runtime") + 1] : "all";
 
@@ -69,13 +83,15 @@ function summarise(runtime, versionText, log, transcript, note) {
   };
 }
 
-function runClaude(work, logPath) {
+function runClaude(work, logPath, options = {}) {
   const env = { ...process.env, HCM_LOG: logPath, HCM_INJECT_TOKEN: TOKEN };
+  if (options.denyToken) env.HCM_DENY_TOKEN = options.denyToken;
   const r = spawnSync(
     "claude",
     ["-p", "--plugin-dir", PLUGIN_ROOT, "--permission-mode", "bypassPermissions"],
-    { cwd: work, env, input: PROMPT, encoding: "utf8", timeout: 300_000 },
+    { cwd: work, env, input: options.prompt ?? PROMPT, encoding: "utf8", timeout: 300_000 },
   );
+  if (options.denyToken) return blockingResult("claude", version("claude"), work, readLog(logPath), null);
   return summarise(
     "claude",
     version("claude"),
@@ -85,7 +101,27 @@ function runClaude(work, logPath) {
   );
 }
 
-function runCodex(work, logPath) {
+// A refusal either stopped the tool or it did not, and the file system says
+// which. The model's account of what happened is not the evidence.
+function blockingResult(runtime, versionText, work, log, note) {
+  const denials = log.filter((r) => r.denying);
+  const controlRan = existsSync(join(work, "hcm-allowed.txt"));
+  const deniedRan = existsSync(join(work, `hcm-denied-${DENY_TOKEN}.txt`));
+  return {
+    runtime,
+    version: versionText,
+    deny_token: DENY_TOKEN,
+    refusal_emitted: denials.length > 0,
+    control_command_ran: controlRan,
+    refused_command_ran: deniedRan,
+    // Only meaningful when the control ran: otherwise an absent file says the
+    // model never tried, not that the refusal held.
+    refusal_stopped_the_tool: controlRan && denials.length > 0 ? !deniedRan : null,
+    note,
+  };
+}
+
+function runCodex(work, logPath, options = {}) {
   const home = mkdtempSync(join(tmpdir(), "hcm-codex-"));
   // Install from the real marketplace root. A synthetic manifest pointing at an
   // absolute source is rejected: sources must be relative to the marketplace.
@@ -106,6 +142,7 @@ function runCodex(work, logPath) {
   }
 
   const env = { ...process.env, CODEX_HOME: home, HCM_LOG: logPath, HCM_INJECT_TOKEN: TOKEN };
+  if (options.denyToken) env.HCM_DENY_TOKEN = options.denyToken;
   let note = null;
   try {
     execFileSync("codex", ["plugin", "marketplace", "add", marketRoot], { env, encoding: "utf8" });
@@ -119,30 +156,48 @@ function runCodex(work, logPath) {
 
   const r = spawnSync(
     "codex",
-    ["exec", "--skip-git-repo-check", "--dangerously-bypass-hook-trust", PROMPT],
+    [
+      "exec",
+      "--skip-git-repo-check",
+      "--dangerously-bypass-hook-trust",
+      options.prompt ?? PROMPT,
+    ],
     { cwd: work, env, encoding: "utf8", timeout: 300_000 },
   );
-  const out = summarise(
-    "codex",
-    version("codex"),
-    readLog(logPath),
-    `${r.stdout ?? ""}${r.stderr ?? ""}`,
-    note ?? "hook trust bypassed for this measurement",
-  );
+  const out = options.denyToken
+    ? blockingResult("codex", version("codex"), work, readLog(logPath), note ?? "hook trust bypassed for this measurement")
+    : summarise(
+        "codex",
+        version("codex"),
+        readLog(logPath),
+        `${r.stdout ?? ""}${r.stderr ?? ""}`,
+        note ?? "hook trust bypassed for this measurement",
+      );
   rmSync(home, { recursive: true, force: true });
   return out;
 }
 
+// Firing and blocking are different claims and cost a turn each, so they are
+// separate runs. Each runtime gets its own working directory: the evidence for
+// blocking is which files exist afterwards.
+const blocking = args.includes("--blocking");
+const options = blocking ? { prompt: BLOCKING_PROMPT, denyToken: DENY_TOKEN } : {};
+
 const rows = [];
-const work = mkdtempSync(join(tmpdir(), "hcm-work-"));
+const dirs = [];
+const workFor = () => {
+  const dir = mkdtempSync(join(tmpdir(), "hcm-work-"));
+  dirs.push(dir);
+  return dir;
+};
 
 if ((wanted === "all" || wanted === "claude") && have("claude")) {
-  rows.push(runClaude(work, join(mkdtempSync(join(tmpdir(), "hcm-log-")), "claude.jsonl")));
+  rows.push(runClaude(workFor(), join(mkdtempSync(join(tmpdir(), "hcm-log-")), "claude.jsonl"), options));
 }
 if ((wanted === "all" || wanted === "codex") && have("codex")) {
-  rows.push(runCodex(work, join(mkdtempSync(join(tmpdir(), "hcm-log-")), "codex.jsonl")));
+  rows.push(runCodex(workFor(), join(mkdtempSync(join(tmpdir(), "hcm-log-")), "codex.jsonl"), options));
 }
-rmSync(work, { recursive: true, force: true });
+for (const dir of dirs) rmSync(dir, { recursive: true, force: true });
 
 if (rows.length === 0) {
   console.error("No supported runtime found on PATH. Install claude or codex, or pass --runtime.");
@@ -150,7 +205,21 @@ if (rows.length === 0) {
 }
 
 if (args.includes("--json")) {
-  console.log(JSON.stringify({ token: TOKEN, rows }, null, 2));
+  console.log(JSON.stringify({ token: blocking ? DENY_TOKEN : TOKEN, mode: blocking ? "blocking" : "firing", rows }, null, 2));
+} else if (blocking) {
+  const mark = (value) => (value === null ? "unknown" : value ? "yes" : "NO");
+  for (const row of rows) {
+    console.log(`\n${row.runtime}  (${row.version})`);
+    console.log(`  refusal emitted by the hook   ${mark(row.refusal_emitted)}`);
+    console.log(`  control command ran           ${mark(row.control_command_ran)}`);
+    console.log(`  refused command ran anyway    ${mark(row.refused_command_ran)}`);
+    console.log(`  refusal stopped the tool      ${mark(row.refusal_stopped_the_tool)}`);
+    if (row.control_command_ran === false) {
+      console.log("  note: the control did not run, so this run proves nothing about the refusal");
+    }
+    if (row.note) console.log(`  note: ${row.note}`);
+  }
+  console.log("");
 } else {
   const mark = (value) => (value ? "yes" : "NO");
   for (const row of rows) {
