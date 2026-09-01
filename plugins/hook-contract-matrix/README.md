@@ -95,6 +95,36 @@ To convince yourself the tool can fail, remove a handler from `hooks/hooks.json`
 and run it again: that row must turn to `NO`. A checker that never reports a
 failure has not been shown to work.
 
+## Measured contract
+
+The most recent run is committed under `results/`, so you can read the answer
+before deciding whether to spend a turn reproducing it. Each row is an
+observation from one session, not a claim about the runtime in general.
+
+`results/2026-09-01.json`:
+
+| Observation                     | Claude Code 2.1.251 | Codex CLI 0.151.0 |
+| ------------------------------- | ------------------- | ----------------- |
+| SessionStart fired              | yes                 | yes               |
+| PostToolUse fired               | yes                 | yes               |
+| Stop fired                      | yes                 | yes               |
+| injected context reached model  | yes                 | yes               |
+| `stop_hook_active` in payload   | yes                 | yes               |
+| `last_assistant_message` present | yes                | yes               |
+| `CLAUDE_PLUGIN_ROOT` set        | yes                 | yes               |
+| `CLAUDE_PROJECT_DIR` set        | yes                 | **no**            |
+
+One difference, and it is load-bearing. `llm-peer-bridge` decides which runtime
+it is on by whether `CLAUDE_PROJECT_DIR` is set, falling through to `CODEX_HOME`.
+That was an assumption until this run; it is now a measurement.
+
+The Codex row was taken with hook trust bypassed. An untrusted Codex runs no hook
+at all, which is a configuration answer rather than a contract one.
+
+Grok and Gemini are absent from the table on purpose: their rows in Runtime
+support come from reading their manifests, not from this probe, and a table that
+mixed the two would make a weaker claim look like this one.
+
 ## Security
 
 Measuring costs a real model turn: the runner starts an agent session against
