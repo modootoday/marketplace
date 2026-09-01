@@ -135,6 +135,8 @@ export function loadConfig(root, override) {
     ...parsed,
     kinds,
     cluster: { ...DEFAULTS.cluster, ...(parsed.cluster ?? {}) },
-    source: CONFIG_FILE,
+    // The file actually read. Reporting the default name while an override was
+    // in force sends a reader to the wrong tree to explain a finding.
+    source: override ?? CONFIG_FILE,
   };
 }

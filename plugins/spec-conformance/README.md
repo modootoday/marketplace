@@ -224,9 +224,21 @@ node scripts/apply.mjs .            # plan only
 node scripts/apply.mjs . --write
 ```
 
+```
+node scripts/test.mjs
+```
+
+The suite is hand-written inputs against hand-written expectations, plus a
+synthetic repository with fixed commit dates that runs derive, apply, check and
+graph end to end. Every document in that fixture is a defect that happened once:
+a wikilink inside a code span, an empty inline list read as a name, a horizontal
+rule taken for frontmatter, a reference left pointing at a name a rename retired.
+
 Prove it can fail: rename a document so its stem no longer matches its declared
 id, and `check` must report it. Then hand `apply` a decision with no evidence
-field and confirm it is refused rather than written.
+field and confirm it is refused rather than written. The suite itself was checked
+the same way -- reverting the horizontal-rule guard makes it report the body it
+lost, and reverting the repointing makes it report the retired name.
 
 Measured on the repository this was written in, carried through to the end.
 
