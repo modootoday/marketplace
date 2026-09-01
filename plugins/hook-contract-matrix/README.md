@@ -52,10 +52,16 @@ gemini extensions link <repo>/plugins/hook-contract-matrix
 
 | Kind  | Name           | Detail                                             |
 | ----- | -------------- | -------------------------------------------------- |
-| hook  | SessionStart   | records the event                                  |
-| hook  | PostToolUse    | records the event, returns a token as extra context |
-| hook  | Stop           | records the event                                   |
-| skill | `hook-compat`  | how to judge whether a hook works across runtimes   |
+| hook  | SessionStart     | records the event                                  |
+| hook  | UserPromptSubmit | records the event                                  |
+| hook  | PreToolUse       | records the event, and refuses nothing              |
+| hook  | PostToolUse      | records the event, returns a token as extra context |
+| hook  | Stop             | records the event                                   |
+| skill | `hook-compat`    | how to judge whether a hook works across runtimes   |
+
+The five events are the ones this marketplace's plugins actually register. The
+`PreToolUse` probe observes and never denies: an instrument that blocked commands
+while measuring would be measuring itself.
 
 ## Failure mode
 
@@ -103,20 +109,31 @@ observation from one session, not a claim about the runtime in general.
 
 `results/2026-09-01.json`:
 
-| Observation                     | Claude Code 2.1.251 | Codex CLI 0.151.0 |
-| ------------------------------- | ------------------- | ----------------- |
-| SessionStart fired              | yes                 | yes               |
-| PostToolUse fired               | yes                 | yes               |
-| Stop fired                      | yes                 | yes               |
-| injected context reached model  | yes                 | yes               |
-| `stop_hook_active` in payload   | yes                 | yes               |
-| `last_assistant_message` present | yes                | yes               |
-| `CLAUDE_PLUGIN_ROOT` set        | yes                 | yes               |
-| `CLAUDE_PROJECT_DIR` set        | yes                 | **no**            |
+| Observation                      | Claude Code 2.1.251 | Codex CLI 0.151.0 |
+| -------------------------------- | ------------------- | ----------------- |
+| SessionStart fired               | yes                 | yes               |
+| UserPromptSubmit fired           | yes                 | yes               |
+| PreToolUse fired                 | yes                 | yes               |
+| PostToolUse fired                | yes                 | yes               |
+| Stop fired                       | yes                 | yes               |
+| injected context reached model   | yes                 | yes               |
+| `stop_hook_active` in payload    | yes                 | yes               |
+| `last_assistant_message` present | yes                 | yes               |
+| `CLAUDE_PLUGIN_ROOT` set         | yes                 | yes               |
+| `CLAUDE_PROJECT_DIR` set         | yes                 | **no**            |
 
 One difference, and it is load-bearing. `llm-peer-bridge` decides which runtime
 it is on by whether `CLAUDE_PROJECT_DIR` is set, falling through to `CODEX_HOME`.
 That was an assumption until this run; it is now a measurement.
+
+The probe covered three events until a census of this marketplace found that
+three plugins register `PreToolUse` and one registers `UserPromptSubmit`. Four of
+the seven hook-bearing plugins were outside an instrument that several of their
+own designs named as a release condition, so the probe was widened to five.
+
+**Firing is not blocking.** These rows say the event was delivered. They do not
+say a refusal returned from `PreToolUse` stops the tool, which is the property
+the three guards actually depend on, and which this probe does not exercise.
 
 The Codex row was taken with hook trust bypassed. An untrusted Codex runs no hook
 at all, which is a configuration answer rather than a contract one.
