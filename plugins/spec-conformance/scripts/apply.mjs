@@ -52,10 +52,14 @@ for (const decision of decisions) {
   finalId.set(from, to);
 }
 for (const decision of decisions) {
-  for (const field of ["supersedes", "supersededBy", "references"]) {
-    if (!Array.isArray(decision[field])) continue;
-    decision[field] = decision[field].map((v) => finalId.get(v) ?? v);
-  }
+  const repoint = (values) =>
+    Array.isArray(values) ? values.map((v) => finalId.get(v) ?? v) : values;
+  decision.supersedes = repoint(decision.supersedes);
+  decision.supersededBy = repoint(decision.supersededBy);
+  // A reference the source declared and the decision did not restate is still a
+  // reference, and the rename retired the name it was written against. Repointing
+  // only what a decision restated left those pointing at a name nothing answers to.
+  decision.references = repoint(decision.references ?? dossiers.get(decision.source)?.declared?.references);
 }
 
 const written = [];
