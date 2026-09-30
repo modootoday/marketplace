@@ -110,7 +110,7 @@
     {
       "name": "spec-conformance",
       "description": "Make an existing pile of design documents navigable: check their schema, naming and placement, group the ones sharing a subject, draw the graph they form, and guide review of stale ones.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },

@@ -17,8 +17,13 @@ Checking schema and naming is how it gets there, not the point of it.
 | Grok CLI    | yes       | 1.0.13      |
 | Gemini CLI  | yes       | 0.57.0      |
 
-The scripts are plain Node and run anywhere; the skills are the one surface all
-four runtimes load. No hooks, so nothing depends on a runtime's hook contract.
+The scripts are thin launchers: each runs the matching CLI of
+[`@modootoday/devtools-doc-lifecycle`](https://www.npmjs.com/package/@modootoday/devtools-doc-lifecycle)
+(MIT) at an exact version through `npx`, so the first run needs network access to npm.
+The implementation, its tests and its fixes live in that package's repository,
+[modootoday/devtools-public](https://github.com/modootoday/devtools-public). The skills are
+the one surface all four runtimes load. No hooks, so nothing depends on a runtime's hook
+contract.
 
 ## Install
 
@@ -224,11 +229,9 @@ node scripts/apply.mjs .            # plan only
 node scripts/apply.mjs . --write
 ```
 
-```
-node scripts/test.mjs
-```
-
-The suite is hand-written inputs against hand-written expectations, plus a
+The test suite lives with the implementation in
+[modootoday/devtools-public](https://github.com/modootoday/devtools-public)
+(`bun run test`). It is hand-written inputs against hand-written expectations, plus a
 synthetic repository with fixed commit dates that runs derive, apply, check and
 graph end to end. Every document in that fixture is a defect that happened once:
 a wikilink inside a code span, an empty inline list read as a name, a horizontal
