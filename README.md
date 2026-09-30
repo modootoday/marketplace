@@ -58,6 +58,7 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `spec-conformance`         | Make an existing pile of design documents navigable                           | no    |
 | `spec-authoring`            | Write plans, sources of truth and decision records as three distinct things   | no    |
 | `agent-prompt-discipline`   | What belongs in a tool-using agent's prompt, and the symptom of each omission | no    |
+| `pmcp`                      | Serve the skills your installed packages ship, one at a time, over MCP        | no    |
 
 ## Trust
 
