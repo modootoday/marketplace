@@ -6,7 +6,7 @@ metadata:
   level: L1
   domain: agent-workflow
   install: default
-  keywords: [skill search, catalog, 스킬 찾기, 카탈로그]
+  keywords: [skill search, skill catalog, skill router]
 ---
 
 # Navigating a skill catalog
