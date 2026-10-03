@@ -1,6 +1,8 @@
 ---
 name: concurrency-policy
 description: Decide how much parallelism a build or test command should be allowed when an agent starts it, and which knob actually controls what. Use when builds are slow, the machine is loaded, or several agent sessions share one host.
+metadata:
+  tier: open
 ---
 
 # Concurrency on a machine an agent drives

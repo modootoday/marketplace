@@ -1,6 +1,8 @@
 ---
 name: hook-compat
 description: Judge whether a lifecycle hook actually works in a given coding agent, and what to do when two agents disagree. Use when writing hooks meant to run in more than one agent, or when a hook appears to do nothing.
+metadata:
+  tier: open
 ---
 
 # Hook compatibility

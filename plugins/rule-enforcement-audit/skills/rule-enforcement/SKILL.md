@@ -1,6 +1,8 @@
 ---
 name: rule-enforcement
 description: Judge whether a written agent rule will actually hold, and decide whether to enforce it, keep it as guidance, or delete it. Use when adding a rule to an agent instruction file, or when the same mistake keeps recurring despite being documented.
+metadata:
+  tier: open
 ---
 
 # Written is not enforced

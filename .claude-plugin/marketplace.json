@@ -5,7 +5,8 @@
   },
   "metadata": {
     "description": "Agent plugins that work the same way in more than one coding agent.",
-    "version": "0.1.0"
+    "version": "0.1.0",
+    "tier": "open"
   },
   "plugins": [
     {

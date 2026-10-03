@@ -3,17 +3,20 @@
 ## What it does
 
 Registers the `pmcp` MCP server, which reads `SKILL.md` files out of `node_modules`
-and serves them as three tools, so a session pays for the one skill it opens rather
-than for the whole catalog.
+and plugin marketplaces and serves them as five tools, so a session pays for the one
+skill it opens rather than for the whole catalog. It also ships the
+`skill-catalog-navigator` skill, which teaches the agent the order to use them in.
 
 A package can carry usage documentation an agent could read. Once a project has a
 few hundred dependencies, nobody knows which ones did. This finds them.
 
 | Tool            | Takes                                 | Answers                              |
 | --------------- | ------------------------------------- | ------------------------------------ |
-| `skill_catalog` | nothing, or a scope                   | every skill's name and description   |
-| `skill_find`    | a sentence describing your problem    | the few skills that match, ranked    |
-| `skill_call`    | a skill name                          | that skill's full body               |
+| `skill_catalog`  | a page, optionally a tier             | each skill's name, description, tier |
+| `skill_find`     | a sentence, optional filters          | the few skills that match, ranked    |
+| `skill_describe` | a skill name                          | its metadata and files, no body      |
+| `skill_call`     | a skill name                          | that skill's full body               |
+| `skill_read`     | a skill name and a file path          | one reference file, as text          |
 
 ## Runtime support
 
@@ -54,9 +57,10 @@ Without a plugin, any MCP host takes the server as configuration:
 
 | Kind       | Name   | Detail                                        |
 | ---------- | ------ | --------------------------------------------- |
-| MCP server | `pmcp` | `npx -y @modootoday/pmcp`, stdio, three tools |
+| MCP server | `pmcp` | `npx -y @modootoday/pmcp`, stdio, five tools  |
+| Skill      | `skill-catalog-navigator` | search, check, load, in that order |
 
-Two manifests and no code. The server is the `@modootoday/pmcp` package on npm, and
+Two manifests, one skill, and no code. The server is the `@modootoday/pmcp` package on npm, and
 this plugin only tells your agent to run it. The name is scoped on purpose: an
 unscoped `pmcp` does not exist on npm, and a manifest that ran it would run whatever
 someone later published under that name.
@@ -69,8 +73,9 @@ reports a failed MCP server. Nothing else in the session depends on it.
 ## Configuration and how to disable
 
 Uninstall the plugin, or disable the `pmcp` server in your host's MCP settings. The
-server takes `--root <node_modules>` and repeated `--scope <prefix>` to narrow what it
-reads; add them to the manifest's `args` if you need them.
+server takes `--root <node_modules>`, repeated `--scope <prefix>` to narrow what it
+reads, and repeated `--marketplace <dir>` to add plugin marketplaces; add them to the
+manifest's `args` if you need them.
 
 ## Data written
 

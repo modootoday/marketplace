@@ -1,6 +1,8 @@
 ---
 name: sot-authoring
 description: Write a source-of-truth document that can be proven stale, by pairing every rule with a command that checks it. Use when recording an invariant, a convention, or a decision that later work must not quietly contradict.
+metadata:
+  tier: open
 ---
 
 # Writing a source of truth

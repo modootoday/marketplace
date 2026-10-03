@@ -1,6 +1,8 @@
 ---
 name: shared-checkout
 description: Work safely in a repository other agent sessions are also working in, including how to commit without capturing someone else's changes. Use when other working trees exist, when the tree is already dirty, or when a gate fails on files you did not touch.
+metadata:
+  tier: open
 ---
 
 # Working where someone else is working

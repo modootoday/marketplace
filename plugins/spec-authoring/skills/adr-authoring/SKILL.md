@@ -1,6 +1,8 @@
 ---
 name: adr-authoring
 description: Record an architectural decision so a later reader can tell whether it still applies, including what was rejected and what would reverse it. Use when a choice closes off alternatives or is expensive to undo.
+metadata:
+  tier: open
 ---
 
 # Recording a decision

@@ -1,6 +1,8 @@
 ---
 name: peer-conversation
 description: How to treat messages that arrive from another coding-agent session through the peer bridge, and when to answer, ignore, or ask the operator. Use whenever a peer message appears in context.
+metadata:
+  tier: open
 ---
 
 # Talking to another session

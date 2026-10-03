@@ -1,6 +1,8 @@
 ---
 name: pile-migration
 description: Work through a dossier of existing documents and decide each one's status, relationships and placement by reading it. Use when normalising an accumulated document set into a schema.
+metadata:
+  tier: open
 ---
 
 # Migrating a pile you did not write

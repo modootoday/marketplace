@@ -1,6 +1,8 @@
 ---
 name: spec-layout
 description: Where design documents live, what they are named, and which of those rules can be changed. Use when adding a document kind, placing a new document, or deciding whether a naming rule is worth a migration.
+metadata:
+  tier: open
 ---
 
 # Laying out a document set
