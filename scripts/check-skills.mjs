@@ -108,6 +108,8 @@ if (terms.length > 0) {
     for (const name of readdirSync(d)) {
       if (name === ".git" || name === "node_modules") continue;
       const full = join(d, name);
+      // Eval runs write local results with host paths; they are gitignored, never published.
+      if (name === "results" && d.endsWith("evals")) continue;
       if (statSync(full).isDirectory()) {
         walk(full);
         continue;

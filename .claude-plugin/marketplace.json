@@ -125,6 +125,15 @@
         "name": "modootoday"
       },
       "source": "./plugins/pmcp"
+    },
+    {
+      "name": "product-planning",
+      "description": "Turn a rough product idea into a sharper one: widen it with a few targeted questions, argue against each option, and narrow to what is worth testing first.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/product-planning"
     }
   ]
 }

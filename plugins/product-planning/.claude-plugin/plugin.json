@@ -1,0 +1,9 @@
+{
+  "name": "product-planning",
+  "version": "0.1.0",
+  "description": "Turn a rough product idea into a sharper one: widen it with a few targeted questions, argue against each option, and narrow to what is worth testing first.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}
