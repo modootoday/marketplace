@@ -2,9 +2,10 @@
 
 ## What it does
 
-Turns a rough product idea into a sharper one: asks the few questions that would
-change the answer, argues against each option, and narrows to one thing to test
-first.
+Early product-planning steps that a model tends to rush: sparring on an idea
+instead of listing ideas, framing the problem behind a request, synthesizing raw
+feedback without overstating it, and ranking a backlog while saying where the
+ranking is fragile.
 
 ## Runtime support
 
@@ -33,9 +34,12 @@ codex plugin add product-planning@modootoday
 
 ## What it registers
 
-| Kind  | Name            | Covers                                                                  |
-| ----- | --------------- | ----------------------------------------------------------------------- |
-| skill | `idea-sparring` | brainstorm requests: questions first when context is thin, otherwise options argued against and one test to run |
+| Kind  | Name                      | Covers                                                                                                   |
+| ----- | ------------------------- | -------------------------------------------------------------------------------------------------------- |
+| skill | `idea-sparring`           | brainstorm requests: questions first when context is thin, otherwise options argued against and one test |
+| skill | `problem-framing`         | a feature request or vague goal turned into a problem statement, drafted first with assumptions marked   |
+| skill | `user-feedback-synthesis` | a batch of feedback turned into cited themes, with severe single reports escalated and shares kept to the sample |
+| skill | `prioritization-scoring`  | a backlog ranked with visible arithmetic, labelled estimates, close ranks and the assumption that decides the top pick |
 
 ## Failure mode
 
@@ -48,7 +52,7 @@ No configuration. Disable it the way your runtime disables plugins.
 
 ## Data written
 
-None. The skill writes no file and opens no connection.
+None. The skills write no file and open no connection.
 
 ## Verify
 
@@ -66,9 +70,18 @@ The plugin ships an eval suite. With Claude Code 2.1.288 or later:
 claude plugin eval plugins/product-planning --no-publish
 ```
 
-Measured on 2.1.288: 3 cases, 3 runs per arm. Both brainstorm cases scored 1.0
-with the plugin and 0.0 without it; the acceptance-criteria case scored 1.0 in
-both arms and the skill did not fire there, which is the intended behaviour.
+Measured on 2.1.288, 13 cases, 2 or 3 runs per arm, Sonnet as judge for the
+last ten cases (Haiku for the first three):
+
+| Skill                     | Cases where the plugin raised the score (without, with) | Cases already passing without it | Negative cases (skill must not fire) |
+| ------------------------- | -------------------------------------------------------- | -------------------------------- | ------------------------------------ |
+| `idea-sparring`           | 2 (0.0, 1.0) and (0.0, 1.0)                               | 0                                | 1, passed                            |
+| `problem-framing`         | 2 (0.0, 1.0) and (0.5, 1.0)                               | 0                                | 1, passed                            |
+| `user-feedback-synthesis` | 1 (0.33, 1.0)                                             | 2                                | 1, passed                            |
+| `prioritization-scoring`  | 1 (0.0, 1.0)                                              | 1                                | 1, passed                            |
+
+A case that already passes without the plugin stays in the suite to catch a
+regression, not as evidence that the skill helps.
 
 ## License
 

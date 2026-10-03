@@ -1,6 +1,6 @@
 ---
 name: idea-sparring
-description: Spars on a rough product or feature idea instead of listing ideas - asks the few questions that would change the answer, argues against each option, and narrows to one thing to test first. Use when the user asks to brainstorm, spar on, pressure-test or "think through" an idea, or asks what to try first. Not for writing a finished spec, PRD or acceptance criteria.
+description: Spars on a rough product or feature idea instead of listing ideas - asks the few questions that would change the answer, argues against each option, and narrows to one thing to test first. Use when the user asks to brainstorm, spar on, pressure-test or "think through" an idea, or asks what to try first. Not for framing a problem statement, ranking a given backlog, synthesizing feedback, or writing a finished spec, PRD or acceptance criteria.
 metadata:
   tier: open
   level: L1
