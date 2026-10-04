@@ -1,6 +1,6 @@
 ---
 name: remotion-explainer
-description: Build a product explainer or release video in Remotion - compositions with fixed width, height, fps and duration, scenes driven by frame math, assets loaded before render, fonts that are licensed and loaded, a render manifest, and the rendered file verified with ffprobe. Use when the user wants a programmatic video made with Remotion or React. Not for editing filmed footage.
+description: Build a product explainer or release video in Remotion - compositions with fixed width, height, fps and duration, scenes driven by frame math, assets loaded before render, fonts that are licensed and loaded, a render manifest, and the rendered file verified with ffprobe. Use when the user wants a programmatic video made with Remotion or React, or when a Remotion render comes out wrong - elements missing, frozen, flickering or mistimed, images or fonts not showing. Not for editing filmed footage.
 metadata:
   tier: open
   level: L3

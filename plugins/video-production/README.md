@@ -2,7 +2,7 @@
 
 ## What it does
 
-Video work that can be executed and verified: briefs and storyboards someone else can produce from, Remotion explainers rendered from frame math, and talking-head edits with ffmpeg that keep a list of every cut.
+Video work that can be executed and verified: briefs and storyboards someone else can produce from, Remotion explainers rendered from frame math, talking-head edits with ffmpeg that keep a list of every cut, and Korean subtitles timed to the voice by forced alignment.
 
 ## Runtime support
 
@@ -13,7 +13,7 @@ Video work that can be executed and verified: briefs and storyboards someone els
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
-Requirements: Node.js for remotion-explainer; ffmpeg for remotion-explainer and talking-head-edit.
+Requirements: Node.js for remotion-explainer; ffmpeg for remotion-explainer and talking-head-edit; Python 3 for tts-subtitle-sync, plus torch, torchaudio and transformers for its forced aligner.
 
 ## Install
 
@@ -38,6 +38,7 @@ codex plugin add video-production@modootoday
 | skill | `remotion-explainer` | Remotion videos driven by frame math, with assets loaded before render and the output verified with ffprobe |
 | skill | `talking-head-edit` | talking-head edits with ffmpeg: silences cut with margins, voice levelled, subtitles re-timed, every cut listed |
 | skill | `video-brief-storyboard` | a video brief and a scene table someone else can produce from, with durations that add up and sourced assets |
+| skill | `tts-subtitle-sync` | Korean subtitles and motion cues timed to the voice by forced alignment or TTS alignment, mapped from spoken to displayed text, broken only between eojeol |
 
 ## Failure mode
 
@@ -70,6 +71,7 @@ passed every grader, without the plugin and with it:
 | `reel-storyboard` | video-brief-storyboard | 0.00 | 1.00 | 2 |
 | `remotion-timers` | remotion-explainer | 1.00 | 1.00 | 2 |
 | `remove-silences` | talking-head-edit | 1.00 | 1.00 | 2 |
+| `subtitles-from-whisper` | tts-subtitle-sync | 0.00 | 1.00 | 2 |
 
 remotion-explainer, talking-head-edit show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 

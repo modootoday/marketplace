@@ -2,7 +2,7 @@
 
 ## What it does
 
-Images that hold up at their real size: share images rendered from HTML with Korean text that wraps, consistent hand-written SVG icon sets, and batch post-processing that crops, compresses and strips location data.
+Images that hold up at their real size: share images rendered from HTML with Korean text that wraps, consistent hand-written SVG icon sets, batch post-processing that crops, compresses and strips location data, and product shots edited from the real product photo with a ledger and a label check.
 
 ## Runtime support
 
@@ -13,7 +13,7 @@ Images that hold up at their real size: share images rendered from HTML with Kor
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
-Requirements: Node and a headless browser library (Playwright or Puppeteer) where the images are rendered; Python 3 with Pillow, or ImageMagick, for image-postprocess.
+Requirements: Node and a headless browser library (Playwright or Puppeteer) where the images are rendered; Python 3 with Pillow, or ImageMagick, for image-postprocess; Python 3 for product-shot-direction's ledger (Pillow for its check), and an image editing tool.
 
 ## Install
 
@@ -38,6 +38,7 @@ codex plugin add image-assets@modootoday
 | skill | `og-thumbnail-render` | share images rendered from HTML at 1200x630 with fonts loaded, Korean wrapping, measured titles and correct og tags |
 | skill | `image-postprocess` | batch crop, resize, compress and watermark with originals kept and GPS and device metadata removed |
 | skill | `svg-icon-illustration` | icon sets and small illustrations hand-written as SVG on one grid and stroke, themable with currentColor |
+| skill | `product-shot-direction` | product shots edited from the real product photo, recorded in an append-only shot ledger and checked against the reference down to label text and numbers |
 
 ## Failure mode
 
@@ -71,6 +72,7 @@ passed every grader, without the plugin and with it:
 | `resize-photo-not-og` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
 | `batch-for-marketplace` | image-postprocess | 1.00 | 1.00 | 2 |
 | `icon-set` | svg-icon-illustration | 1.00 | 1.00 | 2 |
+| `tea-tin-lifestyle` | product-shot-direction | 0.00 | 1.00 | 2 |
 
 image-postprocess, svg-icon-illustration show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 
