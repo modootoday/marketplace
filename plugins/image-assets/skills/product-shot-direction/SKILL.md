@@ -24,8 +24,13 @@ on three products with known labels (gpt-image-1-mini, 2026-10):
   different product that shares a name.
 - **Edited from the real photo**, layout, typeface and colours held, but small text broke:
   "30 ml / 1.0 fl oz" became "39 ml / 10 fl oz", and a size line changed colour.
+- **Edited with an open model** (Qwen-Image-Edit-2511, self-hosted) from the same photos, all
+  three labels came out exact, small print included. Models differ; the check below is what
+  tells you which one you got.
 
-So: always start from the photo, and always read the small print on every candidate.
+So: always start from the photo, and always read the small print on every candidate. If a
+workflow loads its input image by file name, confirm the output shows your product and not a
+placeholder: an upload that is renamed on arrival leaves the model editing an empty image.
 
 ## 1. Brief
 
