@@ -59,7 +59,17 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `spec-authoring`            | Write plans, sources of truth and decision records as three distinct things   | no    |
 | `agent-prompt-discipline`   | What belongs in a tool-using agent's prompt, and the symptom of each omission | no    |
 | `pmcp`                      | Serve the skills your installed packages ship, one at a time, over MCP        | no    |
-| `product-planning`          | Spar on ideas, frame problems, synthesize feedback, rank a backlog honestly   | no    |
+| `product-planning`          | Spar on ideas, frame problems, synthesize feedback, rank a backlog, write a Korean PRD | no    |
+| `content-ai`                | Korean product copy to the Toss writing principles, Naver blog posts for search | no    |
+| `monetization`              | Toss Payments integration checked against the docs; refunds and disputes done once | no    |
+| `kr-legal`                  | Personal data and crawling reviews against current Korean law                 | no    |
+| `data-analytics`            | ClickHouse SQL that reads the key, states its timezone and counts correctly   | no    |
+| `brand-assets`              | Visual directions, brand tokens, and QA of rendered assets                    | no    |
+| `image-assets`              | OG share images rendered from HTML with Korean text and fonts handled         | no    |
+| `social-carousel`           | Carousel copy with one ask, and slides rendered and exported after approval   | no    |
+| `presentation`              | Deck storylines built from the answer down, one claim per slide               | no    |
+| `audio-production`          | Scripts written for the ear; speech mixed and normalised to a measured target | no    |
+| `skill-factory`             | Write agent skills evals first, with descriptions that trigger correctly      | no    |
 
 ## Trust
 

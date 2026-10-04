@@ -1,0 +1,9 @@
+{
+  "name": "audio-production",
+  "version": "0.1.0",
+  "description": "Spoken audio done properly: scripts written for the ear with spoken numbers and a pronunciation list, and voice tracks cleaned, ducked under music and normalised to a measured loudness target with ffmpeg.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

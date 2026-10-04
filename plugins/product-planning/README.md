@@ -4,8 +4,9 @@
 
 Early product-planning steps that a model tends to rush: sparring on an idea
 instead of listing ideas, framing the problem behind a request, synthesizing raw
-feedback without overstating it, and ranking a backlog while saying where the
-ranking is fragile.
+feedback without overstating it, ranking a backlog while saying where the
+ranking is fragile, and writing a Korean PRD whose acceptance criteria a tester
+can check.
 
 ## Runtime support
 
@@ -40,6 +41,7 @@ codex plugin add product-planning@modootoday
 | skill | `problem-framing`         | a feature request or vague goal turned into a problem statement, drafted first with assumptions marked   |
 | skill | `user-feedback-synthesis` | a batch of feedback turned into cited themes, with severe single reports escalated and shares kept to the sample |
 | skill | `prioritization-scoring`  | a backlog ranked with visible arithmetic, labelled estimates, close ranks and the assumption that decides the top pick |
+| skill | `prd-writing-ko`          | a Korean PRD with non-goals, testable acceptance criteria, edge cases, screen copy in the UI register and marked assumptions; a Korean template is in `references/` |
 
 ## Failure mode
 
@@ -79,6 +81,10 @@ last ten cases (Haiku for the first three):
 | `problem-framing`         | 2 (0.0, 1.0) and (0.5, 1.0)                               | 0                                | 1, passed                            |
 | `user-feedback-synthesis` | 1 (0.33, 1.0)                                             | 2                                | 1, passed                            |
 | `prioritization-scoring`  | 1 (0.0, 1.0)                                              | 1                                | 1, passed                            |
+
+`prd-writing-ko` was added 20261004 and measured on 2.1.289 with Sonnet as judge:
+`prd-ko-ui-copy` went from 0.0 without the plugin to 0.67 with it (3 runs per arm), and
+`prd-ko-reservation` already passed without it (1.0 and 1.0, 2 runs).
 
 A case that already passes without the plugin stays in the suite to catch a
 regression, not as evidence that the skill helps.

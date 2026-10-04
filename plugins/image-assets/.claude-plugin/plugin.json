@@ -1,0 +1,9 @@
+{
+  "name": "image-assets",
+  "version": "0.1.0",
+  "description": "Share images built from HTML templates and rendered by a headless browser, with Korean text that wraps, fonts that load before the screenshot, and the og tags that point at them.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

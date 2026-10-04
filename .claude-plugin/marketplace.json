@@ -128,12 +128,102 @@
     },
     {
       "name": "product-planning",
-      "description": "Early product-planning steps done carefully: spar on an idea, frame the problem behind a request, synthesize feedback without overstating it, and rank a backlog while saying where the ranking is fragile.",
-      "version": "0.2.0",
+      "description": "Early product-planning steps done carefully: spar on an idea, frame the problem behind a request, synthesize feedback without overstating it, rank a backlog while saying where the ranking is fragile, and write a Korean PRD with testable acceptance criteria.",
+      "version": "0.3.0",
       "author": {
         "name": "modootoday"
       },
       "source": "./plugins/product-planning"
+    },
+    {
+      "name": "content-ai",
+      "description": "Korean content that reads well and gets found: product copy rewritten to the public Toss writing principles, and Naver blog posts planned for search without keyword stuffing.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/content-ai"
+    },
+    {
+      "name": "monetization",
+      "description": "Payments that do not lose or double money: a Toss Payments integration checked against the official docs, and refunds and disputes handled by looking up the state before acting once.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/monetization"
+    },
+    {
+      "name": "kr-legal",
+      "description": "Korean legal reviews that cite what the law says today: personal data handling under the Personal Information Protection Act, and the risk of crawling another service, with articles and decisions retrieved rather than remembered.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/kr-legal"
+    },
+    {
+      "name": "data-analytics",
+      "description": "ClickHouse SQL that reads the primary key, states its timezone, counts deduplicated rows correctly and takes values as typed parameters.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/data-analytics"
+    },
+    {
+      "name": "brand-assets",
+      "description": "Brand work that decides something: visual directions argued before drawing, a tokens.json every asset reads, and QA of the rendered asset before it is published.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/brand-assets"
+    },
+    {
+      "name": "image-assets",
+      "description": "Share images built from HTML templates and rendered by a headless browser, with Korean text that wraps, fonts that load before the screenshot, and the og tags that point at them.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/image-assets"
+    },
+    {
+      "name": "social-carousel",
+      "description": "Carousel posts from copy to files: slide-by-slide copy with a hook and one call to action, and slides rendered from HTML at platform sizes, checked and exported only after approval.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/social-carousel"
+    },
+    {
+      "name": "presentation",
+      "description": "Decks that argue something: a storyline built from the answer down, with one full-sentence claim per slide so the titles alone tell the story.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/presentation"
+    },
+    {
+      "name": "audio-production",
+      "description": "Spoken audio done properly: scripts written for the ear with spoken numbers and a pronunciation list, and voice tracks cleaned, ducked under music and normalised to a measured loudness target with ffmpeg.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/audio-production"
+    },
+    {
+      "name": "skill-factory",
+      "description": "Write agent skills that change behaviour: evals before the body, descriptions that trigger on the right requests, rules tied to the failures they prevent, and a measured delta before release.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/skill-factory"
     }
   ]
 }

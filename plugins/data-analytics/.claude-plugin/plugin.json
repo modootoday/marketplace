@@ -1,0 +1,9 @@
+{
+  "name": "data-analytics",
+  "version": "0.1.0",
+  "description": "ClickHouse SQL that reads the primary key, states its timezone, counts deduplicated rows correctly and takes values as typed parameters.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

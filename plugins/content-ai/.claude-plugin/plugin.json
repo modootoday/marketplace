@@ -1,0 +1,9 @@
+{
+  "name": "content-ai",
+  "version": "0.1.0",
+  "description": "Korean content that reads well and gets found: product copy rewritten to the public Toss writing principles, and Naver blog posts planned for search without keyword stuffing.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}
