@@ -74,10 +74,10 @@ passed every grader, without the plugin and with it:
 | `wav-to-mp3-not-mastering` | negative: the skill must not fire | 1.00 | 1.00 | 3 |
 | `cafe-sound` | sonic-identity-sparring | 0.00 | 1.00 | 2 |
 | `sound-alike` | voice-rights-review | 1.00 | 1.00 | 2 |
-| `tts-numbers` | korean-tts-production | 1.00 | 0.50 | 2 |
+| `tts-numbers` | korean-tts-production | 0.00 | 1.00 | 2 |
 | `ui-sound-set` | sfx-design | 0.00 | 1.00 | 2 |
 
-voice-rights-review shows no lift yet: the baseline model already refused the sound-alike. korean-tts-production scored lower with the plugin (1.00 without, 0.50 with): the skill did not fire in either run with the plugin installed, and one of those replies misread a number, while the baseline read all four correctly. Its trigger needs work; the case stays as a regression check.
+voice-rights-review shows no lift yet: the baseline model already refused the sound-alike. korean-tts-production first scored lower with the plugin (1.00 without, 0.50 with) because it did not fire; after its description named store announcements and quick checks of numbers, a re-run fired in both runs and passed both (0.00 without, 1.00 with). The baseline varies between runs on this case, so treat the lift as weak evidence.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

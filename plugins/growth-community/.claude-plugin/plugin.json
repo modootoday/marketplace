@@ -1,7 +1,7 @@
 {
   "name": "growth-community",
-  "version": "0.1.0",
-  "description": "Growth and community work: store listings written for the people searching that store, and Discord servers run with structure, onboarding, moderation and FAQ upkeep that does not go stale.",
+  "version": "0.2.0",
+  "description": "Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, and newsletters readers open and finish.",
   "author": {
     "name": "modootoday"
   },

@@ -96,6 +96,11 @@ plugin that seems to do nothing in a script has probably never been trusted.
   `node --test scripts/skill-rules.test.mjs` covers each rule with a failing case.
 - A plugin with skills ships `evals/` cases for `claude plugin eval`, and its
   README reports the measured scores with and without the plugin.
+- A plugin release passes `node scripts/release-gate.mjs plugins/<name>`, which runs
+  the whole suite with `--no-publish` under a cost cap (or reads a result with
+  `--from`) and refuses fewer than three cases, a skill without a positive case, a
+  skill that did not fire (or fired on a negative case) in any run, and a mean
+  delta of zero or below.
 
 ## License
 

@@ -1,0 +1,177 @@
+{
+  "tools": [
+    {
+      "name": "skill_catalog",
+      "title": "List installed skills without their bodies",
+      "description": "Every skill the installed packages and marketplaces ship, grouped by package or plugin, with names, one-line descriptions and tier, and no bodies. Paged by group. Use it to see what exists, or when skill_find returns nothing.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "pageSize": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          },
+          "tier": {
+            "type": "string",
+            "enum": [
+              "open",
+              "free",
+              "paid",
+              "internal"
+            ]
+          }
+        }
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "skill_find",
+      "title": "Find skills by describing the problem",
+      "description": "Ranked skill names for an intent. Describe the problem in a full sentence in English rather than a keyword: a single word matches far worse, and the ranking is over descriptions. Returns names only -- read one with skill_call.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "intent": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256,
+            "description": "What you are trying to do, as an English sentence."
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 25
+          },
+          "filters": {
+            "description": "Exact-match filters over the catalog before ranking.",
+            "type": "object",
+            "properties": {
+              "tier": {
+                "type": "string",
+                "enum": [
+                  "open",
+                  "free",
+                  "paid",
+                  "internal"
+                ]
+              },
+              "package": {
+                "type": "string"
+              },
+              "level": {
+                "type": "string"
+              },
+              "domain": {
+                "type": "string"
+              },
+              "medium": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": [
+          "intent"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "skill_describe",
+      "title": "Check one skill's properties before loading it",
+      "description": "Frontmatter, metadata (tier, level, requirements, licence, approval), and the files the skill carries with sizes and sha256, without any body. Use it to decide between candidates before skill_call.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The skill name skill_find or skill_catalog returned."
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "skill_read",
+      "title": "Read one file a skill carries",
+      "description": "A reference or script file inside one skill's directory, as text, with its sha256. Read only when the skill body points at the file. Scripts are returned, never run. Files over 256 KiB and paths outside the skill are refused.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "description": "Path relative to the skill directory, as skill_describe lists it. Defaults to SKILL.md.",
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "skill_call",
+      "title": "Read one skill",
+      "description": "The body of a single skill, by the name skill_find or skill_catalog returned. This is the only call that costs a document.",
+      "inputSchema": {
+        "type": "object",
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The skill name, as <package>/<slug>."
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    }
+  ]
+}

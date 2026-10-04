@@ -100,6 +100,21 @@ printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocol
 
 It answers with `"serverInfo":{"name":"pmcp", ...}`.
 
+The navigator skill has an eval suite that runs against mocked pmcp tools
+(`evals/mocks/pmcp/`, with the server's real tool list in `_tools.json`), so no server or
+network is needed: `claude plugin eval plugins/pmcp --no-publish`. Measured 20261004 on
+Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that passed every
+grader, without the plugin and with it:
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `arithmetic-negative` | negative: the catalog must not be searched | 1.00 | 1.00 | 2 |
+| `empty-search-no-invention` | skill-catalog-navigator | 0.67 | 1.00 | 2 |
+| `find-then-load` | skill-catalog-navigator | 0.00 | 1.00 | 2 |
+
+With the plugin, the model searched before loading, loaded the exact name the server
+returned, and on an empty search read the catalog instead of inventing a skill.
+
 ## Security
 
 The server reads documentation that your installed packages ship and hands it to

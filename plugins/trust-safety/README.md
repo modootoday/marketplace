@@ -2,7 +2,7 @@
 
 ## What it does
 
-Abuse detection that can be trusted: signals ranked by how abusers actually work and how cheaply they could evade, and rules measured on labelled data, explained and appealable before they act on anyone.
+Abuse detection that can be trusted: signals ranked by how abusers work and how cheaply they could evade, rules measured on labelled data before they act, and appeals that restore what a false positive took.
 
 ## Runtime support
 
@@ -37,6 +37,7 @@ codex plugin add trust-safety@modootoday
 | --- | --- | --- |
 | skill | `abuse-rule-authoring` | abuse rules measured on labelled data, shipped in shadow mode first, with evidence per hit and an appeal path |
 | skill | `abuse-signal-brainstorm` | detection signals found from how the abuse is carried out, rated by evasion cost and false-positive risk |
+| skill | `false-positive-appeal` | appeals against automated actions decided on the recorded evidence, restored on reversal, fed back into the rule |
 
 ## Failure mode
 
@@ -68,6 +69,7 @@ passed every grader, without the plugin and with it:
 | `auto-ban-rule` | abuse-rule-authoring | 0.00 | 1.00 | 2 |
 | `define-captcha-negative` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
 | `fake-review-signals` | abuse-signal-brainstorm | 0.00 | 1.00 | 2 |
+| `seller-appeal` | false-positive-appeal | 0.00 | 1.00 | 2 |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

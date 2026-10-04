@@ -2,7 +2,7 @@
 
 ## What it does
 
-Customer operations: Korean support tickets triaged with incidents spotted across them, and status updates that say what is affected, what to do and when the next update comes.
+Customer operations: Korean support tickets triaged with incidents spotted across them, status updates that say what is affected and when the next update comes, and read-only runbooks for on-call.
 
 ## Runtime support
 
@@ -37,6 +37,7 @@ codex plugin add operations-cs@modootoday
 | --- | --- | --- |
 | skill | `cs-ticket-triage-ko` | Korean support tickets grouped into incidents, routed by who can act, and answered in polite haeyo-che |
 | skill | `status-incident-comms` | status page updates that state impact and the next update time, without blaming anyone or guessing the cause |
+| skill | `operator-runbook` | read-only on-call runbooks: ordered checks with what healthy looks like, escalation, and state changes kept separate |
 
 ## Failure mode
 
@@ -68,6 +69,7 @@ passed every grader, without the plugin and with it:
 | `batch-triage` | cs-ticket-triage-ko | 0.00 | 1.00 | 2 |
 | `define-sla-negative` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
 | `first-update` | status-incident-comms | 1.00 | 1.00 | 2 |
+| `queue-runbook` | operator-runbook | 0.00 | 1.00 | 2 |
 
 status-incident-comms shows no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 

@@ -2,7 +2,7 @@
 
 ## What it does
 
-Numbers that mean what they say: ClickHouse SQL that reads the key and deduplicates correctly, Naver trend data read as ratios rather than counts, and metrics defined once so two dashboards agree.
+Numbers that mean what they say: ClickHouse SQL that reads the key and deduplicates correctly, Naver trend data read as ratios, metrics defined once, experiments designed before launch and retention read by cohort.
 
 ## Runtime support
 
@@ -38,6 +38,8 @@ codex plugin add data-analytics@modootoday
 | skill | `clickhouse-query-authoring` | ClickHouse SQL that filters on the key as stored, names its timezone, deduplicates correctly and binds parameters |
 | skill | `metric-definition` | metrics written as definitions (entity, event, window, timezone, exclusions, source) so two dashboards agree |
 | skill | `naver-trend-analysis` | Naver Data Lab and search ad data read correctly: ratios within one request, absolute volumes from the keyword tool |
+| skill | `cohort-retention` | retention by start cohort at the same offsets, with activity defined and incomplete periods marked |
+| skill | `experiment-design-readout` | A/B tests designed before launch (one metric, sample size, stopping rule) and read with intervals, not peeks |
 
 ## Failure mode
 
@@ -71,6 +73,8 @@ passed every grader, without the plugin and with it:
 | `replacing-double-count` | clickhouse-query-authoring | 1.00 | 1.00 | 2 |
 | `trend-ratio-misread` | naver-trend-analysis | 1.00 | 1.00 | 2 |
 | `two-dashboards-dau` | metric-definition | 1.00 | 1.00 | 2 |
+| `blended-retention-drop` | cohort-retention | 0.00 | 1.00 | 2 |
+| `stop-test-early` | experiment-design-readout | 0.50 | 1.00 | 2 |
 
 clickhouse-query-authoring shows no lift yet with the default model: the baseline found the same issues in every case tried. Its cases stay as regression checks.
 

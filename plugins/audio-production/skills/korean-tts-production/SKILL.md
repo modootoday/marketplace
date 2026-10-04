@@ -1,6 +1,6 @@
 ---
 name: korean-tts-production
-description: Produce Korean speech with a text-to-speech engine end to end - script prepared for reading, pronunciation fixes through the engine's dictionary or markup, synthesis in sentence-sized chunks, stitching with natural pauses, loudness to target, listening QA, and a record of the voice's licence. Use when the user needs Korean narration, announcements or dubbing generated with TTS. Not for cloning a real person's voice.
+description: Produce Korean speech with a text-to-speech engine end to end - script prepared for reading, pronunciation fixes through the engine's dictionary or markup, synthesis in sentence-sized chunks, stitching with natural pauses, loudness to target, listening QA, and a record of the voice's licence. Use whenever Korean text is going to be read aloud by a TTS or AI voice - store or in-app announcements, narration, guides, ads, dubbing - including a quick question about whether a sentence with times, dates, floors, prices or months can go into TTS as written. Not for cloning a real person's voice.
 metadata:
   tier: open
   level: L3

@@ -2,7 +2,7 @@
 
 ## What it does
 
-Growth and community work: store listings written for the people searching that store, and Discord servers run with structure, onboarding, moderation and FAQ upkeep that does not go stale.
+Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, and newsletters readers open and finish.
 
 ## Runtime support
 
@@ -37,6 +37,7 @@ codex plugin add growth-community@modootoday
 | --- | --- | --- |
 | skill | `discord-community-ops` | a Discord server shaped by what members come to do, with FAQ posts that stay true and a written moderation ladder |
 | skill | `store-listing-optimization` | store listings that state the user's outcome plainly, with the search phrase once and no unprovable claims |
+| skill | `newsletter-editorial` | newsletter issues with one reason, a subject and preview that state it, short sections and a pre-send check |
 
 ## Failure mode
 
@@ -68,6 +69,7 @@ passed every grader, without the plugin and with it:
 | `listing-rewrite` | store-listing-optimization | 0.50 | 0.50 | 2 |
 | `messy-server` | discord-community-ops | 0.00 | 1.00 | 2 |
 | `utm-question-negative` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
+| `plan-issue` | newsletter-editorial | 0.00 | 1.00 | 2 |
 
 store-listing-optimization shows no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 
