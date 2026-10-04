@@ -108,6 +108,26 @@ test("declared locales match the reference files present", () => {
   assert.ok(findings("open", BASE, { localeFiles: ["ko"] }).some((m) => m.startsWith("metadata.locales")));
 });
 
+test("internal skills may be described in any language, never install by default, and name any tier", () => {
+  const f = skillFindings({
+    tier: "internal",
+    dirName: "demo",
+    front: parseFrontmatter(
+      "---\nname: demo\ndescription: Procédure à suivre quand on modifie une règle de marque, numéro et justification compris.\nmetadata:\n  tier: internal\n  level: L4\n  domain: brand-sot\n  install: catalog-only\n---\n",
+    ),
+    body: "",
+    hasScripts: false,
+    localeFiles: [],
+  });
+  assert.deepEqual(f, []);
+  assert.ok(findings("internal", ["level: L2", "domain: x", "install: default"]).includes("metadata.install default is not allowed in the internal tier"));
+  const catalog = new Map([["paid-skill", "paid"], ["inner", "internal"]]);
+  assert.deepEqual(referenceFindings({ tier: "internal", name: "demo", front: front(["pair: [paid-skill]"]), body: "" }, catalog), []);
+  assert.deepEqual(referenceFindings({ tier: "open", name: "demo", front: front([]), body: "see inner" }, catalog), [
+    "body names inner, a internal skill, from the open tier",
+  ]);
+});
+
 test("references run down the tiers only, and a pair must resolve", () => {
   const catalog = new Map([
     ["open-skill", "open"],

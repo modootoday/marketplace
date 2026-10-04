@@ -21,7 +21,7 @@
       "type": "object",
       "required": ["tier", "level", "domain", "install"],
       "properties": {
-        "tier": { "enum": ["open", "free", "paid"] },
+        "tier": { "enum": ["open", "free", "paid", "internal"] },
         "level": {
           "enum": ["L1", "L2", "L3", "L4", "L5"],
           "description": "L1 one decision, L2 one artifact, L3 one artifact with checks, L4 a workflow across skills, L5 a judgement across workflows."
@@ -60,13 +60,20 @@
     }
   },
   "x-tier-rules": {
-    "levels": { "open": ["L1", "L2", "L3"], "free": ["L4", "L5"], "paid": ["L1", "L2", "L3", "L4", "L5"] },
+    "levels": {
+      "open": ["L1", "L2", "L3"],
+      "free": ["L4", "L5"],
+      "paid": ["L1", "L2", "L3", "L4", "L5"],
+      "internal": ["L1", "L2", "L3", "L4", "L5"]
+    },
     "keywordsAsciiOnly": ["open"],
-    "outputLicenseRequired": { "open": "asset-domains", "free": "asset-domains", "paid": "always" },
-    "approvalRequired": { "open": "with-scripts", "free": "with-scripts", "paid": "always" },
-    "pairMayName": { "open": [], "free": ["open"], "paid": ["open", "free"] },
-    "serverTools": { "open": "forbidden", "free": "forbidden", "paid": "required" },
-    "installDefault": { "open": 5, "free": 0, "paid": 0 },
-    "rank": { "open": 0, "free": 1, "paid": 2 }
+    "descriptionAsciiOnly": ["open", "free", "paid"],
+    "descriptionTriggerRequired": ["open", "free", "paid"],
+    "outputLicenseRequired": { "open": "asset-domains", "free": "asset-domains", "paid": "always", "internal": "never" },
+    "approvalRequired": { "open": "with-scripts", "free": "with-scripts", "paid": "always", "internal": "with-scripts" },
+    "pairMayName": { "open": [], "free": ["open"], "paid": ["open", "free"], "internal": ["open", "free", "paid", "internal"] },
+    "serverTools": { "open": "forbidden", "free": "forbidden", "paid": "required", "internal": "forbidden" },
+    "installDefault": { "open": 5, "free": 0, "paid": 0, "internal": 0 },
+    "rank": { "open": 0, "free": 1, "paid": 2, "internal": 3 }
   }
 }

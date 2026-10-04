@@ -8,9 +8,9 @@
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 
-import { installDefaultFindings, parseFrontmatter, referenceFindings, skillFindings } from "./skill-rules.mjs";
+import { SCHEMA, installDefaultFindings, parseFrontmatter, referenceFindings, skillFindings } from "./skill-rules.mjs";
 
-const TIERS = new Set(["open", "free", "paid"]);
+const TIERS = new Set(SCHEMA.properties.metadata.properties.tier.enum);
 const ALLOW_MARK = "leak-allow";
 const TEXT_EXT = /\.(md|mdx|txt|json|jsonc|ya?ml|toml|mjs|cjs|js|ts|sh|py)$/u;
 

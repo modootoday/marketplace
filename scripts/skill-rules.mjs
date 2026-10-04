@@ -78,8 +78,11 @@ export function skillFindings({ tier, dirName, front, body, hasScripts, localeFi
   if (front.name !== dirName) add(`name must equal the directory name ${dirName}`);
   const description = typeof front.description === "string" ? front.description : "";
   if (description.length < 40) add("description missing or shorter than 40 characters");
-  if (/[^\x20-\x7E]/u.test(description)) add("description must be plain English ASCII");
-  if (!/\bUse (?:when|whenever|before|after|for)\b/u.test(description)) {
+  if (RULES.descriptionAsciiOnly.includes(tier) && /[^\x20-\x7E]/u.test(description)) {
+    add("description must be plain English ASCII");
+  }
+  const needsTrigger = RULES.descriptionTriggerRequired.includes(tier);
+  if (needsTrigger && !/\bUse (?:when|whenever|before|after|for)\b/u.test(description)) {
     add('description should say when to use it ("Use when ...")');
   }
   for (const line of front.unreadable) add(`frontmatter line not understood: ${line}`);
