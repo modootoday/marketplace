@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/modootoday/marketplace/schema/skill-metadata.v1.json",
+  "title": "SKILL.md frontmatter, version 1",
+  "description": "The frontmatter every skill in the open, free and paid marketplaces carries. scripts/check-skills.mjs enforces it together with the per-tier rules under x-tier-rules, which JSON Schema cannot express.",
+  "type": "object",
+  "required": ["name", "description", "metadata"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Equals the skill's directory name."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 40,
+      "pattern": "^[\\x20-\\x7E]+$",
+      "description": "Plain English ASCII that says when to use the skill (Use when, whenever, before, after or for)."
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["tier", "level", "domain", "install"],
+      "properties": {
+        "tier": { "enum": ["open", "free", "paid"] },
+        "level": {
+          "enum": ["L1", "L2", "L3", "L4", "L5"],
+          "description": "L1 one decision, L2 one artifact, L3 one artifact with checks, L4 a workflow across skills, L5 a judgement across workflows."
+        },
+        "domain": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "install": { "enum": ["default", "optional", "catalog-only"] },
+        "keywords": { "type": "array", "items": { "type": "string" } },
+        "locales": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z]{2}$" },
+          "description": "Languages of references/*.<locale>.md beyond English."
+        },
+        "requires": {
+          "type": "object",
+          "properties": {
+            "mcp": { "type": "array", "items": { "type": "string" } },
+            "bin": { "type": "array", "items": { "type": "string" } },
+            "env": { "type": "array", "items": { "type": "string" } },
+            "gpu-gb": { "type": "string" },
+            "capabilities": { "type": "array", "items": { "type": "string" } }
+          },
+          "additionalProperties": false
+        },
+        "provides": { "type": "array", "items": { "type": "string" } },
+        "output-license": { "type": "string" },
+        "approval": { "enum": ["none", "scripts", "hooks"] },
+        "pair": { "type": "array", "items": { "type": "string" } },
+        "server-tools": {
+          "type": "array",
+          "items": {
+            "enum": ["job_estimate", "job_submit", "job_status", "job_result", "job_cancel"]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-tier-rules": {
+    "levels": { "open": ["L1", "L2", "L3"], "free": ["L4", "L5"], "paid": ["L1", "L2", "L3", "L4", "L5"] },
+    "keywordsAsciiOnly": ["open"],
+    "outputLicenseRequired": { "open": "asset-domains", "free": "asset-domains", "paid": "always" },
+    "approvalRequired": { "open": "with-scripts", "free": "with-scripts", "paid": "always" },
+    "pairMayName": { "open": [], "free": ["open"], "paid": ["open", "free"] },
+    "serverTools": { "open": "forbidden", "free": "forbidden", "paid": "required" },
+    "installDefault": { "open": 5, "free": 0, "paid": 0 },
+    "rank": { "open": 0, "free": 1, "paid": 2 }
+  }
+}

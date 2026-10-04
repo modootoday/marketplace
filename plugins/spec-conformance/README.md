@@ -275,6 +275,21 @@ written while its backend phase never happened. Two persist plans were reversed
 two days later by a successor whose title calls the earlier decision a
 misjudgement.
 
+The plugin ships an eval suite (`claude plugin eval plugins/spec-conformance --no-publish`). Measured
+20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
+passed every grader, without the plugin and with it:
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `layout-domain-in-id` | spec-layout | 0.0 | 1.0 | 2 |
+| `normalize-overlong-doc` | document-normalization | 0.67 | 1.0 | 3 |
+| `normalize-status-vocab` | document-normalization | 1.0 | 1.0 | 2 |
+| `pile-recency-not-currency` | pile-migration | 0.5 | 1.0 | 2 |
+| `pile-register-wins` | pile-migration | 1.0 | 1.0 | 2 |
+| `typo-fix-not-conformance` | negative: the skill must not fire | 1.0 | 1.0 | 2 |
+
+A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
+
 ## Security
 
 It copies document bodies verbatim into a second location. Whatever a document

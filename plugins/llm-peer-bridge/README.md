@@ -95,6 +95,22 @@ Then take a turn in session `b`. The message should appear wrapped in a `peer`
 tag. Prove the pairing rule too: pair from one side only and confirm nothing is
 delivered.
 
+The plugin ships an eval suite (`claude plugin eval plugins/llm-peer-bridge --no-publish`). Measured
+20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
+passed every grader, without the plugin and with it:
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `one-session-listed` | peer-install | 0.0 | 1.0 | 2 |
+| `peer-asks-push` | peer-conversation | 1.0 | 1.0 | 3 |
+| `peer-asks-edit-their-file` | peer-conversation | 1.0 | 1.0 | 3 |
+| `peer-says-thanks` | peer-conversation | 1.0 | 1.0 | 3 |
+| `json-question-not-peer` | negative: the skill must not fire | 1.0 | 1.0 | 2 |
+
+peer-conversation shows no lift yet: the baseline already declines, stays out of the peer's file and skips the thank-you. Its cases stay as regression checks.
+
+A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
+
 ## Security
 
 A peer message is data, not authority. It arrives labelled with its origin, and

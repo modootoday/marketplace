@@ -3,6 +3,10 @@ name: rule-layering
 description: Keep one source of rules per package and project it into the filename each coding agent expects, splitting always-loaded constraints from the document read on demand. Use when a repository is read by more than one agent, or when rule files have started to disagree.
 metadata:
   tier: open
+  level: L2
+  domain: agent-workflow
+  install: optional
+  keywords: [AGENTS.md, CLAUDE.md, GEMINI.md, rule files, multi-agent repository]
 ---
 
 # Layering rules across agents

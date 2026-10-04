@@ -3,6 +3,10 @@ name: rule-enforcement
 description: Judge whether a written agent rule will actually hold, and decide whether to enforce it, keep it as guidance, or delete it. Use when adding a rule to an agent instruction file, or when the same mistake keeps recurring despite being documented.
 metadata:
   tier: open
+  level: L1
+  domain: agent-workflow
+  install: optional
+  keywords: [rule enforcement, hook or guidance, recurring mistake, instruction file]
 ---
 
 # Written is not enforced

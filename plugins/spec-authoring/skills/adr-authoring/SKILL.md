@@ -1,8 +1,12 @@
 ---
 name: adr-authoring
-description: Record an architectural decision so a later reader can tell whether it still applies, including what was rejected and what would reverse it. Use when a choice closes off alternatives or is expensive to undo.
+description: Write an architecture decision record (ADR) so a later reader can tell whether it still applies, including what was rejected and what would reverse it. Use when the user asks for an ADR or a decision record, or when a choice closes off alternatives or is expensive to undo. Not for plans still under discussion.
 metadata:
   tier: open
+  level: L2
+  domain: spec-writing
+  install: optional
+  keywords: [ADR, architecture decision record, decision log]
 ---
 
 # Recording a decision

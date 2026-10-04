@@ -80,6 +80,18 @@ matters: a hook that fires on everything gets turned off.
 Whether a cap helps on your machine is a separate question the skill tells you
 how to answer. Do not take a number from this README as your own.
 
+The plugin ships an eval suite (`claude plugin eval plugins/build-concurrency-guard --no-publish`). Measured
+20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
+passed every grader, without the plugin and with it:
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `slow-with-concurrency-one` | concurrency-policy | 0.0 | 1.0 | 2 |
+| `copy-laptop-setting` | concurrency-policy | 0.0 | 1.0 | 2 |
+| `single-test-not-concurrency` | negative: the skill must not fire | 1.0 | 1.0 | 2 |
+
+A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
+
 ## Security
 
 The capability worth thinking about is `apply`, which rewrites a command before

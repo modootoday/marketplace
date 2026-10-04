@@ -123,6 +123,19 @@ The skills themselves are judged by use, not by a test: apply `sot-authoring` to
 a rule you already hold and see whether you can write its check command. If you
 cannot, the rule was not an invariant.
 
+The plugin ships an eval suite (`claude plugin eval plugins/spec-authoring --no-publish`). Measured
+20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
+passed every grader, without the plugin and with it:
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `adr-store-choice` | adr-authoring | 0.5 | 1.0 | 2 |
+| `plan-cache-migration` | plan-authoring | 0.0 | 0.5 | 2 |
+| `sot-no-default-exports` | sot-authoring | 0.0 | 1.0 | 2 |
+| `commit-message-not-spec` | negative: the skill must not fire | 1.0 | 1.0 | 2 |
+
+A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
+
 ## Security
 
 The skills are text the model reads: they run nothing and open no connection.

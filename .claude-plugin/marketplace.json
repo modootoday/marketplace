@@ -12,7 +12,7 @@
     {
       "name": "hook-contract-matrix",
       "description": "Measure which lifecycle hook events actually fire in each agent runtime, and prove context injection and stop-blocking really reach the model.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "modootoday"
       },
@@ -30,7 +30,7 @@
     {
       "name": "spec-authoring",
       "description": "Write plans, source-of-truth documents and decision records that can be proven stale, superseded without deletion, and told apart from one another.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -39,7 +39,7 @@
     {
       "name": "agent-rule-projection",
       "description": "Keep one rule source per package and project it into the filename each coding agent expects, with a lint for rule documents that have started holding something else.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "modootoday"
       },
@@ -48,7 +48,7 @@
     {
       "name": "build-concurrency-guard",
       "description": "Cap the concurrency of build and test commands an agent starts, advising by default and rewriting only when asked.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "modootoday"
       },
@@ -57,7 +57,7 @@
     {
       "name": "llm-peer-bridge",
       "description": "Let two already-running coding-agent sessions talk to each other at turn boundaries, with no daemon and no proxy, over a mailbox both sides agreed to open.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -75,7 +75,7 @@
     {
       "name": "worktree-awareness",
       "description": "Tell a session which checkout it is standing in, and whether other working trees or another session's uncommitted files are present.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -93,7 +93,7 @@
     {
       "name": "agent-prompt-discipline",
       "description": "Decide what belongs in the system prompt of a tool-using agent and what to leave out, with the symptom each omission produces.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "modootoday"
       },
@@ -102,7 +102,7 @@
     {
       "name": "rule-enforcement-audit",
       "description": "Report which of a project's written agent rules are actually enforced by a hook and which hold only while someone remembers them.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "modootoday"
       },
@@ -111,7 +111,7 @@
     {
       "name": "spec-conformance",
       "description": "Make an existing pile of design documents navigable: check their schema, naming and placement, group the ones sharing a subject, draw the graph they form, and guide review of stale ones.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "modootoday"
       },

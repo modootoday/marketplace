@@ -91,6 +91,18 @@ forgot you had, which is itself the finding.
 Measured on the repository this plugin was written in: 1,415 rule-shaped
 statements against 7 enforcement points.
 
+The plugin ships an eval suite (`claude plugin eval plugins/rule-enforcement-audit --no-publish`). Measured
+20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
+passed every grader, without the plugin and with it:
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `third-bold-reminder` | rule-enforcement | 0.0 | 1.0 | 2 |
+| `unenforceable-style-rule` | rule-enforcement | 0.0 | 1.0 | 2 |
+| `regex-help-not-rules` | negative: the skill must not fire | 1.0 | 1.0 | 2 |
+
+A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
+
 ## Security
 
 Its output is a map of where your project is unguarded. That is exactly what it

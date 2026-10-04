@@ -3,6 +3,10 @@ name: document-normalization
 description: Bring an existing pile of design documents into a schema without losing content or inventing values. Use when backfilling frontmatter, normalising status vocabularies, splitting an over-long document, or reviewing a stale one.
 metadata:
   tier: open
+  level: L3
+  domain: spec-writing
+  install: optional
+  keywords: [frontmatter backfill, status vocabulary, document cleanup]
 ---
 
 # Normalising documents that already exist

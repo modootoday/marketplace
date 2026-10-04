@@ -92,6 +92,18 @@ node scripts/project.mjs . --write    # apply
 Prove it can fail: delete one projection and run the lint again; it must report
 `missing`. Then run the writer twice and confirm the second run plans nothing.
 
+The plugin ships an eval suite (`claude plugin eval plugins/agent-rule-projection --no-publish`). Measured
+20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
+passed every grader, without the plugin and with it:
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `three-drifting-rule-files` | rule-layering | 0.5 | 1.0 | 2 |
+| `edited-copy-projection` | rule-layering | 1.0 | 1.0 | 2 |
+| `gitignore-not-rules` | negative: the skill must not fire | 1.0 | 1.0 | 2 |
+
+A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
+
 ## Security
 
 A projection is a symbolic link, and a symbolic link is a redirect. Whoever can

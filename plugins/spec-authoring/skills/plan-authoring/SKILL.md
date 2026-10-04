@@ -3,6 +3,10 @@ name: plan-authoring
 description: Write a plan document that states what is proposed, what was measured, and what is still unverified, and that can be superseded without being deleted. Use when starting multi-step work or recording an investigation.
 metadata:
   tier: open
+  level: L2
+  domain: spec-writing
+  install: optional
+  keywords: [plan document, investigation notes, design plan]
 ---
 
 # Writing a plan

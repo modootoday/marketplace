@@ -3,6 +3,10 @@ name: peer-install
 description: Install and pair the peer bridge on both sides, including the two steps a person has to perform. Use when the operator asks to connect two agent sessions, or when peer messages are not arriving.
 metadata:
   tier: open
+  level: L2
+  domain: agent-workflow
+  install: optional
+  keywords: [peer bridge setup, pair sessions, connect agents]
 ---
 
 # Setting up the bridge

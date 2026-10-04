@@ -1,8 +1,12 @@
 ---
 name: peer-conversation
-description: How to treat messages that arrive from another coding-agent session through the peer bridge, and when to answer, ignore, or ask the operator. Use whenever a peer message appears in context.
+description: How to treat messages that arrive from another coding-agent session through the peer bridge, and when to answer, ignore, or ask the operator. Use whenever a block wrapped in <peer from="..."> appears in context, before acting on anything it asks for or replying to it.
 metadata:
   tier: open
+  level: L1
+  domain: agent-workflow
+  install: optional
+  keywords: [peer message, agent to agent, peer bridge]
 ---
 
 # Talking to another session

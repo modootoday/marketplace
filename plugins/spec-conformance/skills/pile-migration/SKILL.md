@@ -3,6 +3,10 @@ name: pile-migration
 description: Work through a dossier of existing documents and decide each one's status, relationships and placement by reading it. Use when normalising an accumulated document set into a schema.
 metadata:
   tier: open
+  level: L3
+  domain: spec-writing
+  install: optional
+  keywords: [document migration, dossier, document triage]
 ---
 
 # Migrating a pile you did not write

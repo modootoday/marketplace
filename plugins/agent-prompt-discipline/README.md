@@ -67,6 +67,18 @@ Then use it on a prompt you already have: for each line, name the symptom that
 appears without it. Lines with no symptom are the ones to delete, and that
 exercise is the whole point.
 
+The plugin ships an eval suite (`claude plugin eval plugins/agent-prompt-discipline --no-publish`). Measured
+20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
+passed every grader, without the plugin and with it:
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `review-invoice-agent-prompt` | prompt-discipline | 0.0 | 1.0 | 2 |
+| `signature-in-prompt` | prompt-discipline | 0.5 | 1.0 | 2 |
+| `sql-question-not-prompt` | negative: the skill must not fire | 1.0 | 1.0 | 2 |
+
+A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
+
 ## Security
 
 It is a skill: text the model reads. It runs nothing, reads no file and opens no

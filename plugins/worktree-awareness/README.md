@@ -68,6 +68,18 @@ In a clean single-worktree repository it prints nothing, which is correct: a
 notice that appears every prompt regardless of state is noise, and noise gets
 turned off. Create a second worktree, or leave a file modified, and it speaks.
 
+The plugin ships an eval suite (`claude plugin eval plugins/worktree-awareness --no-publish`). Measured
+20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
+passed every grader, without the plugin and with it:
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `gate-fails-on-theirs` | shared-checkout | 0.0 | 1.0 | 3 |
+| `commit-amid-others` | shared-checkout | 1.0 | 1.0 | 2 |
+| `solo-undo-not-shared` | negative: the skill must not fire | 1.0 | 1.0 | 2 |
+
+A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
+
 ## Security
 
 It reads git state and writes nothing, but reading is the thing to understand: it

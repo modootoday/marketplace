@@ -3,6 +3,10 @@ name: shared-checkout
 description: Work safely in a repository other agent sessions are also working in, including how to commit without capturing someone else's changes. Use when other working trees exist, when the tree is already dirty, or when a gate fails on files you did not touch.
 metadata:
   tier: open
+  level: L1
+  domain: git-workflow
+  install: optional
+  keywords: [shared checkout, dirty tree, worktree, concurrent sessions]
 ---
 
 # Working where someone else is working
@@ -52,6 +56,11 @@ Do not fix it and do not work around it. Say which files are involved and whose
 change they came from, and either wait or ask. Repairing another session's
 half-state usually means committing it, which puts their unfinished work under
 your name.
+
+Skipping the gate (a no-verify flag, an environment switch that disables hooks)
+is a workaround too: it lands your commit past a check the tree is failing, and
+the next session inherits a red tree with no record of why. Do not offer it as an
+option; if the operator wants it, they will say so.
 
 The exception is a purely generated artifact that is missing: regenerating it is
 safe and additive, but it still belongs in their commit, not yours.

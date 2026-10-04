@@ -117,6 +117,18 @@ and run it again: that row must turn to `NO`. For blocking, unset the deny
 token so nothing is refused, and `refused command ran anyway` must turn to
 `yes`. A checker that never reports a failure has not been shown to work.
 
+The plugin ships an eval suite (`claude plugin eval plugins/hook-contract-matrix --no-publish`). Measured
+20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
+passed every grader, without the plugin and with it:
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `context-never-seen` | hook-compat | 0.67 | 1.0 | 3 |
+| `silent-in-ci` | hook-compat | 1.0 | 1.0 | 2 |
+| `rename-loop-not-hooks` | negative: the skill must not fire | 1.0 | 1.0 | 2 |
+
+A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
+
 ## Measured contract
 
 The most recent run is committed under `results/`, so you can read the answer

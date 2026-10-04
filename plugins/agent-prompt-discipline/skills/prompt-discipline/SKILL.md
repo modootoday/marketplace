@@ -3,6 +3,10 @@ name: prompt-discipline
 description: Decide what belongs in the system prompt of an agent that calls tools, and what to leave out, with the symptom each omission produces. Use when writing or reviewing a tool-using agent's instructions, or when an agent misuses its own tools.
 metadata:
   tier: open
+  level: L1
+  domain: agent-workflow
+  install: optional
+  keywords: [system prompt, agent instructions, tool use, prompt review]
 ---
 
 # Writing the prompt for a tool-using agent

@@ -80,6 +80,12 @@ plugin that seems to do nothing in a script has probably never been trusted.
 - Plugin scripts are plain Node with no dependencies and no build step.
 - Every plugin README states its failure direction: whether it blocks when it
   cannot decide, or gets out of the way.
+- Every skill's frontmatter follows `schema/skill-metadata.v1.json`: tier, level,
+  domain and install are required, and the per-tier rules sit in the same file.
+  `node scripts/check-skills.mjs . --catalog <other tier>...` enforces it, and
+  `node --test scripts/skill-rules.test.mjs` covers each rule with a failing case.
+- A plugin with skills ships `evals/` cases for `claude plugin eval`, and its
+  README reports the measured scores with and without the plugin.
 
 ## License
 
