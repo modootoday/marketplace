@@ -5,7 +5,7 @@
       "command": "npx",
       "args": [
         "-y",
-        "@modootoday/pmcp@^0.2.0",
+        "@modootoday/pmcp@^0.3.0",
         "serve",
         "--marketplace",
         "${CLAUDE_PLUGIN_ROOT}/../../../../marketplaces/modootoday"

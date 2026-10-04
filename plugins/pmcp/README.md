@@ -66,7 +66,7 @@ Without a plugin, any MCP host takes the server as configuration:
 
 | Kind       | Name   | Detail                                        |
 | ---------- | ------ | --------------------------------------------- |
-| MCP server | `pmcp` | `npx -y @modootoday/pmcp@^0.2.0 serve --marketplace <this marketplace>`, stdio, five tools |
+| MCP server | `pmcp` | `npx -y @modootoday/pmcp@^0.3.0 serve --marketplace <this marketplace>`, stdio, five tools |
 | Skill      | `skill-catalog-navigator` | search, check, load, in that order |
 
 Two manifests, one skill, and no code. The server is the `@modootoday/pmcp` package on npm, and
