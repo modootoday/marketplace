@@ -1,0 +1,9 @@
+{
+  "name": "operations-cs",
+  "version": "0.1.0",
+  "description": "Customer operations: Korean support tickets triaged with incidents spotted across them, and status updates that say what is affected, what to do and when the next update comes.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

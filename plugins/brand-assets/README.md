@@ -73,6 +73,8 @@ passed every grader, without the plugin and with it:
 
 brand-token-kit and asset-qa-review show no lift yet: the baseline passed their cases. Their cases stay as regression checks.
 
+Re-run 20261004 with smaller models answering (`--model`), mean score without and with the plugin over the same cases, 2 runs per arm: brand-token-kit and asset-qa-review: Haiku 0.00 to 0.00, Sonnet 1.00 to 1.00. Haiku fails these cases with or without the skill, so the skills do not yet carry a smaller model through them.
+
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
 

@@ -1,7 +1,7 @@
 {
   "name": "monetization",
-  "version": "0.1.0",
-  "description": "Payments that do not lose or double money: a Toss Payments integration checked against the official docs, and refunds and disputes handled by looking up the state before acting once.",
+  "version": "0.2.0",
+  "description": "Payments and prices that hold up: a Toss Payments integration checked against the official docs, refunds and disputes handled by looking up the state before acting once, and prices framed as hypotheses with a test.",
   "author": {
     "name": "modootoday"
   },

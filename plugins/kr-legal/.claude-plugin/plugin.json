@@ -1,7 +1,7 @@
 {
   "name": "kr-legal",
-  "version": "0.1.0",
-  "description": "Korean legal reviews that cite what the law says today: personal data handling under the Personal Information Protection Act, and the risk of crawling another service, with articles and decisions retrieved rather than remembered.",
+  "version": "0.2.0",
+  "description": "Korean legal reviews that cite what the law says today: personal data, crawling, e-commerce and subscription rules, Chrome Web Store policy, AI content labelling, and terms and privacy policies drafted from how the service actually works.",
   "author": {
     "name": "modootoday"
   },

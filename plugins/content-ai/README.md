@@ -2,7 +2,7 @@
 
 ## What it does
 
-Korean content that reads well and gets found: product copy rewritten to the public Toss writing principles, and Naver blog posts planned for search without keyword stuffing.
+Korean content that reads well and stays true: product copy fixed to the Toss writing principles, Naver blog posts planned for search, persona tone measured with markers, and ghostwriting that never invents the author's facts.
 
 ## Runtime support
 
@@ -37,6 +37,8 @@ codex plugin add content-ai@modootoday
 | --- | --- | --- |
 | skill | `ux-writing-toss` | Korean product copy fixed to the public Toss writing principles, with the rule behind each change |
 | skill | `naver-blog-seo` | Naver blog posts planned and reviewed for search: one intent, a reader-first title and opening, first-hand detail, honest tags |
+| skill | `ghostwriting-editorial` | editing in the author's voice without inventing their facts; gaps become questions for the author |
+| skill | `persona-tone-eval` | a persona's tone turned into observable markers and scored on stressing prompts, apart from factual errors |
 
 ## Failure mode
 
@@ -72,6 +74,10 @@ passed every grader, without the plugin and with it:
 | `fix-mixed-register-copy` | ux-writing-toss | 0.00 | 1.00 | 2 |
 | `naver-title-stuffed` | naver-blog-seo | 1.00 | 1.00 | 2 |
 | `naver-two-topics` | naver-blog-seo | 0.00 | 1.00 | 2 |
+| `invent-anecdote` | ghostwriting-editorial | 1.00 | 1.00 | 2 |
+| `persona-sounds-off` | persona-tone-eval | 0.50 | 1.00 | 2 |
+
+ghostwriting-editorial shows no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

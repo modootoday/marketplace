@@ -1,7 +1,7 @@
 {
   "name": "social-carousel",
-  "version": "0.1.0",
-  "description": "Carousel posts from copy to files: slide-by-slide copy with a hook and one call to action, and slides rendered from HTML at platform sizes, checked and exported only after approval.",
+  "version": "0.2.0",
+  "description": "Carousel posts and card news from copy to files: slide-by-slide copy with a hook and one call to action, slides rendered from HTML at platform sizes, and Korean card news for Naver with the post text around it.",
   "author": {
     "name": "modootoday"
   },

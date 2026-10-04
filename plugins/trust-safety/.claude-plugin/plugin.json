@@ -1,0 +1,9 @@
+{
+  "name": "trust-safety",
+  "version": "0.1.0",
+  "description": "Abuse detection that can be trusted: signals ranked by how abusers actually work and how cheaply they could evade, and rules measured on labelled data, explained and appealable before they act on anyone.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

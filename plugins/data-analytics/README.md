@@ -2,7 +2,7 @@
 
 ## What it does
 
-ClickHouse SQL that reads the primary key, states its timezone, counts deduplicated rows correctly and takes values as typed parameters.
+Numbers that mean what they say: ClickHouse SQL that reads the key and deduplicates correctly, Naver trend data read as ratios rather than counts, and metrics defined once so two dashboards agree.
 
 ## Runtime support
 
@@ -36,6 +36,8 @@ codex plugin add data-analytics@modootoday
 | Kind | Name | Covers |
 | --- | --- | --- |
 | skill | `clickhouse-query-authoring` | ClickHouse SQL that filters on the key as stored, names its timezone, deduplicates correctly and binds parameters |
+| skill | `metric-definition` | metrics written as definitions (entity, event, window, timezone, exclusions, source) so two dashboards agree |
+| skill | `naver-trend-analysis` | Naver Data Lab and search ad data read correctly: ratios within one request, absolute volumes from the keyword tool |
 
 ## Failure mode
 
@@ -67,8 +69,14 @@ passed every grader, without the plugin and with it:
 | `daily-active-query-review` | clickhouse-query-authoring | 1.00 | 1.00 | 2 |
 | `postgres-index-not-clickhouse` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
 | `replacing-double-count` | clickhouse-query-authoring | 1.00 | 1.00 | 2 |
+| `trend-ratio-misread` | naver-trend-analysis | 1.00 | 1.00 | 2 |
+| `two-dashboards-dau` | metric-definition | 1.00 | 1.00 | 2 |
 
-No lift yet: the baseline model found the same issues in every case tried. The cases stay as regression checks.
+clickhouse-query-authoring shows no lift yet with the default model: the baseline found the same issues in every case tried. Its cases stay as regression checks.
+
+metric-definition, naver-trend-analysis show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
+
+Re-run 20261004 with smaller models answering (`--model`), mean score without and with the plugin over the same cases, 2 runs per arm: clickhouse-query-authoring: Haiku 0.67 to 1.00, Sonnet 1.00 to 1.00.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

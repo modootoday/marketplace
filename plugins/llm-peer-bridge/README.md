@@ -109,6 +109,8 @@ passed every grader, without the plugin and with it:
 
 peer-conversation shows no lift yet: the baseline already declines, stays out of the peer's file and skips the thank-you. Its cases stay as regression checks.
 
+Re-run 20261004 with smaller models answering (`--model`), mean score without and with the plugin over the same cases, 2 runs per arm: peer-conversation: Haiku 0.38 to 0.88, Sonnet 0.88 to 0.88.
+
 A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
 
 ## Security

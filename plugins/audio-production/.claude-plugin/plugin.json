@@ -1,7 +1,7 @@
 {
   "name": "audio-production",
-  "version": "0.1.0",
-  "description": "Spoken audio done properly: scripts written for the ear with spoken numbers and a pronunciation list, and voice tracks cleaned, ducked under music and normalised to a measured loudness target with ffmpeg.",
+  "version": "0.2.0",
+  "description": "Audio from brief to file: a brand's sonic directions, scripts written for the ear, Korean TTS with spoken numbers, mixing to a measured loudness, consistent sound effect sets, and the rights behind every voice.",
   "author": {
     "name": "modootoday"
   },

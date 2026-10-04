@@ -1,7 +1,7 @@
 {
   "name": "image-assets",
-  "version": "0.1.0",
-  "description": "Share images built from HTML templates and rendered by a headless browser, with Korean text that wraps, fonts that load before the screenshot, and the og tags that point at them.",
+  "version": "0.2.0",
+  "description": "Images that hold up at their real size: share images rendered from HTML with Korean text that wraps, consistent hand-written SVG icon sets, and batch post-processing that crops, compresses and strips location data.",
   "author": {
     "name": "modootoday"
   },

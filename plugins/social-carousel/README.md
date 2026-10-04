@@ -2,7 +2,7 @@
 
 ## What it does
 
-Carousel posts from copy to files: slide-by-slide copy with a hook and one call to action, and slides rendered from HTML at platform sizes, checked and exported only after approval.
+Carousel posts and card news from copy to files: slide-by-slide copy with a hook and one call to action, slides rendered from HTML at platform sizes, and Korean card news for Naver with the post text around it.
 
 ## Runtime support
 
@@ -37,6 +37,7 @@ codex plugin add social-carousel@modootoday
 | --- | --- | --- |
 | skill | `carousel-copy-structure` | slide-by-slide carousel copy: hook, problem, value, summary and one call to action |
 | skill | `carousel-render-export` | slides rendered from HTML at platform sizes, checked, and exported only after approval |
+| skill | `card-news-naver` | Korean card news for Naver: one message per card, line breaks that keep words whole, and the post text that search reads |
 
 ## Failure mode
 
@@ -70,6 +71,7 @@ passed every grader, without the plugin and with it:
 | `carousel-copy-beans` | carousel-copy-structure | 0.00 | 1.00 | 2 |
 | `render-export-direct` | carousel-render-export | 0.00 | 1.00 | 2 |
 | `tweet-not-carousel` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
+| `card-news-for-blog` | card-news-naver | 0.00 | 0.50 | 2 |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

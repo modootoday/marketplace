@@ -137,8 +137,8 @@
     },
     {
       "name": "content-ai",
-      "description": "Korean content that reads well and gets found: product copy rewritten to the public Toss writing principles, and Naver blog posts planned for search without keyword stuffing.",
-      "version": "0.1.0",
+      "description": "Korean content that reads well and stays true: product copy fixed to the Toss writing principles, Naver blog posts planned for search, persona tone measured with markers, and ghostwriting that never invents the author's facts.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -146,8 +146,8 @@
     },
     {
       "name": "monetization",
-      "description": "Payments that do not lose or double money: a Toss Payments integration checked against the official docs, and refunds and disputes handled by looking up the state before acting once.",
-      "version": "0.1.0",
+      "description": "Payments and prices that hold up: a Toss Payments integration checked against the official docs, refunds and disputes handled by looking up the state before acting once, and prices framed as hypotheses with a test.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -155,8 +155,8 @@
     },
     {
       "name": "kr-legal",
-      "description": "Korean legal reviews that cite what the law says today: personal data handling under the Personal Information Protection Act, and the risk of crawling another service, with articles and decisions retrieved rather than remembered.",
-      "version": "0.1.0",
+      "description": "Korean legal reviews that cite what the law says today: personal data, crawling, e-commerce and subscription rules, Chrome Web Store policy, AI content labelling, and terms and privacy policies drafted from how the service actually works.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -164,8 +164,8 @@
     },
     {
       "name": "data-analytics",
-      "description": "ClickHouse SQL that reads the primary key, states its timezone, counts deduplicated rows correctly and takes values as typed parameters.",
-      "version": "0.1.0",
+      "description": "Numbers that mean what they say: ClickHouse SQL that reads the key and deduplicates correctly, Naver trend data read as ratios rather than counts, and metrics defined once so two dashboards agree.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -182,8 +182,8 @@
     },
     {
       "name": "image-assets",
-      "description": "Share images built from HTML templates and rendered by a headless browser, with Korean text that wraps, fonts that load before the screenshot, and the og tags that point at them.",
-      "version": "0.1.0",
+      "description": "Images that hold up at their real size: share images rendered from HTML with Korean text that wraps, consistent hand-written SVG icon sets, and batch post-processing that crops, compresses and strips location data.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -191,8 +191,8 @@
     },
     {
       "name": "social-carousel",
-      "description": "Carousel posts from copy to files: slide-by-slide copy with a hook and one call to action, and slides rendered from HTML at platform sizes, checked and exported only after approval.",
-      "version": "0.1.0",
+      "description": "Carousel posts and card news from copy to files: slide-by-slide copy with a hook and one call to action, slides rendered from HTML at platform sizes, and Korean card news for Naver with the post text around it.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -200,8 +200,8 @@
     },
     {
       "name": "presentation",
-      "description": "Decks that argue something: a storyline built from the answer down, with one full-sentence claim per slide so the titles alone tell the story.",
-      "version": "0.1.0",
+      "description": "Decks that argue something and survive review: a storyline built from the answer down, pptx files filled from the template's own layouts with native charts, and a QA pass for numbers, charts and dates that disagree.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -209,8 +209,8 @@
     },
     {
       "name": "audio-production",
-      "description": "Spoken audio done properly: scripts written for the ear with spoken numbers and a pronunciation list, and voice tracks cleaned, ducked under music and normalised to a measured loudness target with ffmpeg.",
-      "version": "0.1.0",
+      "description": "Audio from brief to file: a brand's sonic directions, scripts written for the ear, Korean TTS with spoken numbers, mixing to a measured loudness, consistent sound effect sets, and the rights behind every voice.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -224,6 +224,51 @@
         "name": "modootoday"
       },
       "source": "./plugins/skill-factory"
+    },
+    {
+      "name": "trust-safety",
+      "description": "Abuse detection that can be trusted: signals ranked by how abusers actually work and how cheaply they could evade, and rules measured on labelled data, explained and appealable before they act on anyone.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/trust-safety"
+    },
+    {
+      "name": "growth-community",
+      "description": "Growth and community work: store listings written for the people searching that store, and Discord servers run with structure, onboarding, moderation and FAQ upkeep that does not go stale.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/growth-community"
+    },
+    {
+      "name": "platform-review",
+      "description": "Reviews of platform pieces that fail in production for configuration reasons: Cloudflare Worker bindings, Manifest V3 extension lifecycles, MCP tool design and Postgres migration locks.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/platform-review"
+    },
+    {
+      "name": "operations-cs",
+      "description": "Customer operations: Korean support tickets triaged with incidents spotted across them, and status updates that say what is affected, what to do and when the next update comes.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/operations-cs"
+    },
+    {
+      "name": "video-production",
+      "description": "Video work that can be executed and verified: briefs and storyboards someone else can produce from, Remotion explainers rendered from frame math, and talking-head edits with ffmpeg that keep a list of every cut.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/video-production"
     }
   ]
 }

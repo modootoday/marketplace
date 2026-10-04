@@ -2,7 +2,7 @@
 
 ## What it does
 
-Decks that argue something: a storyline built from the answer down, with one full-sentence claim per slide so the titles alone tell the story.
+Decks that argue something and survive review: a storyline built from the answer down, pptx files filled from the template's own layouts with native charts, and a QA pass for numbers, charts and dates that disagree.
 
 ## Runtime support
 
@@ -13,7 +13,7 @@ Decks that argue something: a storyline built from the answer down, with one ful
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
-Requirements: None.
+Requirements: Python 3 with python-pptx, and LibreOffice to render slides for checking, for pptx-template-build. The other skills need nothing.
 
 ## Install
 
@@ -36,6 +36,8 @@ codex plugin add presentation@modootoday
 | Kind | Name | Covers |
 | --- | --- | --- |
 | skill | `deck-storyline` | a deck storyline from the governing answer down, one full-sentence claim per slide, gaps marked |
+| skill | `deck-qa-review` | a deck checked for numbers that disagree, charts that do not match their data, wrong weekdays and unsourced claims |
+| skill | `pptx-template-build` | pptx files built from the template's layouts and placeholders, with native charts and overflow checked by rendering |
 
 ## Failure mode
 
@@ -67,6 +69,10 @@ passed every grader, without the plugin and with it:
 | `table-markdown-not-deck` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
 | `topic-titles-pitch` | deck-storyline | 0.00 | 0.33 | 3 |
 | `undecided-expansion-deck` | deck-storyline | 0.50 | 1.00 | 2 |
+| `generate-from-template` | pptx-template-build | 0.00 | 1.00 | 2 |
+| `inconsistent-numbers` | deck-qa-review | 1.00 | 1.00 | 2 |
+
+deck-qa-review shows no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

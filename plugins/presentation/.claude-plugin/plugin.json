@@ -1,7 +1,7 @@
 {
   "name": "presentation",
-  "version": "0.1.0",
-  "description": "Decks that argue something: a storyline built from the answer down, with one full-sentence claim per slide so the titles alone tell the story.",
+  "version": "0.2.0",
+  "description": "Decks that argue something and survive review: a storyline built from the answer down, pptx files filled from the template's own layouts with native charts, and a QA pass for numbers, charts and dates that disagree.",
   "author": {
     "name": "modootoday"
   },

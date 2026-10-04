@@ -2,7 +2,7 @@
 
 ## What it does
 
-Payments that do not lose or double money: a Toss Payments integration checked against the official docs, and refunds and disputes handled by looking up the state before acting once.
+Payments and prices that hold up: a Toss Payments integration checked against the official docs, refunds and disputes handled by looking up the state before acting once, and prices framed as hypotheses with a test.
 
 ## Runtime support
 
@@ -37,6 +37,7 @@ codex plugin add monetization@modootoday
 | --- | --- | --- |
 | skill | `toss-payments-integration` | Toss Payments confirm, webhook, virtual account, cancel and billing code reviewed against the official docs |
 | skill | `refund-dispute-ops` | refunds, partial refunds and disputes handled by reading the state first, acting once with an idempotency key, and notifying once |
+| skill | `pricing-hypothesis` | a price framed as a testable hypothesis: buyer, unit, today's alternative, a prediction with a threshold, and the cheapest test |
 
 ## Failure mode
 
@@ -71,8 +72,11 @@ passed every grader, without the plugin and with it:
 | `review-confirm-handler` | toss-payments-integration | 0.50 | 1.00 | 2 |
 | `vat-math-not-payments` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
 | `virtual-account-shipped-early` | toss-payments-integration | 1.00 | 1.00 | 2 |
+| `price-feels-right` | pricing-hypothesis | 0.00 | 1.00 | 2 |
 
 refund-dispute-ops shows no lift yet: the baseline model already looked up the state and kept the idempotency key in every case tried. Its cases stay as regression checks.
+
+Re-run 20261004 with smaller models answering (`--model`), mean score without and with the plugin over the same cases, 2 runs per arm: refund-dispute-ops: Haiku 0.17 to 0.33, Sonnet 0.83 to 1.00. Two Haiku cases fail in both arms.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

@@ -1,0 +1,83 @@
+# platform-review
+
+## What it does
+
+Reviews of platform pieces that fail in production for configuration reasons: Cloudflare Worker bindings, Manifest V3 extension lifecycles, MCP tool design and Postgres migration locks.
+
+## Runtime support
+
+| Runtime | Supported | Measured on |
+| --- | --- | --- |
+| Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
+| Codex CLI | untested | - |
+| Grok CLI | untested | - |
+| Gemini CLI | untested | - |
+
+Requirements: None.
+
+## Install
+
+Claude Code:
+
+```
+claude plugin marketplace add modootoday/marketplace
+claude plugin install platform-review@modootoday
+```
+
+Codex CLI:
+
+```
+codex plugin marketplace add https://github.com/modootoday/marketplace
+codex plugin add platform-review@modootoday
+```
+
+## What it registers
+
+| Kind | Name | Covers |
+| --- | --- | --- |
+| skill | `cf-worker-binding-review` | wrangler config reviewed for environments that share production data, secrets in vars, and calls that should be bindings |
+| skill | `mcp-server-design` | MCP tools designed so a model can choose and call them: names, typed inputs, stable ids, destructive annotations |
+| skill | `mv3-extension-review` | Manifest V3 extensions reviewed for service worker lifetime, top-level listeners, alarms, storage and permissions |
+| skill | `pg-migration-safety` | Postgres migrations reviewed for locks on large tables: concurrent indexes, NOT VALID constraints, lock timeouts |
+
+## Failure mode
+
+None. This plugin registers no hooks and runs no commands of its own. It cannot block, slow
+or interrupt anything.
+
+## Configuration and how to disable
+
+No configuration. Disable it the way your runtime disables plugins.
+
+## Data written
+
+None by the plugin. A skill that produces files writes them only where the user asks.
+
+## Verify
+
+Ask for something the plugin covers:
+
+```
+Review this Postgres migration for a 50-million-row table: CREATE INDEX on orders(user_id).
+```
+
+The plugin ships an eval suite (`claude plugin eval plugins/platform-review --no-publish`). Measured
+20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
+passed every grader, without the plugin and with it:
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `http-status-201-negative` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
+| `index-and-not-null` | pg-migration-safety | 1.00 | 1.00 | 2 |
+| `preview-writes-prod` | cf-worker-binding-review | 1.00 | 1.00 | 2 |
+| `review-mcp-tools` | mcp-server-design | 1.00 | 1.00 | 2 |
+| `state-lost-after-idle` | mv3-extension-review | 1.00 | 1.00 | 2 |
+
+cf-worker-binding-review, mcp-server-design, mv3-extension-review, pg-migration-safety show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
+
+A case that already passes without the plugin stays in the suite to catch a regression, not as
+evidence that the skill helps.
+
+## License
+
+MIT
