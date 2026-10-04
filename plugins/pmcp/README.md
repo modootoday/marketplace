@@ -28,7 +28,16 @@ few hundred dependencies, nobody knows which ones did. This finds them.
 
 Any MCP host that runs a stdio server can use it. What was measured: `npx -y
 @modootoday/pmcp`, with no npm credentials, answered MCP `initialize` as `pmcp`
-0.1.4 (20260930).
+0.1.4 (20260930), and 0.2.0 listed this marketplace's skills from a Claude Code
+marketplace clone (20261004).
+
+Only the Claude Code manifest (`.mcp.json`) passes `--marketplace`. Claude Code
+copies an installed plugin to `plugins/cache/<marketplace>/<plugin>/<version>`
+and keeps the marketplace clone at `plugins/marketplaces/<marketplace>`, so the
+manifest points four levels up from the plugin root. If a later Claude Code moves
+either directory, the server logs `no .claude-plugin/marketplace.json here` on
+stderr and serves the `node_modules` skills only. The Gemini manifest still serves
+`node_modules` skills only.
 
 ## Install
 
@@ -57,7 +66,7 @@ Without a plugin, any MCP host takes the server as configuration:
 
 | Kind       | Name   | Detail                                        |
 | ---------- | ------ | --------------------------------------------- |
-| MCP server | `pmcp` | `npx -y @modootoday/pmcp`, stdio, five tools  |
+| MCP server | `pmcp` | `npx -y @modootoday/pmcp@^0.2.0 serve --marketplace <this marketplace>`, stdio, five tools |
 | Skill      | `skill-catalog-navigator` | search, check, load, in that order |
 
 Two manifests, one skill, and no code. The server is the `@modootoday/pmcp` package on npm, and
@@ -80,7 +89,8 @@ manifest's `args` if you need them.
 ## Data written
 
 None by this plugin. `npx` downloads `@modootoday/pmcp` into its cache on first run.
-The server reads `SKILL.md` files under `node_modules`; reading them needs no login.
+The server reads `SKILL.md` files under `node_modules` and in the marketplace clone
+your host already downloaded; reading them needs no login.
 
 ## Verify
 

@@ -3,7 +3,13 @@
     "pmcp": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@modootoday/pmcp"]
+      "args": [
+        "-y",
+        "@modootoday/pmcp@^0.2.0",
+        "serve",
+        "--marketplace",
+        "${CLAUDE_PLUGIN_ROOT}/../../../../marketplaces/modootoday"
+      ]
     }
   }
 }

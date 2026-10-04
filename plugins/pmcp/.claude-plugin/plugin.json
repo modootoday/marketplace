@@ -1,7 +1,7 @@
 {
   "name": "pmcp",
-  "version": "0.1.0",
-  "description": "Serve the skills your installed packages already ship: read SKILL.md out of node_modules by shape rather than by path, and answer with the one skill a question needs instead of the whole catalog.",
+  "version": "0.2.0",
+  "description": "Serve the skills your installed packages already ship, and the skills in this marketplace: read SKILL.md out of node_modules and plugin marketplaces, and answer with the one skill a question needs instead of the whole catalog.",
   "author": {
     "name": "modootoday"
   }
