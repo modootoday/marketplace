@@ -59,6 +59,8 @@ Gemini CLI: clone and
 | script | `scripts/derive.mjs`      | evidence for a migration: timeline, declared relations, implementation traces |
 | script | `scripts/apply.mjs`       | writes the normalised copy from decisions, refusing unevidenced ones |
 | skill  | `pile-migration`          | how to read a pile and decide, including judging whether work happened |
+| skill  | `spec-incremental-sync`   | recent commits read against the documents that govern them, edited in place with commits cited |
+| skill  | `plan-status-triage`      | plans judged applied, partial, obsolete or active from the tree, archived or promoted |
 
 ## Document kinds
 
@@ -287,6 +289,8 @@ passed every grader, without the plugin and with it:
 | `pile-recency-not-currency` | pile-migration | 0.5 | 1.0 | 2 |
 | `pile-register-wins` | pile-migration | 1.0 | 1.0 | 2 |
 | `typo-fix-not-conformance` | negative: the skill must not fire | 1.0 | 1.0 | 2 |
+| `plans-folder-triage` | plan-status-triage | 0.00 | 1.00 | 2 |
+| `week-of-commits-spec-sync` | spec-incremental-sync | 0.00 | 0.50 | 2 |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
 

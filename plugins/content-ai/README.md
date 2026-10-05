@@ -80,8 +80,8 @@ passed every grader, without the plugin and with it:
 | `invent-anecdote` | ghostwriting-editorial | 1.00 | 1.00 | 2 |
 | `persona-sounds-off` | persona-tone-eval | 0.00 | 1.00 | 2 |
 | `collagen-ad-claims` | ad-copy-review | 1.00 | 1.00 | 2 |
-| `two-client-rulebooks` | client-rulebook-copy-check | not measured | not measured | - |
-| `monthly-report-gaps` | client-template-drafting | not measured | not measured | - |
+| `two-client-rulebooks` | client-rulebook-copy-check | 1.00 | 1.00 | 2 |
+| `monthly-report-gaps` | client-template-drafting | 0.00 | 1.00 | 2 |
 
 ghostwriting-editorial and ad-copy-review show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 

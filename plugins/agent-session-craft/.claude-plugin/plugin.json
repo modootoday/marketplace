@@ -1,0 +1,9 @@
+{
+  "name": "agent-session-craft",
+  "version": "0.1.0",
+  "description": "Habits for long agent sessions: status briefings with proof, follow-up work run in chosen waves with standing rules kept, subagent fan-out from one brief, and one living document per workstream.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

@@ -16,6 +16,20 @@ Crawlers find a site eventually. Submission makes it days instead of weeks and t
 page fails. The work splits into a one-time ownership step and a repeatable submit step; only the
 second belongs in the publish pipeline.
 
+## 0. Inventory every public domain first
+
+Submitting the one site you were asked about leaves its siblings unindexed. Before
+any engine, list the hosts that actually serve the public:
+
+- Start from the DNS zones and the deploy configs (routes, custom domains), then
+  request each host and keep those that answer with real pages.
+- Leave out operational and auth hosts (admin, status internals, login, API,
+  webhooks) unless the owner wants them found; make sure those carry `noindex`.
+- Mark which domains you own and control DNS for. Ownership proof needs DNS or a
+  file on the host; a domain you do not control goes back to its owner.
+- Record the list with each host's sitemap URL and verification state, so the
+  next launch extends it instead of starting over.
+
 ## 1. Check the site is worth submitting
 
 Before any engine sees the URL, fetch each page the way a crawler would:
@@ -77,6 +91,12 @@ non-2xx so a broken submit does not pass as done.
 
 Engines without a submission API need a person once. Say which, and what to click: see
 `references/naver.ko.md` for Naver Search Advisor, the main gap for Korean sites.
+
+Naver Search Advisor registers each host separately (a subdomain is its own site) and
+proves ownership with an HTML file on the host or a `naver-site-verification` meta tag
+in the page head. Ship the meta tag or file with the site's build so a redeploy does
+not remove it, then have the person click verify and submit the sitemap. Do the
+inventory above first so every public host gets registered, not just the apex.
 
 ## 7. Report
 

@@ -78,7 +78,8 @@ passed every grader, without the plugin and with it:
 | `bakery-month-plan` | social-content-calendar | 0.00 | 0.50 | 2 |
 | `feature-launch-email` | launch-announcement-email | 0.00 | 1.00 | 2 |
 | `new-domain-indexing` | search-engine-submission | 1.00 | 1.00 | 2 |
-| `tumbler-option-sheet` | catalog-listing-with-options | not measured | not measured | - |
+| `tumbler-option-sheet` | catalog-listing-with-options | 0.00 | 1.00 | 2 |
+| `static-site-crawl-files` | static-site-crawl-files | 0.00 | 1.00 | 2 |
 
 store-listing-optimization and search-engine-submission show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. search-engine-submission fired in both runs with the plugin.
 

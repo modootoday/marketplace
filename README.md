@@ -70,6 +70,7 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `presentation`              | Deck storylines built from the answer down, one claim per slide               | no    |
 | `audio-production`          | Scripts written for the ear; speech mixed and normalised to a measured target | no    |
 | `skill-factory`             | Write agent skills evals first, with descriptions that trigger correctly      | no    |
+| `agent-session-craft`       | Status briefings, follow-up waves, subagent fan-out and living documents for long sessions | no    |
 
 ## Trust
 

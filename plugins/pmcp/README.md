@@ -116,11 +116,11 @@ grader, without the plugin and with it:
 | `arithmetic-negative` | negative: the catalog must not be searched | 1.00 | 1.00 | 2 |
 | `empty-search-no-invention` | skill-catalog-navigator | 0.67 | 1.00 | 2 |
 | `find-then-load` | skill-catalog-navigator | 0.00 | 1.00 | 2 |
-| `new-repo-three-agents` | pmcp-project-init | not measured | not measured | - |
-| `scattered-agent-files` | agent-assets-migrate | not measured | not measured | - |
-| `new-skill-folder` | skill-package-scaffold | not measured | not measured | - |
-| `headless-mcp-ci` | headless-agents-ci-scaffold | not measured | not measured | - |
-| `skills-folder-to-plugin` | marketplace-plugin-scaffold | not measured | not measured | - |
+| `new-repo-three-agents` | pmcp-project-init | 0.00 | 0.50 | 2 |
+| `scattered-agent-files` | agent-assets-migrate | 0.00 | 0.50 | 2 |
+| `new-skill-folder` | skill-package-scaffold | 0.00 | 0.50 | 2 |
+| `headless-mcp-ci` | headless-agents-ci-scaffold | 0.00 | 1.00 | 2 |
+| `skills-folder-to-plugin` | marketplace-plugin-scaffold | 0.00 | 1.00 | 2 |
 
 With the plugin, the model searched before loading, loaded the exact name the server
 returned, and on an empty search read the catalog instead of inventing a skill.

@@ -53,6 +53,11 @@ building the sheet.
 - Invent or round a price, surcharge or discount that no rule states.
 - Fill missing stock with a default.
 - Merge or drop an option value to fit a store limit without saying so.
+- Write the ordinary rule price for a combination whose exception price is missing, not even
+  as a note or a question; say only that the exception price is needed.
+- Quote store limits or their numbers from memory. If the company gave none, ask for them.
+- Split a stock figure given for a group (say colour and size) across the combinations in it;
+  show it once for the group and ask how it divides.
 
 ## Stop and hand to a person when
 

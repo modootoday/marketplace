@@ -127,6 +127,7 @@ passed every grader, without the plugin and with it:
 | `context-never-seen` | hook-compat | 0.67 | 1.0 | 3 |
 | `silent-in-ci` | hook-compat | 1.0 | 1.0 | 2 |
 | `rename-loop-not-hooks` | negative: the skill must not fire | 1.0 | 1.0 | 2 |
+| `mcp-client-probe` | mcp-client-probe | 0.00 | 0.50 | 2 |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
 

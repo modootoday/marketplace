@@ -89,7 +89,9 @@ last ten cases (Haiku for the first three):
 `prd-ko-reservation` already passed without it (1.0 and 1.0, 2 runs).
 
 `pilot-scope-sizing` (`size-one-workflow`) and `customer-discovery-kit`
-(`discovery-interview-kit`) were added 20261005 and are not measured yet.
+(`discovery-interview-kit`) were added 20261005 and measured the same day with Sonnet as
+judge, 2 runs per arm: both went from 0.0 without the plugin to 1.0 with it, and the skill
+fired in every run.
 
 A case that already passes without the plugin stays in the suite to catch a
 regression, not as evidence that the skill helps.

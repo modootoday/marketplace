@@ -35,6 +35,15 @@ caveat dropped. The exact text already exists in the session transcript; copy it
    difference other than the deliberate header change means the extraction is wrong; fix the
    extraction, not the file.
 
+## When you cannot run it
+
+If the session cannot read the transcript or write files, do not stop at a list of blockers.
+Write out the procedure you will run once access exists, as numbered steps naming the actual
+id: parse the JSONL, keep the string that holds the frontmatter id, cut from its opening `---`
+to the end, rely on the single JSON decode, save, diff. Then ask only for what is missing (the
+transcript path, a write tool, the plans directory or one existing plan file name). Never
+propose a file name of your own; the name comes from the existing files.
+
 ## Report
 
 The transcript file used, the saved path, and the diff result (for example "identical except

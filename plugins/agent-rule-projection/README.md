@@ -104,7 +104,9 @@ passed every grader, without the plugin and with it:
 | `three-drifting-rule-files` | rule-layering | 0.5 | 1.0 | 2 |
 | `edited-copy-projection` | rule-layering | 1.0 | 1.0 | 2 |
 | `gitignore-not-rules` | negative: the skill must not fire | 1.0 | 1.0 | 2 |
-| `monorepo-rules-layout` | monorepo-package-rules-scaffold | not measured | not measured | - |
+| `monorepo-rules-layout` | monorepo-package-rules-scaffold | 0.00 | 0.50 | 2 |
+| `agents-md-budget-trim` | agents-md-budget-trim | 0.00 | 0.50 | 2 |
+| `instruction-token-audit` | instruction-token-audit | 0.00 | 1.00 | 2 |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
 

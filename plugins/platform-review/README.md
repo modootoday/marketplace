@@ -42,6 +42,8 @@ codex plugin add platform-review@modootoday
 | skill | `cf-placeholder-404` | a retired Cloudflare redirect replaced by a 404 Worker on the free plan, routes attached before the redirect is deleted so no 522 gap opens |
 | skill | `static-site-migration-parity` | a static site moved to a new host or renderer with every URL form, status, media type and heading id compared against a live snapshot before DNS cutover |
 | skill | `csp-live-verification` | a Content-Security-Policy checked against the live page in a headless browser: wanted beacons allowed, injected inline snippets left blocked, own inline script hashed |
+| skill | `public-release-leak-audit` | the published artifact (tarball, sourcemap sourcesContent, READMEs, docs) censused for internal paths, hosts, identifiers, comments and auth or billing internals, plus license, commit identity and names, with the deny list kept private |
+| skill | `dead-code-keep-or-retire` | code reported unused checked for dynamic calls, external control and string references before removal, kept when valuable, retired with a record and a copy location |
 
 ## Failure mode
 
@@ -75,6 +77,11 @@ passed every grader, without the plugin and with it:
 | `preview-writes-prod` | cf-worker-binding-review | 1.00 | 1.00 | 2 |
 | `review-mcp-tools` | mcp-server-design | 1.00 | 1.00 | 2 |
 | `state-lost-after-idle` | mv3-extension-review | 1.00 | 1.00 | 2 |
+| `cf-placeholder-404` | cf-placeholder-404 | 0.00 | 1.00 | 2 |
+| `csp-live-verification` | csp-live-verification | 0.00 | 0.50 | 2 |
+| `static-site-migration-parity` | static-site-migration-parity | 0.00 | 1.00 | 2 |
+| `npm-package-goes-public` | public-release-leak-audit | 0.00 | 1.00 | 2 |
+| `unused-module-retire` | dead-code-keep-or-retire | 0.00 | 1.00 | 2 |
 
 cf-worker-binding-review, mcp-server-design, mv3-extension-review, pg-migration-safety show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 

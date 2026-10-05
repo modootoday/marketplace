@@ -44,6 +44,7 @@ conversation, do not use them.
    is used only with a placeholder asking for it.
 3. Draft section by section in template order. Where a fact is missing,
    insert a visible placeholder: `[MISSING: what is needed, who can supply it]`.
+   Table cells too: never "n/a", "not available" or a dash for a missing value.
    Never invent figures, quotes, customer names, dates or results.
 4. Apply the client rules to the wording.
 5. **Check** the draft:
@@ -62,6 +63,11 @@ conversation, do not use them.
 ## Output
 
 1. The draft, with placeholders in place.
-2. Unfilled placeholder list: section, what is needed, who can supply it.
-3. Decisions applied: decision, date, where it shaped the draft.
-4. Check results against the template's required sections.
+2. Decisions applied: decision, date, where it shaped the draft.
+3. Check results against the template's required sections.
+4. Unfilled placeholder list, last: section, what is needed, who can supply it.
+
+A banned term never appears anywhere in the reply, not even in the decisions or check notes;
+refer to it as "the banned term (decision of <date>)". Do not add outside facts, such as
+holiday dates or market figures, to the draft or the notes. Differences and percentages
+computed from two supplied figures are fine; show the inputs.
