@@ -1,0 +1,9 @@
+{
+  "name": "legal-ops",
+  "version": "0.1.0",
+  "description": "Review lists for OCR text and machine transcripts: risky numbers, dates, names and speaker turns flagged with locators and left uncorrected for a person to check.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

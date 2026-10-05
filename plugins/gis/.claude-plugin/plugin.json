@@ -1,0 +1,9 @@
+{
+  "name": "gis",
+  "version": "0.1.0",
+  "description": "Checks and plans for GIS data work: raster NoData and integer scaling, geometry validity and merges, label expressions and spatial views, slope areas from contours, and open replacements for licensed tools, with the CRS and units assumed stated and the user's own GIS tool as the last check.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

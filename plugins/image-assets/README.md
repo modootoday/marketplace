@@ -38,7 +38,12 @@ codex plugin add image-assets@modootoday
 | skill | `og-thumbnail-render` | share images rendered from HTML at 1200x630 with fonts loaded, Korean wrapping, measured titles and correct og tags |
 | skill | `image-postprocess` | batch crop, resize, compress and watermark with originals kept and GPS and device metadata removed |
 | skill | `svg-icon-illustration` | icon sets and small illustrations hand-written as SVG on one grid and stroke, themable with currentColor |
+| skill | `ai-photo-retouch-qc` | AI removal, denoise, masks, upscales and composites reviewed against the original at 100 percent and print size, as a located defect list the photographer approves |
 | skill | `product-shot-direction` | product shots edited from the real product photo, recorded in an append-only shot ledger and checked against the reference down to label text and numbers |
+| skill | `generated-asset-delivery-spec-check` | a generated logo, print card, texture, map or transparent asset accepted or rejected by measured palette, alpha, size, seam and count checks, with one corrective line per failure and a three-round cap; it checks assets and does not generate them |
+| skill | `editable-layered-design-delivery-check` | a layered, editable design delivery checked by opening the file, listing layers and confirming the download exists, plus per-artboard linked, ratio, centre and margin checks for bulk scripts run on a copy; it verifies and does not generate designs |
+| skill | `subject-cutout-alpha-matte-check` | a background-removed subject checked by measured alpha, baked checkerboards, graded mattes for glass and hair, and composites over light, dark and target backgrounds; it checks cutouts and does not make them |
+| skill | `comfyui-workflow-live-schema-check` | a ComfyUI graph written and checked against the installed nodes, model files and link types, missing parts reported instead of assumed, a condition-to-output table for batches and a failure log mapped to one cause with a before and after link diff; it checks and plans and does not run the graph or generate images |
 
 ## Failure mode
 
@@ -73,6 +78,11 @@ passed every grader, without the plugin and with it:
 | `batch-for-marketplace` | image-postprocess | 1.00 | 1.00 | 2 |
 | `icon-set` | svg-icon-illustration | 1.00 | 1.00 | 2 |
 | `tea-tin-lifestyle` | product-shot-direction | 0.00 | 1.00 | 2 |
+| `wedding-retouch-review` | ai-photo-retouch-qc | 0.50 | 1.00 | 2 |
+| `monochrome-logo-alpha-report` | generated-asset-delivery-spec-check | 0.00 | 1.00 | 2 |
+| `banner-psd-120-artboards` | editable-layered-design-delivery-check | 0.00 | 1.00 | 2 |
+| `glass-bottle-binary-matte` | subject-cutout-alpha-matte-check | 0.00 | 1.00 | 2 |
+| `comfyui-missing-nodes-vae-log` | comfyui-workflow-live-schema-check | 0.00 | 1.00 | 2 |
 
 image-postprocess, svg-icon-illustration show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 

@@ -129,7 +129,7 @@
     {
       "name": "product-planning",
       "description": "Early product-planning steps done carefully: spar on an idea, frame the problem behind a request, synthesize feedback without overstating it, rank a backlog while saying where the ranking is fragile, and write a Korean PRD with testable acceptance criteria.",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "author": {
         "name": "modootoday"
       },
@@ -138,7 +138,7 @@
     {
       "name": "content-ai",
       "description": "Korean content that reads well and stays true: product copy fixed to the Toss writing principles, Naver blog posts planned for search, persona tone measured with markers, ghostwriting that never invents the author's facts, and ad copy reviewed for claims it cannot prove.",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "author": {
         "name": "modootoday"
       },
@@ -165,7 +165,7 @@
     {
       "name": "data-analytics",
       "description": "Numbers that mean what they say: ClickHouse SQL that reads the key and deduplicates correctly, Naver trend data read as ratios, metrics defined once, experiments designed before launch and retention read by cohort.",
-      "version": "0.4.0",
+      "version": "0.5.0",
       "author": {
         "name": "modootoday"
       },
@@ -183,7 +183,7 @@
     {
       "name": "image-assets",
       "description": "Images that hold up at their real size: share images rendered from HTML with Korean text that wraps, consistent hand-written SVG icon sets, batch post-processing that crops, compresses and strips location data, and product shots edited from the real product photo with a ledger and a label check.",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "author": {
         "name": "modootoday"
       },
@@ -237,7 +237,7 @@
     {
       "name": "growth-community",
       "description": "Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, newsletters readers open and finish, a month of social posts a small team can ship, launch emails that lead with what changed, and sites submitted to Google, Naver and IndexNow engines from a pipeline.",
-      "version": "0.4.0",
+      "version": "0.5.0",
       "author": {
         "name": "modootoday"
       },
@@ -255,7 +255,7 @@
     {
       "name": "operations-cs",
       "description": "Customer operations: Korean support tickets triaged with incidents spotted across them, status updates that say what is affected and when the next update comes, and read-only runbooks for on-call.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "modootoday"
       },
@@ -264,7 +264,7 @@
     {
       "name": "video-production",
       "description": "Video work that can be executed and verified: briefs and storyboards someone else can produce from, Remotion explainers rendered from frame math, talking-head edits with ffmpeg that keep a list of every cut, and Korean subtitles timed to the voice by forced alignment.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "modootoday"
       },
@@ -278,6 +278,231 @@
         "name": "modootoday"
       },
       "source": "./plugins/agent-session-craft"
+    },
+    {
+      "name": "academic-research",
+      "description": "Check AI-suggested citations, measurement instruments and extracted statistics against real sources before they enter your research notes.",
+      "version": "0.2.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/academic-research"
+    },
+    {
+      "name": "ux-research",
+      "description": "Index long interview transcripts by session, theme and timestamp, and pull quotes that are verbatim and audited against the source.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/ux-research"
+    },
+    {
+      "name": "education",
+      "description": "Reading passages that hit a measured grade level, language drills, and teacher-side checks for coverage, answer keys, lesson timing, study calendars and rule-valid puzzles, with the numbers and logs shown.",
+      "version": "0.3.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/education"
+    },
+    {
+      "name": "localization",
+      "description": "Quality checks for translations and subtitles: omissions, footnote parity, naturalness, and cue limits reported by id.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/localization"
+    },
+    {
+      "name": "legal-ops",
+      "description": "Review lists for OCR text and machine transcripts: risky numbers, dates, names and speaker turns flagged with locators and left uncorrected for a person to check.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/legal-ops"
+    },
+    {
+      "name": "real-estate",
+      "description": "Screening for property work: bylaw conditions tested with quoted sections and shown arithmetic, and listings compared with a buyer's must-haves with unknowns kept unknown.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/real-estate"
+    },
+    {
+      "name": "sales-ops",
+      "description": "Recover forgotten promises from sent-email history: commitments with dates resolved against each email, checked for completion, and listed with the quoted line.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/sales-ops"
+    },
+    {
+      "name": "software-qa",
+      "description": "Keep test cases aligned with change: a trace from requirement to changed behavior to case, with gaps and duplicates listed and automation proposed for QA approval.",
+      "version": "0.3.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/software-qa"
+    },
+    {
+      "name": "accessibility",
+      "description": "Read images, scans, charts and device screens for blind and low-vision users: the text first, in order, with trends stated and uncertainty marked.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/accessibility"
+    },
+    {
+      "name": "data-engineering",
+      "description": "Prove that migrated, converted or rewritten SQL returns the same result as the original: statements mapped one to one, two-way key diffs, and checkers shown to catch seeded differences.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/data-engineering"
+    },
+    {
+      "name": "fiction-editing",
+      "description": "Continuity audits for long fiction manuscripts: new chapters checked against the author's canon ledger, outline, tense and point of view, with every ruling left to the author.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/fiction-editing"
+    },
+    {
+      "name": "interactive-web-demos",
+      "description": "Browser simulations and visual demos checked against a known result: error against a reference, timestep convergence, unit consistency and frame time measured on stated devices.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/interactive-web-demos"
+    },
+    {
+      "name": "asset-3d-vfx",
+      "description": "Blender scenes planned and checked against numbers: dimensions, connections and collisions per state, reference comparison, and web delivery budgets.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/asset-3d-vfx"
+    },
+    {
+      "name": "food-service",
+      "description": "Home and kitchen recipe work that keeps the source intact: a pasted recipe copied to a card without invented changes, then every ingredient swap or appliance change logged as a marked, estimated adaptation.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/food-service"
+    },
+    {
+      "name": "home-hobbies",
+      "description": "Hobby help that keeps its facts straight: game state and rules kept legal across chess, board game and family role-playing sessions, and crochet or knit patterns with every stitch count recomputed and every part joined.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/home-hobbies"
+    },
+    {
+      "name": "everyday-support-boundaries",
+      "description": "An assistant that stays inside the help you chose when you talk through a hard time: it records the scope, asks before changing mode, reads back only your own step list and never diagnoses or reframes.",
+      "version": "0.1.0",
+      "source": "./plugins/everyday-support-boundaries",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "events-travel",
+      "description": "Day plans that survive arithmetic: run-of-show, travel and family days built from fixed bookings, opening hours, travel time and protected rest, with buffers and backups.",
+      "version": "0.1.0",
+      "source": "./plugins/events-travel",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "agent-governance",
+      "description": "Permission setups for agents that run without a person watching: approval branches walked, denied actions held across rewordings, credentials kept out of the model and success checked on the artifact.",
+      "version": "0.1.0",
+      "source": "./plugins/agent-governance",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "ml-data",
+      "description": "Check fine-tuning data against the target schema before training: content types, one-record serialisation, reload counts and tool-call turns, with rejected rows listed by line.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/ml-data"
+    },
+    {
+      "name": "bioinformatics",
+      "description": "Refactors of analysis pipelines that must keep results equal: baseline frozen, steps mapped, outputs compared at a stated tolerance, differences explained apart from unexplained ones.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/bioinformatics"
+    },
+    {
+      "name": "household-admin",
+      "description": "Household paperwork arithmetic on the numbers a person supplies: pay-period schedules where every dollar is placed once, and receipts split so the parts sum to the total.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/household-admin"
+    },
+    {
+      "name": "procurement",
+      "description": "Procurement working procedures: spend projection, dedicated lane cost models, freight classification lookups, shortlist verification, request intake with stage checks, and ERP navigation with verification notes.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/procurement"
+    },
+    {
+      "name": "gis",
+      "description": "Checks and plans for GIS data work: raster NoData and integer scaling, geometry validity and merges, label expressions and spatial views, slope areas from contours, open replacements for licensed tools, with CRS and units stated.",
+      "version": "0.1.0",
+      "source": "./plugins/gis",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "engineering",
+      "description": "Engineering document procedures: work instructions from field notes, clause location with verbatim quotes, sourced spec tables, manual-based maintenance schedules and fault evidence logs.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/engineering"
+    },
+    {
+      "name": "hr-ops",
+      "description": "HR office arithmetic and drafts checked on the facts the user supplies: aggregate workforce metrics with stated group minimums, sourcing search strings without protected-trait terms, shift hours split by the user's own rules, and policy drafts checked against the user's checklist.",
+      "version": "0.1.0",
+      "source": "./plugins/hr-ops",
+      "author": {
+        "name": "modootoday"
+      }
     }
   ]
 }

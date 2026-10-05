@@ -1,0 +1,9 @@
+{
+  "name": "everyday-support-boundaries",
+  "version": "0.1.0",
+  "description": "An assistant that stays inside the help you chose when you talk through a hard time: it records the scope, asks before changing mode, reads back only your own step list and never diagnoses or reframes.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

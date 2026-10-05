@@ -1,0 +1,9 @@
+{
+  "name": "events-travel",
+  "version": "0.1.0",
+  "description": "Day plans that survive arithmetic: run-of-show, travel and family days built from fixed bookings, opening hours, travel time and protected rest, with buffers and backups.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

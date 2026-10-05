@@ -1,0 +1,9 @@
+{
+  "name": "agent-governance",
+  "version": "0.1.0",
+  "description": "Permission setups for agents that run without a person watching: approval branches walked, denied actions held across rewordings, credentials kept out of the model and success checked on the artifact.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

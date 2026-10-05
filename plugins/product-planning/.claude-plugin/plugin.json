@@ -1,6 +1,6 @@
 {
   "name": "product-planning",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Early product-planning steps done carefully: spar on an idea, frame the problem behind a request, synthesize feedback without overstating it, rank a backlog while saying where the ranking is fragile, and write a Korean PRD with testable acceptance criteria.",
   "author": {
     "name": "modootoday"

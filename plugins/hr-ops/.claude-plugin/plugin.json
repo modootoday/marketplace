@@ -1,0 +1,9 @@
+{
+  "name": "hr-ops",
+  "version": "0.1.0",
+  "description": "HR office arithmetic and drafts checked on the facts the user supplies: aggregate workforce metrics with stated group minimums, sourcing search strings without protected-trait terms, shift hours split by the user's own rules, and policy drafts checked against the user's checklist.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

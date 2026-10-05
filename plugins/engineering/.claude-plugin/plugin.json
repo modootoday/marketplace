@@ -1,0 +1,9 @@
+{
+  "name": "engineering",
+  "version": "0.1.0",
+  "description": "Engineering document procedures: work instructions from field notes, clause location with verbatim quotes, sourced spec tables, manual-based maintenance schedules and fault evidence logs.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

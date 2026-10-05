@@ -1,0 +1,9 @@
+{
+  "name": "real-estate",
+  "version": "0.1.0",
+  "description": "Screening for property work: bylaw conditions tested with quoted sections and shown arithmetic, and listings compared with a buyer's must-haves with unknowns kept unknown.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

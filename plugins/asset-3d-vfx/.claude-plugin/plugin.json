@@ -1,0 +1,9 @@
+{
+  "name": "asset-3d-vfx",
+  "version": "0.1.0",
+  "description": "Blender scenes planned and checked against numbers: dimensions, connections and collisions per state, reference comparison, and web delivery budgets.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

@@ -43,6 +43,7 @@ codex plugin add growth-community@modootoday
 | skill | `search-engine-submission` | DNS ownership proof, Search Console sitemap submission as a service account, IndexNow for Naver and Bing, and the resubmit wired into publishing |
 | skill | `static-site-crawl-files` | robots.txt, a sitemap with canonical URLs and honest lastmod, IndexNow key and llms.txt per origin, reciprocal hreflang for language twins, noindex headers for app documents |
 | skill | `catalog-listing-with-options` | product registration driven by the company's option table: the full option matrix, prices and stock from stated rules, and every combination without a rule flagged, never priced by guess |
+| skill | `hosted-site-prelaunch-smoke` | a site tested on its real host before launch: routing, exposed config, open write paths, consent before measurement and API data gaps, triaged into blockers and fixes |
 
 ## Failure mode
 
@@ -80,6 +81,7 @@ passed every grader, without the plugin and with it:
 | `new-domain-indexing` | search-engine-submission | 1.00 | 1.00 | 2 |
 | `tumbler-option-sheet` | catalog-listing-with-options | 0.00 | 1.00 | 2 |
 | `static-site-crawl-files` | static-site-crawl-files | 0.00 | 1.00 | 2 |
+| `deployed-host-triage` | hosted-site-prelaunch-smoke | 0.00 | 1.00 | 2 |
 
 store-listing-optimization and search-engine-submission show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. search-engine-submission fired in both runs with the plugin.
 

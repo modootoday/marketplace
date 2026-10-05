@@ -1,0 +1,9 @@
+{
+  "name": "procurement",
+  "version": "0.1.0",
+  "description": "Procurement working procedures: spend projection, dedicated lane cost models, freight classification lookups, shortlist verification, request intake with stage checks, and ERP navigation with verification notes.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

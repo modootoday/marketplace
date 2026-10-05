@@ -1,0 +1,9 @@
+{
+  "name": "ux-research",
+  "version": "0.1.0",
+  "description": "Index long interview transcripts by session, theme and timestamp, and pull quotes that are verbatim and audited against the source.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

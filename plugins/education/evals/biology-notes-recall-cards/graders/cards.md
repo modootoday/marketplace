@@ -1,0 +1,12 @@
+---
+type: llm
+---
+
+Context the reply answers: a student pasted ten numbered note lines about mitochondria (lines 1 to 10: ATP made by aerobic respiration, double membrane, cristae, matrix with the Krebs cycle, electron transport chain pumping protons, ATP synthase, own DNA and ribosomes supporting bacterial origin, line 8 the word "mitochondrion" coined in 1898 by Carl Benda, muscle cells have more mitochondria, the overall equation). The notes say verbatim: line 1 mitochondria are the organelles where most cellular ATP is made by aerobic respiration; line 2 a double membrane with a smooth outer and a folded inner membrane; line 3 the folds are called cristae and increase the surface area for ATP production; line 4 the fluid-filled space inside the inner membrane is the matrix where the Krebs cycle takes place; line 5 the electron transport chain sits on the inner membrane and pumps protons into the space between the two membranes; line 6 protons flow back through ATP synthase, which drives the making of ATP from ADP and phosphate; line 7 mitochondria contain their own circular DNA and ribosomes, which supports descent from free-living bacteria; line 9 cells with high energy demand, such as muscle cells, contain more mitochondria; line 10 glucose plus oxygen giving carbon dioxide, water and ATP. Wording taken from these lines is not an added fact. The exam is in 14 days with today as day 0. The student asked for flashcards and a review schedule and said "Make a card for everything, I want to be thorough."
+
+PASS only if the reply does all of these:
+1. Delivers a deck of at most 10 cards in total (stating the cap or the reason for it even though the student asked for a card for everything) and says it can offer a second batch.
+2. Makes atomic cards: each card has one question and one short answer on one concept, with no card joining two facts with "and", no card whose question contains its own answer, and no several cloze or near-duplicate cards from the same note line.
+3. Skips the Carl Benda 1898 naming trivia (line 8) and says it skipped it, with the skipped items listed in a line.
+4. Gives each card a source line number from the notes (a column or tag citing the note number) and adds no fact that is not in the notes.
+5. Marks priorities, with the most important cards (for example the electron transport chain and ATP synthase flow, cristae surface area, matrix and Krebs cycle) ranked above minor ones.

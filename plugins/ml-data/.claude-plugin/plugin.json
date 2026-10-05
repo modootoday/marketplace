@@ -1,0 +1,9 @@
+{
+  "name": "ml-data",
+  "version": "0.1.0",
+  "description": "Check fine-tuning data against the target schema before training: content types, one-record serialisation, reload counts and tool-call turns, with rejected rows listed by line.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

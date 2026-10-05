@@ -43,6 +43,11 @@ codex plugin add data-analytics@modootoday
 | skill | `survey-recount-and-anonymize` | survey or interview tallies recounted from the per-row table with named buckets, respondents numbered, aggregates only in the repository |
 
 | skill | `retrieval-ranking-readout` | Ranking readouts with per-language metrics and latency evidence |
+| skill | `list-normalize-and-diff` | two lists compared after a stated normalization: differences both ways with reconciled counts, every merged key listed, leading zeros kept |
+| skill | `calculator-reference-case-verification` | a generated calculator or converter proven against a reference table: formula and units stated, boundaries and out-of-range cases, round trips, duplicate options |
+| skill | `chart-geometry-and-claim-recompute` | charts checked by recomputing bar totals, axis origin, ratios and correlations from the data, with label overflow tested across widths; nothing read off the picture alone |
+| skill | `macro-logic-recovery-refactor` | old macros tabulated per routine, differences kept as parameters, shared state passed in, before and after outputs compared on sample rows |
+| skill | `bi-measure-context-debug` | BI measures debugged by naming model relationships and filter context, hand-computed values at row, subtotal and grand total, per-group scales from the model |
 
 ## Failure mode
 
@@ -80,6 +85,11 @@ passed every grader, without the plugin and with it:
 | `stop-test-early`               | experiment-design-readout         | 0.50    | 1.00 | 2            |
 | `survey-summary-recount`        | survey-recount-and-anonymize      | 0.00    | 1.00 | 2            |
 | `retrieval-slice-regression`    | retrieval-ranking-readout         | 0.00    | 1.00 | 2            |
+| `list-diff-ids`                 | list-normalize-and-diff           | 0.00    | 1.00 | 2            |
+| `three-generated-calculators`   | calculator-reference-case-verification | 0.50 | 1.00 | 2       |
+| `regional-charts-recompute`     | chart-geometry-and-claim-recompute | 0.00 | 1.00 | 2       |
+| `two-macros-shared-function`    | macro-logic-recovery-refactor | 0.00 | 1.00 | 2       |
+| `dept-share-slicer-total`       | bi-measure-context-debug | 0.50 | 1.00 | 2       |
 
 The retrieval case score was measured with Opus 5.5 as the subject model; the judge was Sonnet.
 It was measured 20261005 on Claude Code 2.1.289. Behaviour passed 2/2 with the skill and 0/2 without;

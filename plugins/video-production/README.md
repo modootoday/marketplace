@@ -39,6 +39,11 @@ codex plugin add video-production@modootoday
 | skill | `talking-head-edit` | talking-head edits with ffmpeg: silences cut with margins, voice levelled, subtitles re-timed, every cut listed |
 | skill | `video-brief-storyboard` | a video brief and a scene table someone else can produce from, with durations that add up and sourced assets |
 | skill | `tts-subtitle-sync` | Korean subtitles and motion cues timed to the voice by forced alignment or TTS alignment, mapped from spoken to displayed text, broken only between eojeol |
+| skill | `generated-video-clip-spec-check` | an AI-generated clip tested against its brief with measured frame checks (locked camera, loop seam, stray text, prop era, joins), then a prompt fix limited to the failing constraint and a retry cap |
+| skill | `transcript-cut-boundary-check` | clips and paper edits from a timed transcript checked so each cut lands on a complete thought and word boundary, with handles, preserved pauses, a filler count and a quoted timeline; it plans the cuts and renders nothing |
+| skill | `lipsync-viseme-timeline-check` | a mouth-animation plan for a cartoon or non-human character, a song or long audio: viseme timeline with a length check, closed-mouth mapping, per-segment frame counts and sampled-frame verification; it checks and plans and does not render |
+| skill | `scripted-code-animation-verification` | a code-driven animation checked against its required event order, deterministic timeline, scene continuity, reused motion, mechanical phase and preview-versus-export timing; it verifies and does not generate the animation |
+| skill | `subject-continuity-reference-sheet-check` | fictional or user-owned characters in generated shots checked against the approved reference sheet: fixed traits split from per-episode state, each re-appearance labelled match, intended change, drift or cannot judge with frame evidence, approval left to the director; it checks and does not generate footage or identify real people |
 
 ## Failure mode
 
@@ -72,6 +77,12 @@ passed every grader, without the plugin and with it:
 | `remotion-timers` | remotion-explainer | 1.00 | 1.00 | 2 |
 | `remove-silences` | talking-head-edit | 1.00 | 1.00 | 2 |
 | `subtitles-from-whisper` | tts-subtitle-sync | 0.00 | 1.00 | 2 |
+| `roman-market-locked-shot` | generated-video-clip-spec-check | 0.00 | 1.00 | 2 |
+| `podcast-clip-incomplete-end` | transcript-cut-boundary-check | 0.00 | 1.00 | 2 |
+| `bird-beak-long-narration` | lipsync-viseme-timeline-check | 0.00 | 1.00 | 2 |
+| `rabbit-train-timeline` | scripted-code-animation-verification | 0.00 | 1.00 | 2 |
+| `webseries-reference-sheet-drift` | subject-continuity-reference-sheet-check | 0.00 | 0.83 | 2 and 3 |
+| `webseries-reference-sheet-drift` (Opus) | subject-continuity-reference-sheet-check | 0.00 | 1.00 | 2, Opus subject and judge |
 
 remotion-explainer, talking-head-edit show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 

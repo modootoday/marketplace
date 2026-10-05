@@ -1,0 +1,9 @@
+{
+  "name": "academic-research",
+  "version": "0.2.0",
+  "description": "Check AI-suggested citations, measurement instruments and extracted statistics against real sources before they enter your research notes.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

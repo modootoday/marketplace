@@ -71,6 +71,31 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `audio-production`          | Scripts written for the ear; speech mixed and normalised to a measured target | no    |
 | `skill-factory`             | Write agent skills evals first, with descriptions that trigger correctly      | no    |
 | `agent-session-craft`       | Status briefings, follow-up waves, subagent fan-out and living documents for long sessions | no    |
+| `academic-research` | Verify AI-suggested papers, citations and measures before they enter your notes | no |
+| `ux-research` | Index interview transcripts by theme and timestamp; quotes audited against the source | no |
+| `education` | Reading passages at a measured grade level; language drills that stay in one dialect | no |
+| `localization` | Translation post-edit checks and subtitle limit checks reported by segment or cue id | no |
+| `legal-ops` | OCR and transcript review lists: risky spans flagged with locators, text left uncorrected | no |
+| `real-estate` | Bylaw conditions tested with shown arithmetic; listings screened against must-haves | no |
+| `sales-ops` | Promised follow-ups recovered from sent email, resolved against each email's date | no |
+| `software-qa` | Test cases traced to the change: gaps and duplicates listed, automation proposed for approval | no |
+| `accessibility` | Images, charts and screens read for blind and low-vision users: text first, uncertainty marked | no |
+| `data-engineering` | Migrated or rewritten SQL proven equal to the original: statement map, two-way key diffs, seeded-difference test | no |
+| `fiction-editing` | Chapters checked against the author's canon ledger and outline; tense and POV slips flagged, prose left alone | no |
+| `interactive-web-demos` | Browser simulations checked against a reference result, timestep convergence and measured frame time | no |
+| `asset-3d-vfx` | Blender scenes checked against planned dimensions, state collisions, a reference render and web budgets | no |
+| `food-service` | Pasted recipes copied to a card unchanged; swaps and appliance changes logged as marked estimates | no |
+| `home-hobbies`              | Chess and board-game state kept legal with rules cited; crochet and knit stitch counts recomputed with every part joined | no    |
+| `everyday-support-boundaries` | Keep a support conversation inside the scope the user chose: no diagnosis, no reframing, only their own step list | no    |
+| `events-travel`             | Day plans from fixed times, opening hours, travel legs and protected rest, with backups | no    |
+| `agent-governance`          | Audit an unattended agent's permission setup: approval branches, denied retries, credentials, artifact checks | no    |
+| `ml-data` | Fine-tuning data checked against the target schema before training: content types, one record per example, reload counts, tool-call turns | no |
+| `bioinformatics` | Analysis pipeline refactors proven equal: baseline, step map, tolerances, explained and unexplained differences | no |
+| `household-admin` | Pay-period schedules from your own numbers, every dollar placed once, arithmetic only | no |
+| `procurement` | Spend projection with ledger reconciliation, dedicated lane cost models, provisional freight classification, verified vendor shortlists, purchase-request intake and stage checks, ERP navigation with verification notes (freight classification and ERP navigation rest on one and three weak records) | no |
+| `gis` | Raster NoData and scaling, geometry repair and merges, label and view expressions, slope areas from contours, tool substitution; CRS and units stated | no |
+| `engineering` | Work instructions from field notes, verbatim clause location with edition, sourced datasheet spec tables, manual-based PM schedules, fault evidence logs that name no root cause (all five rest on two to four weak records) | no |
+| `hr-ops` | Aggregate workforce metrics with group minimums, sourcing strings without protected-trait terms, shift hours by the user's rule, policy drafts checked against the user's checklist (each rests on one to three single-person reports) | no |
 
 ## Trust
 

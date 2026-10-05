@@ -1,6 +1,6 @@
 ---
 name: client-template-drafting
-description: Draft a proposal, report or press release from one client's own template, rules and decisions log - keep every earlier decision the client made, fill only facts the user supplied, and list every placeholder left unfilled instead of inventing numbers, quotes or dates - then check the draft against the template's required sections. Use when the user asks to write a proposal, monthly report, press release or client document in a client's format, or to reuse a client template for a new project. Not for checking finished copy against a rulebook or for writing without a template.
+description: Draft a proposal, report or press release from one client's own template, rules and decisions log - keep every earlier decision the client made, fill only facts the user supplied, and list every placeholder left unfilled instead of inventing numbers, quotes or dates - then check the draft against the template's required sections. Also builds a new proposal from earlier approved documents with a source line per section, stale facts flagged and old client names replaced. Use when the user asks to write a proposal, monthly report, press release or client document in a client's format, to reuse a client template for a new project, or to assemble a proposal from past approved proposals. Not for checking finished copy against a rulebook or for writing without a template.
 metadata:
   tier: open
   level: L3
@@ -52,6 +52,36 @@ conversation, do not use them.
    - every decision from step 1 respected (list each with where it applies);
    - every number and quote traceable to a supplied fact;
    - no placeholder hidden in prose; all are in the bracket form.
+
+## Assembling from past approved documents
+
+When the user has no template but pastes earlier approved proposals or collateral and
+asks for a new proposal for another client, treat the old documents as the source pack:
+
+1. Give each source document an id (S1, S2) with its title, approval date if stated, and
+   who approved it. A document with no approval on record is used only after a question.
+2. Reuse text from approved passages only. Every section of the new proposal ends with a
+   source line: `Source: S1 section 2` or `Source: new, supplied by user`. A sentence
+   that comes from nowhere is cut or turned into a placeholder, and the section then
+   says `Source: none, placeholder`. No section, heading block or summary goes without
+   a source line.
+3. Flag stale facts before reuse: dates, prices, product names and versions, team names,
+   customer counts, claims about the current year. A fact older than the new proposal's
+   date, or that the new brief contradicts, is listed as stale with the source and the
+   question that would refresh it. It is not silently carried over or silently updated.
+4. Replace the old client's names, contacts, project names and figures with the new
+   client's. List every replacement. Search for the old name in the final text and for
+   its short forms and possessives; a leftover is a finding. Placeholders and notes
+   inside a section are body text too: write `[MISSING: a result for this client]`,
+   never "[result for Harbor Cafe Group]". Old names appear only in the source and
+   replacement lists after the proposal.
+5. Where the two sources disagree (price, scope, term), show both and ask which holds.
+6. Check the new client's requirements one by one against the sections that answer them,
+   and list any requirement with no source-backed answer.
+
+Output: the proposal with source lines, then a stale-facts list, a name-replacement list
+and the unanswered requirements. Prices, discounts and commitments are never composed
+from old figures; a person with authority sets them.
 
 ## Stop and hand to a person when
 

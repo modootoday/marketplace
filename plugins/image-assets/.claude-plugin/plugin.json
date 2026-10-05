@@ -1,6 +1,6 @@
 {
   "name": "image-assets",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Images that hold up at their real size: share images rendered from HTML with Korean text that wraps, consistent hand-written SVG icon sets, batch post-processing that crops, compresses and strips location data, and product shots edited from the real product photo with a ledger and a label check.",
   "author": {
     "name": "modootoday"
