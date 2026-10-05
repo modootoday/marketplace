@@ -2,7 +2,7 @@
 
 ## What it does
 
-Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, and newsletters readers open and finish.
+Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, newsletters readers open and finish, a month of social posts a small team can ship, and launch emails that lead with what changed.
 
 ## Runtime support
 
@@ -38,6 +38,8 @@ codex plugin add growth-community@modootoday
 | skill | `discord-community-ops` | a Discord server shaped by what members come to do, with FAQ posts that stay true and a written moderation ladder |
 | skill | `store-listing-optimization` | store listings that state the user's outcome plainly, with the search phrase once and no unprovable claims |
 | skill | `newsletter-editorial` | newsletter issues with one reason, a subject and preview that state it, short sections and a pre-send check |
+| skill | `social-content-calendar` | a month of social posts sized to the team's hours: pillars, cadence, a dated calendar with hook and CTA, a weekly check |
+| skill | `launch-announcement-email` | launch and opening emails with one message, tested subject lines, one call to action and the marketing-email footer |
 
 ## Failure mode
 
@@ -61,15 +63,17 @@ Rewrite our Chrome Web Store short description for search without keyword stuffi
 ```
 
 The plugin ships an eval suite (`claude plugin eval plugins/growth-community --no-publish`). Measured
-20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
+20261005 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
 passed every grader, without the plugin and with it:
 
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
 | `listing-rewrite` | store-listing-optimization | 0.50 | 0.50 | 2 |
-| `messy-server` | discord-community-ops | 0.00 | 1.00 | 2 |
+| `messy-server` | discord-community-ops | 0.50 | 1.00 | 2 |
 | `utm-question-negative` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
 | `plan-issue` | newsletter-editorial | 0.00 | 1.00 | 2 |
+| `bakery-month-plan` | social-content-calendar | 0.00 | 0.50 | 2 |
+| `feature-launch-email` | launch-announcement-email | 0.00 | 1.00 | 2 |
 
 store-listing-optimization shows no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 

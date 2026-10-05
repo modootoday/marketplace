@@ -137,8 +137,8 @@
     },
     {
       "name": "content-ai",
-      "description": "Korean content that reads well and stays true: product copy fixed to the Toss writing principles, Naver blog posts planned for search, persona tone measured with markers, and ghostwriting that never invents the author's facts.",
-      "version": "0.2.0",
+      "description": "Korean content that reads well and stays true: product copy fixed to the Toss writing principles, Naver blog posts planned for search, persona tone measured with markers, ghostwriting that never invents the author's facts, and ad copy reviewed for claims it cannot prove.",
+      "version": "0.3.0",
       "author": {
         "name": "modootoday"
       },
@@ -236,8 +236,8 @@
     },
     {
       "name": "growth-community",
-      "description": "Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, and newsletters readers open and finish.",
-      "version": "0.2.0",
+      "description": "Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, newsletters readers open and finish, a month of social posts a small team can ship, and launch emails that lead with what changed.",
+      "version": "0.3.0",
       "author": {
         "name": "modootoday"
       },
