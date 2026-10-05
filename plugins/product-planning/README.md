@@ -42,6 +42,8 @@ codex plugin add product-planning@modootoday
 | skill | `user-feedback-synthesis` | a batch of feedback turned into cited themes, with severe single reports escalated and shares kept to the sample |
 | skill | `prioritization-scoring`  | a backlog ranked with visible arithmetic, labelled estimates, close ranks and the assumption that decides the top pick |
 | skill | `prd-writing-ko`          | a Korean PRD with non-goals, testable acceptance criteria, edge cases, screen copy in the UI register and marked assumptions; a Korean template is in `references/` |
+| skill | `pilot-scope-sizing` | one workflow sized S, M or L on six criteria with a count rule, before a pilot quote, with the split and re-quote rules |
+| skill | `customer-discovery-kit` | interview questions tagged by hypothesis, strong, weak and none defined, a decision rule set first, and a demo script marking what exists today |
 
 ## Failure mode
 
@@ -85,6 +87,9 @@ last ten cases (Haiku for the first three):
 `prd-writing-ko` was added 20261004 and measured on 2.1.289 with Sonnet as judge:
 `prd-ko-ui-copy` went from 0.0 without the plugin to 0.67 with it (3 runs per arm), and
 `prd-ko-reservation` already passed without it (1.0 and 1.0, 2 runs).
+
+`pilot-scope-sizing` (`size-one-workflow`) and `customer-discovery-kit`
+(`discovery-interview-kit`) were added 20261005 and are not measured yet.
 
 A case that already passes without the plugin stays in the suite to catch a
 regression, not as evidence that the skill helps.

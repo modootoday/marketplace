@@ -47,6 +47,9 @@ No hooks, so nothing needs trusting. Restart the session to pick up the skill.
 | Kind   | Name                  | Detail                                                 |
 | ------ | --------------------- | ------------------------------------------------------ |
 | skill  | `rule-layering`       | one source, several names; what belongs in each document |
+| skill  | `instruction-token-audit` | instruction files measured in tokens, byte budgets converted to token equivalents |
+| skill  | `agents-md-budget-trim` | a thin rules file cut under budget by moving non-constraints verbatim to the long form |
+| skill  | `monorepo-package-rules-scaffold` | root AGENTS.md with path-scoped rules, per-package AGENTS.md and PACKAGE.md under budget, and the budget and legacy-directory checks |
 | script | `scripts/lint.mjs`    | reports role violations and broken or missing projections |
 | script | `scripts/project.mjs` | plans and, with `--write`, creates or repairs projections |
 
@@ -101,6 +104,7 @@ passed every grader, without the plugin and with it:
 | `three-drifting-rule-files` | rule-layering | 0.5 | 1.0 | 2 |
 | `edited-copy-projection` | rule-layering | 1.0 | 1.0 | 2 |
 | `gitignore-not-rules` | negative: the skill must not fire | 1.0 | 1.0 | 2 |
+| `monorepo-rules-layout` | monorepo-package-rules-scaffold | not measured | not measured | - |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
 

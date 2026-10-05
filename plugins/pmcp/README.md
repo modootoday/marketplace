@@ -68,8 +68,13 @@ Without a plugin, any MCP host takes the server as configuration:
 | ---------- | ------ | --------------------------------------------- |
 | MCP server | `pmcp` | `npx -y @modootoday/pmcp@^0.3.0 serve --marketplace <this marketplace>`, stdio, five tools |
 | Skill      | `skill-catalog-navigator` | search, check, load, in that order |
+| Skill      | `pmcp-project-init` | a new repository: AGENTS.md with its links, `.agents/`, `pmcp.toml`, `pmcp project`, `pmcp doctor` and the per-tool trust step |
+| Skill      | `agent-assets-migrate` | scattered agent files moved into AGENTS.md, `.agents/` and `pmcp.toml` without loss, ending on `pmcp project --check` |
+| Skill      | `skill-package-scaffold` | one skill folder within the specification limits, with normal, exception and missing-information eval cases, gated by `pmcp validate` |
+| Skill      | `headless-agents-ci-scaffold` | agent CLIs run headless in CI with the permission setting each one honours, asserted on the tool call |
+| Skill      | `marketplace-plugin-scaffold` | skills, commands, agents, hooks and MCP servers packaged as a marketplace plugin pmcp lists |
 
-Two manifests, one skill, and no code. The server is the `@modootoday/pmcp` package on npm, and
+Two manifests, six skills, and no code. The server is the `@modootoday/pmcp` package on npm, and
 this plugin only tells your agent to run it. The name is scoped on purpose: an
 unscoped `pmcp` does not exist on npm, and a manifest that ran it would run whatever
 someone later published under that name.
@@ -111,6 +116,11 @@ grader, without the plugin and with it:
 | `arithmetic-negative` | negative: the catalog must not be searched | 1.00 | 1.00 | 2 |
 | `empty-search-no-invention` | skill-catalog-navigator | 0.67 | 1.00 | 2 |
 | `find-then-load` | skill-catalog-navigator | 0.00 | 1.00 | 2 |
+| `new-repo-three-agents` | pmcp-project-init | not measured | not measured | - |
+| `scattered-agent-files` | agent-assets-migrate | not measured | not measured | - |
+| `new-skill-folder` | skill-package-scaffold | not measured | not measured | - |
+| `headless-mcp-ci` | headless-agents-ci-scaffold | not measured | not measured | - |
+| `skills-folder-to-plugin` | marketplace-plugin-scaffold | not measured | not measured | - |
 
 With the plugin, the model searched before loading, loaded the exact name the server
 returned, and on an empty search read the catalog instead of inventing a skill.

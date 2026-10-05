@@ -40,6 +40,8 @@ codex plugin add content-ai@modootoday
 | skill | `ghostwriting-editorial` | editing in the author's voice without inventing their facts; gaps become questions for the author |
 | skill | `persona-tone-eval` | a persona's tone turned into observable markers and scored on stressing prompts, apart from factual errors |
 | skill | `ad-copy-review` | ad copy checked before it runs: every claim backed or cut, category limits for food and cosmetics, sponsorship disclosed up front, one promise |
+| skill | `client-rulebook-copy-check` | copy checked against one client's, brand's or season's rulebook: banned and required phrasing and tone, each finding tied to a rule id, no rule carried across clients |
+| skill | `client-template-drafting` | proposals, reports and press releases drafted from a client's template and decisions log, with every missing fact left as a listed placeholder |
 
 ## Failure mode
 
@@ -78,6 +80,8 @@ passed every grader, without the plugin and with it:
 | `invent-anecdote` | ghostwriting-editorial | 1.00 | 1.00 | 2 |
 | `persona-sounds-off` | persona-tone-eval | 0.00 | 1.00 | 2 |
 | `collagen-ad-claims` | ad-copy-review | 1.00 | 1.00 | 2 |
+| `two-client-rulebooks` | client-rulebook-copy-check | not measured | not measured | - |
+| `monthly-report-gaps` | client-template-drafting | not measured | not measured | - |
 
 ghostwriting-editorial and ad-copy-review show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 

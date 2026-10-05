@@ -40,6 +40,7 @@ codex plugin add data-analytics@modootoday
 | skill | `naver-trend-analysis` | Naver Data Lab and search ad data read correctly: ratios within one request, absolute volumes from the keyword tool |
 | skill | `cohort-retention` | retention by start cohort at the same offsets, with activity defined and incomplete periods marked |
 | skill | `experiment-design-readout` | A/B tests designed before launch (one metric, sample size, stopping rule) and read with intervals, not peeks |
+| skill | `survey-recount-and-anonymize` | survey or interview tallies recounted from the per-row table with named buckets, respondents numbered, aggregates only in the repository |
 
 ## Failure mode
 
@@ -75,6 +76,7 @@ passed every grader, without the plugin and with it:
 | `two-dashboards-dau` | metric-definition | 1.00 | 1.00 | 2 |
 | `blended-retention-drop` | cohort-retention | 0.00 | 1.00 | 2 |
 | `stop-test-early` | experiment-design-readout | 0.50 | 1.00 | 2 |
+| `survey-summary-recount` | survey-recount-and-anonymize | not measured | not measured | - |
 
 clickhouse-query-authoring shows no lift yet with the default model: the baseline found the same issues in every case tried. Its cases stay as regression checks.
 

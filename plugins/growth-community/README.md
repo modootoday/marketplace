@@ -41,6 +41,8 @@ codex plugin add growth-community@modootoday
 | skill | `social-content-calendar` | a month of social posts sized to the team's hours: pillars, cadence, a dated calendar with hook and CTA, a weekly check |
 | skill | `launch-announcement-email` | launch and opening emails with one message, tested subject lines, one call to action and the marketing-email footer |
 | skill | `search-engine-submission` | DNS ownership proof, Search Console sitemap submission as a service account, IndexNow for Naver and Bing, and the resubmit wired into publishing |
+| skill | `static-site-crawl-files` | robots.txt, a sitemap with canonical URLs and honest lastmod, IndexNow key and llms.txt per origin, reciprocal hreflang for language twins, noindex headers for app documents |
+| skill | `catalog-listing-with-options` | product registration driven by the company's option table: the full option matrix, prices and stock from stated rules, and every combination without a rule flagged, never priced by guess |
 
 ## Failure mode
 
@@ -76,6 +78,7 @@ passed every grader, without the plugin and with it:
 | `bakery-month-plan` | social-content-calendar | 0.00 | 0.50 | 2 |
 | `feature-launch-email` | launch-announcement-email | 0.00 | 1.00 | 2 |
 | `new-domain-indexing` | search-engine-submission | 1.00 | 1.00 | 2 |
+| `tumbler-option-sheet` | catalog-listing-with-options | not measured | not measured | - |
 
 store-listing-optimization and search-engine-submission show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. search-engine-submission fired in both runs with the plugin.
 

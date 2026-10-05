@@ -39,6 +39,9 @@ codex plugin add platform-review@modootoday
 | skill | `mcp-server-design` | MCP tools designed so a model can choose and call them: names, typed inputs, stable ids, destructive annotations |
 | skill | `mv3-extension-review` | Manifest V3 extensions reviewed for service worker lifetime, top-level listeners, alarms, storage and permissions |
 | skill | `pg-migration-safety` | Postgres migrations reviewed for locks on large tables: concurrent indexes, NOT VALID constraints, lock timeouts |
+| skill | `cf-placeholder-404` | a retired Cloudflare redirect replaced by a 404 Worker on the free plan, routes attached before the redirect is deleted so no 522 gap opens |
+| skill | `static-site-migration-parity` | a static site moved to a new host or renderer with every URL form, status, media type and heading id compared against a live snapshot before DNS cutover |
+| skill | `csp-live-verification` | a Content-Security-Policy checked against the live page in a headless browser: wanted beacons allowed, injected inline snippets left blocked, own inline script hashed |
 
 ## Failure mode
 

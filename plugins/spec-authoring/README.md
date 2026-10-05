@@ -66,6 +66,7 @@ machine. Restart the session so the skills are picked up.
 | skill | `plan-authoring` | proposals: required sections, lifecycle, honest reporting of failures |
 | skill | `sot-authoring`  | invariants: pairing every rule with a command that checks it          |
 | skill | `adr-authoring`  | decisions: rejected alternatives, reversal conditions, immutability   |
+| skill | `agent-plan-extract` | a read-only subagent's plan recovered verbatim from the session transcript and diffed against its report |
 | command | `/spec-authoring:plan` | start a plan: find where plans live, create all six sections |
 | command | `/spec-authoring:sot`  | start a source of truth: write the check, then make it fail  |
 | command | `/spec-authoring:adr`  | start a decision record: take the next number, name what was rejected |
@@ -103,7 +104,7 @@ Ask which skills are available:
 Which skills are available to you right now?
 ```
 
-The three names above should appear. If they do not, the plugin is installed but
+The four skill names above should appear. If they do not, the plugin is installed but
 not loaded: restart the session, and on Codex confirm the plugin is enabled.
 
 For the commands, run one in a scratch directory rather than in a repository you

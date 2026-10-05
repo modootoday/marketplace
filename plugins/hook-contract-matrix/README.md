@@ -59,6 +59,7 @@ gemini extensions link <repo>/plugins/hook-contract-matrix
 | hook  | PostToolUse      | records the event, returns a token as extra context |
 | hook  | Stop             | records the event                                   |
 | skill | `hook-compat`    | how to judge whether a hook works across runtimes   |
+| skill | `mcp-client-probe` | what each MCP client sends on the wire, recorded through a logging stdio proxy, with every client config restored |
 
 The five events are the ones this marketplace's plugins actually register. The
 `PreToolUse` probe observes and never denies: an instrument that blocked commands
