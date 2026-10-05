@@ -63,7 +63,7 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `content-ai`                | Korean product copy to the Toss writing principles, Naver blog posts for search | no    |
 | `monetization`              | Toss Payments integration checked against the docs; refunds and disputes done once | no    |
 | `kr-legal`                  | Personal data and crawling reviews against current Korean law                 | no    |
-| `data-analytics`            | ClickHouse SQL that reads the key, states its timezone and counts correctly   | no    |
+| `data-analytics`            | SQL, metrics and retrieval ranking with language slices and latency evidence   | no    |
 | `brand-assets`              | Visual directions, brand tokens, and QA of rendered assets                    | no    |
 | `image-assets`              | OG share images rendered from HTML with Korean text and fonts handled         | no    |
 | `social-carousel`           | Carousel copy with one ask, and slides rendered and exported after approval   | no    |

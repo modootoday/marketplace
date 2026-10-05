@@ -165,7 +165,7 @@
     {
       "name": "data-analytics",
       "description": "Numbers that mean what they say: ClickHouse SQL that reads the key and deduplicates correctly, Naver trend data read as ratios, metrics defined once, experiments designed before launch and retention read by cohort.",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "author": {
         "name": "modootoday"
       },
