@@ -48,6 +48,16 @@ check.
 6. **Timestamps carry microseconds** (`...27.000000Z`). Parse them as ISO
    instants before comparing.
 7. **API keys expire** (one year). Track the expiry and warn before it lapses.
+8. **Turn tax-inclusive pricing off unless you priced for it.** With it on, a
+   checkout from some buyer countries was refused with "An error occurred while
+   attempting to authorize the payment" on the `country` field, and the same
+   card and variant went through once it was off. It also means your listed
+   price contains the tax, so your share shrinks by the buyer's rate.
+9. **Date a payment by when it was paid.** An invoice's `updated_at` moves when
+   the subscription is later changed, so a `subscription_payment_success`
+   delivered after a cancellation can carry the cancellation's timestamp and
+   undo it in a ledger that only skips strictly older events. Use the invoice's
+   `created_at` as the event time and keep `updated_at` in the idempotency key.
 
 ## Webhooks
 
