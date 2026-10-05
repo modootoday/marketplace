@@ -2,7 +2,7 @@
 
 ## What it does
 
-Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, newsletters readers open and finish, a month of social posts a small team can ship, and launch emails that lead with what changed.
+Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, newsletters readers open and finish, a month of social posts a small team can ship, launch emails that lead with what changed, and sites submitted to Google, Naver and IndexNow engines from a pipeline.
 
 ## Runtime support
 
@@ -40,6 +40,7 @@ codex plugin add growth-community@modootoday
 | skill | `newsletter-editorial` | newsletter issues with one reason, a subject and preview that state it, short sections and a pre-send check |
 | skill | `social-content-calendar` | a month of social posts sized to the team's hours: pillars, cadence, a dated calendar with hook and CTA, a weekly check |
 | skill | `launch-announcement-email` | launch and opening emails with one message, tested subject lines, one call to action and the marketing-email footer |
+| skill | `search-engine-submission` | DNS ownership proof, Search Console sitemap submission as a service account, IndexNow for Naver and Bing, and the resubmit wired into publishing |
 
 ## Failure mode
 

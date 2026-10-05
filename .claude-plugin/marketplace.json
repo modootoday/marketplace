@@ -236,8 +236,8 @@
     },
     {
       "name": "growth-community",
-      "description": "Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, newsletters readers open and finish, a month of social posts a small team can ship, and launch emails that lead with what changed.",
-      "version": "0.3.0",
+      "description": "Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, newsletters readers open and finish, a month of social posts a small team can ship, launch emails that lead with what changed, and sites submitted to Google, Naver and IndexNow engines from a pipeline.",
+      "version": "0.4.0",
       "author": {
         "name": "modootoday"
       },
