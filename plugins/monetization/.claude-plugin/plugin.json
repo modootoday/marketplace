@@ -1,7 +1,7 @@
 {
   "name": "monetization",
-  "version": "0.2.0",
-  "description": "Payments and prices that hold up: a Toss Payments integration checked against the official docs, refunds and disputes handled by looking up the state before acting once, and prices framed as hypotheses with a test.",
+  "version": "0.3.0",
+  "description": "Payments and prices that hold up: Toss Payments and Lemon Squeezy integrations checked against the official docs, the right payment channel for each product, USD prices localized for a merchant of record, refunds and disputes handled by looking up the state before acting once, and prices framed as hypotheses with a test.",
   "author": {
     "name": "modootoday"
   },

@@ -2,7 +2,7 @@
 
 ## What it does
 
-Payments and prices that hold up: a Toss Payments integration checked against the official docs, refunds and disputes handled by looking up the state before acting once, and prices framed as hypotheses with a test.
+Payments and prices that hold up: Toss Payments and Lemon Squeezy integrations checked against the official docs, the right payment channel for each product, USD prices localized for a merchant of record, refunds and disputes handled by looking up the state before acting once, and prices framed as hypotheses with a test.
 
 ## Runtime support
 
@@ -38,6 +38,9 @@ codex plugin add monetization@modootoday
 | skill | `toss-payments-integration` | Toss Payments confirm, webhook, virtual account, cancel and billing code reviewed against the official docs |
 | skill | `refund-dispute-ops` | refunds, partial refunds and disputes handled by reading the state first, acting once with an idempotency key, and notifying once |
 | skill | `pricing-hypothesis` | a price framed as a testable hypothesis: buyer, unit, today's alternative, a prediction with a threshold, and the cheapest test |
+| skill | `lemonsqueezy-integration` | Lemon Squeezy checkout, signed webhooks, subscriptions, refunds and catalog reads checked against the docs, with the details that are easy to get wrong |
+| skill | `payment-provider-selection` | a merchant of record, a payment gateway or an invoice chosen per product line, checked against prohibited categories and the tax duty left with the seller |
+| skill | `usd-price-localization` | a local, tax-inclusive price list turned into USD prices that keep the margin under the provider's fees and fit what the checkout can charge |
 
 ## Failure mode
 
@@ -73,6 +76,7 @@ passed every grader, without the plugin and with it:
 | `vat-math-not-payments` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
 | `virtual-account-shipped-early` | toss-payments-integration | 1.00 | 1.00 | 2 |
 | `price-feels-right` | pricing-hypothesis | 0.00 | 1.00 | 2 |
+| `lemonsqueezy-refund-quantity` | lemonsqueezy-integration | not run yet | not run yet | - |
 
 refund-dispute-ops shows no lift yet: the baseline model already looked up the state and kept the idempotency key in every case tried. Its cases stay as regression checks.
 
