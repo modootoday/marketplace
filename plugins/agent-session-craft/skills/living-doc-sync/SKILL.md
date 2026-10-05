@@ -32,7 +32,9 @@ the reader has to reconcile them.
 - Change the line that became wrong; do not add a new line under it saying it is
   now different. A step that finished is ticked, not described again below.
 - When a measurement is redone, replace the old number with the new one and its
-  date. Keep the old one only if the change itself matters, in History.
+  date. Measured results holds only the latest figure per metric; a superseded
+  figure is dropped or kept as one dated line in History, never as a growing
+  results table or a stack of dated "Update" sections.
 - When the plan changed shape (steps merged, a phase dropped), restructure the
   checklist so it shows the plan as it now is. A reader should never need to
   read the document top to bottom to learn the current state.
@@ -49,6 +51,10 @@ the session. Answer or resolve comments that your update settles.
 
 After each update, give the URL and one line saying what changed. The user
 should not have to search for the document or diff it to see what moved.
+
+If you cannot write to the document yourself and hand over text to paste, still
+end the reply with that pair: the URL, then one line of what changed (not a
+bulleted changelog). Anything the user must check goes above it.
 
 ## 5. What not to put in it
 

@@ -70,12 +70,11 @@ The plugin ships an eval suite (`claude plugin eval plugins/agent-session-craft 
 | --- | --- | --- | --- | --- |
 | `status-after-long-run` | session-status-briefing | 1.00 | 1.00 | 2 |
 | `next-wave-table` | followup-wave-loop | 0.00 | 0.50 | 2 |
-| `fanout-forty-files` | subagent-fanout-brief | 0.00 | 0.00 | 2 |
-| `workstream-doc-update` | living-doc-sync | 0.00 | 0.00 | 2 |
+| `fanout-forty-files` | subagent-fanout-brief | 0.00 | 1.00 | 2 |
+| `workstream-doc-update` | living-doc-sync | 0.00 | 1.00 | 2 |
 
 Measured 20261005 on Claude Code 2.1.288 with Sonnet as judge. The skill fired in every run.
-subagent-fanout-brief and living-doc-sync show no lift yet: both arms failed their
-cases, which stay as targets. A case that already passes without the plugin stays in the suite to catch
+session-status-briefing shows no lift: the baseline model already passed its case. A case that already passes without the plugin stays in the suite to catch
 a regression, not as evidence that the skill helps.
 
 ## License
