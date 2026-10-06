@@ -1,7 +1,7 @@
 {
   "name": "kr-legal",
-  "version": "0.3.0",
-  "description": "AI-generated content and ads labelled per platform and current Korean rules, and a Chrome extension checked against the Chrome Web Store program policies before submission or after a rejection.",
+  "version": "0.4.0",
+  "description": "AI-generated content and ads labelled per platform and current Korean rules, with a record of how each asset was made.",
   "author": {
     "name": "modootoday"
   },

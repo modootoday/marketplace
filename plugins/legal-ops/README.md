@@ -4,7 +4,7 @@
 
 Draft billing time entries from a day's work notes that follow the client billing guidelines the user pastes, keeping the stated total, citing the rule behind each change and listing entries the guidelines would reject.
 
-OCR and transcript review lists are available to signed-in users.
+This plugin is a preview: OCR and transcript review lists and the other legal-ops skills are available to signed-in users.
 
 ## Runtime support
 

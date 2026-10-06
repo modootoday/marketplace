@@ -1,7 +1,7 @@
 {
   "name": "hr-ops",
-  "version": "0.2.0",
-  "description": "HR office arithmetic and drafts checked on the facts the user supplies: aggregate workforce metrics with stated group minimums, sourcing search strings without protected-trait terms, and policy drafts checked against the user's checklist.",
+  "version": "0.3.0",
+  "description": "Sourcing search strings built from stated job requirements, with protected-trait terms and their proxies left out. Nothing here ranks, scores, screens or profiles individual people.",
   "author": {
     "name": "modootoday"
   },

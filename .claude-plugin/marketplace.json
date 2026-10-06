@@ -155,8 +155,8 @@
     },
     {
       "name": "kr-legal",
-      "description": "AI-generated content and ads labelled per platform and current Korean rules, and a Chrome extension checked against the Chrome Web Store program policies before submission or after a rejection.",
-      "version": "0.3.0",
+      "description": "AI-generated content and ads labelled per platform and current Korean rules, with a record of how each asset was made.",
+      "version": "0.4.0",
       "author": {
         "name": "modootoday"
       },
@@ -245,8 +245,8 @@
     },
     {
       "name": "platform-review",
-      "description": "Reviews of platform pieces that fail in production for configuration reasons: Cloudflare Worker bindings, Manifest V3 extension lifecycles, MCP tool design and Postgres migration locks.",
-      "version": "0.2.0",
+      "description": "Reviews of platform pieces that fail in production for configuration reasons: Cloudflare Worker bindings, Manifest V3 extension lifecycles, Chrome Web Store policy before submission, MCP tool design and Postgres migration locks.",
+      "version": "0.3.0",
       "author": {
         "name": "modootoday"
       },
@@ -497,8 +497,8 @@
     },
     {
       "name": "hr-ops",
-      "description": "HR office arithmetic and drafts checked on the facts the user supplies: aggregate workforce metrics with stated group minimums, sourcing search strings without protected-trait terms, and policy drafts checked against the user's checklist.",
-      "version": "0.2.0",
+      "description": "Sourcing search strings built from stated job requirements, with protected-trait terms and their proxies left out. Nothing here ranks, scores, screens or profiles individual people.",
+      "version": "0.3.0",
       "source": "./plugins/hr-ops",
       "author": {
         "name": "modootoday"

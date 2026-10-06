@@ -2,7 +2,7 @@
 
 ## What it does
 
-Reviews of platform pieces that fail in production for configuration reasons: Cloudflare Worker bindings, Manifest V3 extension lifecycles, MCP tool design and Postgres migration locks.
+Reviews of platform pieces that fail in production for configuration reasons: Cloudflare Worker bindings, Manifest V3 extension lifecycles, Chrome Web Store policy before submission, MCP tool design and Postgres migration locks.
 
 Pre-release leak audits of published artifacts are available to signed-in users.
 
@@ -40,6 +40,7 @@ codex plugin add platform-review@modootoday
 | skill | `cf-worker-binding-review` | wrangler config reviewed for environments that share production data, secrets in vars, and calls that should be bindings |
 | skill | `mcp-server-design` | MCP tools designed so a model can choose and call them: names, typed inputs, stable ids, destructive annotations |
 | skill | `mv3-extension-review` | Manifest V3 extensions reviewed for service worker lifetime, top-level listeners, alarms, storage and permissions |
+| skill | `chrome-store-policy-review` | a Chrome extension checked against Web Store policy before submission: permissions, remote code, data disclosures |
 | skill | `pg-migration-safety` | Postgres migrations reviewed for locks on large tables: concurrent indexes, NOT VALID constraints, lock timeouts |
 | skill | `cf-placeholder-404` | a retired Cloudflare redirect replaced by a 404 Worker on the free plan, routes attached before the redirect is deleted so no 522 gap opens |
 | skill | `static-site-migration-parity` | a static site moved to a new host or renderer with every URL form, status, media type and heading id compared against a live snapshot before DNS cutover |
@@ -74,6 +75,7 @@ passed every grader, without the plugin and with it:
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
 | `http-status-201-negative` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
+| `all-urls-rejection` | chrome-store-policy-review | 1.00 | 1.00 | 2 |
 | `index-and-not-null` | pg-migration-safety | 1.00 | 1.00 | 2 |
 | `preview-writes-prod` | cf-worker-binding-review | 1.00 | 1.00 | 2 |
 | `review-mcp-tools` | mcp-server-design | 1.00 | 1.00 | 2 |
@@ -83,7 +85,7 @@ passed every grader, without the plugin and with it:
 | `static-site-migration-parity` | static-site-migration-parity | 0.00 | 1.00 | 2 |
 | `unused-module-retire` | dead-code-keep-or-retire | 0.00 | 1.00 | 2 |
 
-cf-worker-binding-review, mcp-server-design, mv3-extension-review, pg-migration-safety show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
+chrome-store-policy-review, cf-worker-binding-review, mcp-server-design, mv3-extension-review, pg-migration-safety show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

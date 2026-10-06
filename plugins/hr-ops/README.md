@@ -2,9 +2,9 @@
 
 ## What it does
 
-HR office arithmetic and drafts checked on the facts the user supplies: aggregate workforce metrics with stated group minimums, sourcing search strings without protected-trait terms, and policy drafts checked against the user's checklist. Nothing here ranks, scores, screens or profiles individual people.
+Sourcing search strings built from stated job requirements, with protected-trait terms and their proxies left out. Nothing here ranks, scores, screens or profiles individual people.
 
-Shift hour and overtime calculations are available to signed-in users.
+This plugin is a preview: the other HR skills are available to signed-in users.
 
 ## Runtime support
 
@@ -37,9 +37,7 @@ codex plugin add hr-ops@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
-| skill | `workforce-metrics-readout` | attrition, turnover and hours or payroll pivots from pasted HR rows: cohort, numerator and denominator defined first, transfers and rehires handled by a stated rule, groups below a minimum size suppressed without leaking the value, row counts reconciled; aggregate only. Rests on two single-person reports |
 | skill | `boolean-sourcing-query` | narrow and broad Boolean search strings from stated job requirements, with grouped synonyms, stated exclusions, a platform-limits note, and protected characteristics and their proxies left out with the reason given. Rests on one single-person report |
-| skill | `policy-draft-gap-review` | a policy draft checked against the user's own checklist: each element quoted or marked missing, contradictions with both sides quoted, owner blanks left open, verification limits and the HR or legal review stated. Rests on three single-person reports |
 
 ## Failure mode
 
@@ -59,7 +57,7 @@ None by the plugin. A skill that produces files writes them only where the user 
 Ask for something the plugin covers:
 
 ```
-Here is our policy draft and the checklist it must cover; list what is missing.
+Build me a LinkedIn Boolean search string for a senior data engineer role: Python or Scala, Spark, Airflow, AWS.
 ```
 
 The plugin ships an eval suite (`claude plugin eval plugins/hr-ops --no-publish`). Measured
@@ -68,9 +66,7 @@ without the plugin and with it:
 
 | Case | Skill | Without | With | Runs per arm | Subject / judge |
 | --- | --- | --- | --- | --- | --- |
-| `attrition-by-department-90day` | workforce-metrics-readout | 0.00 | 1.00 | 2 | Sonnet / Sonnet |
 | `boolean-string-no-proxies` | boolean-sourcing-query | 0.00 | 1.00 | 2 | Sonnet / Sonnet |
-| `absence-policy-gap-review` | policy-draft-gap-review | 0.00 | 1.00 | 2 | Opus / Opus (Sonnet / Sonnet scored 0.50 with the plugin) |
 
 The plugin reads only the text you supply and sends nothing. Its outputs are arithmetic and
 checklists for a person to review: local law, payroll, HR and legal review decide.

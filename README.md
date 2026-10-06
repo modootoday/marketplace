@@ -62,7 +62,7 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `product-planning`          | Spar on ideas, frame problems, synthesize feedback, rank a backlog, write a Korean PRD | no    |
 | `content-ai`                | Korean product copy to the Toss writing principles, Naver blog posts for search | no    |
 | `monetization`              | Prices framed as testable hypotheses before anyone builds a pricing page       | no    |
-| `kr-legal`                  | Chrome Web Store policy review before submission or after a rejection         | no    |
+| `kr-legal`                  | AI-generated content and ads labelled per platform and current Korean rules   | no    |
 | `data-analytics`            | SQL, metrics and retrieval ranking with language slices and latency evidence   | no    |
 | `brand-assets`              | Visual directions, brand tokens, and QA of rendered assets                    | no    |
 | `image-assets`              | OG share images rendered from HTML with Korean text and fonts handled         | no    |
@@ -95,7 +95,7 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `procurement` | Spend projection with ledger reconciliation, dedicated lane cost models, provisional freight classification, verified vendor shortlists, purchase-request intake and stage checks, ERP navigation with verification notes (freight classification and ERP navigation rest on one and three weak records) | no |
 | `gis` | Raster NoData and scaling, geometry repair and merges, label and view expressions, slope areas from contours, tool substitution; CRS and units stated | no |
 | `engineering` | Work instructions from field notes, verbatim clause location with edition, sourced datasheet spec tables, fault evidence logs that name no root cause (all four rest on two to four weak records) | no |
-| `hr-ops` | Aggregate workforce metrics with group minimums, sourcing strings without protected-trait terms, policy drafts checked against the user's checklist (each rests on one to three single-person reports) | no |
+| `hr-ops` | Sourcing strings built from stated job requirements without protected-trait terms (one single-person report) | no |
 | `photography` | Check a photo cull or batch grade from the scores and logs you supply: criteria per subject, rank and flag only, preview versus export | no |
 | `it-ops` | Safe patch-back of a fix made on an anonymized script copy, with no real value sent to a model; one-record evidence | no |
 | `genealogy-research` | Surname mention index across volumes with gaps and same-name risk, uncertain handwriting readings, tree-export date and relationship checks, evidence-separated ancestor sheets (both rest on two moderate records) | no |
