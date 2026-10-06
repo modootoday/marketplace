@@ -2,7 +2,7 @@
 
 ## What it does
 
-Brand work that decides something: visual directions argued before drawing, a tokens.json every asset reads, and QA of the rendered asset before it is published.
+Brand work that decides something: visual directions argued before drawing, a tokens.json and colour names every asset reads, client requests clarified before design, mockup text recovered with its doubts marked, and QA of the rendered asset before it is published.
 
 ## Runtime support
 

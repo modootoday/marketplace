@@ -73,5 +73,7 @@ it to what fits on one screen.
 
 ## 6. Report
 
-The editors and changes, the data moves, the permission change, the test log, the how-to, and
-what remains manual or unverified.
+The editors and changes, the data moves, the permission change, the test log, open questions,
+then the how-to as the end of the reply, followed only by one closing line headed "Not run or
+verified" that says which tests have not been run (every row, when the site was not available
+to run) and what remains manual or unchecked. Nothing comes after that line.

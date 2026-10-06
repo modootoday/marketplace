@@ -50,7 +50,10 @@ keeping the chain, not by trimming adjectives.
    question for the writer, not filled. Every question and every table cell may rest only on
    words in the pasted text: before sending, check each one against the paste and delete any
    that assumes a relation the text does not state (who owns what, who knows whom, what is
-   mentioned in which episode).
+   mentioned in which episode). A question asks what the reason is; it does not propose a
+   candidate reason, fact or plot point ("is he named in the ledgers?", "did she know?"). The
+   treatment adds no framing phrase either ("the same brother whose debt...", "the licence she
+   lost") that restates one episode inside another: it uses only the source's own words and links.
 6. **Approved changes.** When a table read or note approved changes, carry them into episode
    and per-actor documents by speaker, scene and script version, and list any not yet
    carried.

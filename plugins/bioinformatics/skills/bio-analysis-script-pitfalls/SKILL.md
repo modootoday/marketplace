@@ -56,12 +56,14 @@ Put these statements in prose before the code, one sentence each, so a reader se
 reading the code:
 
 - Length is end - start + 1 because GTF coordinates are 1-based and inclusive (worked example from
-  the user's own numbers, such as 250 - 100 + 1 = 151).
+  the user's own numbers, such as 250 - 100 + 1 = 151); give the arithmetic and result for every
+  gene in the user's fixture in that same sentence, not only the first.
 - Which id form is used (version suffix stripped or kept) and that a mismatch breaks joins to other
   tables without an error.
 - A naive split on semicolon breaks when a quoted value contains a semicolon, so attributes are
   parsed by a quote-aware pattern.
-- How "more than one transcript" is counted (distinct transcript ids per gene, not lines).
+- How "more than one transcript" is counted (distinct transcript ids per gene, not lines), and
+  which gene or genes of the user's fixture meet it, by name.
 - The code was reviewed, not run; the fixture output below is worked by hand.
 
 Then the contract, the code, the fixture with the hand-worked expected output and the exact

@@ -5,10 +5,23 @@
 //
 // Usage: node scripts/check-skills.mjs [<marketplace dir>] [--catalog <other marketplace>]... [--deny <file>]...
 
+import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
-import { join, relative, resolve } from "node:path";
+import { basename, join, relative, resolve } from "node:path";
 
-import { SCHEMA, installDefaultFindings, parseFrontmatter, referenceFindings, skillFindings } from "./skill-rules.mjs";
+import {
+  SCHEMA,
+  descriptionDriftFindings,
+  duplicatePluginFindings,
+  gatedNameFindings,
+  installDefaultFindings,
+  parseFrontmatter,
+  pluginNamingFindings,
+  referenceFindings,
+  skillFindings,
+  trackedResultsFindings,
+  unregisteredFindings,
+} from "./skill-rules.mjs";
 
 const TIERS = new Set(SCHEMA.properties.metadata.properties.tier.enum);
 const ALLOW_MARK = "leak-allow";
@@ -33,9 +46,10 @@ function readSkills(root) {
   const manifestPath = join(root, ".claude-plugin", "marketplace.json");
   if (!existsSync(manifestPath)) return null;
   const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
-  const out = { manifestPath, manifest, tier: manifest.metadata?.tier, skills: [], missing: [] };
+  const out = { root, manifestPath, manifest, tier: manifest.metadata?.tier, skills: [], missing: [], plugins: [] };
   for (const plugin of manifest.plugins ?? []) {
     const pluginDir = resolve(root, plugin.source ?? "");
+    out.plugins.push({ name: plugin.name, dir: pluginDir, description: plugin.description });
     if (!plugin.name || !existsSync(pluginDir)) {
       out.missing.push(`plugin ${plugin.name ?? "(unnamed)"} has no directory at ${plugin.source}`);
       continue;
@@ -78,9 +92,43 @@ if (!TIERS.has(tier)) fail(own.manifestPath, `metadata.tier must be one of ${[..
 for (const message of own.missing) fail(own.manifestPath, message);
 
 const catalog = new Map();
-for (const other of [own, ...catalogDirs.map(readSkills)]) {
+const others = catalogDirs.map(readSkills);
+for (const other of [own, ...others]) {
   if (other === null) continue;
   for (const s of other.skills) if (s.front) catalog.set(s.dirName, other.tier);
+}
+
+const readJson = (path) => (existsSync(path) ? JSON.parse(readFileSync(path, "utf8")) : null);
+const pluginsRoot = join(dir, "plugins");
+const hasSkills = (d) => existsSync(join(pluginsRoot, d, "skills")) && readdirSync(join(pluginsRoot, d, "skills")).length > 0;
+const onDisk = existsSync(pluginsRoot) ? readdirSync(pluginsRoot).filter(hasSkills) : [];
+const unregistered = unregisteredFindings(onDisk, own.plugins.map((p) => basename(p.dir)));
+for (const message of unregistered) fail(own.manifestPath, message);
+
+const ownPluginNames = own.plugins.map((p) => p.name);
+for (const message of pluginNamingFindings(tier, ownPluginNames)) fail(own.manifestPath, message);
+const otherTiers = new Map();
+for (const other of others) {
+  if (other !== null) otherTiers.set(other.tier, [...(otherTiers.get(other.tier) ?? []), ...other.plugins.map((p) => p.name)]);
+}
+for (const message of duplicatePluginFindings(ownPluginNames, otherTiers)) fail(own.manifestPath, message);
+
+for (const plugin of own.plugins) {
+  const claude = readJson(join(plugin.dir, ".claude-plugin", "plugin.json"));
+  const gemini = readJson(join(plugin.dir, "gemini-extension.json"));
+  const drift = { name: plugin.name, entry: plugin.description, plugin: claude?.description, gemini: gemini?.description };
+  for (const message of descriptionDriftFindings(drift)) fail(own.manifestPath, message);
+}
+
+let gitNote = "";
+try {
+  const top = execFileSync("git", ["-C", dir, "rev-parse", "--show-toplevel"], { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
+  if (resolve(top) !== dir) throw new Error("not the checkout root");
+  const tracked = execFileSync("git", ["-C", dir, "ls-files"], { encoding: "utf8", maxBuffer: 1 << 26 }).split("\n").filter(Boolean);
+  for (const message of trackedResultsFindings(tracked)) fail(own.manifestPath, message);
+} catch {
+  gitNote = "tracked-results check skipped (not a git checkout)";
+  console.log(`note: ${gitNote}`);
 }
 
 for (const s of own.skills) {
@@ -141,6 +189,25 @@ if (terms.length > 0) {
     }
   };
   walk(dir);
+}
+
+// Gated names leak from any open-tier file, not only SKILL.md (graders, READMEs, eval prompts).
+if (tier === "open" && catalogDirs.length > 0) {
+  const ownNames = new Set(own.skills.map((s) => s.dirName));
+  const walkNames = (d) => {
+    for (const name of readdirSync(d)) {
+      if (name === ".git" || name === "node_modules") continue;
+      const full = join(d, name);
+      if (name === "results" && d.endsWith("evals")) continue;
+      if (statSync(full).isDirectory()) {
+        walkNames(full);
+        continue;
+      }
+      if (!TEXT_EXT.test(name) || name === "SKILL.md") continue;
+      for (const message of gatedNameFindings(readFileSync(full, "utf8"), catalog, ownNames)) fail(full, message);
+    }
+  };
+  walkNames(dir);
 }
 
 const skills = own.skills.length;

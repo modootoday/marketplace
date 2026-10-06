@@ -1,7 +1,7 @@
 {
   "name": "real-estate",
-  "version": "0.1.0",
-  "description": "Screening for property work: bylaw conditions tested with quoted sections and shown arithmetic, and listings compared with a buyer's must-haves with unknowns kept unknown.",
+  "version": "0.2.0",
+  "description": "Screening and records for property work: listings compared with a buyer's must-haves with unknowns kept unknown, room layouts checked against fixed structure, and a tenant's deposit or move-out dispute arranged as a dated, referenced evidence packet with no legal conclusions.",
   "author": {
     "name": "modootoday"
   },

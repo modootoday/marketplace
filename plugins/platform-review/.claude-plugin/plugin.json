@@ -1,6 +1,6 @@
 {
   "name": "platform-review",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Reviews of platform pieces that fail in production for configuration reasons: Cloudflare Worker bindings, Manifest V3 extension lifecycles, MCP tool design and Postgres migration locks.",
   "author": {
     "name": "modootoday"

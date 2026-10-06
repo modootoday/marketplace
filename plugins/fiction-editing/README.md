@@ -66,7 +66,7 @@ that passed every grader, without the plugin and with it:
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
 | `chapter-canon-drift` | manuscript-continuity-audit | 0.00 | 1.00 | 2 |
-| `bible-two-page-motivation` | series-treatment-causal-review | 0.00 | 0.75 (open: one with-run fails the second grader, 3 of 3 FAIL votes) | 2, Opus subject and judge, 20261005 (both arms in one run, skill fired 2 of 2; earlier Sonnet rounds stayed below 1.00) |
+| `bible-two-page-motivation` | series-treatment-causal-review | 0.00 | 1.00 | 2 per arm, Opus subject and judge, 20261006 (after one SKILL.md edit: questions propose no candidate reason, no framing phrases in the treatment; earlier Opus run 0.75, Sonnet rounds below 1.00) |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

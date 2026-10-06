@@ -1,6 +1,6 @@
 ---
 name: anonymized-script-patch-back
-description: Apply a change made to an anonymized copy of a script back to the real script - keep a local replacement table of placeholders and real identifiers, take only the changed hunks, map them back through the table, apply them to the real file, and check that no secret or real value is in text sent to a model. Use when a script was scrubbed (HOST1, TOKEN_X) before AI help and the fix must now land in the original. Not for general script review (use admin-script-verification) or for deciding what data may be shared.
+description: Apply a change made to an anonymized copy of a script back to the real script - keep a local replacement table of placeholders and real identifiers, take only the changed hunks, map them back through the table, apply them to the real file, and check that no secret or real value is in text sent to a model. Use when a script was scrubbed (HOST1, TOKEN_X) before AI help and the fix must now land in the original. Not for general script review or for deciding what data may be shared.
 metadata:
   tier: open
   level: L3

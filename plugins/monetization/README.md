@@ -2,7 +2,9 @@
 
 ## What it does
 
-Payments and prices that hold up: Toss Payments and Lemon Squeezy integrations checked against the official docs, the right payment channel for each product, USD prices localized for a merchant of record, refunds and disputes handled by looking up the state before acting once, and prices framed as hypotheses with a test.
+Prices framed as hypotheses with a test: who pays, for what unit of value, against which alternative, what result would change the decision, and the cheapest test before anyone builds a pricing page.
+
+Payment integrations, refunds and disputes, payment provider choice and USD price localization are available to signed-in users.
 
 ## Runtime support
 
@@ -13,7 +15,7 @@ Payments and prices that hold up: Toss Payments and Lemon Squeezy integrations c
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
-Requirements: Optional: the Toss Payments integration guide MCP server, so API details are cited from the docs. Without it the skill says which statements it could not check.
+Requirements: None.
 
 ## Install
 
@@ -35,12 +37,7 @@ codex plugin add monetization@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
-| skill | `toss-payments-integration` | Toss Payments confirm, webhook, virtual account, cancel and billing code reviewed against the official docs |
-| skill | `refund-dispute-ops` | refunds, partial refunds and disputes handled by reading the state first, acting once with an idempotency key, and notifying once |
 | skill | `pricing-hypothesis` | a price framed as a testable hypothesis: buyer, unit, today's alternative, a prediction with a threshold, and the cheapest test |
-| skill | `lemonsqueezy-integration` | Lemon Squeezy checkout, signed webhooks, subscriptions, refunds and catalog reads checked against the docs, with the details that are easy to get wrong |
-| skill | `payment-provider-selection` | a merchant of record, a payment gateway or an invoice chosen per product line, checked against prohibited categories and the tax duty left with the seller |
-| skill | `usd-price-localization` | a local, tax-inclusive price list turned into USD prices that keep the margin under the provider's fees and fit what the checkout can charge |
 
 ## Failure mode
 
@@ -60,7 +57,7 @@ None by the plugin. A skill that produces files writes them only where the user 
 Ask for something the plugin covers:
 
 ```
-Review my Toss Payments success handler: it confirms with the amount from the query string.
+We're launching a scheduling app for small hair salons. Help me decide the monthly price.
 ```
 
 The plugin ships an eval suite (`claude plugin eval plugins/monetization --no-publish`). Measured
@@ -69,18 +66,9 @@ passed every grader, without the plugin and with it:
 
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
-| `partial-refund-virtual-account` | refund-dispute-ops | 1.00 | 1.00 | 3 |
-| `refund-during-dispute` | refund-dispute-ops | 1.00 | 1.00 | 2 |
-| `refund-maybe-failed` | refund-dispute-ops | 1.00 | 1.00 | 2 |
-| `review-confirm-handler` | toss-payments-integration | 0.50 | 1.00 | 2 |
-| `vat-math-not-payments` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
-| `virtual-account-shipped-early` | toss-payments-integration | 1.00 | 1.00 | 2 |
 | `price-feels-right` | pricing-hypothesis | 0.00 | 1.00 | 2 |
-| `lemonsqueezy-refund-quantity` | lemonsqueezy-integration | not run yet | not run yet | - |
 
-refund-dispute-ops shows no lift yet: the baseline model already looked up the state and kept the idempotency key in every case tried. Its cases stay as regression checks.
-
-Re-run 20261004 with smaller models answering (`--model`), mean score without and with the plugin over the same cases, 2 runs per arm: refund-dispute-ops: Haiku 0.17 to 0.33, Sonnet 0.83 to 1.00. Two Haiku cases fail in both arms.
+The skill has one case; two more are needed for the three-case release gate.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

@@ -65,7 +65,7 @@ Scores are the share of runs that passed every grader, without the plugin and wi
 | Case | Skill | Without | With | Runs per arm | Subject and judge |
 | --- | --- | --- | --- | --- | --- |
 | `deseq2-nextflow-migration` | analysis-pipeline-refactor-parity | 0.00 | 1.00 | 2 | Sonnet, Sonnet (20261005) |
-| `gtf-gene-length-parser` | bio-analysis-script-pitfalls | 0.00 | 1.00 | 2 | Sonnet, Sonnet (20261005) |
+| `gtf-gene-length-parser` | bio-analysis-script-pitfalls | 0.00 | 1.00 | 2 per arm | Sonnet, Sonnet (20261006) |
 
 Each skill has one case; two more are needed for the three-case release gate.
 

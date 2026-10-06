@@ -1,7 +1,7 @@
 {
   "name": "academic-research",
-  "version": "0.2.0",
-  "description": "Check AI-suggested citations, measurement instruments and extracted statistics against real sources before they enter your research notes.",
+  "version": "0.3.0",
+  "description": "Check AI-suggested citations, measurement instruments and extracted statistics against real sources before they enter your research notes, and redo lab dilution and unit arithmetic before results are used.",
   "author": {
     "name": "modootoday"
   },

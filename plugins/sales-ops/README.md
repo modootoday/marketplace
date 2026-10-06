@@ -2,7 +2,7 @@
 
 ## What it does
 
-Recover forgotten promises from sent-email history: commitments with dates resolved against each email, checked for completion, and listed with the quoted line.
+Sales follow-through from the record: forgotten promises recovered from sent email with dates resolved and the quoted line, and CRM framework fields and a follow-up email filled only from call transcript evidence.
 
 ## Runtime support
 
@@ -37,6 +37,7 @@ codex plugin add sales-ops@modootoday
 | --- | --- | --- |
 | skill | `email-history-commitment-mining` | sent-email history mined for promised follow-ups, each marked done, open or unclear with the completing message or the quoted line, internal and automated senders excluded |
 | skill | `competitive-research-brief` | pasted public-page excerpts turned into a same-rows comparison, every claim tagged with its source and date, stated facts apart from inference, gaps listed; rests on two weak records |
+| skill | `sales-call-extraction-followup` | filling CRM framework fields and a follow-up from a call transcript |
 
 ## Failure mode
 
@@ -67,8 +68,9 @@ that passed every grader, without the plugin and with it:
 | --- | --- | --- | --- | --- |
 | `quote-promise-open-loops` | email-history-commitment-mining | 0.00 | 1.00 | 2 |
 | `two-competitor-pages` | competitive-research-brief | 0.00 | 1.00 | 2 |
+| `discovery-call-no-budget` | sales-call-extraction-followup | 0.00 | 1.00 | 2, Sonnet subject and judge, 20261005 (moved 20261006) |
 
-The last row was measured 20261005 on Claude Code 2.1.289 with Sonnet as subject and judge.
+The second row was measured 20261005 on Claude Code 2.1.289 with Sonnet as subject and judge.
 
 The plugin reads only the emails you supply and sends nothing.
 

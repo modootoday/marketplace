@@ -2,7 +2,7 @@
 
 ## What it does
 
-Numbers that mean what they say: ClickHouse SQL that reads the key and deduplicates correctly, Naver trend data read as ratios, metrics defined once, experiments designed before launch and retention read by cohort.
+Numbers that mean what they say: ClickHouse SQL that reads the key and deduplicates correctly, Naver trend data read as ratios, metrics defined once, experiments designed before launch, retention read by cohort, and open survey responses grouped with every response id kept.
 
 ## Runtime support
 
@@ -50,6 +50,7 @@ codex plugin add data-analytics@modootoday
 | skill | `bi-measure-context-debug` | BI measures debugged by naming model relationships and filter context, hand-computed values at row, subtotal and grand total, per-group scales from the model |
 | skill | `spreadsheet-formula-environment-check` | formulas written for a named spreadsheet engine, version and locale: missing functions listed, locale separators, blank and text-number sample rows, highlight totals rebuilt from the formatting rule, a fallback |
 | skill | `figure-source-key-join-and-total-check` | Sankey, map and heatmap figures built from parsed exports: totals checked before drawing, unmatched and renamed keys listed, mentions kept apart from visits, rerunnable code |
+| skill | `open-response-theme-triangulation` | open responses merged into idea groups with ids, counts reconciled to the responses received, unclassified kept visible, and theme sets from different methods compared |
 
 ## Failure mode
 
@@ -94,8 +95,9 @@ passed every grader, without the plugin and with it:
 | `dept-share-slicer-total`       | bi-measure-context-debug | 0.50 | 1.00 | 2       |
 | `calc-highlight-sum-formula`    | spreadsheet-formula-environment-check | 0.00 | 1.00 | 2 |
 | `tag-export-sankey-country-map` | figure-source-key-join-and-total-check | 0.25 | 1.00 | 2 |
+| `twelve-responses-idea-groups` | open-response-theme-triangulation | 0.00 | 1.00 | 2, Sonnet subject and judge, 20261005; skill fired in both with runs; rests on two first-person records (moved 20261006) |
 
-The last two rows were measured 20261005 with Sonnet as subject and judge, both arms, after both skills were edited; each skill rests on two or four weak-to-moderate records.
+The two rows before the last were measured 20261005 with Sonnet as subject and judge, both arms, after both skills were edited; each skill rests on two or four weak-to-moderate records.
 
 The retrieval case score was measured with Opus 5.5 as the subject model; the judge was Sonnet.
 It was measured 20261005 on Claude Code 2.1.289. Behaviour passed 2/2 with the skill and 0/2 without;

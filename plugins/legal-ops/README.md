@@ -2,7 +2,9 @@
 
 ## What it does
 
-Review lists for OCR text and machine transcripts: risky numbers, dates, names and speaker turns flagged with locators and left uncorrected for a person to check.
+Draft billing time entries from a day's work notes that follow the client billing guidelines the user pastes, keeping the stated total, citing the rule behind each change and listing entries the guidelines would reject.
+
+OCR and transcript review lists are available to signed-in users.
 
 ## Runtime support
 
@@ -36,7 +38,6 @@ codex plugin add legal-ops@modootoday
 | Kind | Name | Covers |
 | --- | --- | --- |
 | skill | `legal-time-entry-client-rules` | a day's work notes turned into time entries that follow the billing rules the user pastes: one task and one duration per entry, stated total kept, split flagged as an estimate, each change tied to a rule, rejected entries listed; no legal advice (rests on one weak record) |
-| skill | `ocr-transcript-risk-flagging` | OCR text or a poor-audio transcript turned into a ranked review list of risky spans, with the original text kept and unintelligible audio marked inaudible; ships a value-type reference and `scripts/transcript-scan.mjs` (needs node) |
 
 ## Failure mode
 
@@ -56,7 +57,7 @@ None by the plugin. A skill that produces files writes them only where the user 
 Ask for something the plugin covers:
 
 ```
-Review this OCR text of a scanned note for risky spans: "Pt seen 03/l5/2O22. Metformin 5OOO mg daily."
+Turn today's work notes into time entries that follow this client's billing guidelines.
 ```
 
 The plugin ships an eval suite (`claude plugin eval plugins/legal-ops --no-publish`). Measured
@@ -65,12 +66,10 @@ that passed every grader, without the plugin and with it:
 
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
-| `ocr-dose-date-speaker` | ocr-transcript-risk-flagging | 0.00 | 0.80 | 2 without, 5 with (3 + 2 after the last skill edit) |
-| `ocr-dose-date-speaker` (Opus) | ocr-transcript-risk-flagging | 0.00 | 1.00 | 2, Opus subject and judge |
 | `block-billed-day-entries` | legal-time-entry-client-rules | 0.00 | 1.00 | 2, Sonnet subject and judge (20261005) |
 
-The output is a review list for a person. It is not legal or medical advice and it does not decide
-what a record means.
+The output is a set of draft entries for a person to review. It is not legal advice and it does not
+decide what is billable.
 
 ## License
 

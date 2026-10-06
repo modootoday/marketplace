@@ -1,7 +1,7 @@
 {
   "name": "kr-legal",
-  "version": "0.2.0",
-  "description": "Korean legal reviews that cite what the law says today: personal data, crawling, e-commerce and subscription rules, Chrome Web Store policy, AI content labelling, and terms and privacy policies drafted from how the service actually works.",
+  "version": "0.3.0",
+  "description": "AI-generated content and ads labelled per platform and current Korean rules, and a Chrome extension checked against the Chrome Web Store program policies before submission or after a rejection.",
   "author": {
     "name": "modootoday"
   },

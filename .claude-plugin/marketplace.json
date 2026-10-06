@@ -128,8 +128,8 @@
     },
     {
       "name": "product-planning",
-      "description": "Early product-planning steps done carefully: spar on an idea, frame the problem behind a request, synthesize feedback without overstating it, rank a backlog while saying where the ranking is fragile, and write a Korean PRD with testable acceptance criteria.",
-      "version": "0.4.0",
+      "description": "Early product-planning steps done carefully: spar on an idea, frame the problem behind a request, synthesize feedback without overstating it, rank a backlog while saying where the ranking is fragile, write a Korean PRD with testable acceptance criteria, and put a decision on one page with the recommendation first.",
+      "version": "0.5.0",
       "author": {
         "name": "modootoday"
       },
@@ -137,8 +137,8 @@
     },
     {
       "name": "content-ai",
-      "description": "Korean content that reads well and stays true: product copy fixed to the Toss writing principles, Naver blog posts planned for search, persona tone measured with markers, ghostwriting that never invents the author's facts, and ad copy reviewed for claims it cannot prove.",
-      "version": "0.4.0",
+      "description": "Korean content that reads well and stays true: product copy fixed to the Toss writing principles, Naver blog posts planned for search, persona tone measured with markers, and ghostwriting that never invents the author's facts.",
+      "version": "0.5.0",
       "author": {
         "name": "modootoday"
       },
@@ -146,8 +146,8 @@
     },
     {
       "name": "monetization",
-      "description": "Payments and prices that hold up: Toss Payments and Lemon Squeezy integrations checked against the official docs, the right payment channel for each product, USD prices localized for a merchant of record, refunds and disputes handled by looking up the state before acting once, and prices framed as hypotheses with a test.",
-      "version": "0.3.0",
+      "description": "Prices framed as hypotheses with a test: who pays, for what unit of value, against which alternative, what result would change the decision, and the cheapest test before anyone builds a pricing page.",
+      "version": "0.4.0",
       "author": {
         "name": "modootoday"
       },
@@ -155,8 +155,8 @@
     },
     {
       "name": "kr-legal",
-      "description": "Korean legal reviews that cite what the law says today: personal data, crawling, e-commerce and subscription rules, Chrome Web Store policy, AI content labelling, and terms and privacy policies drafted from how the service actually works.",
-      "version": "0.2.0",
+      "description": "AI-generated content and ads labelled per platform and current Korean rules, and a Chrome extension checked against the Chrome Web Store program policies before submission or after a rejection.",
+      "version": "0.3.0",
       "author": {
         "name": "modootoday"
       },
@@ -164,8 +164,8 @@
     },
     {
       "name": "data-analytics",
-      "description": "Numbers that mean what they say: ClickHouse SQL that reads the key and deduplicates correctly, Naver trend data read as ratios, metrics defined once, experiments designed before launch and retention read by cohort.",
-      "version": "0.5.0",
+      "description": "Numbers that mean what they say: ClickHouse SQL that reads the key and deduplicates correctly, Naver trend data read as ratios, metrics defined once, experiments designed before launch, retention read by cohort, and open survey responses grouped with every response id kept.",
+      "version": "0.6.0",
       "author": {
         "name": "modootoday"
       },
@@ -173,7 +173,7 @@
     },
     {
       "name": "brand-assets",
-      "description": "Brand work that decides something: visual directions argued before drawing, a tokens.json every asset reads, and QA of the rendered asset before it is published.",
+      "description": "Brand work that decides something: visual directions argued before drawing, a tokens.json and colour names every asset reads, client requests clarified before design, mockup text recovered with its doubts marked, and QA of the rendered asset before it is published.",
       "version": "0.2.0",
       "author": {
         "name": "modootoday"
@@ -200,7 +200,7 @@
     },
     {
       "name": "presentation",
-      "description": "Decks that argue something and survive review: a storyline built from the answer down, pptx files filled from the template's own layouts with native charts, and a QA pass for numbers, charts and dates that disagree.",
+      "description": "Decks that argue something and survive review: a storyline built from the answer down, pptx files filled from the template's own layouts with native charts, a QA pass for numbers that disagree, question rehearsal for the room, and edits that keep content and hand fixes.",
       "version": "0.3.0",
       "author": {
         "name": "modootoday"
@@ -209,8 +209,8 @@
     },
     {
       "name": "audio-production",
-      "description": "Audio from brief to file: a brand's sonic directions, scripts written for the ear, Korean TTS with spoken numbers, mixing to a measured loudness, consistent sound effect sets, and the rights behind every voice.",
-      "version": "0.3.0",
+      "description": "Audio from brief to file: a brand's sonic directions, scripts written for the ear, Korean TTS with spoken numbers, mixing to a measured loudness, and consistent sound effect sets.",
+      "version": "0.4.0",
       "author": {
         "name": "modootoday"
       },
@@ -246,7 +246,7 @@
     {
       "name": "platform-review",
       "description": "Reviews of platform pieces that fail in production for configuration reasons: Cloudflare Worker bindings, Manifest V3 extension lifecycles, MCP tool design and Postgres migration locks.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -254,8 +254,8 @@
     },
     {
       "name": "operations-cs",
-      "description": "Customer operations: Korean support tickets triaged with incidents spotted across them, status updates that say what is affected and when the next update comes, and read-only runbooks for on-call.",
-      "version": "0.3.0",
+      "description": "Customer operations: Korean support tickets triaged with incidents spotted across them, status updates that say what is affected and when the next update comes, read-only runbooks for on-call, and blameless postmortems with a sourced timeline and owned actions.",
+      "version": "0.4.0",
       "author": {
         "name": "modootoday"
       },
@@ -281,8 +281,8 @@
     },
     {
       "name": "academic-research",
-      "description": "Check AI-suggested citations, measurement instruments and extracted statistics against real sources before they enter your research notes.",
-      "version": "0.2.0",
+      "description": "Check AI-suggested citations, measurement instruments and extracted statistics against real sources before they enter your research notes, and redo lab dilution and unit arithmetic before results are used.",
+      "version": "0.3.0",
       "author": {
         "name": "modootoday"
       },
@@ -317,8 +317,8 @@
     },
     {
       "name": "legal-ops",
-      "description": "Review lists for OCR text and machine transcripts: risky numbers, dates, names and speaker turns flagged with locators and left uncorrected for a person to check.",
-      "version": "0.1.0",
+      "description": "Draft billing time entries from a day's work notes that follow the client billing guidelines the user pastes, keeping the stated total, citing the rule behind each change and listing entries the guidelines would reject.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -326,8 +326,8 @@
     },
     {
       "name": "real-estate",
-      "description": "Screening for property work: bylaw conditions tested with quoted sections and shown arithmetic, and listings compared with a buyer's must-haves with unknowns kept unknown.",
-      "version": "0.1.0",
+      "description": "Screening and records for property work: listings compared with a buyer's must-haves with unknowns kept unknown, room layouts checked against fixed structure, and a tenant's deposit or move-out dispute arranged as a dated, referenced evidence packet with no legal conclusions.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -335,8 +335,8 @@
     },
     {
       "name": "sales-ops",
-      "description": "Recover forgotten promises from sent-email history: commitments with dates resolved against each email, checked for completion, and listed with the quoted line.",
-      "version": "0.1.0",
+      "description": "Sales follow-through from the record: forgotten promises recovered from sent email with dates resolved and the quoted line, and CRM framework fields and a follow-up email filled only from call transcript evidence.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -399,7 +399,7 @@
     {
       "name": "food-service",
       "description": "Home and kitchen recipe work that keeps the source intact: a pasted recipe copied to a card without invented changes, then every ingredient swap or appliance change logged as a marked, estimated adaptation.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -461,8 +461,8 @@
     },
     {
       "name": "household-admin",
-      "description": "Household paperwork and planning on the facts a person supplies: pay-period schedules where every dollar is placed once, receipts split to the total, a small-step week for chores, a ledger of home service events, and total-cost comparisons of personal offers.",
-      "version": "0.1.0",
+      "description": "Household paperwork and planning on the facts a person supplies: pay-period schedules where every dollar is placed once, receipts split to the total, a small-step week for chores, a ledger of home service events, total-cost comparisons of personal offers, a trading journal checked against your own rules, and insurance bills and payments reconciled per claim.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -488,8 +488,8 @@
     },
     {
       "name": "engineering",
-      "description": "Engineering document procedures: work instructions from field notes, clause location with verbatim quotes, sourced spec tables, manual-based maintenance schedules and fault evidence logs.",
-      "version": "0.1.0",
+      "description": "Engineering document procedures: work instructions from field notes, clause location with verbatim quotes, sourced spec tables and fault evidence logs.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -497,8 +497,8 @@
     },
     {
       "name": "hr-ops",
-      "description": "HR office arithmetic and drafts checked on the facts the user supplies: aggregate workforce metrics with stated group minimums, sourcing search strings without protected-trait terms, shift hours split by the user's own rules, and policy drafts checked against the user's checklist.",
-      "version": "0.1.0",
+      "description": "HR office arithmetic and drafts checked on the facts the user supplies: aggregate workforce metrics with stated group minimums, sourcing search strings without protected-trait terms, and policy drafts checked against the user's checklist.",
+      "version": "0.2.0",
       "source": "./plugins/hr-ops",
       "author": {
         "name": "modootoday"
@@ -515,8 +515,8 @@
     },
     {
       "name": "it-ops",
-      "description": "Read-through review of administration scripts before they run: commands checked against the installed version, destructive steps flagged, errors handled per item, and fixes from an anonymized copy patched back safely.",
-      "version": "0.1.0",
+      "description": "A fix made on an anonymized copy of an administration script patched back to the real script through a local replacement table, changed hunks only, with no real value sent to a model.",
+      "version": "0.2.0",
       "source": "./plugins/it-ops",
       "author": {
         "name": "modootoday"
@@ -629,6 +629,15 @@
       "author": {
         "name": "modootoday"
       }
+    },
+    {
+      "name": "agent-orchestration",
+      "description": "Coordinating subagents: whether and how widely to delegate, briefs with boundaries and hand-back schemas, partitioned writes with an idempotent merge, verifying what a subagent claims, fair comparisons, and fan-out scripts with caps and resume.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/agent-orchestration"
     }
   ]
 }

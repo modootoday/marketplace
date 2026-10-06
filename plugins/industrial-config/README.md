@@ -4,6 +4,8 @@
 
 Device configuration files drafted from a register or tag table the engineer pastes: address base conversion, register widths, duplicate and overlapping ranges checked, every value the table does not give listed, and a bench test required before anything reaches equipment. It drafts and checks; it never claims a test was run.
 
+This plugin is a preview: the full set is available to signed-in users.
+
 ## Runtime support
 
 | Runtime | Supported | Measured on |

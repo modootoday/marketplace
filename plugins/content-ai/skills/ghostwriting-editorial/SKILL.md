@@ -44,7 +44,10 @@ generation) and asks whether it sounds like the client, run the check in this or
    beside each. Do not rewrite sentences that kept every rule. A rewrite may re-voice
    what the draft already says; it may not add a claim, habit or experience for the
    author ("most failures I see...", "in my years..."). Where a removed sentence left
-   a gap, put a bracketed question for the author instead of a replacement claim.
+   a gap, put a bracketed question for the author instead of a replacement claim. Every
+   drifted sentence still gets its own line with a voiced rewrite and rule number, even when
+   its unsupported claim is cut: write the rewrite without the claim, or "[cut]", and put the
+   question beside it, so no drifted sentence is left without a rewrite line.
 
 Say what two samples cannot show (for example how the client writes when angry or in a
 different channel) instead of extending the rules to it. The check judges the text

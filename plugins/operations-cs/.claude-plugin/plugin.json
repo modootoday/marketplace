@@ -1,7 +1,7 @@
 {
   "name": "operations-cs",
-  "version": "0.3.0",
-  "description": "Customer operations: Korean support tickets triaged with incidents spotted across them, status updates that say what is affected and when the next update comes, and read-only runbooks for on-call.",
+  "version": "0.4.0",
+  "description": "Customer operations: Korean support tickets triaged with incidents spotted across them, status updates that say what is affected and when the next update comes, read-only runbooks for on-call, and blameless postmortems with a sourced timeline and owned actions.",
   "author": {
     "name": "modootoday"
   },

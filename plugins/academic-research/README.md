@@ -2,7 +2,7 @@
 
 ## What it does
 
-Check AI-suggested citations, measurement instruments and extracted statistics against real sources before they enter your research notes.
+Check AI-suggested citations, measurement instruments and extracted statistics against real sources before they enter your research notes, and redo lab dilution and unit arithmetic before results are used.
 
 ## Runtime support
 
@@ -39,6 +39,7 @@ codex plugin add academic-research@modootoday
 | skill | `research-coverage-chronology-audit` | research answers audited for missing items and wrong dates: dated sourced list, proposed versus enacted, coverage gaps |
 | skill | `paper-method-reimplementation-check` | a port of a published method checked before use: equation checklist, authors' code and licence recorded, one published number reproduced first, deviations and ambiguous text listed |
 | skill | `reference-renumber-sync` | numbered references reordered or deleted with an old-to-new mapping, groups and ranges rewritten, deleted-reference citations and uncited entries listed; rests on one user report |
+| skill | `lab-calculation-and-claim-check` | dilution and unit math redone, result tables checked against raw numbers, citations tested for method and sample fit |
 
 ## Failure mode
 
@@ -71,6 +72,7 @@ that passed every grader, without the plugin and with it:
 | `policy-timeline-audit` | research-coverage-chronology-audit | 0.00 | 1.00 | 2 |
 | `method-port-matlab` | paper-method-reimplementation-check | 0.00 | 1.00 | 2, Sonnet subject and judge |
 | `renumber-delete-and-move` | reference-renumber-sync | 0.00 | 1.00 | 2, Sonnet subject and judge |
+| `dilution-table-citation` | lab-calculation-and-claim-check | 0.00 | 1.00 | 2, Sonnet subject and judge, 20261005 (moved 20261006) |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

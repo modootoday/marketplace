@@ -1,7 +1,7 @@
 {
   "name": "legal-ops",
-  "version": "0.1.0",
-  "description": "Review lists for OCR text and machine transcripts: risky numbers, dates, names and speaker turns flagged with locators and left uncorrected for a person to check.",
+  "version": "0.2.0",
+  "description": "Draft billing time entries from a day's work notes that follow the client billing guidelines the user pastes, keeping the stated total, citing the rule behind each change and listing entries the guidelines would reject.",
   "author": {
     "name": "modootoday"
   },

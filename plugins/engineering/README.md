@@ -2,7 +2,9 @@
 
 ## What it does
 
-Engineering document procedures: work instructions from field notes, clause location with verbatim quotes, sourced spec tables, manual-based maintenance schedules and fault evidence logs.
+Engineering document procedures: work instructions from field notes, clause location with verbatim quotes, sourced spec tables and fault evidence logs.
+
+Maintenance schedules built from equipment manuals are available to signed-in users.
 
 ## Runtime support
 
@@ -38,7 +40,6 @@ codex plugin add engineering@modootoday
 | skill | `procedure-document-from-field-notes` | field steps turned into a work instruction and flow with every branch kept, an owner field per step, gaps as questions and a safety-owner review list (rests on weak records) |
 | skill | `standards-clause-locator` | clause number and wording quoted verbatim with edition, report and clause values compared by number, unit and condition, not-found stated (rests on weak records) |
 | skill | `datasheet-spec-table` | spec table with each value traced to a source document and date, unverified cells marked, price left to check (rests on weak records) |
-| skill | `equipment-manual-to-pm-schedule` | asset register entry and PM schedule copied from the manual with page references, hours and calendar triggers kept apart (rests on two records) |
 | skill | `fault-diagnosis-evidence-log` | discriminating questions and an evidence log that rules causes out without naming one, safe next checks only (rests on two records) |
 
 ## Failure mode
@@ -59,7 +60,7 @@ None by the plugin. A skill that produces files writes them only where the user 
 Ask for something the plugin covers:
 
 ```
-Manual p.18 says: replace filters every 3 months; lubricate bearings every 2,000 operating hours. Nameplate: model TWE036, 460V 3-phase. Make the asset entry and PM schedule.
+Which clause of this pasted spec governs the minimum pipe cover, and does the site report meet it?
 ```
 
 The plugin ships an eval suite (`claude plugin eval plugins/engineering --no-publish`). Measured
@@ -71,7 +72,6 @@ plugin and with it:
 | `pump-filter-work-instruction` | procedure-document-from-field-notes | 0.00 | 1.00 | 2 | Opus / Opus |
 | `bearing-capacity-clause-check` | standards-clause-locator | 0.00 | 1.00 | 2 | Sonnet / Sonnet |
 | `scope-spec-table` | datasheet-spec-table | 0.00 | 1.00 | 2 | Sonnet / Sonnet |
-| `rooftop-unit-pm-plan` | equipment-manual-to-pm-schedule | 0.50 | 1.00 | 2 | Sonnet / Sonnet |
 | `motorcycle-wont-start-log` | fault-diagnosis-evidence-log | 0.00 | 1.00 | 2 | Opus / Opus, both arms, 20261005 (after a SKILL.md fix: the question numbering is the ranking, so a later question is never called the most useful) |
 
 The plugin reads only what you supply, quotes no standard text, limit or rating of its own and gives

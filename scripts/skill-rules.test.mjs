@@ -1,7 +1,18 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { installDefaultFindings, parseFrontmatter, referenceFindings, skillFindings } from "./skill-rules.mjs";
+import {
+  descriptionDriftFindings,
+  duplicatePluginFindings,
+  gatedNameFindings,
+  installDefaultFindings,
+  parseFrontmatter,
+  pluginNamingFindings,
+  referenceFindings,
+  skillFindings,
+  trackedResultsFindings,
+  unregisteredFindings,
+} from "./skill-rules.mjs";
 
 const DESCRIPTION = "Does one careful thing for the reader. Use when the reader asks for that thing.";
 
@@ -61,10 +72,12 @@ test("a skill labelled with another tier is rejected", () => {
   assert.ok(f.includes("metadata.tier free in a open marketplace"));
 });
 
-test("levels follow the tier: open L1-L3, free L4-L5", () => {
-  assert.ok(findings("open", ["level: L4", "domain: x", "install: optional"]).some((m) => m.includes("does not belong")));
-  assert.ok(findings("free", ["level: L2", "domain: x", "install: optional"]).some((m) => m.includes("does not belong")));
-  assert.deepEqual(findings("free", ["level: L4", "domain: x", "install: optional"]), []);
+test("level is complexity, not tier: open and free both accept L1-L5", () => {
+  for (const tier of ["open", "free"]) {
+    for (const level of ["L1", "L3", "L5"]) {
+      assert.deepEqual(findings(tier, [`level: ${level}`, "domain: x", "install: optional"]), []);
+    }
+  }
 });
 
 test("open keywords are plain ASCII; free keywords may use any language", () => {
@@ -143,4 +156,48 @@ test("references run down the tiers only, and a pair must resolve", () => {
     "body names paid-skill, a paid skill, from the open tier",
   ]);
   assert.deepEqual(ref("open", null, "Then run open-skill-extended."), []);
+});
+
+test("a plugin directory with skills and no marketplace entry is reported as unregistered", () => {
+  assert.deepEqual(unregisteredFindings(["a", "b"], ["a", "b"]), []);
+  assert.deepEqual(unregisteredFindings(["a", "ghost"], ["a"]), [
+    "plugin directory ghost has skills but no marketplace.json entry; register it or remove it",
+  ]);
+});
+
+test("tracked eval results fail, other tracked eval files do not", () => {
+  assert.deepEqual(trackedResultsFindings(["plugins/a/evals/case/prompt.md", "plugins/a/README.md"]), []);
+  assert.equal(trackedResultsFindings(["plugins/a/evals/results/run.json", "plugins/b/evals/results/x/y.md"]).length, 2);
+});
+
+test("free plugins end in -plus and open plugins never do", () => {
+  assert.deepEqual(pluginNamingFindings("free", ["a-plus"]), []);
+  assert.deepEqual(pluginNamingFindings("free", ["a"]), ["plugin a must end in -plus in the free tier"]);
+  assert.deepEqual(pluginNamingFindings("open", ["a"]), []);
+  assert.deepEqual(pluginNamingFindings("open", ["a-plus"]), ["plugin a-plus must not end in -plus in the open tier"]);
+  assert.deepEqual(pluginNamingFindings("internal", ["a", "b-plus"]), []);
+});
+
+test("a plugin name that exists in two tiers fails", () => {
+  const others = new Map([["free", ["x-plus"]], ["paid", ["x"]]]);
+  assert.deepEqual(duplicatePluginFindings(["y"], others), []);
+  assert.deepEqual(duplicatePluginFindings(["x"], others), ["plugin x also exists in the paid tier"]);
+});
+
+test("descriptions of marketplace, plugin.json and gemini-extension.json must match", () => {
+  const same = { name: "p", entry: "One.", plugin: "One.", gemini: undefined };
+  assert.deepEqual(descriptionDriftFindings(same), []);
+  assert.deepEqual(descriptionDriftFindings({ ...same, gemini: "One." }), []);
+  assert.equal(descriptionDriftFindings({ ...same, plugin: "Two." }).length, 1);
+  assert.equal(descriptionDriftFindings({ ...same, gemini: "Two." }).length, 1);
+});
+
+test("an open file naming a skill that exists only in a gated catalog fails", () => {
+  const catalog = new Map([["open-skill", "open"], ["gated-skill", "free"], ["shared", "paid"]]);
+  const own = new Set(["open-skill", "shared"]);
+  assert.deepEqual(gatedNameFindings("run open-skill and shared", catalog, own), []);
+  assert.deepEqual(gatedNameFindings("grader checks gated-skill fired", catalog, own), [
+    "names gated-skill, a free skill, from the open tier",
+  ]);
+  assert.deepEqual(gatedNameFindings("gated-skill-extended", catalog, own), []);
 });

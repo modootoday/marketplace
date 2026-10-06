@@ -69,11 +69,11 @@ that passed every grader, without the plugin and with it:
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
 | `german-footnote-calque` | translation-postedit-qc | 0.00 | 1.00 | 2 |
-| `srt-limits-overlap` | subtitle-qc | 0.00 | 0.67 | 2 without, 3 with (after the last skill edit) |
+| `srt-limits-overlap` | subtitle-qc | 0.00 | 1.00 | 2 per arm, Sonnet subject and judge, 20261006 |
 | `srt-limits-overlap` (Opus) | subtitle-qc | 0.50 | 1.00 | 2, Opus subject and judge |
 | `pt-br-drift-two-turns` | language-variety-and-register-lock-check | 0.00 | 0.50 | 2 |
 | `pt-br-drift-two-turns` (Opus) | language-variety-and-register-lock-check | 0.00 | 1.00 | 2, Opus subject and judge |
-| `cyrillic-title-page` | catalog-transliteration-check | 0.00 | 1.00 | 2 without, 2 with (after the last skill edit), Sonnet subject and judge |
+| `cyrillic-title-page` | catalog-transliteration-check | 0.00 | 1.00 | 2 per arm, Sonnet subject and judge, 20261006 (grader context clarified: variants in other standards are cross-references, personal and publisher names take no gloss) |
 | `manga-page-and-slices` | comic-localization-lettering-handoff | 0.00 | 1.00 | 2, Sonnet subject and judge |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as

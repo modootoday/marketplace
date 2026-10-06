@@ -38,7 +38,9 @@ work across weeks.
    week is missed (hours per week), the new capacity, and the new slack or shortfall against that
    plan's demand (for example "plan with reviews: 80 h against 72 h left, 8 h short"; "plan without:
    72 h against 72 h, slack used up, still just fits"). Then say which units move and what to cut
-   first. A plan with no buffer still needs its number, not "no buffer".
+   first. A plan with no buffer still needs its number, not "no buffer". After naming the cut,
+   recompute that plan's hours with the cut applied, and claim a restored fit only if the
+   arithmetic shows it.
 8. This is a plan from the numbers given. The parent or learner decides pace and content; unit
    difficulty and the child's progress are not assessed.
 

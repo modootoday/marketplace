@@ -37,6 +37,8 @@ rests on one report; a cataloguer who reads the script confirms the result.
    the candidates. Do not choose one and present it as certain.
 5. Variants: list the spellings a user might search (other standards, common English
    spellings, spellings without diacritics) so the record can carry them as cross-references.
+   Head the list "cross-references only, not record fields" and say the record itself is in
+   the one named standard.
 
 ## Output
 

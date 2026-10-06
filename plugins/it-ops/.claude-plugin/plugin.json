@@ -1,7 +1,7 @@
 {
   "name": "it-ops",
-  "version": "0.1.0",
-  "description": "Read-through review of administration scripts before they run: commands checked against the installed version, destructive steps flagged, errors handled per item, and fixes from an anonymized copy patched back safely.",
+  "version": "0.2.0",
+  "description": "A fix made on an anonymized copy of an administration script patched back to the real script through a local replacement table, changed hunks only, with no real value sent to a model.",
   "author": {
     "name": "modootoday"
   },

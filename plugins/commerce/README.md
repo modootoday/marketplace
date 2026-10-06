@@ -63,7 +63,7 @@ share of runs that passed every grader, without the plugin and with it:
 
 | Case | Skill | Without | With | Runs per arm | Subject and judge |
 | --- | --- | --- | --- | --- | --- |
-| `camera-photo-partial-marking` | item-identification-from-photos | 0.00 | 1.00 | 2 | Sonnet, Sonnet (20261005) |
+| `camera-photo-partial-marking` | item-identification-from-photos | 0.00 | 1.00 | 2 per arm | Sonnet, Sonnet (20261006) |
 
 The skill rests on one first-person report. The eval describes the photo in text because the sandbox has no images. The skill has one case; two more are needed for the three-case release gate.
 

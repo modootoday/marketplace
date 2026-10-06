@@ -1,0 +1,9 @@
+{
+  "name": "agent-orchestration",
+  "version": "0.1.0",
+  "description": "Coordinating subagents: whether and how widely to delegate, briefs with boundaries and hand-back schemas, partitioned writes with an idempotent merge, verifying what a subagent claims, fair comparisons, and fan-out scripts with caps and resume.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

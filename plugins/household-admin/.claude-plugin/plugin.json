@@ -1,7 +1,7 @@
 {
   "name": "household-admin",
-  "version": "0.1.0",
-  "description": "Household paperwork and planning on the facts a person supplies: pay-period schedules where every dollar is placed once, receipts split to the total, a small-step week for chores, a ledger of home service events, and total-cost comparisons of personal offers.",
+  "version": "0.2.0",
+  "description": "Household paperwork and planning on the facts a person supplies: pay-period schedules where every dollar is placed once, receipts split to the total, a small-step week for chores, a ledger of home service events, total-cost comparisons of personal offers, a trading journal checked against your own rules, and insurance bills and payments reconciled per claim.",
   "author": {
     "name": "modootoday"
   },

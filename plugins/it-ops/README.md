@@ -2,7 +2,9 @@
 
 ## What it does
 
-Read-through review of administration scripts before they run: commands checked against the installed version, destructive steps flagged, errors handled per item, and a fix made on an anonymized copy patched back to the real script without exposing real values. It never runs a script.
+A fix made on an anonymized copy of an administration script patched back to the real script through a local replacement table, changed hunks only, with no real value sent to a model. It never runs a script.
+
+Admin script reviews before a run are available to signed-in users.
 
 ## Runtime support
 
@@ -35,7 +37,6 @@ codex plugin add it-ops@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
-| skill | `admin-script-verification` | a PowerShell, bash or Python admin script reviewed for invented commands, destructive steps, missing validation and recovery, with a dry-run and trial plan (two evidence records) |
 | skill | `anonymized-script-patch-back` | a change made on a scrubbed script applied to the real one through a local replacement table, hunk only, with an outbound-text check (one evidence record) |
 
 ## Failure mode
@@ -56,7 +57,7 @@ None by the plugin. A skill that produces files writes them only where the user 
 Ask for something the plugin covers:
 
 ```
-Review this PowerShell script and add error handling before I run it on 300 accounts.
+I fixed the anonymized copy of our script (HOST1, TOKEN_X). Apply the fix to the real script.
 ```
 
 The plugin ships an eval suite (`claude plugin eval plugins/it-ops --no-publish`). Measured
@@ -65,12 +66,10 @@ that passed every grader, without the plugin and with it:
 
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
-| `ad-script-300-accounts` | admin-script-verification | 0.00 | 1.00 | 2 |
-| `patch-back-retry-loop` | anonymized-script-patch-back | 0.00 | 1.00 | 2 |
+| `patch-back-retry-loop` | anonymized-script-patch-back | 0.00 | 1.00 | 2 per arm |
 
-Each skill has one case; two more are needed per skill for the three-case release gate.
-The with-plugin arm was measured after the last SKILL.md edit; the baseline is from the
-earlier both-arm run on the same prompt and graders.
+The skill has one case; two more are needed for the three-case release gate.
+The row is a both-arm run on the final skill text, Sonnet subject and judge, 20261006.
 
 ## License
 

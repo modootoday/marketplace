@@ -4,6 +4,8 @@
 
 Permission setups for agents that run without a person watching: approval branches walked, denied actions held across rewordings, credentials kept out of the model and success checked on the artifact.
 
+This plugin is a preview: the full set is available to signed-in users.
+
 ## Runtime support
 
 | Runtime | Supported | Measured on |

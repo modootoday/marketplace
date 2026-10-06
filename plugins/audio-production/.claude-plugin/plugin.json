@@ -1,7 +1,7 @@
 {
   "name": "audio-production",
-  "version": "0.3.0",
-  "description": "Audio from brief to file: a brand's sonic directions, scripts written for the ear, Korean TTS with spoken numbers, mixing to a measured loudness, consistent sound effect sets, and the rights behind every voice.",
+  "version": "0.4.0",
+  "description": "Audio from brief to file: a brand's sonic directions, scripts written for the ear, Korean TTS with spoken numbers, mixing to a measured loudness, and consistent sound effect sets.",
   "author": {
     "name": "modootoday"
   },

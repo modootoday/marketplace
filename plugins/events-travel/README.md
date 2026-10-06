@@ -2,7 +2,7 @@
 
 ## What it does
 
-Day plans that survive arithmetic: run-of-show, travel and family days built from fixed bookings, opening hours, travel time and protected rest, with buffers and backups.
+Day plans, seating plans, deadline registers, hotel shortlists and route checks that survive arithmetic: fixed bookings, opening hours, travel time, supplied rules and official sources, with buffers, backups and unverified items marked.
 
 ## Runtime support
 
@@ -71,7 +71,7 @@ runs that passed every grader, without the plugin and with it:
 | `museum-closed-nap-day` | constrained-day-schedule | 0.00 | 0.50 | 2 |
 | `museum-closed-nap-day` (Opus) | constrained-day-schedule | 0.00 | 1.00 | 2, Opus subject and judge |
 | `seating-rules-conflict` (Opus) | seating-constraint-plan | 0.25 | 1.00 | 2 per arm, Opus subject and judge, both arms, 20261005 |
-| `deadline-kit-v2-diff` | deadline-register-from-documents | 0.00 | 1.00 | 2, Sonnet; baseline from the earlier both-arm run |
+| `deadline-kit-v2-diff` | deadline-register-from-documents | 0.00 | 1.00 | 2 per arm, Sonnet subject and judge, 20261006 |
 | `hotel-shortlist-family` | traveler-fit-shortlist | 0.00 | 0.67 | 2, Sonnet |
 | `hotel-shortlist-family` (Opus) | traveler-fit-shortlist | 0.25 | 1.00 | 2, Opus subject and judge |
 | `closed-line-commute-hike` | route-plan-official-source-check | 0.00 | 1.00 | 2, Sonnet |

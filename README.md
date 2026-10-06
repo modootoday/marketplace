@@ -61,8 +61,8 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `pmcp`                      | Serve the skills your installed packages ship, one at a time, over MCP        | no    |
 | `product-planning`          | Spar on ideas, frame problems, synthesize feedback, rank a backlog, write a Korean PRD | no    |
 | `content-ai`                | Korean product copy to the Toss writing principles, Naver blog posts for search | no    |
-| `monetization`              | Toss Payments integration checked against the docs; refunds and disputes done once | no    |
-| `kr-legal`                  | Personal data and crawling reviews against current Korean law                 | no    |
+| `monetization`              | Prices framed as testable hypotheses before anyone builds a pricing page       | no    |
+| `kr-legal`                  | Chrome Web Store policy review before submission or after a rejection         | no    |
 | `data-analytics`            | SQL, metrics and retrieval ranking with language slices and latency evidence   | no    |
 | `brand-assets`              | Visual directions, brand tokens, and QA of rendered assets                    | no    |
 | `image-assets`              | OG share images rendered from HTML with Korean text and fonts handled         | no    |
@@ -75,9 +75,9 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `ux-research` | Index interview transcripts by theme and timestamp; quotes audited against the source | no |
 | `education` | Reading passages at a measured grade level; language drills that stay in one dialect | no |
 | `localization` | Translation post-edit checks and subtitle limit checks reported by segment or cue id | no |
-| `legal-ops` | OCR and transcript review lists: risky spans flagged with locators, text left uncorrected | no |
-| `real-estate` | Bylaw conditions tested with shown arithmetic; listings screened against must-haves | no |
-| `sales-ops` | Promised follow-ups recovered from sent email, resolved against each email's date | no |
+| `legal-ops` | Draft billing time entries that follow the client's pasted guidelines, each change tied to a rule | no |
+| `real-estate` | Listings screened against must-haves, room layouts checked, tenant dispute records arranged with no legal conclusions | no |
+| `sales-ops` | Promised follow-ups recovered from sent email; CRM fields and follow-ups filled only from call transcripts | no |
 | `software-qa` | Test cases traced to the change: gaps and duplicates listed, automation proposed for approval | no |
 | `accessibility` | Images, charts and screens read for blind and low-vision users: text first, uncertainty marked | no |
 | `data-engineering` | Migrated or rewritten SQL proven equal to the original: statement map, two-way key diffs, seeded-difference test | no |
@@ -91,13 +91,13 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `agent-governance`          | Audit an unattended agent's permission setup: approval branches, denied retries, credentials, artifact checks | no    |
 | `ml-data` | Fine-tuning data checked against the target schema before training: content types, one record per example, reload counts, tool-call turns | no |
 | `bioinformatics` | Analysis pipeline refactors proven equal: baseline, step map, tolerances, explained and unexplained differences | no |
-| `household-admin` | Pay-period schedules from your own numbers, every dollar placed once, arithmetic only | no |
+| `household-admin` | Pay-period schedules from your own numbers, every dollar placed once, arithmetic only; trading journals and insurance paper trails checked | no |
 | `procurement` | Spend projection with ledger reconciliation, dedicated lane cost models, provisional freight classification, verified vendor shortlists, purchase-request intake and stage checks, ERP navigation with verification notes (freight classification and ERP navigation rest on one and three weak records) | no |
 | `gis` | Raster NoData and scaling, geometry repair and merges, label and view expressions, slope areas from contours, tool substitution; CRS and units stated | no |
-| `engineering` | Work instructions from field notes, verbatim clause location with edition, sourced datasheet spec tables, manual-based PM schedules, fault evidence logs that name no root cause (all five rest on two to four weak records) | no |
-| `hr-ops` | Aggregate workforce metrics with group minimums, sourcing strings without protected-trait terms, shift hours by the user's rule, policy drafts checked against the user's checklist (each rests on one to three single-person reports) | no |
+| `engineering` | Work instructions from field notes, verbatim clause location with edition, sourced datasheet spec tables, fault evidence logs that name no root cause (all four rest on two to four weak records) | no |
+| `hr-ops` | Aggregate workforce metrics with group minimums, sourcing strings without protected-trait terms, policy drafts checked against the user's checklist (each rests on one to three single-person reports) | no |
 | `photography` | Check a photo cull or batch grade from the scores and logs you supply: criteria per subject, rank and flag only, preview versus export | no |
-| `it-ops` | Admin script review without running it (invented commands, destructive steps, per-item error handling, dry run) and safe patch-back from an anonymized copy; one-to-two-record evidence | no |
+| `it-ops` | Safe patch-back of a fix made on an anonymized script copy, with no real value sent to a model; one-record evidence | no |
 | `genealogy-research` | Surname mention index across volumes with gaps and same-name risk, uncertain handwriting readings, tree-export date and relationship checks, evidence-separated ancestor sheets (both rest on two moderate records) | no |
 | `design-delivery` | A wireframe mapped to design-system components with missing ones flagged and tokens kept (one weak record) | no |
 | `finance-ops` | Statement rows tied out to balances, documents named from evidence and cash flow bridged by driver; supplied figures only, no advice (two skills, each on two reports) | no |
@@ -110,6 +110,7 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `land-growing` | Garden plans checked against measured site facts: layout, frost-bounded calendar, soil, light and water test units (five single-record reports) | no |
 | `industrial-config` | Device config files drafted from a pasted register table with address base, widths, duplicates and a bench-test requirement (two records) | no |
 | `everyday-readings` | Numerology, chart and spread inputs computed only from the rules you name, every step shown, reflection only with no predictions | no |
+| `agent-orchestration` | Subagent coordination: delegation sizing, briefs and hand-backs, partitioned writes and merge, claim verification, fair eval comparisons, fan-out scripts | no |
 
 ## Trust
 

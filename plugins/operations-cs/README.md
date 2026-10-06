@@ -2,7 +2,7 @@
 
 ## What it does
 
-Customer operations: Korean support tickets triaged with incidents spotted across them, status updates that say what is affected and when the next update comes, and read-only runbooks for on-call.
+Customer operations: Korean support tickets triaged with incidents spotted across them, status updates that say what is affected and when the next update comes, read-only runbooks for on-call, and blameless postmortems with a sourced timeline and owned actions.
 
 ## Runtime support
 
@@ -39,6 +39,7 @@ codex plugin add operations-cs@modootoday
 | skill | `status-incident-comms` | status page updates that state impact and the next update time, without blaming anyone or guessing the cause |
 | skill | `ops-answer-grounding` | replies and confirmations grounded in the record and policy: deadlines checked, temporary notices applied, exceptions handed to staff |
 | skill | `operator-runbook` | read-only on-call runbooks: ordered checks with what healthy looks like, escalation, and state changes kept separate |
+| skill | `incident-postmortem` | blameless postmortems: a sourced UTC timeline, impact in numbers, causes past human error, owned and verified actions |
 
 ## Failure mode
 
@@ -72,6 +73,9 @@ passed every grader, without the plugin and with it:
 | `first-update` | status-incident-comms | 1.00 | 1.00 | 2 |
 | `queue-runbook` | operator-runbook | 0.00 | 1.00 | 2 |
 | `extension-with-notice` | ops-answer-grounding | 0.00 | 1.00 | 2 |
+| `checkout-lock-postmortem` | incident-postmortem | 0.00 | 0.67 | 3, Sonnet judge, 20261004 (moved 20261006) |
+| `http-status-not-incident` | negative: the skill must not fire | 1.00 | 1.00 | 2, Sonnet judge, 20261004 (moved 20261006) |
+| `impact-unknowns` | incident-postmortem | 1.00 | 1.00 | 2, Sonnet judge, 20261004 (moved 20261006) |
 
 status-incident-comms shows no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 

@@ -2,7 +2,9 @@
 
 ## What it does
 
-Korean legal reviews that cite what the law says today: personal data, crawling, e-commerce and subscription rules, Chrome Web Store policy, AI content labelling, and terms and privacy policies drafted from how the service actually works.
+AI-generated content and ads labelled per platform and current Korean rules, and a Chrome extension checked against the Chrome Web Store program policies before submission or after a rejection.
+
+This plugin is a preview: the other Korean legal reviews (personal data, crawling, e-commerce and subscription rules, ad copy, voice rights, terms and privacy drafting) are available to signed-in users.
 
 ## Runtime support
 
@@ -13,7 +15,7 @@ Korean legal reviews that cite what the law says today: personal data, crawling,
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
-Requirements: The korean-law MCP server, so article text and decisions are retrieved rather than remembered. Without it every citation is marked unverified.
+Requirements: The korean-law MCP server for ai-content-disclosure, so rule text is retrieved rather than remembered. Without it every citation is marked unverified.
 
 ## Install
 
@@ -35,12 +37,8 @@ codex plugin add kr-legal@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
-| skill | `pipa-review` | data flows reviewed against the Personal Information Protection Act: lawful basis, consent notices, entrustment, provision, overseas transfer |
-| skill | `crawling-legality-review` | crawling and bulk collection judged fact by fact against access, database, unfair competition, privacy and contract rules |
 | skill | `ai-content-disclosure` | AI-generated content and ads labelled per platform and current Korean rules, with a record of how each asset was made |
 | skill | `chrome-store-policy-review` | a Chrome extension checked against Web Store policy before submission: permissions, remote code, data disclosures |
-| skill | `ecommerce-act-review` | online sales, subscriptions and free trials checked against Korean e-commerce rules: withdrawal rights, required notices, renewal |
-| skill | `terms-privacy-drafting` | terms of service and a privacy policy drafted from how the service works, with placeholders for unconfirmed facts and cited articles |
 
 ## Failure mode
 
@@ -60,10 +58,8 @@ None by the plugin. A skill that produces files writes them only where the user 
 Ask for something the plugin covers:
 
 ```
-Review our signup consent notice against Korea's Personal Information Protection Act.
+The Chrome Web Store rejected our extension for requesting all_urls. What do we change?
 ```
-
-Korean requests work the same way; `evals/signup-form-review/prompt.md` has one.
 
 The plugin ships an eval suite (`claude plugin eval plugins/kr-legal --no-publish`). Measured
 20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
@@ -71,22 +67,10 @@ passed every grader, without the plugin and with it:
 
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
-| `consent-for-everything` | pipa-review | 1.00 | 1.00 | 2 |
-| `postal-regex-not-legal` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
-| `public-reviews-with-names` | crawling-legality-review | 1.00 | 1.00 | 2 |
-| `quote-transfer-article` | pipa-review | 1.00 | 1.00 | 3 |
-| `scrape-competitor-behind-login` | crawling-legality-review | 1.00 | 1.00 | 2 |
-| `signup-form-review` | pipa-review | 1.00 | 1.00 | 2 |
 | `ai-ad-video` | ai-content-disclosure | 0.00 | 1.00 | 2 |
 | `all-urls-rejection` | chrome-store-policy-review | 1.00 | 1.00 | 2 |
-| `draft-privacy-policy` | terms-privacy-drafting | 1.00 | 1.00 | 2 |
-| `subscription-no-refund` | ecommerce-act-review | 1.00 | 1.00 | 2 |
 
-Neither skill shows a lift in these cases: the baseline model already knew the law at this level. The skills' value is retrieving current article text through the korean-law server, which the eval environment does not provide, so that part is not measured here.
-
-chrome-store-policy-review, ecommerce-act-review, terms-privacy-drafting show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
-
-Re-run 20261004 with smaller models answering (`--model`), mean score without and with the plugin over the same cases, 2 runs per arm: pipa-review: Haiku 0.33 to 0.83, Sonnet 1.00 to 1.00. crawling-legality-review: Haiku 0.00 to 0.75, Sonnet 1.00 to 1.00.
+chrome-store-policy-review shows no lift yet: the baseline model already passed this case. It stays as a regression check; one more case is needed for the three-case release gate.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

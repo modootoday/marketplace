@@ -185,3 +185,65 @@ export function installDefaultFindings(metadatas, tier) {
   const cap = RULES.installDefault[tier];
   return count > cap && cap > 0 ? [`${count} skills use install default; the ${tier} tier allows ${cap}`] : [];
 }
+
+const PLUS = "-plus";
+
+/** Plugin directories that hold skills but are named by no marketplace entry. */
+export function unregisteredFindings(skillPluginDirs, registeredDirs) {
+  const known = new Set(registeredDirs);
+  return skillPluginDirs
+    .filter((d) => !known.has(d))
+    .map((d) => `plugin directory ${d} has skills but no marketplace.json entry; register it or remove it`);
+}
+
+/** Tracked paths under plugins/<name>/evals/results/, which hold host-specific run output. */
+export function trackedResultsFindings(trackedFiles) {
+  return trackedFiles
+    .filter((f) => /^plugins\/[^/]+\/evals\/results\//u.test(f))
+    .map((f) => `${f} is tracked by git; eval results stay local and are gitignored`);
+}
+
+/** Free-tier plugins end in -plus so they never collide with an open plugin; open ones never do. */
+export function pluginNamingFindings(tier, names) {
+  if (tier === "free") {
+    return names.filter((n) => !n.endsWith(PLUS)).map((n) => `plugin ${n} must end in ${PLUS} in the free tier`);
+  }
+  if (tier === "open") {
+    return names.filter((n) => n.endsWith(PLUS)).map((n) => `plugin ${n} must not end in ${PLUS} in the open tier`);
+  }
+  return [];
+}
+
+/** @param {string[]} names @param {Map<string, string[]>} others tier -> plugin names of every other catalog */
+export function duplicatePluginFindings(names, others) {
+  const found = [];
+  for (const name of names) {
+    for (const [otherTier, otherNames] of others) {
+      if (otherNames.includes(name)) found.push(`plugin ${name} also exists in the ${otherTier} tier`);
+    }
+  }
+  return found;
+}
+
+/** The description sources of one plugin must say the same thing. */
+export function descriptionDriftFindings({ name, entry, plugin, gemini }) {
+  const sources = { "marketplace.json": entry, "plugin.json": plugin, "gemini-extension.json": gemini };
+  const present = Object.entries(sources).filter(([, v]) => v !== undefined);
+  if (new Set(present.map(([, v]) => v)).size <= 1) return [];
+  return [`plugin ${name} descriptions differ: ${present.map(([k, v]) => `${k} "${v.slice(0, 60)}"`).join(" | ")}`];
+}
+
+/**
+ * Skills that exist only outside the open tier, named anywhere in an open-tier file.
+ * @param {string} text @param {Map<string, string>} catalog skill name -> tier @param {Set<string>} ownNames
+ */
+export function gatedNameFindings(text, catalog, ownNames) {
+  const found = [];
+  for (const [other, otherTier] of catalog) {
+    if (otherTier === "open" || ownNames.has(other)) continue;
+    if (new RegExp(`(^|[^a-z0-9-])${other}([^a-z0-9-]|$)`, "u").test(text)) {
+      found.push(`names ${other}, a ${otherTier} skill, from the open tier`);
+    }
+  }
+  return found;
+}

@@ -2,7 +2,9 @@
 
 ## What it does
 
-Audio from brief to file: a brand's sonic directions, scripts written for the ear, Korean TTS with spoken numbers, mixing to a measured loudness, consistent sound effect sets, and the rights behind every voice.
+Audio from brief to file: a brand's sonic directions, scripts written for the ear, Korean TTS with spoken numbers, mixing to a measured loudness, and consistent sound effect sets.
+
+Voice rights reviews are available to signed-in users.
 
 ## Runtime support
 
@@ -13,7 +15,7 @@ Audio from brief to file: a brand's sonic directions, scripts written for the ea
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
-Requirements: ffmpeg for audio-mix-master. voice-rights-review retrieves Korean law through the korean-law MCP server; without it its citations are marked unverified.
+Requirements: ffmpeg for audio-mix-master.
 
 ## Install
 
@@ -41,7 +43,6 @@ codex plugin add audio-production@modootoday
 | skill | `sfx-design` | UI and video sound effects designed as one family with length, timbre and loudness rules and recorded licences |
 | skill | `sonic-identity-sparring` | two or three distinct sonic directions for a brand, with the case against each and one cheap listening test |
 | skill | `longform-narration-text-prep-and-proof` | long text prepared for synthetic narration (main text versus footnotes, pronunciation list with chosen readings) and the result proofed against a transcript by span, with chapter order and file sequence checks; it prepares and checks text and does not synthesize audio |
-| skill | `voice-rights-review` | the rights behind a voice checked before commercial use: contracts, clone consent, provider terms, publicity rights |
 
 ## Failure mode
 
@@ -74,14 +75,13 @@ passed every grader, without the plugin and with it:
 | `podcast-louder` | audio-mix-master | 0.50 | 1.00 | 2 |
 | `wav-to-mp3-not-mastering` | negative: the skill must not fire | 1.00 | 1.00 | 3 |
 | `cafe-sound` | sonic-identity-sparring | 0.00 | 1.00 | 2 |
-| `sound-alike` | voice-rights-review | 1.00 | 1.00 | 2 |
 | `tts-numbers` | korean-tts-production | 0.00 | 1.00 | 2 |
 | `ui-sound-set` | sfx-design | 0.00 | 1.00 | 2 |
 | `academic-chapter-main-text-only` | longform-narration-text-prep-and-proof | 0.00 | 1.00 | 2 |
 
 `academic-chapter-main-text-only` was measured on 20261005 with Sonnet as subject and judge. The skill rests on three first-person reports; treat the lift as moderate evidence.
 
-voice-rights-review shows no lift yet: the baseline model already refused the sound-alike. korean-tts-production first scored lower with the plugin (1.00 without, 0.50 with) because it did not fire; after its description named store announcements and quick checks of numbers, a re-run fired in both runs and passed both (0.00 without, 1.00 with). The baseline varies between runs on this case, so treat the lift as weak evidence.
+korean-tts-production first scored lower with the plugin (1.00 without, 0.50 with) because it did not fire; after its description named store announcements and quick checks of numbers, a re-run fired in both runs and passed both (0.00 without, 1.00 with). The baseline varies between runs on this case, so treat the lift as weak evidence.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

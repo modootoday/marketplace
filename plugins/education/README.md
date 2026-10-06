@@ -87,10 +87,11 @@ that passed every grader, without the plugin and with it:
 | `mean-median-45-minute-plan` | lesson-plan-constraints | 0.00 | 1.00 | 2 |
 | `valve-quiz-import-diff` | authoring-import-fidelity-check | 0.00 | 1.00 | 2 |
 | `wordsearch-and-melody-check` | rule-checked-puzzle-and-score-generation | 0.00 | 1.00 | 2 |
-| `homeschool-20-week-calendar` | study-calendar-allocation | 0.00 | 1.00 | 2 |
-| `lecture-90-minute-fit` | lecture-script-timing-fit | 0.00 | 1.00 | 2 |
+| `homeschool-20-week-calendar` | study-calendar-allocation | 0.00 | 0.25 | 2 per arm, Sonnet subject and judge, 20261006 |
+| `homeschool-20-week-calendar` (Opus) | study-calendar-allocation | 0.00 | 1.00 | 2 per arm, Opus subject and judge, 20261006 |
+| `lecture-90-minute-fit` | lecture-script-timing-fit | 0.00 | 1.00 | 2 per arm, Sonnet subject and judge, 20261006 |
 
-The eight skills added in 0.3.0 have one case each; two more per skill are needed for the three-case release gate. Rows below are measured 20261005 with Sonnet as subject and judge; the `notes-to-recall-cards` row is Opus as subject and judge on both arms. The calendar and lecture rows are with-arm reruns after the repair (Sonnet subject and judge, 2 runs); the without-arm 0.00 is from the earlier both-arm run on the same graders.
+The eight skills added in 0.3.0 have one case each; two more per skill are needed for the three-case release gate. Rows below are measured 20261005 with Sonnet as subject and judge; the `notes-to-recall-cards` row is Opus as subject and judge on both arms. The calendar and lecture rows are both-arm runs (2 per arm) from 20261006; the calendar passes 0.25 on Sonnet (the `slots` grader fails in most with-arm runs) and 1.00 on Opus.
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
 

@@ -4,6 +4,8 @@
 
 Fact-preserving drafting of clinical notes: a clinician's own brief notes placed into a required template, empty fields marked NOT DOCUMENTED, model wording listed for the clinician to confirm.
 
+This plugin is a preview: the full set is available to signed-in users.
+
 ## Runtime support
 
 | Runtime | Supported | Measured on |

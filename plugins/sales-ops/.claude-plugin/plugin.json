@@ -1,7 +1,7 @@
 {
   "name": "sales-ops",
-  "version": "0.1.0",
-  "description": "Recover forgotten promises from sent-email history: commitments with dates resolved against each email, checked for completion, and listed with the quoted line.",
+  "version": "0.2.0",
+  "description": "Sales follow-through from the record: forgotten promises recovered from sent email with dates resolved and the quoted line, and CRM framework fields and a follow-up email filled only from call transcript evidence.",
   "author": {
     "name": "modootoday"
   },

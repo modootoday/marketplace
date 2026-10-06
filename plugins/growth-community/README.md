@@ -89,7 +89,7 @@ passed every grader, without the plugin and with it:
 | `audit-fix-plan` | seo-audit-to-fix-plan | 0.00 | 1.00 | 2 |
 | `brand-query-regex` | search-query-regex-filter | 0.50 | 1.00 | 2 |
 | `generated-page-grounding` | site-content-grounding-check | 0.00 | 1.00 | 2 |
-| `restaurant-menu-editing` | nontechnical-editor-content-model | 0.00 | 1.00 (3 with-arm runs after a SKILL.md fix; 0.75 over 2 runs before it) | 2 without, 3 with |
+| `restaurant-menu-editing` | nontechnical-editor-content-model | 0.00 | 1.00 | 2 per arm, Sonnet subject and judge, 20261006 |
 
 The four rows above ran with Sonnet as subject and judge, 20261005.
 

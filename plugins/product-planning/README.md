@@ -5,8 +5,8 @@
 Early product-planning steps that a model tends to rush: sparring on an idea
 instead of listing ideas, framing the problem behind a request, synthesizing raw
 feedback without overstating it, ranking a backlog while saying where the
-ranking is fragile, and writing a Korean PRD whose acceptance criteria a tester
-can check.
+ranking is fragile, writing a Korean PRD whose acceptance criteria a tester
+can check, and putting a decision on one page with the recommendation first.
 
 ## Runtime support
 
@@ -49,6 +49,7 @@ codex plugin add product-planning@modootoday
 | skill | `project-plan-scope-and-schedule-check` | a charter, work breakdown, schedule check (critical path as a sum, float against the deadline and buffer, cycles) and change order with baseline against new and an approval line; rests on four first-person reports |
 | skill | `requirement-to-testable-stories` | a brief turned into stories with Given/When/Then criteria, unmeasurable words flagged with the value to ask for, dependencies, assumptions and feasibility questions; rests on three first-person reports |
 | skill | `flow-diagram-completeness-check` | a flow checked by enumerating nodes and edges, then missing branches, dead ends and loops with no exit reported by node name; rests on one first-person report |
+| skill | `exec-decision-memo` | a one-page memo: the decision and recommendation first, three options with cost of reversal, the approval asked for |
 
 `user-feedback-synthesis` also covers free-text survey answers: every response accounted for, outliers kept apart from themes, and each theme turned into an action with an owner role and a proposed date; this extension rests on one first-person report.
 
@@ -113,6 +114,9 @@ SKILL.md fixes: `stories-unmeasurable-export` 1.0 and `flow-missing-branches` 1.
 `plan-change-order-buffer` 1.0 in 4 of 4 runs (one-arm); `survey-themes-to-actions` was
 re-recorded 20261005 with Opus as subject and judge on both arms, 2 runs per arm: 0.00 without, 1.00 with
 (replacing the earlier Sonnet rows). The skill fired in every run.
+
+`exec-decision-memo` (`memo-for-founder`) was measured 20261004 on 2.1.289 with Sonnet as judge, 2 runs
+per arm: 0.00 without the plugin, 1.00 with it (moved 20261006).
 
 A case that already passes without the plugin stays in the suite to catch a
 regression, not as evidence that the skill helps.

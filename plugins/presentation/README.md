@@ -2,7 +2,7 @@
 
 ## What it does
 
-Decks that argue something and survive review: a storyline built from the answer down, pptx files filled from the template's own layouts with native charts, and a QA pass for numbers, charts and dates that disagree.
+Decks that argue something and survive review: a storyline built from the answer down, pptx files filled from the template's own layouts with native charts, a QA pass for numbers that disagree, question rehearsal for the room, and edits that keep content and hand fixes.
 
 ## Runtime support
 

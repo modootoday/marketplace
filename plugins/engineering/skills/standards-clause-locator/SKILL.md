@@ -1,6 +1,6 @@
 ---
 name: standards-clause-locator
-description: Find which clause of a supplied code, specification, standard or equipment manual governs a stated requirement or symptom, quote the clause number and wording verbatim with its edition, compare report values against clause values by number, unit and condition, and say plainly when no clause was found. Use when an engineer pastes a report, spec excerpt or manual section and asks which clause applies or whether two documents agree. Not for supplying clause text from memory, for deciding compliance, or for a maintenance schedule (see equipment-manual-to-pm-schedule).
+description: Find which clause of a supplied code, specification, standard or equipment manual governs a stated requirement or symptom, quote the clause number and wording verbatim with its edition, compare report values against clause values by number, unit and condition, and say plainly when no clause was found. Use when an engineer pastes a report, spec excerpt or manual section and asks which clause applies or whether two documents agree. Not for supplying clause text from memory, for deciding compliance, or for building a maintenance schedule.
 metadata:
   tier: open
   level: L3

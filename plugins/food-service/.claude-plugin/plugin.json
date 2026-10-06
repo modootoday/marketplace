@@ -1,6 +1,6 @@
 {
   "name": "food-service",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Home and kitchen recipe work that keeps the source intact: a pasted recipe copied to a card without invented changes, then every ingredient swap or appliance change logged as a marked, estimated adaptation.",
   "author": {
     "name": "modootoday"

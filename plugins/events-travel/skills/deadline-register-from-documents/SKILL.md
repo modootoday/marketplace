@@ -21,7 +21,10 @@ traced to a line someone can open.
 2. One row per deliverable: item, date, time and time zone, owner, source cite and quote,
    status. Put a time zone from the document next to every date. If the document states a
    default zone, say it is the document's default and cite that line. If none is stated,
-   write "zone not stated" and ask; do not assume one.
+   write "zone not stated" and ask; do not assume one. The owner column says "not stated"
+   whenever the document gives no owner, whatever words it uses ("not listed", blank); quote
+   the document's own words in the cite column. With two versions, an item present only in the
+   old one keeps a row marked "removed in v2" with its old cite and quote.
 3. If the user gave their own zone and a conversion, show both the document's time and the
    converted time, each with its zone label (for example 23:59 CET, 07:59 KST next day), and
    say which zone is only the document's default or an assumption. A date with no clock time

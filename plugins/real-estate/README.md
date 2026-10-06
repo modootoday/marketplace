@@ -2,7 +2,9 @@
 
 ## What it does
 
-Screening for property work: bylaw conditions tested with quoted sections and shown arithmetic, and listings compared with a buyer's must-haves with unknowns kept unknown.
+Screening and records for property work: listings compared with a buyer's must-haves with unknowns kept unknown, room layouts checked against fixed structure, and a tenant's deposit or move-out dispute arranged as a dated, referenced evidence packet with no legal conclusions.
+
+Bylaw and ordinance condition checks are available to signed-in users.
 
 ## Runtime support
 
@@ -35,10 +37,9 @@ codex plugin add real-estate@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
-| skill | `ordinance-conditions-qa` | a lot or use tested against supplied bylaw text: quoted sections, numeric conditions with the arithmetic, effective date, overlay and variance clauses, screening only |
 | skill | `property-candidate-screening` | listings compared with must-have, trade-off and nice-to-have requirements, each marked met, not met or UNKNOWN, with a viewing sheet per property |
-
 | skill | `room-layout-fixed-structure-check` | a fixed-structure table of walls, openings and door swing marked given, derived or not given, furniture placed by coordinates from stated sizes with clearance arithmetic, and a moved-appeared-vanished comparison of any layout or render; rests on one moderate record |
+| skill | `tenant-dispute-evidence-packet` | a deposit or move-out dispute arranged as a timeline, condition comparison, amounts with lease clause and receipts, deadline status and missing evidence |
 
 ## Failure mode
 
@@ -58,7 +59,7 @@ None by the plugin. A skill that produces files writes them only where the user 
 Ask for something the plugin covers:
 
 ```
-Here is the R2 zone text (minimum lot width 15 m). My lot is 14 m wide. Does it pass?
+Compare these three listings against my must-haves: two bedrooms, parking, under 30 minutes to work.
 ```
 
 The plugin ships an eval suite (`claude plugin eval plugins/real-estate --no-publish`). Measured
@@ -67,12 +68,12 @@ that passed every grader, without the plugin and with it:
 
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
-| `bylaw-width-coverage` | ordinance-conditions-qa | 0.00 | 1.00 | 2 |
 | `parking-must-have-unknown` | property-candidate-screening | 0.00 | 1.00 | 2 |
 | `room-layout-fixed-table` | room-layout-fixed-structure-check | 0.00 | 1.00 | 2, Opus subject and judge, both arms, 20261005 (skill fired 2 of 2; earlier Sonnet round stayed at 0.50) |
+| `carpet-deposit-packet` | tenant-dispute-evidence-packet | 0.25 | 1.00 | 2 per arm, Sonnet subject and judge, 20261006 (moved 20261006) |
 
-Results are screening aids. A municipal planner confirms any ordinance result, and the skills do
-not recommend a purchase.
+Results are screening aids and records, not advice. The skills do not recommend a purchase, and the
+evidence packet draws no legal conclusion: an attorney, advisor or tenant body decides what it supports.
 
 ## License
 
