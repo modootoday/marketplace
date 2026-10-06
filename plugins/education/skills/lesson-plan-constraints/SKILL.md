@@ -7,6 +7,7 @@ metadata:
   domain: education
   install: optional
   keywords: [lesson plan, accommodation, objectives, timing, 45 minutes, classroom, materials]
+  verified-runtimes: [claude-code]
 ---
 
 # Lesson plan constraints

@@ -7,6 +7,7 @@ metadata:
   domain: build-tooling
   install: optional
   keywords: [build parallelism, test concurrency, shared host, slow builds]
+  verified-runtimes: [claude-code]
 ---
 
 # Concurrency on a machine an agent drives

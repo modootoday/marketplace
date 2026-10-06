@@ -7,6 +7,7 @@ metadata:
   domain: localization
   install: optional
   keywords: [translation review, post-editing, footnotes, naturalness, term glossary, machine translation]
+  verified-runtimes: [claude-code]
 ---
 
 # Translation post-edit QC

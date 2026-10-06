@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [generated mesh, triangle budget, non-manifold, normals, uv overlap, retexture, flicker, plate match]
   output-license: the user's own asset and check results; the skill adds no third-party content
+  verified-runtimes: [claude-code]
 ---
 
 # Generated 3D asset QC

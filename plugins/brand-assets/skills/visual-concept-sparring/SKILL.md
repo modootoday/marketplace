@@ -7,6 +7,7 @@ metadata:
   domain: brand-design
   install: optional
   keywords: [visual concept, mood board, art direction, look and feel, design direction]
+  verified-runtimes: [claude-code]
 ---
 
 # Visual concept sparring

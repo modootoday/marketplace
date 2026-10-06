@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [subagent prompt, brief, hand-back, output schema, stop rule, boundaries, delegation]
+  verified-runtimes: [claude-code, gemini-cli, grok-cli, antigravity]
 ---
 
 # Subagent brief and hand-back

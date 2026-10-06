@@ -7,6 +7,7 @@ metadata:
   domain: localization
   install: optional
   keywords: [language variety, dialect, register, speech level, pt-BR, Arabic dialect, Korean speech level, code-switching]
+  verified-runtimes: [claude-code]
 ---
 
 # Language variety and register lock check

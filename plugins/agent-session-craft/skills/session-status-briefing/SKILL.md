@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [status update, progress report, briefing, where are we, session resume, handover, compaction]
+  verified-runtimes: [codex-cli]
 ---
 
 # Session status briefing

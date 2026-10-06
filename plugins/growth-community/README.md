@@ -9,7 +9,7 @@ Growth and community work: store listings written for the people searching that 
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -93,10 +93,16 @@ passed every grader, without the plugin and with it:
 
 The four rows above ran with Sonnet as subject and judge, 20261005.
 
-store-listing-optimization and search-engine-submission show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. search-engine-submission fired in both runs with the plugin.
+store-listing-optimization and search-engine-submission show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. search-engine-submission fired in both runs with the plugin. The Codex scores below add a case with lift for search-engine-submission.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
+
+| Case | Skill | Without | With | Skill fired |
+| --- | --- | --- | --- | --- |
+| `brand-site-host-inventory` | search-engine-submission | 0.25 | 1.00 | 2 of 2 |
 
 ## License
 

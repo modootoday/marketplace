@@ -2,7 +2,7 @@
 description: A skill whose eval shows it never fired. The diagnosis must start with the description.
 max_turns: 6
 allowed_tools: [Read, Glob, Grep, Skill]
-tags: [domain-skill-authoring]
+tags: [eval-iteration]
 ---
 
 Our skill's eval shows the skill was never invoked in any run, and scores are the same with and

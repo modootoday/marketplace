@@ -7,6 +7,7 @@ metadata:
   domain: data-analysis
   install: optional
   keywords: [cohort analysis, retention curve, churn, SQL cohort query, user retention]
+  verified-runtimes: [claude-code]
 ---
 
 # Cohort retention

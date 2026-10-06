@@ -9,6 +9,7 @@ metadata:
   keywords: [ffmpeg loudnorm, LUFS, true peak, ducking, podcast mastering, audio cleanup]
   requires:
     bin: [ffmpeg]
+  verified-runtimes: [claude-code]
 ---
 
 # Mixing and mastering speech with ffmpeg

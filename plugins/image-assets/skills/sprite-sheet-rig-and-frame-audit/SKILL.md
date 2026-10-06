@@ -7,6 +7,7 @@ metadata:
   domain: image-assets
   install: optional
   keywords: [sprite sheet, direction atlas, handedness, animation frames, rig pivot]
+  verified-runtimes: [claude-code]
 ---
 
 # Sprite sheet rig and frame audit

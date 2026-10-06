@@ -7,6 +7,7 @@ metadata:
   domain: hr-ops
   install: optional
   keywords: [Boolean search, sourcing, recruiting, candidate search, job requirements, search string]
+  verified-runtimes: [claude-code]
 ---
 
 # Boolean sourcing query

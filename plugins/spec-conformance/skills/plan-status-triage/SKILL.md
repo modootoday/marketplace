@@ -7,6 +7,7 @@ metadata:
   domain: spec-writing
   install: optional
   keywords: [plan triage, stale plans, plan status, archive plans, applied, obsolete, promote to decision record]
+  verified-runtimes: [claude-code]
 ---
 
 # Plan status triage

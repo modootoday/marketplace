@@ -7,6 +7,7 @@ metadata:
   domain: education
   install: optional
   keywords: [flashcards, active recall, spaced repetition, study notes, review schedule, retrieval practice]
+  verified-runtimes: [claude-code]
 ---
 
 # Notes to recall cards

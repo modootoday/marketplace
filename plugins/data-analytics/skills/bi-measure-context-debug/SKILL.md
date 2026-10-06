@@ -7,6 +7,7 @@ metadata:
   domain: data-analytics
   install: optional
   keywords: [DAX, Power BI, filter context, measure, subtotal, conditional formatting, snapshot]
+  verified-runtimes: [claude-code]
 ---
 
 # BI measure context debugging

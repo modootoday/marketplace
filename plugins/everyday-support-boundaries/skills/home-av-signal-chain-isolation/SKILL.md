@@ -7,6 +7,7 @@ metadata:
   domain: home-av
   install: optional
   keywords: [eARC, ARC, HDMI-CEC, soundbar, TV, signal chain, room measurement, isolation test, troubleshooting]
+  verified-runtimes: [claude-code]
 ---
 
 # Home AV signal chain isolation

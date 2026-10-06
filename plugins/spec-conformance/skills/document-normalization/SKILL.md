@@ -7,6 +7,7 @@ metadata:
   domain: spec-writing
   install: optional
   keywords: [frontmatter backfill, status vocabulary, document cleanup]
+  verified-runtimes: [claude-code]
 ---
 
 # Normalising documents that already exist

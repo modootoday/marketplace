@@ -7,6 +7,7 @@ metadata:
   domain: trust-safety
   install: optional
   keywords: [detection rule, abuse rule, fraud threshold, precision recall, moderation rule]
+  verified-runtimes: [claude-code]
 ---
 
 # Writing an abuse rule

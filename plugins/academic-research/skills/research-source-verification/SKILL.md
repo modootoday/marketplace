@@ -7,6 +7,7 @@ metadata:
   domain: academic-research
   install: optional
   keywords: [citation check, hallucinated references, DOI verification, measurement instrument, literature screening]
+  verified-runtimes: [claude-code]
 ---
 
 # Research source verification

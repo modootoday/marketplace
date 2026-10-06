@@ -7,6 +7,7 @@ metadata:
   domain: engineering
   install: optional
   keywords: [clause, specification, code, standard, manual, cross-check, citation]
+  verified-runtimes: [claude-code]
 ---
 
 # Standards clause locator

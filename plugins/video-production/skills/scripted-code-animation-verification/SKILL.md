@@ -7,6 +7,7 @@ metadata:
   domain: video-production
   install: optional
   keywords: [code animation, deterministic timeline, scene continuity, Manim, HTML animation, frame timing, motion reuse]
+  verified-runtimes: [claude-code]
 ---
 
 # Scripted animation verification

@@ -7,6 +7,7 @@ metadata:
   domain: growth
   install: optional
   keywords: [cms, editable content, menu, admin page, non-developer, content model, permissions, owner how-to]
+  verified-runtimes: [claude-code]
 ---
 
 # An editing path the owner can actually use

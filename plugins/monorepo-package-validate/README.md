@@ -14,13 +14,16 @@ the one that can answer, and it usually answers in seconds.
 | Runtime     | Supported   | Measured on                                              |
 | ----------- | ----------- | -------------------------------------------------------- |
 | Claude Code | yes         | 2.1.251                                                  |
-| Codex CLI   | untested    | manifest reads on 0.151.0                                |
+| Codex CLI   | skill only  | 0.160.1 — the hook is a no-op, see below                 |
 | Grok CLI    | skills only | 1.0.13 — registers plugin hooks but never runs them      |
 | Gemini CLI  | skills only | 0.57.0 — different hook event names, units and variables |
 
-"Untested" means the manifest is accepted and nothing more was measured. It does
-not mean the plugin works there. The handler itself was exercised directly on
-this machine; see Verify.
+Measured 20261006 on Codex CLI 0.160.1: Codex does send PostToolUse for its edit tool, but the
+tool is `apply_patch` and the payload carries the patch text in `tool_input.command` with no
+`file_path`, so the handler finds no edited file and exits silently. In 2 of 2 with-arm runs
+over a failing package no failure reached the agent. The hook cases below are therefore
+Claude Code only and were not measured; the companion skill is measured on Codex.
+The handler itself was exercised directly on this machine; see Verify.
 
 ## Install
 
@@ -42,6 +45,9 @@ Restart the session after installing.
 | Kind | Name                     | Detail                                              |
 | ---- | ------------------------ | --------------------------------------------------- |
 | hook | PostToolUse (Edit, Write) | runs the edited package's own check, reports failures |
+
+The companion skill `package-check-setup` covers choosing the marker and command for a
+stack, proving the check can fail, and reading a reported failure.
 
 It walks up from the edited file to the nearest directory holding the marker
 file, at most eight levels. An edit that resolves to the repository root itself
@@ -106,6 +112,15 @@ print nothing and exit zero.
 
 Prove it can fail: make the package's `validate` script exit non-zero and confirm
 the failure reaches you. A hook that has never spoken has not been shown to work.
+
+Evals: `failing-package-reported`, `passing-package-silent` and `custom-command-config` need a
+runtime that delivers the hook output (Claude Code); they are Claude Code only and not yet
+measured. `cargo-workspace-config` is skill only, measured 20261006 with Codex CLI 0.160.1
+(`codex-eval.mjs`, gpt-6.1-sol as subject and judge, 3 votes, 2 runs per arm):
+
+| Case | Skill | Without | With | Fired |
+| --- | --- | --- | --- | --- |
+| `cargo-workspace-config` | package-check-setup | 0.00 | 1.00 | 2/2 |
 
 ## Security
 

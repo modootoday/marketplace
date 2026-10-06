@@ -7,6 +7,7 @@ metadata:
   domain: procurement
   install: optional
   keywords: [shortlist, vendor verification, hard conditions, certification, compatibility, buying brief]
+  verified-runtimes: [claude-code]
 ---
 
 # Real vendor shortlist verification

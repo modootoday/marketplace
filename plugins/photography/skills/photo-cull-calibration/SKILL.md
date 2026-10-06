@@ -7,6 +7,7 @@ metadata:
   domain: photography
   install: optional
   keywords: [photo culling, burst best frame, wildlife photography, event photography, rank and flag]
+  verified-runtimes: [claude-code]
 ---
 
 # Photo cull calibration

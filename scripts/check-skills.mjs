@@ -22,6 +22,7 @@ import {
   trackedResultsFindings,
   unregisteredFindings,
 } from "./skill-rules.mjs";
+import { pluginSupport } from "./verified-runtimes.mjs";
 
 const TIERS = new Set(SCHEMA.properties.metadata.properties.tier.enum);
 const ALLOW_MARK = "leak-allow";
@@ -130,6 +131,25 @@ try {
   gitNote = "tracked-results check skipped (not a git checkout)";
   console.log(`note: ${gitNote}`);
 }
+
+// A stale claim fails; a supported runtime missing from the field only warns.
+const warnings = [];
+for (const plugin of own.plugins) {
+  for (const entry of existsSync(plugin.dir) ? pluginSupport(plugin.dir) : []) {
+    const skill = own.skills.find((s) => s.path === entry.file);
+    const claimed = skill?.front?.metadata?.["verified-runtimes"];
+    const claims = Array.isArray(claimed) ? claimed : claimed === undefined ? [] : [claimed];
+    for (const runtime of claims) {
+      if (!entry.support.includes(runtime)) {
+        fail(entry.file, `verified-runtimes claims ${runtime} but no README row supports it`);
+      }
+    }
+    for (const runtime of entry.support) {
+      if (!claims.includes(runtime)) warnings.push(`${relative(process.cwd(), entry.file)}: README supports ${runtime}, not in verified-runtimes`);
+    }
+  }
+}
+for (const warning of warnings) console.warn(`warning: ${warning}`);
 
 for (const s of own.skills) {
   if (s.front === null) {

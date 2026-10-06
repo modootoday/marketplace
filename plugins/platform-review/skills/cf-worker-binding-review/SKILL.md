@@ -7,6 +7,7 @@ metadata:
   domain: edge-platform
   install: optional
   keywords: [Cloudflare Workers, wrangler config, service binding, secrets, D1, KV, R2, review]
+  verified-runtimes: [codex-cli]
 ---
 
 # Reviewing a Worker's bindings and config

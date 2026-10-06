@@ -7,6 +7,7 @@ metadata:
   domain: data-analytics
   install: optional
   keywords: [calculator, unit conversion, reference cases, round trip, boundary values, numeric precision]
+  verified-runtimes: [claude-code]
 ---
 
 # Calculator reference-case verification

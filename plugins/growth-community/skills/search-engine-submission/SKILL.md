@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [search console, sitemap, indexnow, site verification, naver search advisor, bing webmaster, seo]
   locales: [ko]
+  verified-runtimes: [codex-cli]
 ---
 
 # Search engine submission
@@ -18,7 +19,10 @@ second belongs in the publish pipeline.
 
 ## 0. Inventory every public domain first
 
-Submitting the one site you were asked about leaves its siblings unindexed. Before
+Submitting the one site you were asked about leaves its siblings unindexed. This
+inventory is part of every request, including "just submit www": do it, name the
+other public hosts in the answer, and either include them or list them as not
+submitted. Never scope the plan down to the named host without saying so. Before
 any engine, list the hosts that actually serve the public:
 
 - Start from the DNS zones and the deploy configs (routes, custom domains), then
@@ -102,3 +106,6 @@ inventory above first so every public host gets registered, not just the apex.
 
 State what ran against what: the property, the sitemap URL, the IndexNow status code and URL
 count. Coverage numbers arrive days later in the console; do not report a submission as indexing.
+A plan or answer written before anything ran ends with the same two statements:
+what will be submitted, and that a submitted sitemap is not indexing and coverage
+shows up in the console days later.

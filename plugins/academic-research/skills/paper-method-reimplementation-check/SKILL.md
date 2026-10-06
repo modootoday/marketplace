@@ -7,6 +7,7 @@ metadata:
   domain: academic-research
   install: optional
   keywords: [reimplementation, reproducibility, paper to code, published code, method porting, replication check]
+  verified-runtimes: [claude-code]
 ---
 
 # Paper method re-implementation check

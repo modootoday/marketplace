@@ -7,6 +7,7 @@ metadata:
   domain: data-engineering
   install: optional
   keywords: [sql migration, dialect conversion, table comparison, equivalence, anti-join, query rewrite, regression]
+  verified-runtimes: [claude-code]
 ---
 
 # SQL migration equivalence check

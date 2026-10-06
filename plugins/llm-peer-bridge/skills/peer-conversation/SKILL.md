@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [peer message, agent to agent, peer bridge]
+  verified-runtimes: [codex-cli]
 ---
 
 # Talking to another session

@@ -7,6 +7,7 @@ metadata:
   domain: planning
   install: optional
   keywords: [itinerary, run of show, day plan, travel time, opening hours, nap window, replan, backup plan]
+  verified-runtimes: [claude-code]
 ---
 
 # Constrained day schedule

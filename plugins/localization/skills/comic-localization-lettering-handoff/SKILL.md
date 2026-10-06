@@ -7,6 +7,7 @@ metadata:
   domain: localization
   install: optional
   keywords: [manga localization, webtoon, reading order, speech bubbles, lettering fit, speaker attribution]
+  verified-runtimes: [claude-code]
 ---
 
 # Comic localization lettering handoff

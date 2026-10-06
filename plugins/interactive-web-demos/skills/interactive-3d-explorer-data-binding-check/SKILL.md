@@ -7,6 +7,7 @@ metadata:
   domain: interactive-web-demos
   install: optional
   keywords: [3d configurator, order schema, price check, data binding, guided tour]
+  verified-runtimes: [claude-code]
 ---
 
 # Interactive 3D explorer data binding check

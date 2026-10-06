@@ -131,6 +131,14 @@ export function skillFindings({ tier, dirName, front, body, hasScripts, localeFi
   if (RULES.pairMayName[tier].length === 0 && m.pair !== undefined) {
     add(`metadata.pair is not allowed in the ${tier} tier`);
   }
+  if (m["verified-runtimes"] !== undefined) {
+    const runtimes = list(m["verified-runtimes"]);
+    const allowed = META.properties["verified-runtimes"].items.enum;
+    for (const r of runtimes) {
+      if (!allowed.includes(r)) add(`metadata.verified-runtimes ${r} is not one of ${allowed.join(", ")}`);
+    }
+    if (new Set(runtimes).size !== runtimes.length) add("metadata.verified-runtimes lists a runtime twice");
+  }
   const serverTools = RULES.serverTools[tier];
   if (serverTools === "forbidden" && m["server-tools"] !== undefined) {
     add(`metadata.server-tools is not allowed in the ${tier} tier`);
@@ -170,11 +178,12 @@ export function referenceFindings({ tier, name, front, body }, catalog) {
     if (targetTier === undefined) found.push(`metadata.pair ${target} is not in any catalog given`);
     else if (!allowed.includes(targetTier)) found.push(`metadata.pair ${target} is a ${targetTier} skill`);
   }
+  const description = typeof front.description === "string" ? front.description : "";
   for (const [other, otherTier] of catalog) {
     if (other === name || rank[otherTier] <= rank[tier]) continue;
-    if (new RegExp(`(^|[^a-z0-9-])${other}([^a-z0-9-]|$)`, "u").test(body)) {
-      found.push(`body names ${other}, a ${otherTier} skill, from the ${tier} tier`);
-    }
+    const pattern = new RegExp(`(^|[^a-z0-9-])${other}([^a-z0-9-]|$)`, "u");
+    if (pattern.test(body)) found.push(`body names ${other}, a ${otherTier} skill, from the ${tier} tier`);
+    if (pattern.test(description)) found.push(`description names ${other}, a ${otherTier} skill, from the ${tier} tier`);
   }
   return found;
 }

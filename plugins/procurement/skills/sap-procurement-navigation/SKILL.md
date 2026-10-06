@@ -7,6 +7,7 @@ metadata:
   domain: procurement
   install: optional
   keywords: [SAP, purchase order, vendor master, change documents, export, Excel mapping]
+  verified-runtimes: [claude-code]
 ---
 
 # SAP procurement navigation

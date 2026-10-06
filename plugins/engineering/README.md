@@ -41,6 +41,7 @@ codex plugin add engineering@modootoday
 | skill | `standards-clause-locator` | clause number and wording quoted verbatim with edition, report and clause values compared by number, unit and condition, not-found stated (rests on weak records) |
 | skill | `datasheet-spec-table` | spec table with each value traced to a source document and date, unverified cells marked, price left to check (rests on weak records) |
 | skill | `fault-diagnosis-evidence-log` | discriminating questions and an evidence log that rules causes out without naming one, safe next checks only (rests on two records) |
+| skill | `device-config-file-from-register-table` | a register or tag table converted row by row into a stated import format with input and output row counts, an assumption list, flagged rows and missing values, and a required bench test on a non-production device (rests on two first-person records, moderate evidence); came from the former `industrial-config` plugin, now merged here |
 
 ## Failure mode
 
@@ -73,6 +74,7 @@ plugin and with it:
 | `bearing-capacity-clause-check` | standards-clause-locator | 0.00 | 1.00 | 2 | Sonnet / Sonnet |
 | `scope-spec-table` | datasheet-spec-table | 0.00 | 1.00 | 2 | Sonnet / Sonnet |
 | `motorcycle-wont-start-log` | fault-diagnosis-evidence-log | 0.00 | 1.00 | 2 | Opus / Opus, both arms, 20261005 (after a SKILL.md fix: the question numbering is the ranking, so a later question is never called the most useful) |
+| `modbus-map-duplicate-flow` | device-config-file-from-register-table | 0.50 | 1.00 | 2 | Sonnet / Sonnet, 20261005 |
 
 The plugin reads only what you supply, quotes no standard text, limit or rating of its own and gives
 no compliance, diagnosis or repair decision; a qualified engineer and the maker's manual govern.

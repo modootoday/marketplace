@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [peer bridge setup, pair sessions, connect agents]
+  verified-runtimes: [claude-code]
 ---
 
 # Setting up the bridge

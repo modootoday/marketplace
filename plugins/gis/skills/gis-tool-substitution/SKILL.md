@@ -7,6 +7,7 @@ metadata:
   domain: gis
   install: optional
   keywords: [viewshed, license, alternative, qgis, gdal, grass, parameters, equivalence, arcgis]
+  verified-runtimes: [claude-code]
 ---
 
 # GIS tool substitution

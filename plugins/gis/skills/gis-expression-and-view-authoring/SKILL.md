@@ -7,6 +7,7 @@ metadata:
   domain: gis
   install: optional
   keywords: [qgis expression, label, postgis, spatial view, st_intersects, distinct on, null handling, srid, join cardinality]
+  verified-runtimes: [claude-code]
 ---
 
 # GIS expression and view authoring

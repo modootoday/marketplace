@@ -7,6 +7,7 @@ metadata:
   domain: ux-research
   install: optional
   keywords: [information architecture, sitemap, mermaid, navigation structure, user tasks, IA diagram]
+  verified-runtimes: [claude-code]
 ---
 
 # IA sitemap diagram

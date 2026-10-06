@@ -7,6 +7,7 @@ metadata:
   domain: content-writing
   install: optional
   keywords: [newsletter, email newsletter, subject line, community digest, editorial calendar]
+  verified-runtimes: [claude-code]
 ---
 
 # Newsletter issues

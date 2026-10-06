@@ -9,6 +9,7 @@ metadata:
   keywords: [headless agent, CI, allowedTools, permission flags, MCP permissions, Codex sandbox, Grok, Antigravity, pmcp doctor]
   requires:
     bin: [pmcp]
+  verified-runtimes: [claude-code]
 ---
 
 # Headless agent CLIs in CI

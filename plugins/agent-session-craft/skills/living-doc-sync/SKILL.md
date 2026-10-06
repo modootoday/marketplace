@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [living document, status page, update the doc, workstream document, checklist, open decisions]
+  verified-runtimes: [claude-code]
 ---
 
 # Living document sync

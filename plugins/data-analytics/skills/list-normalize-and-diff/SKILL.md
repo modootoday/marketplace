@@ -7,6 +7,7 @@ metadata:
   domain: data-analytics
   install: optional
   keywords: [list comparison, set difference, normalization, deduplication, identifiers, address columns]
+  verified-runtimes: [claude-code]
 ---
 
 # Normalize, then diff

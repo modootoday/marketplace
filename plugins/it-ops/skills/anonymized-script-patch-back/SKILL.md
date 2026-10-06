@@ -7,6 +7,7 @@ metadata:
   domain: it-ops
   install: optional
   keywords: [anonymized script, placeholder mapping, patch back, secret handling, diff, redaction]
+  verified-runtimes: [claude-code]
 ---
 
 # Anonymized script patch-back

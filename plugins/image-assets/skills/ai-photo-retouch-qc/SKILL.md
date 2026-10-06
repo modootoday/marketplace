@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [AI retouch, photo QC, denoise, masking, upscale, compositing, print check, inpainting artifacts]
   output-license: the user's own photos; the review adds no third-party content
+  verified-runtimes: [claude-code]
 ---
 
 # AI photo retouch QC

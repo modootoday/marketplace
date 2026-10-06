@@ -7,6 +7,7 @@ metadata:
   domain: customer-support
   install: optional
   keywords: [customer support, knowledge base, reservation, policy, escalation, handoff]
+  verified-runtimes: [claude-code]
 ---
 
 # Grounded operations answers

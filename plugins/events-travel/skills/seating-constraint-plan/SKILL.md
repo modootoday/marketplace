@@ -7,6 +7,7 @@ metadata:
   domain: planning
   install: optional
   keywords: [seating chart, table plan, keep apart, sit together, capacity, event planning]
+  verified-runtimes: [claude-code]
 ---
 
 # Seating constraint plan

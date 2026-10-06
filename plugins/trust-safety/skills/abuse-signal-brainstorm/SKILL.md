@@ -7,6 +7,7 @@ metadata:
   domain: trust-safety
   install: optional
   keywords: [abuse detection, fraud signals, fake reviews, spam signals, sock puppets]
+  verified-runtimes: [claude-code]
 ---
 
 # Brainstorming abuse signals

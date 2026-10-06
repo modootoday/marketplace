@@ -7,6 +7,7 @@ metadata:
   domain: spec-writing
   install: optional
   keywords: [subagent plan, plan agent, session transcript, jsonl, recover plan, save plan verbatim]
+  verified-runtimes: [claude-code]
 ---
 
 # Saving a subagent's plan verbatim

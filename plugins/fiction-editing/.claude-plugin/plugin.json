@@ -1,9 +1,0 @@
-{
-  "name": "fiction-editing",
-  "version": "0.1.0",
-  "description": "Continuity audits for long fiction manuscripts: new chapters checked against the author's canon ledger, outline, tense and point of view, with every ruling left to the author.",
-  "author": {
-    "name": "modootoday"
-  },
-  "skills": "./skills/"
-}

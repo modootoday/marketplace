@@ -7,6 +7,7 @@ metadata:
   domain: audio-production
   install: optional
   keywords: [audiobook, tts proofing, footnotes, pronunciation list, narration transcript]
+  verified-runtimes: [claude-code]
 ---
 
 # Long-form narration text prep and proof

@@ -1,7 +1,7 @@
 {
   "name": "interactive-web-demos",
-  "version": "0.1.0",
-  "description": "Browser simulations and visual demos checked against a known result: error against a reference, timestep convergence, unit consistency and frame time measured on stated devices.",
+  "version": "0.2.0",
+  "description": "Browser simulations and visual demos checked against a known result: error against an analytic or reference value, timestep convergence, unit consistency between views, and frame time reported only for the devices actually measured. It verifies a demo; it does not build one.",
   "author": {
     "name": "modootoday"
   },

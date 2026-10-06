@@ -7,6 +7,7 @@ metadata:
   domain: growth
   install: optional
   keywords: [product options, variants, option matrix, SKU, option price, product registration, marketplace upload, bulk upload sheet]
+  verified-runtimes: [claude-code]
 ---
 
 # Catalog listing with options

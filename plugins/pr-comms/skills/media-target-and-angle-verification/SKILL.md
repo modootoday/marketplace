@@ -7,6 +7,7 @@ metadata:
   domain: pr-comms
   install: optional
   keywords: [media list, journalist beat, editorial calendar, pr pitch, news hook]
+  verified-runtimes: [claude-code]
 ---
 
 # Media target and angle verification

@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [workflow script, pipeline, parallel, resume, schema, concurrency, map reduce, pilot, fan out]
+  verified-runtimes: [claude-code]
 ---
 
 # Fan-out script design

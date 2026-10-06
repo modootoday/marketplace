@@ -9,6 +9,7 @@ metadata:
   keywords: [generated image, delivery spec, alpha channel, palette check, tileable texture, pillow]
   requires:
     bin: [python3]
+  verified-runtimes: [claude-code]
 ---
 
 # Generated asset delivery spec check

@@ -7,6 +7,7 @@ metadata:
   domain: software-qa
   install: optional
   keywords: [test cases, test strategy, traceability, regression, test gaps, automation candidates]
+  verified-runtimes: [claude-code]
 ---
 
 # Change to test mapping

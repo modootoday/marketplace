@@ -7,6 +7,7 @@ metadata:
   domain: data-analytics
   install: optional
   keywords: [open-ended responses, survey themes, idea deduplication, topic model comparison, qualitative coding, response ids]
+  verified-runtimes: [claude-code]
 ---
 
 # Open-response theme triangulation

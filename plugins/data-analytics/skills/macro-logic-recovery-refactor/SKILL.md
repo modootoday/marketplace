@@ -7,6 +7,7 @@ metadata:
   domain: data-analytics
   install: optional
   keywords: [macro, VBA, refactor, business logic, shared function, behavior preservation, spreadsheet]
+  verified-runtimes: [claude-code]
 ---
 
 # Macro logic recovery and behavior-preserving refactor

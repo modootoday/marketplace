@@ -7,6 +7,7 @@ metadata:
   domain: procurement
   install: optional
   keywords: [purchase request, intake, requisition, purchase order, goods receipt, stage check]
+  verified-runtimes: [claude-code]
 ---
 
 # Purchase request intake and stage check

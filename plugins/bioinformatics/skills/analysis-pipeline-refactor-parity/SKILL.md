@@ -7,6 +7,7 @@ metadata:
   domain: bioinformatics
   install: optional
   keywords: [pipeline migration, workflow engine, nextflow, snakemake, deseq2, gpu, regression, reproducibility, baseline]
+  verified-runtimes: [claude-code]
 ---
 
 # Analysis pipeline refactor parity

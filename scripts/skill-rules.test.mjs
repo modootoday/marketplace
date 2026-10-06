@@ -13,6 +13,7 @@ import {
   trackedResultsFindings,
   unregisteredFindings,
 } from "./skill-rules.mjs";
+import { claimedRuntimes, parseReadme, withRuntimes } from "./verified-runtimes.mjs";
 
 const DESCRIPTION = "Does one careful thing for the reader. Use when the reader asks for that thing.";
 
@@ -58,6 +59,50 @@ test("required fields, enums and unknown keys are reported", () => {
   assert.ok(wrong.some((m) => m.startsWith("metadata.level L9 is not one of")));
   assert.ok(wrong.some((m) => m.startsWith("metadata.install always is not one of")));
   assert.ok(wrong.includes("metadata.domain must be kebab-case"));
+});
+
+test("verified-runtimes accepts the five runtimes and rejects others and repeats", () => {
+  assert.deepEqual(findings("open", [...BASE, "verified-runtimes: [claude-code, codex-cli]"]), []);
+  const bad = findings("open", [...BASE, "verified-runtimes: [claude-code, claude-code, cursor]"]);
+  assert.ok(bad.some((m) => m.startsWith("metadata.verified-runtimes cursor is not one of")));
+  assert.ok(bad.includes("metadata.verified-runtimes lists a runtime twice"));
+});
+
+test("verified-runtimes is read from README rows that fired with a 1.00 with arm", () => {
+  const readme = [
+    "| Case | Skill | Without | With | Runs per arm |",
+    "| --- | --- | --- | --- | --- |",
+    "| `a-case` | alpha | 0.00 | 1.00 | 2 |",
+    "| `b-case` | beta | 0.00 | 0.50 (open) | 2 |",
+    "| `c-case` | gamma | 0.00 | 1.00 (open) | 2 |",
+    "| `e-case` | epsilon | 1.00 | 1.00 | 2 |",
+    "",
+    "Codex scores, measured 20261006:",
+    "",
+    "| Case | Skill | Without | With | Skill fired |",
+    "| --- | --- | --- | --- | --- |",
+    "| `a-case` | alpha | 0.00 | 1.00 | 2 of 2 |",
+    "| `d-case` | delta | 0.00 | 1.00 | 0 of 2 |",
+    "",
+    "| Runtime | Model | Case | Without | With | Fired | Date |",
+    "| --- | --- | --- | --- | --- | --- | --- |",
+    "| Gemini CLI | gemini-3.8-flash | b-case | 0.00 | 1.00 | 2/2 | 20261006 |",
+  ].join("\n");
+  const { support } = parseReadme(readme, new Set(["alpha", "beta", "gamma", "delta", "epsilon"]));
+  assert.equal(support.has("epsilon"), false);
+  assert.deepEqual([...support.get("alpha")].sort(), ["claude-code", "codex-cli"]);
+  assert.deepEqual([...support.get("beta")], ["gemini-cli"]);
+  assert.equal(support.has("gamma"), false);
+  assert.equal(support.has("delta"), false);
+});
+
+test("withRuntimes adds, replaces and removes only the verified-runtimes line", () => {
+  const base = "---\nname: a\nmetadata:\n  tier: open\n  requires:\n    bin: [x]\n---\nbody\n";
+  const added = withRuntimes(base, ["claude-code"]);
+  assert.equal(added, base.replace("    bin: [x]\n", "    bin: [x]\n  verified-runtimes: [claude-code]\n"));
+  assert.deepEqual(claimedRuntimes(added), ["claude-code"]);
+  assert.equal(withRuntimes(added, ["claude-code", "codex-cli"]).includes("[claude-code, codex-cli]"), true);
+  assert.equal(withRuntimes(added, []), base);
 });
 
 test("a skill labelled with another tier is rejected", () => {
@@ -138,6 +183,14 @@ test("internal skills may be described in any language, never install by default
   assert.deepEqual(referenceFindings({ tier: "internal", name: "demo", front: front(["pair: [paid-skill]"]), body: "" }, catalog), []);
   assert.deepEqual(referenceFindings({ tier: "open", name: "demo", front: front([]), body: "see inner" }, catalog), [
     "body names inner, a internal skill, from the open tier",
+  ]);
+});
+
+test("an open description that names a gated skill fails like the body", () => {
+  const catalog = new Map([["free-skill", "free"]]);
+  const described = { ...front([]), description: "Use when X. Not for Y (use free-skill instead)." };
+  assert.deepEqual(referenceFindings({ tier: "open", name: "demo", front: described, body: "" }, catalog), [
+    "description names free-skill, a free skill, from the open tier",
   ]);
 });
 

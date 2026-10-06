@@ -7,6 +7,7 @@ metadata:
   domain: content-writing
   install: optional
   keywords: [brand guidelines, client rulebook, banned words, required phrasing, copy review, agency, brand voice, tone check]
+  verified-runtimes: [codex-cli]
 ---
 
 # Client rulebook copy check

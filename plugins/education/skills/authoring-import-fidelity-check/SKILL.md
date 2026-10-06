@@ -7,6 +7,7 @@ metadata:
   domain: education
   install: optional
   keywords: [authoring tool, storyboard, import, quiz key, character limit, course clone, diff, e-learning]
+  verified-runtimes: [claude-code]
 ---
 
 # Authoring import fidelity check

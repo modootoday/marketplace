@@ -7,6 +7,7 @@ metadata:
   domain: food-service
   install: optional
   keywords: [recipe card, substitution, slow cooker, air fryer, appliance conversion, source fidelity, test batch]
+  verified-runtimes: [claude-code]
 ---
 
 # Recipe source fidelity and adaptation

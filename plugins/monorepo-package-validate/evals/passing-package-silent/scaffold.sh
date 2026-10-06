@@ -1,0 +1,1 @@
+mkdir -p pkgs/b && printf '{"name":"b","version":"1.0.0","scripts":{"validate":"exit 0"}}\n' > pkgs/b/package.json && printf 'module.exports = 2;\n' > pkgs/b/index.js && printf '{"name":"root","private":true}\n' > package.json

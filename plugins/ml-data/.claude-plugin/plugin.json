@@ -1,7 +1,7 @@
 {
   "name": "ml-data",
-  "version": "0.1.0",
-  "description": "Check fine-tuning data against the target schema before training: content types, one-record serialisation, reload counts and tool-call turns, with rejected rows listed by line.",
+  "version": "0.2.0",
+  "description": "Checks fine-tuning data against the target trainer or provider schema before an upload or a training run: roles, field names and content types per row, one JSON record per example, a reload with the real loader, and tool-call turn structure. It checks data; it does not train.",
   "author": {
     "name": "modootoday"
   },

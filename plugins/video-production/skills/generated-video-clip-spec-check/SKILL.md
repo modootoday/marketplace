@@ -7,6 +7,7 @@ metadata:
   domain: video-production
   install: optional
   keywords: [generated video, ffmpeg, frame sampling, locked camera, seamless loop, clip join, prompt revision]
+  verified-runtimes: [claude-code]
 ---
 
 # Generated clip spec check

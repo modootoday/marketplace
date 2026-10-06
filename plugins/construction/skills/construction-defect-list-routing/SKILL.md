@@ -7,6 +7,7 @@ metadata:
   domain: construction
   install: optional
   keywords: [punch list, defect list, inspection, warranty, trade routing, homebuilding]
+  verified-runtimes: [claude-code]
 ---
 
 # Defect list routing by trade

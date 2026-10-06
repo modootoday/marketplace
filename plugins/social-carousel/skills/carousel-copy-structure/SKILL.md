@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [carousel copy, card news, Instagram carousel, swipe post, slide copy]
   locales: [ko]
+  verified-runtimes: [claude-code]
 ---
 
 # Carousel copy

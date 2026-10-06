@@ -12,7 +12,7 @@ brief, and one living document per workstream kept current in place.
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | yes; eval suite measured 20261005 (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -76,8 +76,14 @@ The plugin ships an eval suite (`claude plugin eval plugins/agent-session-craft 
 | `same-fix-three-times` | repeated-failure-debug-escalation | 0.00 | 1.00 | 2 (Sonnet subject and judge, 20261005; skill fired 2 of 2; rests on one weak record) |
 
 Measured 20261005 on Claude Code 2.1.288 with Sonnet as judge. The skill fired in every run.
-session-status-briefing shows no lift: the baseline model already passed its case. A case that already passes without the plugin stays in the suite to catch
+session-status-briefing shows no lift: the baseline model already passed its case. A case that already passes without the plugin stays in the suite to catch The Codex scores below add a case with lift for session-status-briefing.
 a regression, not as evidence that the skill helps.
+
+Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
+
+| Case | Skill | Without | With | Skill fired |
+| --- | --- | --- | --- | --- |
+| `korean-status-mid-session` | session-status-briefing | 0.00 | 1.00 | 2 of 2 |
 
 ## License
 

@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [subagents, fan out, parallel agents, brief, chunking, integration agent, coordinator]
+  verified-runtimes: [claude-code]
 ---
 
 # Subagent fan-out with one brief

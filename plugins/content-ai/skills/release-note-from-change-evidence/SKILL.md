@@ -7,6 +7,7 @@ metadata:
   domain: content-writing
   install: optional
   keywords: [release notes, changelog, support article, tickets, pull requests, evidence, screen names]
+  verified-runtimes: [claude-code]
 ---
 
 # Release note from change evidence

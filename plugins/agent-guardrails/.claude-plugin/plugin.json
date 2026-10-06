@@ -1,9 +1,10 @@
 {
   "name": "agent-guardrails",
-  "version": "0.1.0",
-  "description": "Refuse a small, measured set of shell commands whose damage is hard to undo: in-place stream edits, verification-skipping pushes, and project-wide container teardown.",
+  "version": "0.2.0",
+  "description": "Refuses a small, measured set of shell commands whose damage is hard to undo,",
   "author": {
     "name": "modootoday"
   },
+  "skills": "./skills/",
   "hooks": "./hooks/hooks.json"
 }

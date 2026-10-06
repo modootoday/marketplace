@@ -7,6 +7,7 @@ metadata:
   domain: data-analytics
   install: optional
   keywords: [ClickHouse, SQL, query performance, MergeTree, timezone, parameterized query]
+  verified-runtimes: [codex-cli]
 ---
 
 # ClickHouse queries that stay correct and cheap
@@ -65,3 +66,9 @@ use lightweight deletes where the version supports them, and say which.
 For each issue: the line, what goes wrong (wrong number, wrong day, full scan,
 injection), the corrected SQL, and the `EXPLAIN` evidence when performance is
 the claim.
+
+- The corrected SQL names columns: never carry `SELECT *` (or `t.*`) into it; use
+  the columns the report needs, or placeholders and ask which ones.
+- When you cannot run the query, do not call it fast or fixed. Say the
+  efficiency is unproven, give the exact `EXPLAIN indexes = 1` statement, and
+  tell the user to read the selected parts and granules against the totals.

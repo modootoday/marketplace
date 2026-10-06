@@ -7,6 +7,7 @@ metadata:
   domain: real-estate
   install: optional
   keywords: [home search, listings, buyer requirements, viewing sheet, screening, shortlist]
+  verified-runtimes: [claude-code]
 ---
 
 # Property candidate screening

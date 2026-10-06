@@ -7,6 +7,7 @@ metadata:
   domain: trust-safety
   install: optional
   keywords: [scam check, unsolicited offer, job offer, upfront fee, verification, fraud reporting]
+  verified-runtimes: [claude-code]
 ---
 
 # Unsolicited offer claim verification

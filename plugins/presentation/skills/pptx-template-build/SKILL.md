@@ -9,6 +9,7 @@ metadata:
   keywords: [pptx, PowerPoint template, slide master, python-pptx, native charts]
   requires:
     bin: [python3]
+  verified-runtimes: [claude-code]
 ---
 
 # Building a .pptx from a template

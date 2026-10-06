@@ -11,9 +11,9 @@ Ad copy reviews are available to signed-in users.
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
-| Grok CLI | untested | - |
-| Gemini CLI | untested | - |
+| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
+| Grok CLI | yes | negative case held on grok-4.7 and grok-4.7-build-fast, 20261006 (skill did not fire); see Other runtimes |
+| Gemini CLI | yes | negative case held on gemini-3.1-pro-preview and gemini-3.8-flash, 20261006 (skill did not fire); see Other runtimes |
 
 Requirements: None.
 
@@ -101,6 +101,23 @@ ghostwriting-editorial shows no lift yet: the baseline model already passed thes
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+### Other runtimes
+
+Gemini CLI and Grok CLI, both arms, 2 runs per arm, 3 judge votes, the model as subject and judge, 20261006. A row where the skill fired and With is 1.00 sets the runtime in the skill's verified-runtimes.
+
+| Runtime | Model | Case | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- |
+| Gemini CLI | gemini-3.1-pro-preview | `english-email-not-content` | 1.00 | 1.00 | 0/2 | 20261006 |
+| Gemini CLI | gemini-3.8-flash | `english-email-not-content` | 1.00 | 1.00 | 0/2 | 20261006 |
+| Grok CLI | grok-4.7 | `english-email-not-content` | 1.00 | 1.00 | 0/2 | 20261006 |
+| Grok CLI | grok-4.7-build-fast | `english-email-not-content` | 1.00 | 1.00 | 0/2 | 20261006 |
+
+Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
+
+| Case | Skill | Without | With | Skill fired |
+| --- | --- | --- | --- | --- |
+| `scope-skip-and-vague-rule` | client-rulebook-copy-check | 0.00 | 1.00 | 2 of 2 |
 
 ## License
 

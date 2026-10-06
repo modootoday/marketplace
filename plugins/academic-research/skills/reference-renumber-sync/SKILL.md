@@ -7,6 +7,7 @@ metadata:
   domain: academic-research
   install: optional
   keywords: [reference renumbering, numeric citations, citation ranges, manuscript editing, orphan references]
+  verified-runtimes: [claude-code]
 ---
 
 # Reference renumber sync

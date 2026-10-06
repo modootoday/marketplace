@@ -7,6 +7,7 @@ metadata:
   domain: localization
   install: optional
   keywords: [transliteration, romanization, ALA-LC, ISO 9, library catalogue, Cyrillic, access points]
+  verified-runtimes: [claude-code]
 ---
 
 # Catalog transliteration check

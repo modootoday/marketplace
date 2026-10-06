@@ -7,6 +7,7 @@ metadata:
   domain: education
   install: optional
   keywords: [instructional design, facilitator guide, storyboard, subject matter expert, content gaps, session timing]
+  verified-runtimes: [claude-code]
 ---
 
 # Course draft from SME material

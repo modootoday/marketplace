@@ -7,6 +7,7 @@ metadata:
   domain: education
   install: optional
   keywords: [answer key, multiple choice, distractor, rubric weights, test verification, item check, calculus, assessment]
+  verified-runtimes: [claude-code]
 ---
 
 # Assessment rubric and item check

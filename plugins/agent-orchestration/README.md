@@ -13,8 +13,8 @@ procedures are runtime-neutral; Claude Code subagents and workflow scripts are u
 | --- | --- | --- |
 | Claude Code | yes | yes; eval suite in `evals/` (see Verify) |
 | Codex CLI | untested | - |
-| Grok CLI | untested | - |
-| Gemini CLI | untested | - |
+| Grok CLI | yes | measured 20261006 on grok-4.7 and grok-4.7-build-fast for 2 cases; see Other runtimes |
+| Gemini CLI | yes | measured 20261006 on gemini-3.1-pro-preview and gemini-3.8-flash for 2 cases; see Other runtimes |
 
 Requirements: None.
 
@@ -87,6 +87,24 @@ in 2 of 2 Sonnet with-arm runs, but only one passed both graders (0.50), so that
 The `agents-for-fix-and-audit` row is a single both-arm Sonnet run (2 runs per arm). On Opus the baseline for `five-cases-pass-report` met one of its two graders in
 each run, which is why its without score is a share of full passes (0.00), not of graders.
 Each skill has one case; two more are needed for the three-case release gate.
+
+### Other runtimes
+
+Gemini CLI and Grok CLI, both arms, 2 runs per arm, 3 judge votes, the model as subject and judge, 20261006. A row where the skill fired and With is 1.00 sets the runtime in the skill's verified-runtimes.
+
+| Runtime | Model | Case | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- |
+| Gemini CLI | gemini-3.1-pro-preview | `agents-for-fix-and-audit` | 0.50 | 0.50 | 2/2 | 20261006 |
+| Gemini CLI | gemini-3.1-pro-preview | `five-cases-pass-report` | 0.25 | 1.00 | 2/2 | 20261006 |
+| Gemini CLI | gemini-3.8-flash | `agents-for-fix-and-audit` | 0.50 | 1.00 | 2/2 | 20261006 |
+| Gemini CLI | gemini-3.8-flash | `five-cases-pass-report` | 0.50 | 1.00 | 2/2 | 20261006 |
+| Grok CLI | grok-4.7 | `agents-for-fix-and-audit` | 0.50 | 1.00 | 2/2 | 20261006 |
+| Grok CLI | grok-4.7 | `five-cases-pass-report` | 0.25 | 0.75 | 2/2 | 20261006 |
+| Grok CLI | grok-4.7-build-fast | `agents-for-fix-and-audit` | 0.25 | 1.00 | 2/2 | 20261006 |
+| Grok CLI | grok-4.7-build-fast | `five-cases-pass-report` | 0.75 | 0.75 | 2/2 | 20261006 |
+| Grok CLI | grok-4.7-build-fast | `brief-for-fixture-worker` | 0.00 | 1.00 | 2/2 | 20261006 |
+| Antigravity CLI | gemini-3.8-flash-low | `brief-for-fixture-worker` | 0.00 | 1.00 | 2/2 | 20261006 |
+| Gemini CLI | gemini-3.8-flash | `brief-for-fixture-worker` | 0.00 | 1.00 | 2/2 | 20261006 |
 
 ## License
 

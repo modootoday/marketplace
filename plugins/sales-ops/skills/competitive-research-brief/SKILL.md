@@ -7,6 +7,7 @@ metadata:
   domain: sales-ops
   install: optional
   keywords: [competitor, positioning, account research, comparison table, sourcing, brief, sales enablement]
+  verified-runtimes: [claude-code]
 ---
 
 # Competitive research brief

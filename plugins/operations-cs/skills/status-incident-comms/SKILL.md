@@ -7,6 +7,7 @@ metadata:
   domain: customer-support
   install: optional
   keywords: [status page, incident update, outage communication, maintenance notice]
+  verified-runtimes: [codex-cli]
 ---
 
 # Incident communication
@@ -38,5 +39,7 @@ appear if there will be one.
 
 ## Language
 
-Short sentences; Korean updates in polite haeyo-che. Same facts in every
-channel (status page, email, community), posted from one source.
+Short sentences, one fact each: split a condition, who confirmed it and a deadline
+into separate sentences instead of one long one. Korean updates in polite
+haeyo-che (every sentence, title lines aside, ends in -yo; no -hamnida endings). Same
+facts in every channel (status page, email, community), posted from one source.

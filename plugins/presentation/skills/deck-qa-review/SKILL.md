@@ -7,6 +7,7 @@ metadata:
   domain: presentation
   install: optional
   keywords: [deck review, presentation QA, proofreading slides, chart check, number consistency]
+  verified-runtimes: [codex-cli]
 ---
 
 # Deck QA

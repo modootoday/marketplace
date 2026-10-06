@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [SVG icon, icon set, illustration, vector graphics, pixel art]
   output-license: the user's own drawing; no third-party icon set is copied
+  verified-runtimes: [codex-cli]
 ---
 
 # Icons and illustrations in SVG
@@ -43,5 +44,18 @@ Render each icon at the sizes it will be used (16, 20, 24 px and large) and on
 light and dark backgrounds, and compare the set side by side. Fix any icon that
 looks heavier, lighter or off-centre than its neighbours.
 
+When icons arrive from different hands, redraw them to one rule set (one style
+for the whole set, filled or outlined, never both) rather than patching each.
+
 Do not copy paths from existing icon sets unless their licence allows it and you
 record it.
+
+## Reply
+
+The SVGs, then a short list: the rules used (grid, stroke, caps, style), what was
+removed (metadata, unused defs, colliding ids, embedded rasters), whether each
+icon is meaningful (`role="img"` and `<title>`) or decorative (`aria-hidden`),
+and the checks still to run because you cannot render here: the three sizes on
+light and dark backgrounds side by side, and the SVGO pass followed by a
+same-render comparison. Never say the icons were tested visually unless a render
+was made.

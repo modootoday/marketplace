@@ -7,6 +7,7 @@ metadata:
   domain: education
   install: optional
   keywords: [reading level, readability, Flesch-Kincaid, grade level, passage, differentiation]
+  verified-runtimes: [claude-code]
 ---
 
 # Reading level calibration

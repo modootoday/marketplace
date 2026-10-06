@@ -7,6 +7,7 @@ metadata:
   domain: software-qa
   install: optional
   keywords: [code review, review findings, hallucinated finding, diff, stale docs, call path, verification]
+  verified-runtimes: [claude-code]
 ---
 
 # Code change review verification

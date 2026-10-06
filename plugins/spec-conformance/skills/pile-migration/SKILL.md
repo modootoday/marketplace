@@ -7,6 +7,7 @@ metadata:
   domain: spec-writing
   install: optional
   keywords: [document migration, dossier, document triage]
+  verified-runtimes: [claude-code]
 ---
 
 # Migrating a pile you did not write

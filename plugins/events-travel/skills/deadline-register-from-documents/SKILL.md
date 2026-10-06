@@ -7,6 +7,7 @@ metadata:
   domain: planning
   install: optional
   keywords: [deadline register, exhibitor kit, document diff, time zone, due dates, owners]
+  verified-runtimes: [claude-code]
 ---
 
 # Deadline register from documents

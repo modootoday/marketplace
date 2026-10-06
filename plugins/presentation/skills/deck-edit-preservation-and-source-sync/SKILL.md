@@ -7,6 +7,7 @@ metadata:
   domain: presentation
   install: optional
   keywords: [pptx edit, preservation list, regeneration, source of truth, diff, slide elements]
+  verified-runtimes: [claude-code]
 ---
 
 # Deck edit preservation and source sync

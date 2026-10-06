@@ -7,6 +7,7 @@ metadata:
   domain: fitness
   install: optional
   keywords: [workout log, progression, substitution, equipment, strength training, sets reps load]
+  verified-runtimes: [claude-code]
 ---
 
 # Workout log progression and substitution

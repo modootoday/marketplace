@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [lifecycle hooks, hook compatibility, hook not firing]
+  verified-runtimes: [claude-code]
 ---
 
 # Hook compatibility

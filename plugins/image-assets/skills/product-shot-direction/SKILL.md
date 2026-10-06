@@ -12,6 +12,7 @@ metadata:
     bin: [python3]
     capabilities: [image.edit, image.generate]
   output-license: the user's own product photos; generated output follows the terms of the model used, which the ledger records
+  verified-runtimes: [claude-code]
 ---
 
 # Product shots that keep the real product

@@ -9,9 +9,9 @@ Decks that argue something and survive review: a storyline built from the answer
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
-| Grok CLI | untested | - |
-| Gemini CLI | untested | - |
+| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
+| Grok CLI | untested | the one case passes with and without the plugin on grok-4.7 and grok-4.7-build-fast, 20261006; see Other runtimes |
+| Gemini CLI | untested | the one case passes with and without the plugin on gemini-3.1-pro-preview and gemini-3.8-flash, 20261006; see Other runtimes |
 
 Requirements: Python 3 with python-pptx, and LibreOffice to render slides for checking, for pptx-template-build. The other skills need nothing.
 
@@ -82,10 +82,27 @@ stayed at 0.50 after two fix rounds (rehearsal answers asserted claims the plan 
 case sometimes omitted the diff plan). One rehearsal run scored 0.75 on a single judge vote before the
 recorded 1.00 run.
 
-deck-qa-review shows no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
+deck-qa-review shows no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. The Codex scores below add a case with lift for deck-qa-review.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+### Other runtimes
+
+Gemini CLI and Grok CLI, both arms, 2 runs per arm, 3 judge votes, the model as subject and judge, 20261006. A row where the skill fired and With is 1.00 sets the runtime in the skill's verified-runtimes.
+
+| Runtime | Model | Case | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- |
+| Gemini CLI | gemini-3.1-pro-preview | `inconsistent-numbers` | 1.00 | 1.00 | 2/2 | 20261006 |
+| Gemini CLI | gemini-3.8-flash | `inconsistent-numbers` | 1.00 | 1.00 | 2/2 | 20261006 |
+| Grok CLI | grok-4.7 | `inconsistent-numbers` | 1.00 | 1.00 | 2/2 | 20261006 |
+| Grok CLI | grok-4.7-build-fast | `inconsistent-numbers` | 1.00 | 1.00 | 2/2 | 20261006 |
+
+Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
+
+| Case | Skill | Without | With | Skill fired |
+| --- | --- | --- | --- | --- |
+| `growth-axis-unsourced-claims` | deck-qa-review | 0.50 | 1.00 | 2 of 2 |
 
 ## License
 

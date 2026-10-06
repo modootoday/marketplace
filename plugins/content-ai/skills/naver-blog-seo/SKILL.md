@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [Naver blog, Naver search, blog SEO, post title, tags]
   locales: [ko]
+  verified-runtimes: [claude-code]
 ---
 
 # Naver blog posts that get found

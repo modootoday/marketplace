@@ -7,6 +7,7 @@ metadata:
   domain: education
   install: optional
   keywords: [lecture timing, slides, speaking rate, words per minute, script, activity time, overrun]
+  verified-runtimes: [claude-code]
 ---
 
 # Lecture script timing fit

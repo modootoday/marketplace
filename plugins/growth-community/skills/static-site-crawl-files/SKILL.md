@@ -7,6 +7,7 @@ metadata:
   domain: growth
   install: optional
   keywords: [robots.txt, sitemap.xml, llms.txt, hreflang, indexnow key, x-robots-tag, static site, bilingual site]
+  verified-runtimes: [claude-code]
 ---
 
 # Crawl files for a static site

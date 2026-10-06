@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [customer support, ticket triage, support reply, Korean CS, helpdesk]
   locales: [ko]
+  verified-runtimes: [claude-code]
 ---
 
 # Korean support ticket triage

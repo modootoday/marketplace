@@ -7,6 +7,7 @@ metadata:
   domain: video-production
   install: optional
   keywords: [storyboard, video brief, shot list, short-form video, explainer video]
+  verified-runtimes: [claude-code]
 ---
 
 # Video brief and storyboard

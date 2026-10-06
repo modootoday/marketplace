@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [parallel agents, write conflicts, worktree, pending file, idempotent merge, compare and set, shared index, ownership]
+  verified-runtimes: [claude-code]
 ---
 
 # Parallel write partitioning and merge

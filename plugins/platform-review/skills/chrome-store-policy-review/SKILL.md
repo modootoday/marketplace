@@ -7,6 +7,7 @@ metadata:
   domain: platform-policy
   install: optional
   keywords: [Chrome Web Store, extension review, Manifest V3, permissions, rejection, user data policy]
+  verified-runtimes: [codex-cli]
 ---
 
 # Chrome Web Store policy review

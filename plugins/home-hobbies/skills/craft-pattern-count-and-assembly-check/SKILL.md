@@ -10,6 +10,7 @@ metadata:
   requires:
     bin: [node]
   keywords: [crochet, knitting, amigurumi, stitch count, pattern check, garment alteration, sewing]
+  verified-runtimes: [claude-code]
 ---
 
 # Craft pattern count and assembly check

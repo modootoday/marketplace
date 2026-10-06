@@ -7,6 +7,7 @@ metadata:
   domain: commerce
   install: optional
   keywords: [resale, second-hand, item identification, model number, listing, marketplace, markings]
+  verified-runtimes: [claude-code]
 ---
 
 # Item identification from photos

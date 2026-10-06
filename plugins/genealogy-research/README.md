@@ -9,7 +9,7 @@ Family-history research that marks what it does not know. It indexes a surname a
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -37,6 +37,7 @@ codex plugin add genealogy-research@modootoday
 | --- | --- | --- |
 | skill | `uncertain-reading-and-mention-index` | surname mentions per volume with page and context, spelling variants and same-name risk, unreadable pages listed as not checked, damaged-handwriting readings marked uncertain; rests on two records (moderate) |
 | skill | `family-tree-data-consistency-and-factsheet` | parent-age and date-order checks citing both records, two exports compared by identifier without merging, ancestor sheets with evidence, interpretation and open questions separate; rests on two records (moderate) |
+| skill | `genealogy-locality-and-repository-plan` | where to search next for a person, place and period: historical county, parish and diocese fixed per date, record series matched to coverage and custodian from the finding aids supplied, index versus images and online versus onsite stated, and a search log that keeps not searched apart from a documented negative; rests on two firsthand reports and one adjacent experiment |
 
 ## Failure mode
 
@@ -69,6 +70,12 @@ runs that passed every grader, without the plugin and with it:
 | `tree-export-conflicts` | family-tree-data-consistency-and-factsheet | 0.00 | 1.00 | 2 |
 
 A reading or a relationship is never stated as confirmed: the plugin only reports what the pasted records support.
+
+Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
+
+| Case | Skill | Without | With | Skill fired |
+| --- | --- | --- | --- | --- |
+| `lund-baptism-boundary-plan` | genealogy-locality-and-repository-plan | 0.25 | 1.00 | 2 of 2 |
 
 ## License
 

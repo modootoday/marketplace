@@ -71,7 +71,7 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `audio-production`          | Scripts written for the ear; speech mixed and normalised to a measured target | no    |
 | `skill-factory`             | Write agent skills evals first, with descriptions that trigger correctly      | no    |
 | `agent-session-craft`       | Status briefings, follow-up waves, subagent fan-out and living documents for long sessions | no    |
-| `academic-research` | Verify AI-suggested papers, citations and measures before they enter your notes | no |
+| `academic-research` | Verify AI-suggested papers, citations and measures before they enter your notes, and check a recommended structure entry for the named ligand against the pasted record | no |
 | `ux-research` | Index interview transcripts by theme and timestamp; quotes audited against the source | no |
 | `education` | Reading passages at a measured grade level; language drills that stay in one dialect | no |
 | `localization` | Translation post-edit checks and subtitle limit checks reported by segment or cue id | no |
@@ -79,38 +79,42 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `real-estate` | Listings screened against must-haves, room layouts checked, tenant dispute records arranged with no legal conclusions | no |
 | `sales-ops` | Promised follow-ups recovered from sent email; CRM fields and follow-ups filled only from call transcripts | no |
 | `software-qa` | Test cases traced to the change: gaps and duplicates listed, automation proposed for approval | no |
-| `accessibility` | Images, charts and screens read for blind and low-vision users: text first, uncertainty marked | no |
-| `data-engineering` | Migrated or rewritten SQL proven equal to the original: statement map, two-way key diffs, seeded-difference test | no |
-| `fiction-editing` | Chapters checked against the author's canon ledger and outline; tense and POV slips flagged, prose left alone | no |
-| `interactive-web-demos` | Browser simulations checked against a reference result, timestep convergence and measured frame time | no |
+| `accessibility` | Images, charts and screens read for blind and low-vision users: text first, uncertainty marked; alt text drafts reviewed against caption, link target and exported page | no |
+| `data-engineering` | Migrated or rewritten SQL proven equal to the original: statement map, two-way key diffs, seeded-difference test; many similar lab workbooks merged with per-file row reconciliation | no |
+| `interactive-web-demos` | Browser simulations checked against a reference result, timestep convergence and measured frame time; assistant-built demos made portable with a clean-browser test | no |
 | `asset-3d-vfx` | Blender scenes checked against planned dimensions, state collisions, a reference render and web budgets | no |
 | `food-service` | Pasted recipes copied to a card unchanged; swaps and appliance changes logged as marked estimates | no |
-| `home-hobbies`              | Chess and board-game state kept legal with rules cited; crochet and knit stitch counts recomputed with every part joined | no    |
+| `home-hobbies` | Chess and board-game state kept legal with rules cited; crochet and knit stitch counts recomputed with every part joined; product labels read as written; garden plans checked against site facts, plant photo identification with toxic lookalikes named, pesticide label rates and intervals converted to your area | no |
 | `everyday-support-boundaries` | Keep a support conversation inside the scope the user chose: no diagnosis, no reframing, only their own step list | no    |
 | `events-travel`             | Day plans from fixed times, opening hours, travel legs and protected rest, with backups | no    |
 | `agent-governance`          | Audit an unattended agent's permission setup: approval branches, denied retries, credentials, artifact checks | no    |
-| `ml-data` | Fine-tuning data checked against the target schema before training: content types, one record per example, reload counts, tool-call turns | no |
+| `ml-data` | Fine-tuning data checked against the target schema before training: content types, one record per example, reload counts, tool-call turns; bounding-box annotations converted between formats with the source form stated | no |
 | `bioinformatics` | Analysis pipeline refactors proven equal: baseline, step map, tolerances, explained and unexplained differences | no |
 | `household-admin` | Pay-period schedules from your own numbers, every dollar placed once, arithmetic only; trading journals and insurance paper trails checked | no |
 | `procurement` | Spend projection with ledger reconciliation, dedicated lane cost models, provisional freight classification, verified vendor shortlists, purchase-request intake and stage checks, ERP navigation with verification notes (freight classification and ERP navigation rest on one and three weak records) | no |
 | `gis` | Raster NoData and scaling, geometry repair and merges, label and view expressions, slope areas from contours, tool substitution; CRS and units stated | no |
-| `engineering` | Work instructions from field notes, verbatim clause location with edition, sourced datasheet spec tables, fault evidence logs that name no root cause (all four rest on two to four weak records) | no |
+| `engineering` | Work instructions from field notes, verbatim clause location with edition, sourced datasheet spec tables, fault evidence logs that name no root cause, device config files built from a pasted register table (rest on one to four weak records) | no |
 | `hr-ops` | Sourcing strings built from stated job requirements without protected-trait terms (one single-person report) | no |
-| `photography` | Check a photo cull or batch grade from the scores and logs you supply: criteria per subject, rank and flag only, preview versus export | no |
+| `photography` | Check a photo cull or batch grade from the scores and logs you supply: criteria per subject, rank and flag only, preview versus export; stock-site metadata and CSV checked against the destination's limits | no |
 | `it-ops` | Safe patch-back of a fix made on an anonymized script copy, with no real value sent to a model; one-record evidence | no |
-| `genealogy-research` | Surname mention index across volumes with gaps and same-name risk, uncertain handwriting readings, tree-export date and relationship checks, evidence-separated ancestor sheets (both rest on two moderate records) | no |
+| `genealogy-research` | Surname mention index across volumes with gaps and same-name risk, uncertain handwriting readings, tree-export date and relationship checks, evidence-separated ancestor sheets, and search plans that fix the historical jurisdiction first | no |
 | `design-delivery` | A wireframe mapped to design-system components with missing ones flagged and tokens kept (one weak record) | no |
 | `finance-ops` | Statement rows tied out to balances, documents named from evidence and cash flow bridged by driver; supplied figures only, no advice (two skills, each on two reports) | no |
 | `healthcare-admin` | Clinician notes placed into a required template with nothing added: empty fields marked NOT DOCUMENTED, model wording listed (rests on two weak records) | no |
 | `construction` | Inspection findings and warranty narratives split into one item per finding, routed by trade, unclear trades flagged, counts reconciled (rests on two first-person reports) | no |
 | `commerce` | Second-hand items identified from photos as ranked candidates with photos to request; authenticity and value not claimed (rests on one first-person report) | no |
-| `fitness` | Workout logs tabulated, equipment substitutes by movement pattern, load changes left to a trainer (rests on two first-person reports) | no |
-| `publishing-production` | Typeset text diffed against the approved manuscript by page and edition; print and EPUB checked against separate rules; automated accessibility results paired with manual items left unverified (rests on three records) | no |
-| `pr-comms` | Media targets and pitch angles checked against pasted pages, with unverified journalists and passed deadlines marked (single-source evidence: three records) | no |
-| `land-growing` | Garden plans checked against measured site facts: layout, frost-bounded calendar, soil, light and water test units (five single-record reports) | no |
-| `industrial-config` | Device config files drafted from a pasted register table with address base, widths, duplicates and a bench-test requirement (two records) | no |
-| `everyday-readings` | Numerology, chart and spread inputs computed only from the rules you name, every step shown, reflection only with no predictions | no |
+| `fitness` | Workout logs tabulated, equipment substitutes by movement pattern, load changes left to a trainer; macro targets, wearable exports and running plans checked by arithmetic | no |
+| `publishing-production` | Typeset text diffed against the approved manuscript by page and edition; print and EPUB checked against separate rules; automated accessibility results paired with manual items left unverified; house style sheets applied, index locators checked against proofs, series continuity and treatment causality reviewed | no |
+| `pr-comms` | Media targets and pitch angles checked against pasted pages; press-release facts and quotes routed to a named approver; interview briefs with stale figures flagged | no |
+| `everyday-readings` | Numerology, chart and spread inputs computed only from the rules you name; tarot spreads read by position from a recorded draw; reading journals counted for patterns and echoes; reflection only with no predictions | no |
 | `agent-orchestration` | Subagent coordination: delegation sizing, briefs and hand-backs, partitioned writes and merge, claim verification, fair eval comparisons, fan-out scripts | no |
+| `datalab-tools` | Naver blog, Place, store, shopping, ad and comment data read through the datalab.tools extension; card news, video and posts built in its editors with no invented numbers | no |
+| `trust-safety` | Abuse detection that can be trusted: signals ranked by how abusers work and how cheaply they could evade, rules measured on labelled data before they act, and appeals that restore what a false... | no |
+| `growth-community` | Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, newsletters readers open and finish, a month of... | no |
+| `platform-review` | Reviews of platform pieces that fail in production for configuration reasons: Cloudflare Worker bindings, Manifest V3 extension lifecycles, Chrome Web Store policy before submission, MCP tool design... | no |
+| `operations-cs` | Customer operations: Korean support tickets triaged with incidents spotted across them, status updates that say what is affected and when the next update comes, read-only runbooks for on-call, and... | no |
+| `runtime-bridge` | Check allowance, delegate bounded jobs across runtimes, research with cited reports, route costs and verify second opinions | no |
+| `video-production` | Video work that can be executed and verified: briefs and storyboards someone else can produce from, Remotion explainers rendered from frame math, talking-head edits with ffmpeg that keep a list of... | no |
 
 ## Trust
 
@@ -135,6 +139,12 @@ plugin that seems to do nothing in a script has probably never been trusted.
   domain and install are required, and the per-tier rules sit in the same file.
   `node scripts/check-skills.mjs . --catalog <other tier>...` enforces it, and
   `node --test scripts/skill-rules.test.mjs` covers each rule with a failing case.
+- `metadata.verified-runtimes` (optional, inline list of `claude-code`, `codex-cli`,
+  `gemini-cli`, `grok-cli`, `antigravity`) names the runtimes with a both-arm eval row
+  in the plugin README where the skill fired, With is 1.00 and Without is below 1.00; absent means untested
+  or not passing. `node scripts/verified-runtimes.mjs <marketplace> --write` derives it
+  from the README tables, `--check` reports drift, and `check-skills.mjs` fails a claim
+  no README row supports and only warns about an omission.
 - A plugin with skills ships `evals/` cases for `claude plugin eval`, and its
   README reports the measured scores with and without the plugin.
 - A plugin release passes `node scripts/release-gate.mjs plugins/<name>`, which runs

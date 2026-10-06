@@ -7,6 +7,7 @@ metadata:
   domain: education
   install: optional
   keywords: [calculus, algebra, worked solution, error finding, first error, step check, verification, textbook]
+  verified-runtimes: [claude-code]
 ---
 
 # Worked solution step audit

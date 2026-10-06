@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [Korean TTS, speech synthesis, narration, pronunciation dictionary, SSML]
   locales: [ko]
+  verified-runtimes: [claude-code]
 ---
 
 # Korean TTS production

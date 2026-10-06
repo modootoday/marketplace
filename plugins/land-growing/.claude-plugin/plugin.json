@@ -1,9 +1,0 @@
-{
-  "name": "land-growing",
-  "version": "0.1.0",
-  "description": "Garden and small-farm plans checked against measured site facts: bed layout and spacing, a frost-bounded sowing calendar, soil and light constraints and a water test table with units.",
-  "author": {
-    "name": "modootoday"
-  },
-  "skills": "./skills/"
-}

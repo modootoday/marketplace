@@ -7,6 +7,7 @@ metadata:
   domain: data-analytics
   install: optional
   keywords: [metric definition, KPI, active users, retention, conversion, dashboard mismatch]
+  verified-runtimes: [codex-cli]
 ---
 
 # Defining a metric

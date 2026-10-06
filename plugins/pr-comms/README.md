@@ -9,9 +9,9 @@ Media targets and pitch angles for a PR pitch, checked against what was actually
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
-| Grok CLI | untested | - |
-| Gemini CLI | untested | - |
+| Codex CLI | yes, for the cases listed in Verify | measured 20261006 with gpt-6.1-sol |
+| Grok CLI | yes | measured 20261006 on grok-4.7-build-fast; see Other runtimes |
+| Gemini CLI | yes | measured 20261006 on gemini-3.8-flash; see Other runtimes |
 
 Requirements: Nothing is required.
 
@@ -36,6 +36,8 @@ codex plugin add pr-comms@modootoday
 | Kind | Name | Covers |
 | --- | --- | --- |
 | skill | `media-target-and-angle-verification` | a media list and angle worksheet from pasted outlet pages: beat, byline URL and date or unverified, deadline status against today, approved-topic fit, a human-check list for sensitive or fast-moving news and a manual verification list |
+| skill | `press-release-fact-and-quote-approval` | a release in which every sentence carries an approved fact id, quotes are copied verbatim from approved text, unsourced sentences are removed and listed, claims such as first or AI-powered are flagged and an approval checklist closes it (rests on web records of fabricated facts and quotes, medium evidence) |
+| skill | `interview-briefing-fact-pack` | spokesperson briefing with likely and hostile questions, approved key messages, figures with source and date from pasted material only, a staleness flag past 12 months, bridge-back lines and a separate off-limits list (rests on two weak records) |
 
 ## Failure mode
 
@@ -68,8 +70,25 @@ that passed every grader, without the plugin and with it:
 
 The skill rests on three first-person reports (stale lists, calendar-based angles, reactive news screening); treat the lift as moderate evidence.
 
+Codex CLI, measured 20261006 (Codex, gpt-6.1-sol / gpt-6.1-sol, 3 votes), both arms, 2 runs per arm:
+
+| Case | Skill | Without | With |
+| --- | --- | --- | --- |
+| `press-release-quote-polish` | press-release-fact-and-quote-approval | 0.00 | 1.00 |
+| `interview-brief-stale-figure` | interview-briefing-fact-pack | 0.00 | 1.00 |
+
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+### Other runtimes
+
+Both arms, 2 runs per arm, 3 judge votes, the model as subject and judge. A row where the skill fired and With is 1.00 sets the runtime in the skill's verified-runtimes.
+
+| Runtime | Model | Case | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- |
+| Grok CLI | grok-4.7-build-fast | `press-release-quote-polish` | 0.50 | 1.00 | 2/2 | 20261006 |
+| Antigravity CLI | gemini-3.8-flash-low | `press-release-quote-polish` | 0.00 | 1.00 | 2/2 | 20261006 |
+| Gemini CLI | gemini-3.8-flash | `press-release-quote-polish` | 0.25 | 1.00 | 2/2 | 20261006 |
 
 ## License
 

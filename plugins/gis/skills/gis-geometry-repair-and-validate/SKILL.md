@@ -7,6 +7,7 @@ metadata:
   domain: gis
   install: optional
   keywords: [geometry validity, self-intersection, make valid, geopackage, merge, crs, schema mapping, sliver, topology]
+  verified-runtimes: [claude-code]
 ---
 
 # GIS geometry repair and validate

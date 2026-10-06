@@ -7,6 +7,7 @@ metadata:
   domain: content-writing
   install: optional
   keywords: [AI prose, repeated phrasing, not X but Y, promotional tone, fragments, modifiers, draft repair]
+  verified-runtimes: [claude-code]
 ---
 
 # Generated prose pattern repair

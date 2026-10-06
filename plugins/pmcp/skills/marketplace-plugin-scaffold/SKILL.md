@@ -9,6 +9,7 @@ metadata:
   keywords: [plugin marketplace, marketplace.json, plugin.json, skill plugin, pmcp catalog, tier, commands, hooks, mcp.json]
   requires:
     bin: [pmcp]
+  verified-runtimes: [claude-code]
 ---
 
 # Scaffolding a marketplace plugin pmcp can read

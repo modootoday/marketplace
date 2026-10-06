@@ -7,6 +7,7 @@ metadata:
   domain: spec-writing
   install: optional
   keywords: [document layout, file naming, where docs live]
+  verified-runtimes: [claude-code]
 ---
 
 # Laying out a document set

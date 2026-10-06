@@ -7,6 +7,7 @@ metadata:
   domain: household-admin
   install: optional
   keywords: [car trade-in, total cost, mobile plan, data overage, offer comparison, quote validity]
+  verified-runtimes: [claude-code]
 ---
 
 # Consumer offer total-cost comparison

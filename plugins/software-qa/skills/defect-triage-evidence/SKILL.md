@@ -7,6 +7,7 @@ metadata:
   domain: software-qa
   install: optional
   keywords: [flaky test, defect triage, regression failure, root cause, investigation note, reproduction]
+  verified-runtimes: [claude-code]
 ---
 
 # Defect triage with evidence

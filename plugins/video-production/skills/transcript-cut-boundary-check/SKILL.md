@@ -7,6 +7,7 @@ metadata:
   domain: video-production
   install: optional
   keywords: [transcript, paper edit, clip selection, cut points, filler removal, podcast]
+  verified-runtimes: [claude-code]
 ---
 
 # Transcript cut boundary check

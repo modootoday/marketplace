@@ -7,6 +7,7 @@ metadata:
   domain: genealogy
   install: optional
   keywords: [genealogy, family tree, export comparison, date logic, fact sheet, evidence, GEDCOM, ancestor]
+  verified-runtimes: [claude-code]
 ---
 
 # Family tree data consistency and factsheet

@@ -7,6 +7,7 @@ metadata:
   domain: procurement
   install: optional
   keywords: [spend analysis, year to date, run rate, forecast, supplier concentration, ledger reconciliation]
+  verified-runtimes: [claude-code]
 ---
 
 # Spend projection and pattern

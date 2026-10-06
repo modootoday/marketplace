@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [token count, AGENTS.md size, context budget, instruction files, bytes per token, rule file budget]
+  verified-runtimes: [claude-code]
 ---
 
 # Measuring instruction files in tokens

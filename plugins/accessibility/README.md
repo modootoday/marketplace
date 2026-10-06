@@ -9,9 +9,9 @@ Read images, scans, charts and device screens for blind and low-vision users: th
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
-| Grok CLI | untested | - |
-| Gemini CLI | untested | - |
+| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
+| Grok CLI | yes | measured 20261006 on grok-4.7-build-fast for 1 case; see Other runtimes |
+| Gemini CLI | yes | measured 20261006 on gemini-3.8-flash; see Other runtimes |
 
 Requirements: None. Image reading needs a runtime that can see the image; the skill governs how the result is reported.
 
@@ -37,6 +37,7 @@ codex plugin add accessibility@modootoday
 | --- | --- | --- |
 | skill | `accessible-visual-reading` | photos, scans, charts, signs and screens read as text in order, chart trends stated, uncertain parts marked, device steps given one at a time |
 | skill | `nonvisual-task-route-and-navigable-output` | keyboard and screen reader task routes with confirmed or unverified key commands and a completion signal per step, long answers shaped as numbered headings with a summary first |
+| skill | `contextual-alt-text-review` | image alternatives reviewed with caption, link target and audience in view: decorative images left empty, buttons described by action, charts by takeaway, invented emotions and identities removed, and the alternative the exported page carries checked; rests on three public practitioner reports, one of them a snippet |
 
 ## Failure mode
 
@@ -69,7 +70,7 @@ that passed every grader, without the plugin and with it:
 
 | `nvda-two-factor-route` (Opus subject and Opus judge, 3 grader files) | nonvisual-task-route-and-navigable-output | 0.00 | 1.00 | 2 |
 
-Both skills have one case; two more are needed for the three-case release gate. The
+Each skill has one case; two more are needed per skill for the three-case release gate. The
 `nvda-two-factor-route` row was measured with Opus as subject and judge on 20261005, with the
 five-item rubric split into three llm grader files (keys and wording, assumptions and
 confirmation, heading structure). Earlier the same case scored 0.50 with the plugin. The change
@@ -81,6 +82,22 @@ shortcuts page could not be fetched by script, so its rows rest on a search exce
 graders' list of real keys was extended with the sourced keys; no rubric item was changed.
 Both arms ran 2 runs; every grader passed in both with-plugin runs, and both baseline runs
 failed all three grader files.
+
+Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
+
+| Case | Skill | Without | With | Skill fired |
+| --- | --- | --- | --- | --- |
+| `newsletter-alt-drafts` | contextual-alt-text-review | 0.50 | 1.00 | 2 of 2 |
+
+### Other runtimes
+
+Grok CLI, both arms, 2 runs per arm, 3 judge votes, the model as subject and judge, 20261006. A row where the skill fired and With is 1.00 sets the runtime in the skill's verified-runtimes.
+
+| Runtime | Model | Case | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- |
+| Grok CLI | grok-4.7-build-fast | `newsletter-alt-drafts` | 0.25 | 1.00 | 2/2 | 20261006 |
+| Antigravity CLI | gemini-3.8-flash-low | `newsletter-alt-drafts` | 0.50 | 0.75 | 2/2 | 20261006 |
+| Gemini CLI | gemini-3.8-flash | `newsletter-alt-drafts` | 0.25 | 1.00 | 2/2 | 20261006 |
 
 ## License
 

@@ -9,7 +9,7 @@ Images that hold up at their real size: share images rendered from HTML with Kor
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -88,10 +88,17 @@ passed every grader, without the plugin and with it:
 
 `eight-direction-sword-atlas` was measured on 20261005 with Sonnet as subject and judge, both arms, after its `references/direction-table-example.md` was rewritten to a scenario that differs from the eval prompt; earlier Sonnet with-arm runs varied between 0.75 and 1.00. The skill rests on four first-person reports from one game-asset sub-domain.
 
-image-postprocess, svg-icon-illustration show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
+image-postprocess, svg-icon-illustration show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. The Codex scores below add a case with lift for image-postprocess and svg-icon-illustration.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
+
+| Case | Skill | Without | With | Skill fired |
+| --- | --- | --- | --- | --- |
+| `ceramics-webp-batch` | image-postprocess | 0.00 | 1.00 | 2 of 2 |
+| `tidy-pasted-toolbar-svgs` | svg-icon-illustration | 0.00 | 1.00 | 2 of 2 |
 
 ## License
 

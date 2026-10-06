@@ -7,6 +7,7 @@ metadata:
   domain: software-qa
   install: optional
   keywords: [performance, benchmark, profiling, variance, baseline, regression, optimization]
+  verified-runtimes: [claude-code]
 ---
 
 # Performance experiment loop

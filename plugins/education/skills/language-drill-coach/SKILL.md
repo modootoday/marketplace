@@ -7,6 +7,7 @@ metadata:
   domain: education
   install: optional
   keywords: [language learning, translation drill, near-synonyms, dialect, error log, practice]
+  verified-runtimes: [claude-code]
 ---
 
 # Language drill coach

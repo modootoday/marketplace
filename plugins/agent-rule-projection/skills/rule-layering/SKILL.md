@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [AGENTS.md, CLAUDE.md, GEMINI.md, rule files, multi-agent repository]
+  verified-runtimes: [claude-code]
 ---
 
 # Layering rules across agents

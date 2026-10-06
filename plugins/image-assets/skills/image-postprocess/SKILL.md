@@ -10,6 +10,7 @@ metadata:
   output-license: derived from the user's own images; the skill adds no third-party content
   requires:
     bin: [python3]
+  verified-runtimes: [codex-cli]
 ---
 
 # Batch image post-processing
@@ -41,6 +42,10 @@ can be rerun.
 
 ## Check every output
 
-Pixel size, file size under the limit, format, no GPS tags left (read back with a
-metadata tool), and a contact sheet to look at the crops. Report the images that
-needed a decision (subject cut, upscaled, over the size limit).
+Pixel size, file size under the limit, format, and a contact sheet to look at the
+crops. Read the metadata back with a metadata tool that covers EXIF, XMP and IPTC
+(for example `exiftool -a -G1 -gps:all -SerialNumber -Copyright out.webp` or
+`identify -verbose`), and show that no GPS or serial remains and the kept
+copyright is there; the library that wrote the file reading its own output is not
+that check. Put the command in the script so a rerun repeats it. Report the images
+that needed a decision (subject cut, upscaled, over the size limit) by name.

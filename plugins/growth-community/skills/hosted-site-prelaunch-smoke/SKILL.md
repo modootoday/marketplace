@@ -7,6 +7,7 @@ metadata:
   domain: growth
   install: optional
   keywords: [prelaunch checklist, smoke test, deployment, routing 404, exposed env file, consent, analytics, form handler]
+  verified-runtimes: [claude-code]
 ---
 
 # Hosted site prelaunch smoke test

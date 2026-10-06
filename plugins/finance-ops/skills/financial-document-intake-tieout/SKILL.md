@@ -7,6 +7,7 @@ metadata:
   domain: finance-ops
   install: optional
   keywords: [bank statement, tie-out, document intake, file naming, bookkeeping, extraction]
+  verified-runtimes: [claude-code]
 ---
 
 # Financial document intake and tie-out

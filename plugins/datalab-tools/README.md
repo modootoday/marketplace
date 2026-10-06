@@ -1,0 +1,108 @@
+# datalab-tools
+
+Skills for Naver blog, Place, Smart Store, shopping demand, search ads, and news-comment analysis through the datalab.tools browser extension. They also prepare card news, video scenes, tutorials, style guides, sourced briefs, and social copy. Figures come from returned data or supplied sources; estimates and unsupported claims stay explicit.
+
+## What it registers
+
+Nineteen skills, with no hooks, commands, services, or bundled MCP server:
+
+| Skill | Purpose |
+| --- | --- |
+| `datalab-naver-workbench` | Discover real extension tools, select the target, and follow confirmation tickets |
+| `datalab-ad-budget-review` | Actual spend, remaining budget, and separate bid estimates |
+| `datalab-ad-disclosure-check` | Compare pasted disclosure wording with bundled translated excerpts |
+| `datalab-blog-diagnosis` | Measured blog changes, possible explanations, and checks |
+| `datalab-blog-widget` | Static Naver-compatible widget HTML |
+| `datalab-card-news` | Gallery-first slide plans and photo-editor builds |
+| `datalab-comment-reaction` | Comment activity and its interpretation limits |
+| `datalab-commerce-health` | Settlement gaps and operations ordered by deadline |
+| `datalab-cta-rewrite` | Copyable CTA alternatives grounded in supplied claims |
+| `datalab-material-suggestion` | Varied topic ideas backed by demand and competition facts |
+| `datalab-place-reputation` | Review facts, response priorities, and unposted reply drafts |
+| `datalab-pumasi` | Read-only likes and neighbour-state checks |
+| `datalab-reader-simulation` | Aggregate audience profile and confirmed-question checklist |
+| `datalab-research-brief` | Facts cited to pages actually read |
+| `datalab-shopping-demand` | Shopping trend and audience interpretation |
+| `datalab-social-repurpose` | Platform-specific captions within working limits |
+| `datalab-tone-manner` | Provisional or multi-post style instructions with quotes |
+| `datalab-tutorial-post` | One beginner tutorial within a 12,000-character drafting budget |
+| `datalab-video-script` | Image, subtitle, and voice scene plans and timeline builds |
+
+## Requirements
+
+For live data and editor actions, connect the datalab.tools browser extension and its `datalab` MCP tools in the calling runtime. Relevant Naver access and any required service credentials must be configured by the user. This plugin does not configure authentication or install a server. With no extension, skills work from pasted tool output or source text and explain what they could not execute. Disclosure checks use pasted text and bundled sources only.
+
+Editor work preserves existing projects and requests a project choice when needed. AI image and narration generation bills separately; confirm a billed count before starting. Read-only analyses do not publish replies, like posts, send neighbour requests, change bids, or process orders.
+
+## Runtime support
+
+| Runtime | Supported | Measured on |
+| --- | --- | --- |
+| Claude Code | Procedures available; untested | No behavioral measurement |
+| Codex CLI | 14/19 skills have measured lift; see per-case results | codex-cli 0.160.1; gpt-6.1-sol |
+| Gemini CLI | Extension manifest provided; untested | No behavioral measurement |
+| Grok CLI | Procedures available; untested | No behavioral measurement |
+| Antigravity CLI | Procedures available; untested | No behavioral measurement |
+
+## Evaluation
+
+Each case uses both arms, two runs per arm, concurrency 2, gpt-6.1-sol as subject and judge, three judge votes per scored grader, and threshold 0. Scores are the mean fraction of scored graders passed; threshold 0 is not a quality gate. Positive skill firing is recorded separately. These fixtures use pasted data and plans; they do not verify a live MCP connection or paid editor execution.
+
+The latest pre-wrap-up results cover 20 cases. Thirteen scored below With 1.00, including one case whose runs had runtime errors. The C-Rank negative case already scored Without 1.00 and remains a regression check; it provides no evidence of lift or runtime support. Final measurements follow.
+
+Second-round changes clarify unsupported scores/personas, gallery-first paid-generation choices, existing-project choices, spoken subtitles, deadline priorities, read-only action ownership, and source qualifiers. Supporting references are English; duplicate localized skill bodies were removed. Prompts and graders are unchanged.
+
+Final rows use the latest complete measurement. Widget, card-news, video, commerce, research, and review cases received focused clarifications and reruns after measured misses.
+
+| Runtime | Model | Case | Skill | Before With | Before Without | With | Without | Fired | Use |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | `ad-week-spend` | datalab-ad-budget-review | 1.00 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
+| Codex CLI | gpt-6.1-sol | `beginner-tutorial` | datalab-tutorial-post | 0.00 | 0.00 | 0.00 | 0.00 | 2/2 | Needs follow-up |
+| Codex CLI | gpt-6.1-sol | `c-rank-question-negative` | negative; must not fire | 1.00 | 1.00 | 1.00 | 1.00 | 0/2 | Regression check; no lift claim |
+| Codex CLI | gpt-6.1-sol | `card-news-build` | datalab-card-news | 0.25 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
+| Codex CLI | gpt-6.1-sol | `closing-cta` | datalab-cta-rewrite | 1.00 | 0.50 | 1.00 | 0.50 | 2/2 | Measured lift |
+| Codex CLI | gpt-6.1-sol | `comment-surge` | datalab-comment-reaction | 0.50 | 0.25 | 0.75 | 0.25 | 2/2 | Needs follow-up |
+| Codex CLI | gpt-6.1-sol | `draft-reader` | datalab-reader-simulation | 0.50 | 0.00 | 0.50 | 0.00 | 2/2 | Needs follow-up |
+| Codex CLI | gpt-6.1-sol | `inflow-drop` | datalab-blog-diagnosis | 1.00 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
+| Codex CLI | gpt-6.1-sol | `like-check` | datalab-pumasi | 0.75 | 0.50 | 1.00 | 0.25 | 2/2 | Measured lift |
+| Codex CLI | gpt-6.1-sol | `next-topics` | datalab-material-suggestion | 0.50 | 0.00 | 0.75 | 0.00 | 2/2 | Needs follow-up |
+| Codex CLI | gpt-6.1-sol | `reels-build` | datalab-video-script | 0.00 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
+| Codex CLI | gpt-6.1-sol | `season-demand` | datalab-shopping-demand | 1.00 | 0.25 | 1.00 | 0.25 | 2/2 | Measured lift |
+| Codex CLI | gpt-6.1-sol | `settlement-gap` | datalab-commerce-health | 0.50 | 0.25 | 1.00 | 0.25 | 2/2 | Measured lift |
+| Codex CLI | gpt-6.1-sol | `sidebar-widget` | datalab-blog-widget | 0.50 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
+| Codex CLI | gpt-6.1-sol | `sns-repurpose` | datalab-social-repurpose | 1.00 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
+| Codex CLI | gpt-6.1-sol | `sourced-brief` | datalab-research-brief | 0.50 | 0.50 | 1.00 | 0.00 | 2/2 | Measured lift |
+| Codex CLI | gpt-6.1-sol | `sponsored-review-draft` | datalab-ad-disclosure-check | 1.00 | 0.50 | 1.00 | 0.00 | 2/2 | Measured lift |
+| Codex CLI | gpt-6.1-sol | `store-reviews` | datalab-place-reputation | 0.25 | 0.00 | 1.00 | 0.25 | 2/2 | Measured lift |
+| Codex CLI | gpt-6.1-sol | `style-spec` | datalab-tone-manner | 0.50 | 0.00 | 0.50 | 0.00 | 2/2 | Needs follow-up |
+| Codex CLI | gpt-6.1-sol | `tool-routing` | datalab-naver-workbench | 0.00 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
+
+Final measurements: 2026-10-06; codex-cli 0.160.1; 80 runs across both arms. Positive cases are the runtime-support evidence only when With is 1.00, Without is below 1.00, and the skill fired. Cases whose baseline or final Without is 1.00 remain regression checks.
+
+The pre-wrap-up tool-routing zeros came from runtime errors and are not valid quality scores. Its final rerun is reported separately in the table.
+
+- beginner-tutorial: With 0.00, Without 0.00, fired 2/2. Follow-up graders: refused-extras, structure.
+- comment-surge: With 0.75, Without 0.25, fired 2/2. Follow-up graders: activity.
+- draft-reader: With 0.50, Without 0.00, fired 2/2. Follow-up graders: no-persona-no-forecast.
+- next-topics: With 0.75, Without 0.00, fired 2/2. Follow-up graders: evidence-not-scores.
+- style-spec: With 0.50, Without 0.00, fired 2/2. Follow-up graders: sample-and-no-scores.
+
+The answers still honor the requested long minimum and include a score table and attributed quotation. The drafting budget is not presented as a universal model or platform limit.
+
+Comment counts establish greater activity per participant, but not the identity of participants across dates. The skill retains that limitation; the grader requires a same-person conclusion.
+
+The answers now identify aggregate data and missing demographics but still include the requested fictional persona, contrary to the intended checklist workflow.
+
+One answer still gives subjective recommendation points and difficulty stars rather than restricting the output to checked facts and qualitative tradeoffs.
+
+Both answers still give subjective formality and friendliness scores instead of the intended evidence-only style specification.
+
+Other runtime measurements and live MCP/editor execution remain untested.
+
+## Configuration and data
+
+Load or disable the plugin using the runtime's plugin controls. There is no plugin configuration. The skills themselves write nothing automatically. Following an editor workflow can modify the selected project; draft copy stays in the answer unless an authorized editor action is performed. Evaluation artifacts belong outside the plugin.
+
+## License
+
+MIT; see [LICENSE](LICENSE).

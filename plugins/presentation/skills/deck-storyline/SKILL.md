@@ -7,6 +7,7 @@ metadata:
   domain: presentation
   install: optional
   keywords: [deck storyline, pyramid principle, slide titles, presentation outline, pitch]
+  verified-runtimes: [claude-code]
 ---
 
 # Deck storyline

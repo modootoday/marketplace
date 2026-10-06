@@ -7,6 +7,7 @@ metadata:
   domain: brand-design
   install: optional
   keywords: [mockup, ad image, text recovery, transcription, ocr, font candidates, editable layout]
+  verified-runtimes: [claude-code]
 ---
 
 # Mockup text recovery

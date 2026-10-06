@@ -7,6 +7,7 @@ metadata:
   domain: agent-tooling
   install: optional
   keywords: [MCP server, tool design, model context protocol, tool schema, tool annotations]
+  verified-runtimes: [codex-cli]
 ---
 
 # Designing MCP tools
@@ -47,4 +48,7 @@ fix this field, call that tool first). Stack traces help no one.
 ## Review output
 
 Per tool: name, purpose, schema issues, description issues, safety, and a
-suggested rewrite. Test with a model on real tasks and read the calls it makes.
+suggested rewrite that includes the new description text: when to use the tool,
+what it returns, and what not to use it for. End with the test: run the rewritten
+set with a model on three to five real tasks and read the calls it makes (wrong
+tool, wrong argument, a retry loop), then adjust the descriptions.

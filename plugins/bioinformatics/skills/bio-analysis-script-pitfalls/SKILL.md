@@ -7,6 +7,7 @@ metadata:
   domain: bioinformatics
   install: optional
   keywords: [GTF, GFF, annotation parser, differential expression, DESeq2, publication figure, coordinates, gene id]
+  verified-runtimes: [claude-code]
 ---
 
 # Bioinformatics analysis script pitfalls

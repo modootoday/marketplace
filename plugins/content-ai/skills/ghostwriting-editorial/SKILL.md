@@ -7,6 +7,7 @@ metadata:
   domain: content-writing
   install: optional
   keywords: [ghostwriting, editing, author voice, manuscript, long-form writing]
+  verified-runtimes: [claude-code]
 ---
 
 # Ghostwriting and editing

@@ -7,6 +7,7 @@ metadata:
   domain: content-writing
   install: optional
   keywords: [client template, proposal draft, report draft, press release, decisions log, agency, placeholder, client format]
+  verified-runtimes: [claude-code]
 ---
 
 # Client template drafting

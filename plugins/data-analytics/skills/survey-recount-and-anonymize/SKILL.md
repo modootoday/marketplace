@@ -7,6 +7,7 @@ metadata:
   domain: data-analytics
   install: optional
   keywords: [survey recount, tally check, interview results, anonymize, respondent privacy, aggregate only, research summary]
+  verified-runtimes: [claude-code]
 ---
 
 # Survey recount and anonymize

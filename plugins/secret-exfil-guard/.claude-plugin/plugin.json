@@ -1,7 +1,10 @@
 {
   "name": "secret-exfil-guard",
-  "version": "0.1.0",
-  "description": "Refuse shell commands that would print a credential file or send one over the network, while leaving metadata about those files reachable.",
-  "author": { "name": "modootoday" },
+  "version": "0.2.0",
+  "description": "Refuses shell commands that would print a credential file or send one over the",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/",
   "hooks": "./hooks/hooks.json"
 }

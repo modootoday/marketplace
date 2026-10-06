@@ -7,6 +7,7 @@ metadata:
   domain: household-admin
   install: optional
   keywords: [declutter, chore plan, seasonal storage, home maintenance, first step, weekly plan]
+  verified-runtimes: [claude-code]
 ---
 
 # Small-step chore sequencing

@@ -7,6 +7,7 @@ metadata:
   domain: home-hobbies
   install: optional
   keywords: [chess, board game, rules lookup, game master, tabletop RPG, game state, legal move]
+  verified-runtimes: [claude-code]
 ---
 
 # Game state and rules grounded play

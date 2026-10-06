@@ -7,6 +7,7 @@ metadata:
   domain: publishing-production
   install: optional
   keywords: [book layout, proof, typeset, epub, accessibility, print, bleed, table of contents, edition]
+  verified-runtimes: [claude-code]
 ---
 
 # Book layout proof and EPUB check

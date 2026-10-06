@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [Naver Data Lab, search trend, keyword volume, Korean search, shopping insight]
   locales: [ko]
+  verified-runtimes: [codex-cli]
 ---
 
 # Naver trend data

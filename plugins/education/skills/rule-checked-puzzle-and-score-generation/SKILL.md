@@ -10,6 +10,7 @@ metadata:
   requires:
     bin: [node]
   approval: scripts
+  verified-runtimes: [claude-code]
 ---
 
 # Rule-checked puzzle and score generation

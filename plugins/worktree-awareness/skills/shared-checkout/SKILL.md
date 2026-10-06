@@ -7,6 +7,7 @@ metadata:
   domain: git-workflow
   install: optional
   keywords: [shared checkout, dirty tree, worktree, concurrent sessions]
+  verified-runtimes: [claude-code]
 ---
 
 # Working where someone else is working

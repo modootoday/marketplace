@@ -7,6 +7,7 @@ metadata:
   domain: product-design
   install: optional
   keywords: [wireframe, prototype, design system, component mapping, design tokens, handoff, user journey]
+  verified-runtimes: [claude-code]
 ---
 
 # Prototype from wireframe

@@ -7,6 +7,7 @@ metadata:
   domain: accessibility
   install: optional
   keywords: [blind, low vision, image reading, chart description, OCR, screen reader, assistive]
+  verified-runtimes: [claude-code]
 ---
 
 # Accessible visual reading

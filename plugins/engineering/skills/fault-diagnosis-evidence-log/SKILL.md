@@ -7,6 +7,7 @@ metadata:
   domain: engineering
   install: optional
   keywords: [troubleshooting, diagnosis, evidence log, symptom, motorcycle, hvac, intake questions]
+  verified-runtimes: [claude-code]
 ---
 
 # Fault diagnosis evidence log

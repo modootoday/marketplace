@@ -1,0 +1,13 @@
+{
+  "name": "isolation-canary",
+  "owner": {
+    "name": "Plugin Eval Kit"
+  },
+  "plugins": [
+    {
+      "name": "canary",
+      "source": "./plugins/canary",
+      "description": "Synthetic isolation fixture"
+    }
+  ]
+}

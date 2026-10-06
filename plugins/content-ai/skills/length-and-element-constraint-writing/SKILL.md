@@ -10,6 +10,7 @@ metadata:
   approval: scripts
   requires:
     bin: [node]
+  verified-runtimes: [claude-code]
 ---
 
 # Length and element constraint writing

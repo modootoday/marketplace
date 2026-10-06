@@ -1,7 +1,7 @@
 {
   "name": "design-delivery",
-  "version": "0.1.0",
-  "description": "Design handoff checks: a wireframe mapped component by component onto the design system, missing components flagged and the design tokens kept, before any prototype is built.",
+  "version": "0.2.0",
+  "description": "Design handoff checks: every wireframe element mapped to a named component of the design system before a prototype is built, built UI diffed against the design's values, colour contrast of component states computed, and handoff state matrices whose missing states become questions for the designer. It plans and checks only; it builds nothing.",
   "author": {
     "name": "modootoday"
   },

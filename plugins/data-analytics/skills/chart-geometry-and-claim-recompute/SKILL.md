@@ -7,6 +7,7 @@ metadata:
   domain: data-analytics
   install: optional
   keywords: [charts, bar chart, axis, correlation, scatter plot, labels, recompute, data visualization]
+  verified-runtimes: [claude-code]
 ---
 
 # Chart geometry and claim recompute

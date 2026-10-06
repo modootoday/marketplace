@@ -7,6 +7,7 @@ metadata:
   domain: spec-writing
   install: optional
   keywords: [ADR, architecture decision record, decision log]
+  verified-runtimes: [claude-code]
 ---
 
 # Recording a decision

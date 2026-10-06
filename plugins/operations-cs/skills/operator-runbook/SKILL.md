@@ -7,6 +7,7 @@ metadata:
   domain: operations
   install: optional
   keywords: [runbook, on-call checklist, operations playbook, health check, escalation]
+  verified-runtimes: [claude-code]
 ---
 
 # Read-only runbooks

@@ -7,6 +7,7 @@ metadata:
   domain: data-analysis
   install: optional
   keywords: [A/B test, experiment design, sample size, statistical significance, test readout]
+  verified-runtimes: [claude-code]
 ---
 
 # Experiment design and readout

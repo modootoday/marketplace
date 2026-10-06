@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: default
   keywords: [skill search, skill catalog, skill router]
+  verified-runtimes: [claude-code]
 ---
 
 # Navigating a skill catalog

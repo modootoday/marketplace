@@ -7,6 +7,7 @@ metadata:
   domain: insurance-admin
   install: optional
   keywords: [explanation of benefits, medical bill, insurer letters, payment reconciliation, denial reason, policyholder]
+  verified-runtimes: [claude-code]
 ---
 
 # Insurance paper trail ledger

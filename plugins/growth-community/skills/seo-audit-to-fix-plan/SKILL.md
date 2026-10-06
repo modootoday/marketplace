@@ -7,6 +7,7 @@ metadata:
   domain: growth
   install: optional
   keywords: [seo audit, duplicate title, redirect chain, internal links, pagination, serp, landing page structure, indexing rollout]
+  verified-runtimes: [claude-code]
 ---
 
 # From audit export to fix plan

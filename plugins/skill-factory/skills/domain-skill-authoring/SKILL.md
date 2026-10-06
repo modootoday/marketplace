@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [write a skill, SKILL.md, skill authoring, plugin skill, skill description]
+  verified-runtimes: [claude-code, codex-cli]
 ---
 
 # Authoring a skill that earns its place
@@ -31,6 +32,12 @@ Draft three or more cases before the body exists:
 
 Run them without the skill first. A case the baseline already passes is a
 regression check, not evidence; keep it, and add a harder one.
+
+State the cases in the reply itself (two or more positive, one negative, and what
+a plain model gets wrong in this domain), even when the skill file is also written;
+a reply that only hands over the finished SKILL.md skipped this step. For a skill
+whose eval shows it never fired, say in the reply that the description is the fix
+and that it needs a "Use when" clause with the user's words and a "Not for" clause.
 
 ## 2. The description decides whether it fires
 

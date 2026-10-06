@@ -7,6 +7,7 @@ metadata:
   domain: community
   install: optional
   keywords: [Discord server, community management, moderation, onboarding, forum channel, announcements]
+  verified-runtimes: [claude-code]
 ---
 
 # Running a Discord community

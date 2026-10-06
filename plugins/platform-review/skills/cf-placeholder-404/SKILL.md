@@ -7,6 +7,7 @@ metadata:
   domain: edge-platform
   install: optional
   keywords: [Cloudflare, placeholder worker, retire redirect, 404, free plan, dynamic redirect, 522]
+  verified-runtimes: [claude-code]
 ---
 
 # Answering 404 on a retired Cloudflare zone

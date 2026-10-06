@@ -7,6 +7,7 @@ metadata:
   domain: audio-production
   install: optional
   keywords: [sound effects, UI sounds, notification sound, SFX design, sound library]
+  verified-runtimes: [claude-code]
 ---
 
 # Sound effect sets

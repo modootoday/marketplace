@@ -7,6 +7,7 @@ metadata:
   domain: legal-ops
   install: optional
   keywords: [time entry, billing guidelines, block billing, billing rules, timekeeping, invoice narrative]
+  verified-runtimes: [claude-code]
 ---
 
 # Legal time entries under client billing rules

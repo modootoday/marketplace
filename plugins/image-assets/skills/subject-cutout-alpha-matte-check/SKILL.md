@@ -9,6 +9,7 @@ metadata:
   approval: none
   keywords: [background removal, cutout, alpha matte, transparent PNG, glass, compositing, halo, mask]
   output-license: the user's own images; the check adds no third-party content
+  verified-runtimes: [claude-code]
 ---
 
 # Subject cutout alpha matte check

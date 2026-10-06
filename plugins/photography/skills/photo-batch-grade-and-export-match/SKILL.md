@@ -7,6 +7,7 @@ metadata:
   domain: photography
   install: optional
   keywords: [batch grading, white balance, DNG, RAW export, film look, preview versus export]
+  verified-runtimes: [claude-code]
 ---
 
 # Photo batch grade and export match

@@ -7,6 +7,7 @@ metadata:
   domain: planning
   install: optional
   keywords: [hotel shortlist, travel proposal, traveler needs, approved list, family trip]
+  verified-runtimes: [claude-code]
 ---
 
 # Traveler fit shortlist

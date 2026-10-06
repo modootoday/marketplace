@@ -9,7 +9,7 @@ Brand work that decides something: visual directions argued before drawing, a to
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -78,12 +78,18 @@ passed every grader, without the plugin and with it:
 
 The three 20261005 Opus cases above all score 1.00 with the plugin; the baseline scores 0.00 to 0.25.
 
-brand-token-kit and asset-qa-review show no lift yet: the baseline passed their cases. Their cases stay as regression checks.
+brand-token-kit and asset-qa-review show no lift yet: the baseline passed their cases. Their cases stay as regression checks. The Codex scores below add a case with lift for asset-qa-review.
 
 Re-run 20261004 with smaller models answering (`--model`), mean score without and with the plugin over the same cases, 2 runs per arm: brand-token-kit and asset-qa-review: Haiku 0.00 to 0.00, Sonnet 1.00 to 1.00. Haiku fails these cases with or without the skill, so the skills do not yet carry a smaller model through them.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
+
+| Case | Skill | Without | With | Skill fired |
+| --- | --- | --- | --- | --- |
+| `carousel-slide-dense-readings` | asset-qa-review | 0.25 | 1.00 | 2 of 2 |
 
 ## License
 

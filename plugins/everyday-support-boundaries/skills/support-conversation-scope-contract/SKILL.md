@@ -7,6 +7,7 @@ metadata:
   domain: everyday-support
   install: optional
   keywords: [listening, scope of help, consent, no reframing, step list, boundaries, wellbeing conversation]
+  verified-runtimes: [claude-code]
 ---
 
 # Support conversation scope contract

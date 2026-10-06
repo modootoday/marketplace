@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [launch email, product launch, announcement email, email marketing, subject line]
   locales: [ko]
+  verified-runtimes: [claude-code]
 ---
 
 # Launch announcement email

@@ -7,6 +7,7 @@ metadata:
   domain: genealogy
   install: optional
   keywords: [genealogy, surname, mention index, handwriting reading, OCR, local history, same-name risk, variants]
+  verified-runtimes: [claude-code]
 ---
 
 # Uncertain reading and mention index

@@ -7,6 +7,7 @@ metadata:
   domain: brand-design
   install: optional
   keywords: [client brief, clarifying questions, ambiguous request, design brief, reply email]
+  verified-runtimes: [claude-code]
 ---
 
 # Client request clarification

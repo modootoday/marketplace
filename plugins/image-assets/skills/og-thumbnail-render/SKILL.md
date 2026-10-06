@@ -10,6 +10,7 @@ metadata:
   output-license: the user's own template and fonts; the skill adds no third-party content
   requires:
     bin: [node]
+  verified-runtimes: [claude-code]
 ---
 
 # OG thumbnails from HTML

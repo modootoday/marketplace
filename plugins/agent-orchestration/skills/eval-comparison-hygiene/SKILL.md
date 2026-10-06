@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [evals, baseline, llm judge, uplift, confound, rubric, reruns, budget, grader]
+  verified-runtimes: [claude-code]
 ---
 
 # Eval comparison hygiene

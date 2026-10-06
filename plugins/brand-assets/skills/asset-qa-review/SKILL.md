@@ -7,6 +7,7 @@ metadata:
   domain: brand-design
   install: optional
   keywords: [asset QA, design review, rendered image check, contrast, text overflow]
+  verified-runtimes: [codex-cli]
 ---
 
 # Asset QA from the render

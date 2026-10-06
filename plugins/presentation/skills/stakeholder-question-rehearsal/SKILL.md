@@ -7,6 +7,7 @@ metadata:
   domain: presentation
   install: optional
   keywords: [question rehearsal, executive Q&A, presentation prep, logic gaps, devil's advocate]
+  verified-runtimes: [claude-code]
 ---
 
 # Stakeholder question rehearsal

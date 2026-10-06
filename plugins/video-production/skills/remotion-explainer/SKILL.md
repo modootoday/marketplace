@@ -9,6 +9,7 @@ metadata:
   keywords: [Remotion, programmatic video, explainer video, React video, render]
   requires:
     bin: [node, ffmpeg]
+  verified-runtimes: [codex-cli]
 ---
 
 # Explainer videos with Remotion

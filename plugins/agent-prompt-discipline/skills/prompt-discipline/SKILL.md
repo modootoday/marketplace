@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [system prompt, agent instructions, tool use, prompt review]
+  verified-runtimes: [claude-code]
 ---
 
 # Writing the prompt for a tool-using agent

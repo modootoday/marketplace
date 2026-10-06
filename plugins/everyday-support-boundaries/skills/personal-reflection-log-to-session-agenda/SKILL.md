@@ -7,6 +7,7 @@ metadata:
   domain: everyday-support
   install: optional
   keywords: [journal, mood log, therapy session, agenda, own words, indicators, counts, boundaries]
+  verified-runtimes: [claude-code]
 ---
 
 # Personal reflection log to session agenda

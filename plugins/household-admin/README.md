@@ -10,8 +10,8 @@ Household paperwork and planning on the facts a person supplies: pay-period sche
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
 | Codex CLI | untested | - |
-| Grok CLI | untested | - |
-| Gemini CLI | untested | - |
+| Grok CLI | no | with arm below 1.00 on grok-4.7 and grok-4.7-build-fast for 1 case, 20261006; see Other runtimes |
+| Gemini CLI | yes | measured 20261006 on gemini-3.1-pro-preview and gemini-3.8-flash for 1 case; see Other runtimes |
 
 Requirements: Nothing is required.
 
@@ -77,6 +77,17 @@ Scores are the share of runs that passed every grader, without the plugin and wi
 
 The `offer-total-cost` baseline partly passes (the car arithmetic), so its Without score is 0.50 and
 its every-grader pass rate is 0.00.
+
+### Other runtimes
+
+Gemini CLI and Grok CLI, both arms, 2 runs per arm, 3 judge votes, the model as subject and judge, 20261006. A row where the skill fired and With is 1.00 sets the runtime in the skill's verified-runtimes.
+
+| Runtime | Model | Case | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- |
+| Gemini CLI | gemini-3.1-pro-preview | `biweekly-card-plan` | 0.00 | 1.00 | 2/2 | 20261006 |
+| Gemini CLI | gemini-3.8-flash | `biweekly-card-plan` | 0.00 | 1.00 | 2/2 | 20261006 |
+| Grok CLI | grok-4.7 | `biweekly-card-plan` | 0.00 | 0.00 | 2/2 | 20261006 |
+| Grok CLI | grok-4.7-build-fast | `biweekly-card-plan` | 0.00 | 0.50 | 2/2 | 20261006 |
 
 ## License
 

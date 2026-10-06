@@ -7,6 +7,7 @@ metadata:
   domain: platform-engineering
   install: optional
   keywords: [postmortem, incident review, root cause analysis, RCA, incident report]
+  verified-runtimes: [codex-cli]
 ---
 
 # Incident postmortem
@@ -52,9 +53,17 @@ how its completion will be verified (a test, an alert firing in a drill, a
 check in CI). Prefer changes that make the failure impossible or detected over
 reminders and training. Five tracked items beat twenty wishes.
 
+Right under the timeline write the four moments as four labelled lines (started,
+detected, mitigated, resolved), each a UTC time or "unknown" with the reason, then
+time to detect and time to mitigate computed from them, or why they cannot be.
+When a status page or chat message claims resolved before the mitigation in the
+deploy log, record both and say the sources disagree.
+
 ## 6. Review and publish
 
 Hold a blameless review with the people involved: language describes actions
 and system conditions, not character. Record dissent. Publish where the team
 reads it, link the action items in the tracker, and set a date to check that
-they were done.
+they were done. End the draft with that as a closing line of its own: the
+blameless review with the people involved, where the action items are linked
+(a placeholder when no tracker was named), and the date they are checked.

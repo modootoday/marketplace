@@ -7,6 +7,7 @@ metadata:
   domain: image-assets
   install: optional
   keywords: [editable file, layered PSD, artboards, linked layer, margin check, flat image to layers, delivery check]
+  verified-runtimes: [claude-code]
 ---
 
 # Editable layered design delivery check

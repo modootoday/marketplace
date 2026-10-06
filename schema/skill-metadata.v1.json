@@ -49,6 +49,12 @@
         "output-license": { "type": "string" },
         "approval": { "enum": ["none", "scripts", "hooks"] },
         "pair": { "type": "array", "items": { "type": "string" } },
+        "verified-runtimes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["claude-code", "codex-cli", "gemini-cli", "grok-cli", "antigravity"] },
+          "description": "Runtimes with a recorded both-arm eval run for a case tagged with this skill where the skill fired, the with arm scored 1.00 and the without arm scored below 1.00 (either model of the runtime's pair counts). Absent means untested or not passing. Derived from the plugin README score tables by scripts/verified-runtimes.mjs."
+        },
         "server-tools": {
           "type": "array",
           "items": {

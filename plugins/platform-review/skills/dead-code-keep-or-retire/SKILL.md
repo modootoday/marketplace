@@ -7,6 +7,7 @@ metadata:
   domain: platform-review
   install: optional
   keywords: [dead code, unused code, retire, remove module, cleanup, knip, unused exports, decision record]
+  verified-runtimes: [claude-code]
 ---
 
 # Dead code: keep or retire

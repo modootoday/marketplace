@@ -9,7 +9,7 @@ Photo cull and batch-grade checks from the scores, logs and settings you supply:
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -37,6 +37,7 @@ codex plugin add photography@modootoday
 | --- | --- | --- |
 | skill | `photo-cull-calibration` | a cull checked from the report you supply: criteria per subject, calibration on your own kept frames, technical flaws apart from moments that matter, rank and flag only, missing frames listed; rests on three first-person reports |
 | skill | `photo-batch-grade-and-export-match` | a batch grade or RAW-development tool checked: per-scene white and exposure continuity, preview versus export, input-to-output mapping with unopened files, approval on a sample; rests on two reports |
+| skill | `stock-photo-metadata-format-check` | stock-site titles, descriptions, keywords and upload CSV checked against the destination's limits: counts shown, keyword form enforced, commas escaped, one row per exact filename, unconfirmed places left out, files without notes listed; rests on three public reports of repeated formatting correction |
 
 ## Failure mode
 
@@ -70,6 +71,12 @@ that passed every grader, without the plugin and with it:
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
+
+| Case | Skill | Without | With | Skill fired |
+| --- | --- | --- | --- | --- |
+| `harbour-stock-csv` | stock-photo-metadata-format-check | 0.00 | 1.00 | 2 of 2 |
 
 ## License
 

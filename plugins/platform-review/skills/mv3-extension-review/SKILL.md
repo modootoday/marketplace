@@ -7,6 +7,7 @@ metadata:
   domain: browser-extension
   install: optional
   keywords: [Manifest V3, Chrome extension, service worker, content script, extension messaging]
+  verified-runtimes: [codex-cli]
 ---
 
 # Manifest V3 extension review

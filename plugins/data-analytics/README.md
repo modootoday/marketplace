@@ -9,7 +9,7 @@ Numbers that mean what they say: ClickHouse SQL that reads the key and deduplica
 | Runtime     | Supported | Measured on                                           |
 | ----------- | --------- | ----------------------------------------------------- |
 | Claude Code | yes       | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI   | untested  | -                                                     |
+| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
 | Grok CLI    | untested  | -                                                     |
 | Gemini CLI  | untested  | -                                                     |
 
@@ -105,14 +105,22 @@ invocation passed 2/2. Valid run cost USD 0.6240896. An earlier USD 0.4085016
 run omitted the behaviour grader and is excluded from quality evidence.
 The new skill has one case; two more are needed for the three-case release gate.
 
-clickhouse-query-authoring shows no lift yet with the default model: the baseline found the same issues in every case tried. Its cases stay as regression checks.
+clickhouse-query-authoring shows no lift yet with the default model: the baseline found the same issues in every case tried. Its cases stay as regression checks. The Codex scores below add a case with lift for it.
 
-metric-definition, naver-trend-analysis show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
+metric-definition, naver-trend-analysis show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. The Codex scores below add a case with lift for metric-definition; for naver-trend-analysis the lift is small (the baseline failed one of two runs on one item).
 
 Re-run 20261004 with smaller models answering (`--model`), mean score without and with the plugin over the same cases, 2 runs per arm: clickhouse-query-authoring: Haiku 0.67 to 1.00, Sonnet 1.00 to 1.00.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
+
+| Case | Skill | Without | With | Skill fired |
+| --- | --- | --- | --- | --- |
+| `function-on-key-join-order` | clickhouse-query-authoring | 0.00 | 1.00 | 2 of 2 |
+| `weekly-active-teams-target` | metric-definition | 0.00 | 1.00 | 2 of 2 |
+| `cross-request-volume-scaling` | naver-trend-analysis | 0.75 | 1.00 | 2 of 2 |
 
 ## License
 

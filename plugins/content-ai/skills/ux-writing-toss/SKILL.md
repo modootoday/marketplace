@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [Korean UX writing, microcopy, Toss writing, UI text, error message]
   locales: [ko]
+  verified-runtimes: [claude-code]
 ---
 
 # Korean UI copy, Toss style

@@ -7,6 +7,7 @@ metadata:
   domain: ux-research
   install: optional
   keywords: [SUS, system usability scale, questionnaire scoring, usability score, survey arithmetic]
+  verified-runtimes: [claude-code]
 ---
 
 # Interview SUS score

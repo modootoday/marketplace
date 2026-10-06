@@ -7,6 +7,7 @@ metadata:
   domain: monetization
   install: optional
   keywords: [pricing, price point, pricing hypothesis, plan tiers, willingness to pay]
+  verified-runtimes: [claude-code]
 ---
 
 # Pricing as a hypothesis

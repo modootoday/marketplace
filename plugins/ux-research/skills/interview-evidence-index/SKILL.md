@@ -7,6 +7,7 @@ metadata:
   domain: ux-research
   install: optional
   keywords: [interview transcripts, thematic index, verbatim quotes, quote audit, timestamps, user research]
+  verified-runtimes: [claude-code]
 ---
 
 # Interview evidence index

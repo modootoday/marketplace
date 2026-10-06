@@ -7,6 +7,7 @@ metadata:
   domain: real-estate
   install: optional
   keywords: [deposit dispute, small claims, move-out comparison, timeline, evidence packet, ordinary wear]
+  verified-runtimes: [claude-code]
 ---
 
 # Tenant dispute evidence packet

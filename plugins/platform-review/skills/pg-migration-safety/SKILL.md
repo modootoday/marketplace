@@ -7,6 +7,7 @@ metadata:
   domain: data-migration
   install: optional
   keywords: [Postgres migration, zero downtime, locks, create index concurrently, backfill, schema change]
+  verified-runtimes: [codex-cli]
 ---
 
 # Safe Postgres migrations
@@ -45,4 +46,11 @@ contract (remove the old shape). Each step must be safe to roll back alone.
 ## Output
 
 Per statement: lock level, expected duration on this table's size, the safer
-rewrite, and the deploy step it belongs to.
+rewrite, and the deploy step it belongs to. Then three process lines, each stated
+outright: the session `lock_timeout` and `statement_timeout` values and "retry
+later, do not raise them"; the expand, dual-shape deploy, data migration,
+contract order with each step safe to roll back alone, so a one-step deploy is
+refused when a statement needs two; and the backfill rule (primary key ranges,
+a pause between batches, idempotent, outside the migration transaction, with
+steps such as `VALIDATE CONSTRAINT` or `CONCURRENTLY` also outside any wrapping
+transaction).

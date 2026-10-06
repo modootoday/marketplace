@@ -9,7 +9,7 @@ Video work that can be executed and verified: briefs and storyboards someone els
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -84,10 +84,17 @@ passed every grader, without the plugin and with it:
 | `webseries-reference-sheet-drift` | subject-continuity-reference-sheet-check | 0.00 | 0.83 | 2 and 3 |
 | `webseries-reference-sheet-drift` (Opus) | subject-continuity-reference-sheet-check | 0.00 | 1.00 | 2, Opus subject and judge |
 
-remotion-explainer, talking-head-edit show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
+remotion-explainer, talking-head-edit show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. The Codex scores below add a case with lift for remotion-explainer and talking-head-edit.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
+
+| Case | Skill | Without | With | Skill fired |
+| --- | --- | --- | --- | --- |
+| `three-scene-durations` | remotion-explainer | 0.00 | 1.00 | 2 of 2 |
+| `false-start-word-boundary` | talking-head-edit | 0.25 | 1.00 | 2 of 2 |
 
 ## License
 

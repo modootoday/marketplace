@@ -7,6 +7,7 @@ metadata:
   domain: procurement
   install: optional
   keywords: [dedicated fleet, fixed and variable bid, cost per mile, deadhead, break-even, lane scenario]
+  verified-runtimes: [claude-code]
 ---
 
 # Dedicated fleet lane cost model

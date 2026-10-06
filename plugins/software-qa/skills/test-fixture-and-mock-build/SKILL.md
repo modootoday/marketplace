@@ -7,6 +7,7 @@ metadata:
   domain: software-qa
   install: optional
   keywords: [api mock, test fixture, port conflict, test speed, large json, teardown, assertions]
+  verified-runtimes: [claude-code]
 ---
 
 # Test fixture and mock build

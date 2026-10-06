@@ -7,6 +7,7 @@ metadata:
   domain: engineering
   install: optional
   keywords: [datasheet, specification table, part number, package, bandwidth, source document]
+  verified-runtimes: [claude-code]
 ---
 
 # Datasheet spec table

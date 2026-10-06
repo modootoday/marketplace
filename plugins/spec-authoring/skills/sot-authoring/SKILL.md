@@ -7,6 +7,7 @@ metadata:
   domain: spec-writing
   install: optional
   keywords: [source of truth, invariant, convention document]
+  verified-runtimes: [claude-code]
 ---
 
 # Writing a source of truth

@@ -1,0 +1,1 @@
+mkdir -p pkgs/a && printf '{"name":"a","version":"1.0.0","scripts":{"validate":"echo CHECK-FAIL-LINT-4471 >&2; exit 1"}}\n' > pkgs/a/package.json && printf 'module.exports = 1;\n' > pkgs/a/index.js && printf '{"name":"root","private":true}\n' > package.json

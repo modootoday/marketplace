@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [persona evaluation, brand voice, tone consistency, style rubric, chatbot persona]
   locales: [ko]
+  verified-runtimes: [claude-code]
 ---
 
 # Evaluating a persona's tone

@@ -7,6 +7,7 @@ metadata:
   domain: ml-data
   install: optional
   keywords: [fine-tuning, JSONL, chat template, message content, tool calling, schema validation, data loader]
+  verified-runtimes: [claude-code]
 ---
 
 # Training data format contract check

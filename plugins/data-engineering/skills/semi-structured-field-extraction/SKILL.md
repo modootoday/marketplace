@@ -7,6 +7,7 @@ metadata:
   domain: data-engineering
   install: optional
   keywords: [log parsing, json extraction, type casting, unit normalization, test data, plotting]
+  verified-runtimes: [claude-code]
 ---
 
 # Semi-structured field extraction

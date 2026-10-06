@@ -7,6 +7,7 @@ metadata:
   domain: content-writing
   install: optional
   keywords: [cover letter, appeal letter, resignation, personal statement, notice, facts only, placeholders, evidence]
+  verified-runtimes: [claude-code]
 ---
 
 # Fact-bound personal letter

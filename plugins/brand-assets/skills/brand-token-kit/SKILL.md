@@ -7,6 +7,7 @@ metadata:
   domain: brand-design
   install: optional
   keywords: [design tokens, tokens.json, brand guidelines, colour palette, typography]
+  verified-runtimes: [claude-code]
 ---
 
 # Brand tokens

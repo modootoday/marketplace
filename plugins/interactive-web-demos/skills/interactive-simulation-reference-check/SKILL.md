@@ -7,6 +7,7 @@ metadata:
   domain: interactive-web-demos
   install: optional
   keywords: [simulation, physics demo, timestep convergence, frame time, webgl, reference check]
+  verified-runtimes: [claude-code]
 ---
 
 # Interactive simulation reference check

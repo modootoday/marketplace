@@ -7,6 +7,7 @@ metadata:
   domain: data-analytics
   install: optional
   keywords: [retrieval evaluation, ranking, Recall at k, MRR, multilingual search]
+  verified-runtimes: [claude-code]
 ---
 
 # Retrieval ranking readout

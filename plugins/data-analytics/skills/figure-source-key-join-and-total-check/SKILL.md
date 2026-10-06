@@ -7,6 +7,7 @@ metadata:
   domain: data-analytics
   install: optional
   keywords: [sankey, choropleth, heatmap, join keys, totals check, country names, rerunnable figure]
+  verified-runtimes: [claude-code]
 ---
 
 # Figure source, key join and total check

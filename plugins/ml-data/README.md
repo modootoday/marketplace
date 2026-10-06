@@ -9,7 +9,7 @@ Checks fine-tuning data against the target trainer or provider schema before an 
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | yes, for the cases listed in Verify | measured 20261006 with gpt-6.1-sol |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -36,6 +36,7 @@ codex plugin add ml-data@modootoday
 | Kind | Name | Covers |
 | --- | --- | --- |
 | skill | `training-data-format-contract-check` | fine-tuning JSONL checked against the named target schema, content types converted by a stated rule, code and non-ASCII text kept in one record per example, reload counts compared, tool-call ids checked, rejected rows listed by line |
+| skill | `bbox-annotation-format-conversion-check` | detection boxes converted between COCO, YOLO and Pascal VOC after the claimed source format is tested against image bounds, with bounds asserted, a round trip within one pixel, explicit class id mapping and an overlay of samples (rests on two records) |
 
 ## Failure mode
 
@@ -65,8 +66,16 @@ the share of runs that passed every grader, without the plugin and with it:
 | --- | --- | --- | --- | --- |
 | `chat-content-object-conversion` | training-data-format-contract-check | 0.00 | 1.00 | 2 |
 
-Measured 20261005 on Claude Code 2.1.289 with Sonnet as subject and judge. The skill has one
+Measured 20261005 on Claude Code 2.1.289 with Sonnet as subject and judge. Each skill has one
 case; two more are needed for the three-case release gate.
+
+Codex CLI, measured 20261006 (Codex, gpt-6.1-sol / gpt-6.1-sol, 3 votes), both arms:
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `bbox-voc-labelled-coco` | bbox-annotation-format-conversion-check | 0.00 | 1.00 | 2 |
+
+The bounding box skill rests on two web records (a bug report and a value-added reseller note).
 
 ## License
 

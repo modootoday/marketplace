@@ -7,6 +7,7 @@ metadata:
   domain: household-admin
   install: optional
   keywords: [paycheck, budget, pay period, debt payment schedule, interest, sinking fund, receipt split, biweekly]
+  verified-runtimes: [claude-code, gemini-cli]
 ---
 
 # Paycheck cycle obligation schedule

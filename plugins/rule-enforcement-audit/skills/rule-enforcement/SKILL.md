@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [rule enforcement, hook or guidance, recurring mistake, instruction file]
+  verified-runtimes: [claude-code]
 ---
 
 # Written is not enforced

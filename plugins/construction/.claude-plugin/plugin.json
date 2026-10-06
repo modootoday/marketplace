@@ -1,7 +1,7 @@
 {
   "name": "construction",
-  "version": "0.1.0",
-  "description": "Defect and warranty lists split by trade: one item per finding with location and symptom, unclear trades flagged, counts reconciled against the source.",
+  "version": "0.2.0",
+  "description": "Construction checks: defect and warranty lists split by trade, code questions answered only from pasted code text, takeoff quantities and units recomputed, and field questions turned into single-issue RFIs with a log.",
   "author": {
     "name": "modootoday"
   },

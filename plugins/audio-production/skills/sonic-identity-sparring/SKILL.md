@@ -7,6 +7,7 @@ metadata:
   domain: audio-production
   install: optional
   keywords: [sonic identity, sound logo, audio branding, music direction, notification sound]
+  verified-runtimes: [claude-code]
 ---
 
 # Sonic identity sparring

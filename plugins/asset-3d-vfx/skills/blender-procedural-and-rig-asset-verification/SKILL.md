@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [geometry nodes, procedural, road network, rig, weight painting, foot slide, parameter range]
   output-license: the user's own asset and test results; the skill adds no third-party content
+  verified-runtimes: [claude-code]
 ---
 
 # Blender procedural and rig asset verification

@@ -7,6 +7,7 @@ metadata:
   domain: software-qa
   install: optional
   keywords: [boilerplate, starter template, dependencies, lockfile, support policy, clean install, smoke test]
+  verified-runtimes: [claude-code]
 ---
 
 # Starter template freshness smoke

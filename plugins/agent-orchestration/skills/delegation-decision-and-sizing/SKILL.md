@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [subagents, delegation, parallelization, agent count, token cost, fan out, orchestration]
+  verified-runtimes: [claude-code, gemini-cli, grok-cli]
 ---
 
 # Delegation decision and sizing

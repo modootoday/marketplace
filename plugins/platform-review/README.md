@@ -11,7 +11,7 @@ Pre-release leak audits of published artifacts are available to signed-in users.
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -85,10 +85,20 @@ passed every grader, without the plugin and with it:
 | `static-site-migration-parity` | static-site-migration-parity | 0.00 | 1.00 | 2 |
 | `unused-module-retire` | dead-code-keep-or-retire | 0.00 | 1.00 | 2 |
 
-chrome-store-policy-review, cf-worker-binding-review, mcp-server-design, mv3-extension-review, pg-migration-safety show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
+chrome-store-policy-review, cf-worker-binding-review, mcp-server-design, mv3-extension-review, pg-migration-safety show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. The Codex scores below add a case with lift for all five skills named there.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
+
+| Case | Skill | Without | With | Skill fired |
+| --- | --- | --- | --- | --- |
+| `deployed-fails-local-works` | cf-worker-binding-review | 0.50 | 1.00 | 2 of 2 |
+| `history-cookies-rejection` | chrome-store-policy-review | 0.50 | 1.00 | 2 of 2 |
+| `invoice-tools-key-in-args` | mcp-server-design | 0.00 | 1.00 | 2 of 2 |
+| `listener-in-async-callback` | mv3-extension-review | 0.00 | 1.00 | 2 of 2 |
+| `fk-type-rename-drop` | pg-migration-safety | 0.00 | 1.00 | 2 of 2 |
 
 ## License
 

@@ -9,6 +9,7 @@ metadata:
   keywords: [AI disclosure, AI label, synthetic media, generative AI rules, sponsored content]
   requires:
     mcp: [korean-law]
+  verified-runtimes: [claude-code, codex-cli, grok-cli]
 ---
 
 # Labelling AI-generated content
@@ -45,4 +46,11 @@ something. Check all three; the strictest applies.
 - A record per asset: tool, model, date, prompt or source, rights to inputs,
   labels applied. Keep it with the asset.
 
-Say which rules you retrieved and which you could not verify.
+## Dates and the check you hand back
+
+- Every Korean provision you name carries its effective date (or promulgation date) as the
+  server returned it. If the server gave none or was not reachable, write "date not verified"
+  next to it rather than leaving the date out.
+- Say plainly that these rules are new and still changing, and tell the user to check the
+  current text of each provision (and the platform's current policy) before publishing.
+- Say which rules you retrieved and which you could not verify.

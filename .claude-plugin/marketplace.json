@@ -20,8 +20,8 @@
     },
     {
       "name": "agent-guardrails",
-      "description": "Refuse a small, measured set of shell commands whose damage is hard to undo: in-place stream edits, verification-skipping pushes, and project-wide container teardown.",
-      "version": "0.1.0",
+      "description": "Refuses a small, measured set of shell commands whose damage is hard to undo,",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -65,8 +65,8 @@
     },
     {
       "name": "secret-exfil-guard",
-      "description": "Refuse shell commands that would print a credential file or send one over the network, while leaving metadata about those files reachable.",
-      "version": "0.1.0",
+      "description": "Refuses shell commands that would print a credential file or send one over the",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -83,8 +83,8 @@
     },
     {
       "name": "monorepo-package-validate",
-      "description": "After an edit, run the check belonging to the package that was edited, once per debounce window, and report only failures.",
-      "version": "0.1.0",
+      "description": "After an edit, runs the check belonging to the package that was edited, once per",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -165,7 +165,7 @@
     {
       "name": "data-analytics",
       "description": "Numbers that mean what they say: ClickHouse SQL that reads the key and deduplicates correctly, Naver trend data read as ratios, metrics defined once, experiments designed before launch, retention read by cohort, and open survey responses grouped with every response id kept.",
-      "version": "0.6.0",
+      "version": "0.7.0",
       "author": {
         "name": "modootoday"
       },
@@ -183,7 +183,7 @@
     {
       "name": "image-assets",
       "description": "Images that hold up at their real size: share images rendered from HTML with Korean text that wraps, consistent hand-written SVG icon sets, batch post-processing that crops, compresses and strips location data, and product shots edited from the real product photo with a ledger and a label check.",
-      "version": "0.4.0",
+      "version": "0.5.0",
       "author": {
         "name": "modootoday"
       },
@@ -219,7 +219,7 @@
     {
       "name": "skill-factory",
       "description": "Write agent skills that change behaviour: evals before the body, descriptions that trigger on the right requests, rules tied to the failures they prevent, and a measured delta before release.",
-      "version": "0.1.0",
+      "version": "0.3.0",
       "author": {
         "name": "modootoday"
       },
@@ -237,7 +237,7 @@
     {
       "name": "growth-community",
       "description": "Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, newsletters readers open and finish, a month of social posts a small team can ship, launch emails that lead with what changed, and sites submitted to Google, Naver and IndexNow engines from a pipeline.",
-      "version": "0.5.0",
+      "version": "0.6.0",
       "author": {
         "name": "modootoday"
       },
@@ -246,7 +246,7 @@
     {
       "name": "platform-review",
       "description": "Reviews of platform pieces that fail in production for configuration reasons: Cloudflare Worker bindings, Manifest V3 extension lifecycles, Chrome Web Store policy before submission, MCP tool design and Postgres migration locks.",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "author": {
         "name": "modootoday"
       },
@@ -255,7 +255,7 @@
     {
       "name": "operations-cs",
       "description": "Customer operations: Korean support tickets triaged with incidents spotted across them, status updates that say what is affected and when the next update comes, read-only runbooks for on-call, and blameless postmortems with a sourced timeline and owned actions.",
-      "version": "0.4.0",
+      "version": "0.5.0",
       "author": {
         "name": "modootoday"
       },
@@ -282,7 +282,7 @@
     {
       "name": "academic-research",
       "description": "Check AI-suggested citations, measurement instruments and extracted statistics against real sources before they enter your research notes, and redo lab dilution and unit arithmetic before results are used.",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "author": {
         "name": "modootoday"
       },
@@ -354,7 +354,7 @@
     {
       "name": "accessibility",
       "description": "Read images, scans, charts and device screens for blind and low-vision users: the text first, in order, with trends stated and uncertainty marked.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -363,25 +363,16 @@
     {
       "name": "data-engineering",
       "description": "Prove that migrated, converted or rewritten SQL returns the same result as the original: statements mapped one to one, two-way key diffs, and checkers shown to catch seeded differences.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
       "source": "./plugins/data-engineering"
     },
     {
-      "name": "fiction-editing",
-      "description": "Continuity audits for long fiction manuscripts: new chapters checked against the author's canon ledger, outline, tense and point of view, with every ruling left to the author.",
-      "version": "0.1.0",
-      "author": {
-        "name": "modootoday"
-      },
-      "source": "./plugins/fiction-editing"
-    },
-    {
       "name": "interactive-web-demos",
-      "description": "Browser simulations and visual demos checked against a known result: error against a reference, timestep convergence, unit consistency and frame time measured on stated devices.",
-      "version": "0.1.0",
+      "description": "Browser simulations and visual demos checked against a known result: error against an analytic or reference value, timestep convergence, unit consistency between views, and frame time reported only for the devices actually measured. It verifies a demo; it does not build one.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -408,7 +399,7 @@
     {
       "name": "home-hobbies",
       "description": "Hobby help that keeps its facts straight: game state and rules kept legal across chess, board game and family role-playing sessions, and crochet or knit patterns with every stitch count recomputed and every part joined.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -443,8 +434,8 @@
     },
     {
       "name": "ml-data",
-      "description": "Check fine-tuning data against the target schema before training: content types, one-record serialisation, reload counts and tool-call turns, with rejected rows listed by line.",
-      "version": "0.1.0",
+      "description": "Checks fine-tuning data against the target trainer or provider schema before an upload or a training run: roles, field names and content types per row, one JSON record per example, a reload with the real loader, and tool-call turn structure. It checks data; it does not train.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -489,7 +480,7 @@
     {
       "name": "engineering",
       "description": "Engineering document procedures: work instructions from field notes, clause location with verbatim quotes, sourced spec tables and fault evidence logs.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "modootoday"
       },
@@ -506,8 +497,8 @@
     },
     {
       "name": "photography",
-      "description": "Photo cull and batch-grade checks from the scores, logs and settings you supply: subject-specific criteria, rank-and-flag only, preview-versus-export match and file-to-output mapping.",
-      "version": "0.1.0",
+      "description": "Photo cull and batch-grade checks from the scores, logs and settings you supply: subject-specific criteria, rank-and-flag only, preview-versus-export match and file-to-output mapping. It checks and plans; it does not edit or generate images.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -524,8 +515,8 @@
     },
     {
       "name": "genealogy-research",
-      "description": "Family-history research that marks what it does not know: surname mention indexes with page context, gaps and same-name risk, uncertain readings of damaged handwriting, tree-export consistency checks and evidence-separated ancestor sheets.",
-      "version": "0.1.0",
+      "description": "Family-history research that marks what it does not know. It indexes a surname across volumes with page context, flags same-name risk and lists unreadable pages as gaps, offers uncertain readings of damaged handwriting with the comparison letters used, checks tree exports for impossible dates and relationships without editing them, and keeps evidence, interpretation and open questions apart. Work is on pasted records only; use synthetic or historical data, not living people.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -533,8 +524,8 @@
     },
     {
       "name": "design-delivery",
-      "description": "Design handoff checks: a wireframe mapped component by component onto the design system, missing components flagged and the design tokens kept, before any prototype is built.",
-      "version": "0.1.0",
+      "description": "Design handoff checks: every wireframe element mapped to a named component of the design system before a prototype is built, built UI diffed against the design's values, colour contrast of component states computed, and handoff state matrices whose missing states become questions for the designer. It plans and checks only; it builds nothing.",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -560,8 +551,8 @@
     },
     {
       "name": "construction",
-      "description": "Defect and warranty lists split by trade: one item per finding with location and symptom, unclear trades flagged, counts reconciled against the source.",
-      "version": "0.1.0",
+      "description": "Construction checks: defect and warranty lists split by trade, code questions answered only from pasted code text, takeoff quantities and units recomputed, and field questions turned into single-issue RFIs with a log.",
+      "version": "0.2.0",
       "source": "./plugins/construction",
       "author": {
         "name": "modootoday"
@@ -569,8 +560,8 @@
     },
     {
       "name": "commerce",
-      "description": "Identification of second-hand items from photos and markings: ranked candidates, photos to request, and what a photo cannot confirm, with no price or authenticity claims.",
-      "version": "0.1.0",
+      "description": "Seller checks: second-hand items identified from photos and markings, listing copy kept to each SKU's spec row, reorder points from a sales sheet, and shopping-feed disapprovals triaged without invented identifiers or prices.",
+      "version": "0.2.0",
       "source": "./plugins/commerce",
       "author": {
         "name": "modootoday"
@@ -579,7 +570,7 @@
     {
       "name": "fitness",
       "description": "Workout log tables and equipment substitutions by movement pattern, with every load change left for a trainer to approve.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "source": "./plugins/fitness",
       "author": {
         "name": "modootoday"
@@ -587,8 +578,8 @@
     },
     {
       "name": "publishing-production",
-      "description": "Pre-release checks for books going to print and ebook: typeset text diffed against the approved manuscript, print and EPUB rules kept apart, and automated accessibility results paired with the manual items they cannot prove.",
-      "version": "0.1.0",
+      "description": "Checks for books before release: typeset text diffed against the approved manuscript, print and EPUB rules kept apart, automated accessibility results paired with the manual items they cannot prove, a project style sheet applied across chapters, index locators checked against page proofs, and new chapters of long fiction checked against the author's canon ledger and outline with every ruling left to the author.",
+      "version": "0.2.0",
       "source": "./plugins/publishing-production",
       "author": {
         "name": "modootoday"
@@ -596,27 +587,9 @@
     },
     {
       "name": "pr-comms",
-      "description": "Media targets and pitch angles checked against what was actually pasted: journalist beats and bylines marked verified or unverified, calendar deadlines compared with today, hooks tied to approved expertise only.",
-      "version": "0.1.0",
+      "description": "Media targets and pitch angles for a PR pitch, checked against what was actually pasted: journalist beats and bylines marked verified or unverified, no contact details that are not on a source page, calendar deadlines compared with today and hooks tied to approved expertise only. It prepares a checkable worksheet; it does not write the pitch or profile anyone.",
+      "version": "0.2.0",
       "source": "./plugins/pr-comms",
-      "author": {
-        "name": "modootoday"
-      }
-    },
-    {
-      "name": "land-growing",
-      "description": "Garden and small-farm plans checked against measured site facts: bed layout and spacing, a frost-bounded sowing calendar, soil and light constraints and a water test table with units.",
-      "version": "0.1.0",
-      "source": "./plugins/land-growing",
-      "author": {
-        "name": "modootoday"
-      }
-    },
-    {
-      "name": "industrial-config",
-      "description": "Device configuration files drafted from a pasted register or tag table, with address base, widths and duplicates checked, every missing value listed and a bench test required before equipment.",
-      "version": "0.1.0",
-      "source": "./plugins/industrial-config",
       "author": {
         "name": "modootoday"
       }
@@ -624,7 +597,7 @@
     {
       "name": "everyday-readings",
       "description": "Entertainment-use readings with the arithmetic kept honest: numerology, chart and spread inputs computed only from the rules you name, every step shown, and no predictions.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "source": "./plugins/everyday-readings",
       "author": {
         "name": "modootoday"
@@ -638,6 +611,29 @@
         "name": "modootoday"
       },
       "source": "./plugins/agent-orchestration"
+    },
+    {
+      "name": "datalab-tools",
+      "description": "Your own Naver blog, Place, Smart Store, shopping, search ad and news comment data read through the datalab.tools browser extension, plus card news, short-form video, tutorial posts and social copy built in its editors, with no invented numbers and no change made without asking.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/datalab-tools"
+    },
+    {
+      "name": "runtime-bridge",
+      "description": "Procedures for working across agent runtimes: check remaining allowance, hand off bounded jobs through files, research with cited peer reports, compare subscription and token costs, and verify an adversarial second opinion.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/runtime-bridge"
     }
-  ]
+  ],
+  "renames": {
+    "fiction-editing": "publishing-production",
+    "industrial-config": "engineering",
+    "land-growing": "home-hobbies"
+  }
 }

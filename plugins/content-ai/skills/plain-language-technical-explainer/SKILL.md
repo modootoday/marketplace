@@ -7,6 +7,7 @@ metadata:
   domain: content-writing
   install: optional
   keywords: [plain language, executive update, outage explanation, non-technical reader, incident summary, owner briefing]
+  verified-runtimes: [claude-code]
 ---
 
 # Plain-language technical explainer

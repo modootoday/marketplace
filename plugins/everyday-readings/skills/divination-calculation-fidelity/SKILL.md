@@ -7,6 +7,7 @@ metadata:
   domain: everyday-readings
   install: optional
   keywords: [numerology, life path, saju, natal chart, tarot, dream reading, calculation steps]
+  verified-runtimes: [claude-code]
 ---
 
 # Divination calculation fidelity

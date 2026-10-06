@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [voice script, narration, TTS script, read aloud, pronunciation]
   locales: [ko]
+  verified-runtimes: [claude-code]
 ---
 
 # Scripts for the ear

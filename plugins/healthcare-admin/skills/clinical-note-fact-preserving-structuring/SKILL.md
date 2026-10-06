@@ -7,6 +7,7 @@ metadata:
   domain: healthcare-admin
   install: optional
   keywords: [progress note, SOAP, DAP, treatment plan, documentation, template, clinician notes]
+  verified-runtimes: [claude-code]
 ---
 
 # Clinical note fact-preserving structuring

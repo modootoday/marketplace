@@ -7,6 +7,7 @@ metadata:
   domain: finance-ops
   install: optional
   keywords: [trade journal, rule deviation, trading rules, discipline log, journal audit]
+  verified-runtimes: [claude-code]
 ---
 
 # Trading journal rule deviation log

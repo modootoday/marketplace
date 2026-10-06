@@ -7,6 +7,7 @@ metadata:
   domain: education
   install: optional
   keywords: [homeschool, pacing, calendar, textbook units, school weeks, multi-child schedule, study plan]
+  verified-runtimes: [claude-code]
 ---
 
 # Study calendar allocation

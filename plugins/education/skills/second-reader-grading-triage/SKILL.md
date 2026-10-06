@@ -7,6 +7,7 @@ metadata:
   domain: education
   install: optional
   keywords: [grading, rubric, second reader, triage, teaching assistant, disagreement, review]
+  verified-runtimes: [claude-code]
 ---
 
 # Second-reader grading triage

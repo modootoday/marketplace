@@ -7,6 +7,7 @@ metadata:
   domain: data-engineering
   install: optional
   keywords: [dbt, model refactor, lineage, schema.yml, column documentation, staging models]
+  verified-runtimes: [claude-code]
 ---
 
 # Warehouse model refactor and docs

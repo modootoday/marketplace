@@ -7,6 +7,7 @@ metadata:
   domain: video-production
   install: optional
   keywords: [character consistency, reference sheet, continuity, generated video, drift, storyboard, episodes]
+  verified-runtimes: [claude-code]
 ---
 
 # Subject continuity reference sheet check

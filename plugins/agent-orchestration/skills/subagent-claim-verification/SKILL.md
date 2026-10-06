@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [verification, subagent report, claims, evidence, re-measure, shortcuts, refuter, hand-back]
+  verified-runtimes: [claude-code, gemini-cli]
 ---
 
 # Subagent claim verification

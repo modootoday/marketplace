@@ -7,6 +7,7 @@ metadata:
   domain: trust-safety
   install: optional
   keywords: [appeal, false positive, ban review, moderation appeal, abuse detection]
+  verified-runtimes: [claude-code]
 ---
 
 # Appeals against automated actions

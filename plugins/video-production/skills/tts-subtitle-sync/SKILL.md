@@ -12,6 +12,7 @@ metadata:
   requires:
     bin: [python3]
     capabilities: [speech.align]
+  verified-runtimes: [claude-code]
 ---
 
 # Subtitles timed to Korean speech

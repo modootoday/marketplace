@@ -8,6 +8,7 @@ metadata:
   install: optional
   keywords: [blender, scene check, modular kit, camera previz, glb, web 3d, reference comparison]
   output-license: the user's own scene and reference; the skill adds no third-party content
+  verified-runtimes: [claude-code]
 ---
 
 # Blender scene build and reference check

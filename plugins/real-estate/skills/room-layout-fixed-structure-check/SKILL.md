@@ -7,6 +7,7 @@ metadata:
   domain: real-estate
   install: optional
   keywords: [room layout, floor plan, furniture, clearance, door swing, render prompt, fixed structure]
+  verified-runtimes: [claude-code]
 ---
 
 # Room layout with a fixed-structure check

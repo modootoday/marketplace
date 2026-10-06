@@ -1,7 +1,7 @@
 {
   "name": "photography",
-  "version": "0.1.0",
-  "description": "Photo cull and batch-grade checks from the scores, logs and settings you supply: subject-specific criteria, rank-and-flag only, preview-versus-export match and file-to-output mapping.",
+  "version": "0.2.0",
+  "description": "Photo cull and batch-grade checks from the scores, logs and settings you supply: subject-specific criteria, rank-and-flag only, preview-versus-export match and file-to-output mapping. It checks and plans; it does not edit or generate images.",
   "author": {
     "name": "modootoday"
   },

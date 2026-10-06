@@ -7,6 +7,7 @@ metadata:
   domain: engineering
   install: optional
   keywords: [work instruction, procedure, process flow, cutover, field notes, handover]
+  verified-runtimes: [claude-code]
 ---
 
 # Procedure document from field notes

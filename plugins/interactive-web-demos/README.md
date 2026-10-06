@@ -9,7 +9,7 @@ Browser simulations and visual demos checked against a known result: error again
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -37,6 +37,7 @@ codex plugin add interactive-web-demos@modootoday
 | --- | --- | --- |
 | skill | `interactive-simulation-reference-check` | a simulation or visual demo compared with a reference result: error per timestep, unit and view consistency, rule limits, state persistence, and measured frame time with untested devices listed |
 | skill | `interactive-3d-explorer-data-binding-check` | a 3D explorer or configurator checked against its data: selection-to-order round trip, recomputed price, input limits, guide text and highlighted object on the same item, local data and a non-3D fallback; it checks and does not build the viewer |
+| skill | `interactive-demo-portable-export` | an assistant-built demo made to run outside the preview: dependency and host-API inventory, each replacement recorded, behaviour kept live, a clean-browser test checklist, and only the environments actually tested reported; rests on one user report and one independent workaround project (moderate evidence, one ecosystem) |
 
 ## Failure mode
 
@@ -72,6 +73,12 @@ that passed every grader, without the plugin and with it:
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
+
+| Case | Skill | Without | With | Skill fired |
+| --- | --- | --- | --- | --- |
+| `quiz-artifact-standalone` | interactive-demo-portable-export | 0.00 | 1.00 | 2 of 2 |
 
 ## License
 

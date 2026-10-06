@@ -7,6 +7,7 @@ metadata:
   domain: procurement
   install: optional
   keywords: [freight class, density, classification, shipment, commodity description, provisional]
+  verified-runtimes: [claude-code]
 ---
 
 # Freight classification lookup

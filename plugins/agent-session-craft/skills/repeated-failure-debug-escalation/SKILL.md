@@ -7,6 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [debugging, retry loop, failed fix, escalation, reproduction, hypotheses, diagnosis]
+  verified-runtimes: [claude-code]
 ---
 
 # Repeated-failure debug escalation

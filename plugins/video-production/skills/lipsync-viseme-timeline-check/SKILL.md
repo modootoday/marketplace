@@ -7,6 +7,7 @@ metadata:
   domain: video-production
   install: optional
   keywords: [lip sync, viseme, phoneme timeline, cartoon character, singing, long audio, frame count]
+  verified-runtimes: [claude-code]
 ---
 
 # Lip-sync viseme timeline check

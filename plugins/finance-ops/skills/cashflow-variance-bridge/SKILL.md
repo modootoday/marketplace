@@ -7,6 +7,7 @@ metadata:
   domain: finance-ops
   install: optional
   keywords: [cash flow, variance, bridge, expense spike, duplicate invoice, driver analysis]
+  verified-runtimes: [claude-code]
 ---
 
 # Cash flow variance bridge

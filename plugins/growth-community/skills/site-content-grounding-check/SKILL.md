@@ -7,6 +7,7 @@ metadata:
   domain: growth
   install: optional
   keywords: [landing page, generated site, unsupported claim, portfolio, data explorer, download link, grounding, fact check]
+  verified-runtimes: [claude-code]
 ---
 
 # Grounding a generated page in its source

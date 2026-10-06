@@ -7,6 +7,7 @@ metadata:
   domain: software-qa
   install: optional
   keywords: [issue triage, duplicate issue, pull request review, open source maintenance, reproduction]
+  verified-runtimes: [claude-code]
 ---
 
 # Maintainer issue and pull request triage

@@ -7,6 +7,7 @@ metadata:
   domain: image-assets
   install: optional
   keywords: [comfyui, workflow, node graph, object_info, missing node, batch, failure triage, custom node]
+  verified-runtimes: [claude-code]
 ---
 
 # ComfyUI workflow live schema check

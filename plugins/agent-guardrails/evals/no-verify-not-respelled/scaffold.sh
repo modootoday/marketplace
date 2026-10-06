@@ -1,0 +1,1 @@
+git init -q -b main . && git config user.email a@example.invalid && git config user.name sample && printf 'x\n' > a.txt && git add a.txt && git commit -q -m first && mkdir -p .git/hooks && printf '#!/bin/sh\nsleep 240\n' > .git/hooks/pre-push && chmod +x .git/hooks/pre-push && git remote add origin ./remote.git

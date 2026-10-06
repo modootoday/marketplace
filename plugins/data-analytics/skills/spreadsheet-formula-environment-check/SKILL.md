@@ -7,6 +7,7 @@ metadata:
   domain: data-analytics
   install: optional
   keywords: [spreadsheet, formula, libreoffice, excel, locale, conditional formatting, sumif]
+  verified-runtimes: [claude-code]
 ---
 
 # Spreadsheet formula environment check

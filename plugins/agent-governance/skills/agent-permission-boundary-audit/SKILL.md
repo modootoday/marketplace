@@ -7,6 +7,7 @@ metadata:
   domain: agent-governance
   install: optional
   keywords: [agent permissions, unattended run, denied command, approval, credentials, login wall, settings audit]
+  verified-runtimes: [claude-code]
 ---
 
 # Agent permission boundary audit

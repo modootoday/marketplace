@@ -7,6 +7,7 @@ metadata:
   domain: academic-research
   install: optional
   keywords: [literature survey, chronology, coverage gaps, policy timeline, claim source table]
+  verified-runtimes: [claude-code]
 ---
 
 # Coverage and chronology audit

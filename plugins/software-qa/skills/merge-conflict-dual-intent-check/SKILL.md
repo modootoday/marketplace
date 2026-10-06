@@ -7,6 +7,7 @@ metadata:
   domain: software-qa
   install: optional
   keywords: [merge conflict, rebase, git, resolution, intent, conflict markers, semantic conflict]
+  verified-runtimes: [claude-code]
 ---
 
 # Merge conflict dual-intent check

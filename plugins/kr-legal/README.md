@@ -12,8 +12,8 @@ This plugin is a preview: the other Korean legal reviews (personal data, crawlin
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
 | Codex CLI | untested | - |
-| Grok CLI | untested | - |
-| Gemini CLI | untested | - |
+| Grok CLI | yes | measured 20261006 on grok-4.7 and grok-4.7-build-fast for 1 case; see Other runtimes |
+| Gemini CLI | no | with arm below 1.00 on gemini-3.1-pro-preview and gemini-3.8-flash for 1 case, 20261006; see Other runtimes |
 
 Requirements: The korean-law MCP server for ai-content-disclosure, so rule text is retrieved rather than remembered. Without it every citation is marked unverified.
 
@@ -70,6 +70,18 @@ passed every grader, without the plugin and with it:
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+### Other runtimes
+
+Gemini CLI, Grok CLI and Codex CLI, both arms, 2 runs per arm, 3 judge votes, the model as subject and judge, 20261006. A row where the skill fired and With is 1.00 sets the runtime in the skill's verified-runtimes.
+
+| Runtime | Model | Case | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- |
+| Gemini CLI | gemini-3.1-pro-preview | `ai-ad-video` | 0.00 | 0.50 | 2/2 | 20261006 |
+| Gemini CLI | gemini-3.8-flash | `ai-ad-video` | 0.00 | 0.00 | 2/2 | 20261006 |
+| Grok CLI | grok-4.7 | `ai-ad-video` | 0.00 | 1.00 | 2/2 | 20261006 |
+| Grok CLI | grok-4.7-build-fast | `ai-ad-video` | 0.00 | 1.00 | 2/2 | 20261006 |
+| Codex CLI | gpt-6.1-sol (korean-law server attached) | `ai-ad-video` | 0.00 | 1.00 | 2/2 | 20261006 |
 
 ## License
 

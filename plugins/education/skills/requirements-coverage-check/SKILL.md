@@ -7,6 +7,7 @@ metadata:
   domain: education
   install: optional
   keywords: [assignment brief, rubric, coverage, requirements matrix, draft review, research question, missing requirement]
+  verified-runtimes: [claude-code]
 ---
 
 # Requirements coverage check

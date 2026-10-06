@@ -9,6 +9,7 @@ metadata:
   keywords: [talking head edit, silence removal, ffmpeg cut, subtitles, video export]
   requires:
     bin: [ffmpeg]
+  verified-runtimes: [codex-cli]
 ---
 
 # Talking-head editing with ffmpeg

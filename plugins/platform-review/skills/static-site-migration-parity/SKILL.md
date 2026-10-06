@@ -7,6 +7,7 @@ metadata:
   domain: edge-platform
   install: optional
   keywords: [static site migration, url parity, link rot, static site generator, markdown renderer, cutover, nginx]
+  verified-runtimes: [claude-code]
 ---
 
 # Migrating a static site with URL parity

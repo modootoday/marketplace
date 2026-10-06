@@ -10,6 +10,7 @@ metadata:
   output-license: the user's own template, fonts and images; the skill adds no third-party content
   requires:
     bin: [node]
+  verified-runtimes: [claude-code]
 ---
 
 # Carousel slides from HTML

@@ -7,6 +7,7 @@ metadata:
   domain: household-admin
   install: optional
   keywords: [service history, ledger, maintenance emails, next due date, appointment log, family care log]
+  verified-runtimes: [claude-code]
 ---
 
 # Household event ledger from records

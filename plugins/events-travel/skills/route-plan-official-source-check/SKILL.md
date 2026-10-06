@@ -7,6 +7,7 @@ metadata:
   domain: travel
   install: optional
   keywords: [route plan, transit closure, transfer check, hiking route, official notice, unverified]
+  verified-runtimes: [claude-code]
 ---
 
 # Route plan with official-source check

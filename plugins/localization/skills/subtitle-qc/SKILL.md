@@ -10,6 +10,7 @@ metadata:
   keywords: [subtitles, SRT, reading speed, cue timing, dubbing script, subtitle QA]
   requires:
     bin: [node]
+  verified-runtimes: [claude-code]
 ---
 
 # Subtitle QC

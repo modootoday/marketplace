@@ -7,6 +7,7 @@ metadata:
   domain: growth
   install: optional
   keywords: [regex, RE2, search console, query filter, brand queries, segmentation, lookahead]
+  verified-runtimes: [claude-code]
 ---
 
 # Regex filters for search queries
