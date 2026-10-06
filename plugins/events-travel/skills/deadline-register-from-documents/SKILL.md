@@ -26,7 +26,8 @@ traced to a line someone can open.
    converted time, each with its zone label (for example 23:59 CET, 07:59 KST next day), and
    say which zone is only the document's default or an assumption. A date with no clock time
    is flagged as having none; offer a conversion for it only as conditional. Without a given
-   zone, do not convert.
+   zone, do not convert. State in one line that the document's times are its own and the
+   converted times are derived from the offset the user gave, not stated by the document.
 4. When there are two versions, add a diff: changed (old to new, both cited), added, removed,
    unchanged count. A date present in one version only is a finding, not an omission.
 5. List what could not be settled: owner not stated, two lines that disagree (quote both,

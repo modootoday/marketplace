@@ -36,6 +36,7 @@ codex plugin add interactive-web-demos@modootoday
 | Kind | Name | Covers |
 | --- | --- | --- |
 | skill | `interactive-simulation-reference-check` | a simulation or visual demo compared with a reference result: error per timestep, unit and view consistency, rule limits, state persistence, and measured frame time with untested devices listed |
+| skill | `interactive-3d-explorer-data-binding-check` | a 3D explorer or configurator checked against its data: selection-to-order round trip, recomputed price, input limits, guide text and highlighted object on the same item, local data and a non-3D fallback; it checks and does not build the viewer |
 
 ## Failure mode
 
@@ -65,6 +66,9 @@ that passed every grader, without the plugin and with it:
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
 | `pendulum-timestep-units` | interactive-simulation-reference-check | 0.00 | 1.00 | 2 |
+| `configurator-engraving-price` | interactive-3d-explorer-data-binding-check | 0.50 | 1.00 | 2 |
+
+`configurator-engraving-price` was measured on 20261005 with Sonnet as subject and judge. The skill rests on three records from three different builders; treat the lift as moderate evidence.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

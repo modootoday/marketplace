@@ -16,16 +16,25 @@ stock, not the other way round, and the shopping list is a calculation, not a gu
 
 ## Steps
 
+Read `references/plan-checks.md` first for the date handling and the tables the answer must
+contain.
+
 1. Restate the inputs: days, eaters, meals per day, constraints. Copy the stock list as
    given with quantity and use-by date. Do not add stock the user did not list; pantry
    staples count only if listed. Sort by date, soonest first, and mark items that are
    already close or past.
 2. Assign the soonest-dated items to the earliest days; frozen and shelf-stable items go
    late. A dish for each meal states the stock items and amounts it uses.
-3. Keep a running balance per item: on hand, used per day, left. No item goes below zero
-   without the shortfall being recorded as a gap.
-4. Gaps: for each item needed beyond stock, quantity needed minus quantity on hand, in
-   the buying unit, the day it is first needed. Buy nothing for items that stock covers.
+3. Keep a running balance table with one row per stocked item and one column per day,
+   each cell showing what is left after that day's use (start column = on hand). No item
+   goes below zero without the shortfall being recorded as a gap. A weekly total alone is
+   not a balance.
+4. Gaps: a table with one row for every stocked item the menu uses and every extra item
+   it needs, with columns needed, on hand, shortfall (0 when stock covers it) in the buying
+   unit, and the day first needed. A shortfall of 0 is a valid answer; buy nothing for items
+   that stock covers, and list any optional extra separately as optional, with its amount.
+   The menu itself uses only listed stock plus salt and oil when the user said those are all
+   they have; an extra such as garlic or herbs appears only in the optional list.
 5. Check storage (fridge space, freezer, cooling) and feasibility (cooking time, equipment,
    constraints such as diet or no pork), and list what you assumed (portion size per
    person, for example).

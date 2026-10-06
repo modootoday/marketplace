@@ -38,6 +38,8 @@ codex plugin add localization@modootoday
 | skill | `translation-postedit-qc` | a source-to-target check for omissions, footnote parity, naturalness and terms, with spots flagged for a native reviewer |
 | skill | `subtitle-qc` | subtitle cues checked for line length, reading speed and overlapping timing, reported by cue id; ships `scripts/srt-check.mjs` (needs node) and a long-cue split reference |
 | skill | `language-variety-and-register-lock-check` | generated text checked against a language policy (regional variety, dialect, speech level, intended foreign lines) span by span and turn by turn, with drift listed by line and protected spans left unchanged |
+| skill | `catalog-transliteration-check` | romanized access points for non-Latin catalogue material: standard named, original script kept beside the romanization and a labelled gloss, doubtful characters flagged, search variants listed; rests on one user report |
+| skill | `comic-localization-lettering-handoff` | licensed comic or webtoon pages: reading-order and speaker table, translator brief, bubble fit with overflow listed, manual-confirmation list and slice-versus-scroll check |
 
 ## Failure mode
 
@@ -71,6 +73,8 @@ that passed every grader, without the plugin and with it:
 | `srt-limits-overlap` (Opus) | subtitle-qc | 0.50 | 1.00 | 2, Opus subject and judge |
 | `pt-br-drift-two-turns` | language-variety-and-register-lock-check | 0.00 | 0.50 | 2 |
 | `pt-br-drift-two-turns` (Opus) | language-variety-and-register-lock-check | 0.00 | 1.00 | 2, Opus subject and judge |
+| `cyrillic-title-page` | catalog-transliteration-check | 0.00 | 1.00 | 2 without, 2 with (after the last skill edit), Sonnet subject and judge |
+| `manga-page-and-slices` | comic-localization-lettering-handoff | 0.00 | 1.00 | 2, Sonnet subject and judge |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

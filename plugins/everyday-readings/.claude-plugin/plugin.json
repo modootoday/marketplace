@@ -1,0 +1,9 @@
+{
+  "name": "everyday-readings",
+  "version": "0.1.0",
+  "description": "Entertainment-use readings with the arithmetic kept honest: numerology, chart and spread inputs computed only from the rules you name, every step shown, and no predictions.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

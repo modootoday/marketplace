@@ -2,7 +2,7 @@
 
 ## What it does
 
-Household paperwork arithmetic on the numbers a person supplies: pay-period schedules where every dollar is placed once, and receipts split so the parts sum to the total.
+Household paperwork and planning on the facts a person supplies: pay-period schedules where every dollar is placed once, receipts split so the parts sum to the total, a small-step week for chores, a ledger of home service events, and total-cost comparisons of personal offers.
 
 ## Runtime support
 
@@ -35,6 +35,9 @@ codex plugin add household-admin@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
+| skill | `small-step-chore-sequencing` | a dated week of physical actions that starts with the minimum usable state, fits the minutes per day the person gave, meets their deadlines and adds no chore they did not list; rests on 3 first-person records |
+| skill | `household-event-ledger-from-records` | a one-row-per-event ledger from pasted service emails or notes (completed, scheduled, cancelled) with quoted sources, unknowns kept unknown and next-due dates only from a stated interval; rests on 2 records |
+| skill | `consumer-offer-total-cost-comparison` | totals for bundled personal offers (car with trade-in, per-GB against flat phone plan) from written quotes and the person's usage, with arithmetic shown and unverified items marked; no advice; rests on 2 weak records |
 | skill | `paycheck-cycle-obligation-schedule` | a table per pay date from the user's own numbers: bills placed by due date, minimums before extra payments, interest recomputed with a stated formula, future expenses set aside per period, receipts split to the total; arithmetic only, no financial advice |
 
 ## Failure mode
@@ -64,8 +67,12 @@ Scores are the share of runs that passed every grader, without the plugin and wi
 | Case | Skill | Without | With | Runs per arm | Subject and judge |
 | --- | --- | --- | --- | --- | --- |
 | `biweekly-card-plan` | paycheck-cycle-obligation-schedule | 0.00 | 1.00 | 2 | Opus, Opus (20261005); Sonnet judge gave 0.50 and 0.00 on 2 runs |
+| `small-step-chore-first-week` | small-step-chore-sequencing | 0.00 | 1.00 | 2 | Opus, Opus (20261005); Sonnet judge gave 0.50 with 2 runs after two fix rounds |
+| `home-service-ledger` | household-event-ledger-from-records | 0.00 | 1.00 | 2 | Sonnet, Sonnet (20261005) |
+| `offer-total-cost` | consumer-offer-total-cost-comparison | 0.50 | 1.00 | 2 | Sonnet, Sonnet (20261005) |
 
-The new skill has one case; two more are needed for the three-case release gate.
+The `offer-total-cost` baseline partly passes (the car arithmetic), so its Without score is 0.50 and
+its every-grader pass rate is 0.00.
 
 ## License
 

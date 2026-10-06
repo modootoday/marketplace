@@ -1,0 +1,9 @@
+{
+  "name": "pr-comms",
+  "version": "0.1.0",
+  "description": "Media targets and pitch angles checked against what was actually pasted: journalist beats and bylines marked verified or unverified, calendar deadlines compared with today, hooks tied to approved expertise only.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

@@ -38,6 +38,8 @@ codex plugin add real-estate@modootoday
 | skill | `ordinance-conditions-qa` | a lot or use tested against supplied bylaw text: quoted sections, numeric conditions with the arithmetic, effective date, overlay and variance clauses, screening only |
 | skill | `property-candidate-screening` | listings compared with must-have, trade-off and nice-to-have requirements, each marked met, not met or UNKNOWN, with a viewing sheet per property |
 
+| skill | `room-layout-fixed-structure-check` | a fixed-structure table of walls, openings and door swing marked given, derived or not given, furniture placed by coordinates from stated sizes with clearance arithmetic, and a moved-appeared-vanished comparison of any layout or render; rests on one moderate record |
+
 ## Failure mode
 
 None. This plugin registers no hooks and runs no commands of its own. It cannot block, slow
@@ -67,6 +69,7 @@ that passed every grader, without the plugin and with it:
 | --- | --- | --- | --- | --- |
 | `bylaw-width-coverage` | ordinance-conditions-qa | 0.00 | 1.00 | 2 |
 | `parking-must-have-unknown` | property-candidate-screening | 0.00 | 1.00 | 2 |
+| `room-layout-fixed-table` | room-layout-fixed-structure-check | 0.00 | 1.00 | 2, Opus subject and judge, both arms, 20261005 (skill fired 2 of 2; earlier Sonnet round stayed at 0.50) |
 
 Results are screening aids. A municipal planner confirms any ordinance result, and the skills do
 not recommend a purchase.

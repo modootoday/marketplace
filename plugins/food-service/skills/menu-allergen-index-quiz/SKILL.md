@@ -22,7 +22,10 @@ what the kitchen has confirmed. Anything the table does not say is "not confirme
    infer from the dish name. If a label is missing, mark the ingredient "label needed".
 2. Table per item: ingredient, allergens as stated on that ingredient's label, source of
    the statement (supplier label, manager list), "may contain" statements kept separate
-   from "contains".
+   from "contains". An ingredient name is not a label: "shrimp" or "egg" listed as an
+   ingredient with no label statement gets "label needed" in the allergen column, never
+   "crustacean" or "egg" as a labelled allergen, and the dish summary line lists labelled
+   allergens only. Unlabelled ingredients go on a separate "named, no label" line.
 3. Cross-contact for staff: list each shared fryer, grill, utensil, station or storage
    point the user mentioned, as an item to confirm with the person in charge. Add none that
    were not mentioned beyond asking the user to review the kitchen for others.

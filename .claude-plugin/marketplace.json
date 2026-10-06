@@ -174,7 +174,7 @@
     {
       "name": "brand-assets",
       "description": "Brand work that decides something: visual directions argued before drawing, a tokens.json every asset reads, and QA of the rendered asset before it is published.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -201,7 +201,7 @@
     {
       "name": "presentation",
       "description": "Decks that argue something and survive review: a storyline built from the answer down, pptx files filled from the template's own layouts with native charts, and a QA pass for numbers, charts and dates that disagree.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "modootoday"
       },
@@ -210,7 +210,7 @@
     {
       "name": "audio-production",
       "description": "Audio from brief to file: a brand's sonic directions, scripts written for the ear, Korean TTS with spoken numbers, mixing to a measured loudness, consistent sound effect sets, and the rights behind every voice.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "modootoday"
       },
@@ -228,7 +228,7 @@
     {
       "name": "trust-safety",
       "description": "Abuse detection that can be trusted: signals ranked by how abusers work and how cheaply they could evade, rules measured on labelled data before they act, and appeals that restore what a false positive took.",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "author": {
         "name": "modootoday"
       },
@@ -273,7 +273,7 @@
     {
       "name": "agent-session-craft",
       "description": "Habits for long agent sessions: status briefings with proof, follow-up work run in chosen waves with standing rules kept, subagent fan-out from one brief, and one living document per workstream.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": {
         "name": "modootoday"
       },
@@ -290,7 +290,7 @@
     },
     {
       "name": "ux-research",
-      "description": "Index long interview transcripts by session, theme and timestamp, and pull quotes that are verbatim and audited against the source.",
+      "description": "Index interview transcripts by session, theme and timestamp with verbatim audited quotes, score SUS questionnaires with the scoring rule the user supplies, and draw an information-architecture sitemap from a feature list.",
       "version": "0.1.0",
       "author": {
         "name": "modootoday"
@@ -425,7 +425,7 @@
     },
     {
       "name": "events-travel",
-      "description": "Day plans that survive arithmetic: run-of-show, travel and family days built from fixed bookings, opening hours, travel time and protected rest, with buffers and backups.",
+      "description": "Day plans, seating plans, deadline registers, hotel shortlists and route checks that survive arithmetic: fixed bookings, opening hours, travel time, supplied rules and official sources, with buffers, backups and unverified items marked.",
       "version": "0.1.0",
       "source": "./plugins/events-travel",
       "author": {
@@ -461,7 +461,7 @@
     },
     {
       "name": "household-admin",
-      "description": "Household paperwork arithmetic on the numbers a person supplies: pay-period schedules where every dollar is placed once, and receipts split so the parts sum to the total.",
+      "description": "Household paperwork and planning on the facts a person supplies: pay-period schedules where every dollar is placed once, receipts split to the total, a small-step week for chores, a ledger of home service events, and total-cost comparisons of personal offers.",
       "version": "0.1.0",
       "author": {
         "name": "modootoday"
@@ -500,6 +500,132 @@
       "description": "HR office arithmetic and drafts checked on the facts the user supplies: aggregate workforce metrics with stated group minimums, sourcing search strings without protected-trait terms, shift hours split by the user's own rules, and policy drafts checked against the user's checklist.",
       "version": "0.1.0",
       "source": "./plugins/hr-ops",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "photography",
+      "description": "Photo cull and batch-grade checks from the scores, logs and settings you supply: subject-specific criteria, rank-and-flag only, preview-versus-export match and file-to-output mapping.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/photography"
+    },
+    {
+      "name": "it-ops",
+      "description": "Read-through review of administration scripts before they run: commands checked against the installed version, destructive steps flagged, errors handled per item, and fixes from an anonymized copy patched back safely.",
+      "version": "0.1.0",
+      "source": "./plugins/it-ops",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "genealogy-research",
+      "description": "Family-history research that marks what it does not know: surname mention indexes with page context, gaps and same-name risk, uncertain readings of damaged handwriting, tree-export consistency checks and evidence-separated ancestor sheets.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/genealogy-research"
+    },
+    {
+      "name": "design-delivery",
+      "description": "Design handoff checks: a wireframe mapped component by component onto the design system, missing components flagged and the design tokens kept, before any prototype is built.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/design-delivery"
+    },
+    {
+      "name": "finance-ops",
+      "description": "Supplied financial figures checked by arithmetic: statement rows tied out to opening and closing balances, documents inventoried with evidence, and cash flow movements bridged by driver.",
+      "version": "0.1.0",
+      "source": "./plugins/finance-ops",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "healthcare-admin",
+      "description": "Fact-preserving drafting of clinical notes: a clinician's own brief notes placed into a required template, empty fields marked NOT DOCUMENTED, model wording listed for the clinician to confirm.",
+      "version": "0.1.0",
+      "source": "./plugins/healthcare-admin",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "construction",
+      "description": "Defect and warranty lists split by trade: one item per finding with location and symptom, unclear trades flagged, counts reconciled against the source.",
+      "version": "0.1.0",
+      "source": "./plugins/construction",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "commerce",
+      "description": "Identification of second-hand items from photos and markings: ranked candidates, photos to request, and what a photo cannot confirm, with no price or authenticity claims.",
+      "version": "0.1.0",
+      "source": "./plugins/commerce",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "fitness",
+      "description": "Workout log tables and equipment substitutions by movement pattern, with every load change left for a trainer to approve.",
+      "version": "0.1.0",
+      "source": "./plugins/fitness",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "publishing-production",
+      "description": "Pre-release checks for books going to print and ebook: typeset text diffed against the approved manuscript, print and EPUB rules kept apart, and automated accessibility results paired with the manual items they cannot prove.",
+      "version": "0.1.0",
+      "source": "./plugins/publishing-production",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "pr-comms",
+      "description": "Media targets and pitch angles checked against what was actually pasted: journalist beats and bylines marked verified or unverified, calendar deadlines compared with today, hooks tied to approved expertise only.",
+      "version": "0.1.0",
+      "source": "./plugins/pr-comms",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "land-growing",
+      "description": "Garden and small-farm plans checked against measured site facts: bed layout and spacing, a frost-bounded sowing calendar, soil and light constraints and a water test table with units.",
+      "version": "0.1.0",
+      "source": "./plugins/land-growing",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "industrial-config",
+      "description": "Device configuration files drafted from a pasted register or tag table, with address base, widths and duplicates checked, every missing value listed and a bench test required before equipment.",
+      "version": "0.1.0",
+      "source": "./plugins/industrial-config",
+      "author": {
+        "name": "modootoday"
+      }
+    },
+    {
+      "name": "everyday-readings",
+      "description": "Entertainment-use readings with the arithmetic kept honest: numerology, chart and spread inputs computed only from the rules you name, every step shown, and no predictions.",
+      "version": "0.1.0",
+      "source": "./plugins/everyday-readings",
       "author": {
         "name": "modootoday"
       }

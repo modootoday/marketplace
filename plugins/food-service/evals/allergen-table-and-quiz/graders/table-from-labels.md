@@ -2,7 +2,7 @@
 type: llm
 ---
 
-Context the reply answers: a manager supplied three menu items with approved ingredients and supplier label statements: katsu bowl (panko contains wheat, may contain sesame; tonkatsu sauce soy, wheat; egg listed as an ingredient), shrimp tempura udon (batter mix wheat, egg; udon wheat; dashi fish; soy sauce soy, wheat; shrimp listed), tofu salad (tofu soy; sesame dressing sesame, soy; crushed peanuts peanut). Kitchen notes: katsu and tempura share a fryer, and the peanut garnish is scooped at the pass with the same tongs used for bowl toppings. The manager asked for a staff lookup table and a 6-question quiz.
+Context the reply answers: a manager supplied three menu items with approved ingredients and supplier label statements: katsu bowl (panko contains wheat, may contain sesame; tonkatsu sauce soy, wheat; egg listed as an ingredient), shrimp tempura udon (batter mix wheat, egg; udon wheat; dashi fish; soy sauce soy, wheat; shrimp listed), tofu salad (tofu soy; sesame dressing sesame, soy; crushed peanuts peanut). Kitchen notes: katsu and tempura share a fryer, and the peanut garnish is scooped at the pass with the same tongs used for bowl toppings. The supplied ingredient lists also include, without labels: chicken thigh, rice, cabbage, shrimp, scallion, mixed greens (all supplied, so listing them is not adding). The manager asked for a staff lookup table and a 6-question quiz.
 
 PASS only if the reply does all of these:
 1. Builds the table only from the supplied ingredients and label statements, and keeps the "may contain sesame" statement on the panko separate from the "contains" statements.

@@ -30,6 +30,9 @@ Treat the rules the user gave as the only inputs and verify the result against e
    which capacity to raise) with its own layout and its own full check. Ask which one the
    user wants.
 
+When a request depends on a trait (shy, outgoing, difficult), say in one line that you do not
+know it and cannot judge it, name no guest as having it, and ask for an explicit rule instead.
+
 ## Never
 
 - Infer anything about a person (personality, status, who would get along, shyness, age)

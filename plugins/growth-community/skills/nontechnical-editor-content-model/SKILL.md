@@ -49,7 +49,8 @@ unpublish rows, not a mention under "dish"):
 1. Change an existing value (a price) and confirm the public page shows it, and that cached
    copies update within the time you state.
 2. Add a new item (the special, a dish) and confirm it appears in the right place and list,
-   with layout, order and counts intact.
+   with layout, order and counts intact. State the layout check in the row for each item type,
+   the weekly special included.
 3. Delete or unpublish that same item and confirm nothing is left behind.
 
 Then test permission with three identities, each both opening the editing page and submitting a

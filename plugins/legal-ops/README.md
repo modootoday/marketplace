@@ -35,6 +35,7 @@ codex plugin add legal-ops@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
+| skill | `legal-time-entry-client-rules` | a day's work notes turned into time entries that follow the billing rules the user pastes: one task and one duration per entry, stated total kept, split flagged as an estimate, each change tied to a rule, rejected entries listed; no legal advice (rests on one weak record) |
 | skill | `ocr-transcript-risk-flagging` | OCR text or a poor-audio transcript turned into a ranked review list of risky spans, with the original text kept and unintelligible audio marked inaudible; ships a value-type reference and `scripts/transcript-scan.mjs` (needs node) |
 
 ## Failure mode
@@ -66,6 +67,7 @@ that passed every grader, without the plugin and with it:
 | --- | --- | --- | --- | --- |
 | `ocr-dose-date-speaker` | ocr-transcript-risk-flagging | 0.00 | 0.80 | 2 without, 5 with (3 + 2 after the last skill edit) |
 | `ocr-dose-date-speaker` (Opus) | ocr-transcript-risk-flagging | 0.00 | 1.00 | 2, Opus subject and judge |
+| `block-billed-day-entries` | legal-time-entry-client-rules | 0.00 | 1.00 | 2, Sonnet subject and judge (20261005) |
 
 The output is a review list for a person. It is not legal or medical advice and it does not decide
 what a record means.

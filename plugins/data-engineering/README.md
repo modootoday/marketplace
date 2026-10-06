@@ -36,6 +36,8 @@ codex plugin add data-engineering@modootoday
 | Kind | Name | Covers |
 | --- | --- | --- |
 | skill | `sql-migration-equivalence-check` | converted, replaced, optimized or extended SQL compared with the original: statement map, row counts, two-way anti-join, null-safe column diff, seeded-difference test |
+| skill | `dbt-model-refactor-and-docs` | a large model split into layers with lineage kept and an equivalence check, column descriptions matched to the real select, drift lists (three evidence records) |
+| skill | `semi-structured-field-extraction` | logs and JSON turned into typed columns: unit normalization, a policy per bad type, row reconciliation, plots with units (three evidence records) |
 
 ## Failure mode
 
@@ -65,8 +67,11 @@ that passed every grader, without the plugin and with it:
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
 | `orders-bigquery-migration` | sql-migration-equivalence-check | 0.00 | 1.00 | 2 |
+| `split-fct-orders` | dbt-model-refactor-and-docs | 0.00 | 1.00 | 2 |
+| `log-json-extract` | semi-structured-field-extraction | 0.00 | 1.00 | 2 |
 
-The skill has one case; two more are needed for the three-case release gate.
+Each skill has one case; two more are needed per skill for the three-case release gate.
+The two newer rows were measured 20261005 with Sonnet as subject and judge.
 
 ## License
 

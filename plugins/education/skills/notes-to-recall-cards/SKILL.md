@@ -27,7 +27,7 @@ retrieval, and plan the reviews.
    Default to one card per note line. Give a line a second card only when it holds two facts that
    can each be recalled alone, and then name the other fact's line part in the source column. Two
    cards on the same line that ask about the same structure or process (what it is called and why it
-   matters) are near-duplicates: keep the one that tests the more useful fact. Never write a question
+   matters) are near-duplicates: keep the one that tests the more useful fact.
    When a line holds several facts, card the load-bearing one: the mechanism, function or consequence
    (what drives what, why a structure matters) beats its label or a count, and a mechanism card is
    a top-priority card. Rank the deck so mechanism and process cards sit above labels and counts. Never write a question
@@ -37,9 +37,16 @@ retrieval, and plan the reviews.
    the top few, and offer a second batch. Do not exceed the cap. Reach it by dropping the lowest-priority
    facts, never by merging two facts into one card or by adding a card that overlaps another.
    Before showing the deck, read references/card-self-check.md and run its three tests on every card:
-   no back word repeated in its front, one item per front and back, one card per note line.
-5. Check each card against the notes: add the source line number and do not add a fact the notes do
-   not contain. If the notes look wrong or incomplete, say so rather than silently correcting.
+   no back word repeated in its front, one item per front and back, one card per note line, and
+   every front and back word traceable to a quoted note line.
+5. Check each card against the notes: add the source line number and a short quote copied from that
+   line that supports the answer. Build the front and back from the quoted words: do not add a
+   qualifier, comparison, example, reason or gloss the line does not state (for example "than other
+   rivers", a cause, a term from outside the line). If the answer cannot be quoted from the
+   line, drop or rewrite the card. The same holds for the skipped list and the second-batch list:
+   restate the note's own words, never recombine them into a new claim (a line naming "a
+   long delta and a wide estuary" must not become "a wide delta"). If the notes look wrong or incomplete, say so
+   in a short flag that states no subject fact of its own, rather than silently correcting.
 6. Give a review schedule as dated or day-numbered sessions with expanding gaps (for example day 0,
    1, 3, 7, 12) that fit the window and finish at least a day before the exam. State how long each
    session takes (cards times seconds per card) and the rule for a missed card (return it to the next
@@ -48,5 +55,5 @@ retrieval, and plan the reviews.
 
 ## Output
 
-The deck as a table (number, front, back, source line, priority), the skipped list, the schedule, and
+The deck as a table (number, front, back, source line with its quoted words, priority), the skipped list, the schedule, and
 a one-line note on which cards to drop first if time runs short.

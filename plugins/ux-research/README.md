@@ -2,7 +2,7 @@
 
 ## What it does
 
-Index long interview transcripts by session, theme and timestamp, and pull quotes that are verbatim and audited against the source.
+Index interview transcripts by session, theme and timestamp with verbatim audited quotes, score SUS questionnaires with the scoring rule the user supplies, and draw an information-architecture sitemap from a feature list.
 
 ## Runtime support
 
@@ -35,6 +35,8 @@ codex plugin add ux-research@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
+| skill | `interview-sus-score` | System Usability Scale scores from raw sheets using the scoring rule you paste, with sheets validated, per-respondent arithmetic, mean, median and n scored; rests on 1 record |
+| skill | `ia-sitemap-diagram` | a Mermaid sitemap derived from user tasks within a depth limit, a task-to-node table and open questions; a first draft untested with users; rests on 1 record |
 | skill | `interview-evidence-index` | a session and theme index with timestamps, verbatim quotes only, and a quote audit that reports mismatches |
 
 ## Failure mode
@@ -65,6 +67,8 @@ that passed every grader, without the plugin and with it:
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
 | `verbatim-quotes-audit` | interview-evidence-index | 0.00 | 1.00 | 2 |
+| `sus-score-five-sheets` | interview-sus-score | 0.00 | 1.00 | 2 |
+| `ia-sitemap-six-features` | ia-sitemap-diagram | 0.00 | 1.00 | 2 |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

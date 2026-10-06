@@ -72,7 +72,7 @@ plugin and with it:
 | `bearing-capacity-clause-check` | standards-clause-locator | 0.00 | 1.00 | 2 | Sonnet / Sonnet |
 | `scope-spec-table` | datasheet-spec-table | 0.00 | 1.00 | 2 | Sonnet / Sonnet |
 | `rooftop-unit-pm-plan` | equipment-manual-to-pm-schedule | 0.50 | 1.00 | 2 | Sonnet / Sonnet |
-| `motorcycle-wont-start-log` | fault-diagnosis-evidence-log | 0.00 | 1.00 | 2 | Opus / Opus (with arm only; without 0.00 from Sonnet / Sonnet) |
+| `motorcycle-wont-start-log` | fault-diagnosis-evidence-log | 0.00 | 1.00 | 2 | Opus / Opus, both arms, 20261005 (after a SKILL.md fix: the question numbering is the ranking, so a later question is never called the most useful) |
 
 The plugin reads only what you supply, quotes no standard text, limit or rating of its own and gives
 no compliance, diagnosis or repair decision; a qualified engineer and the maker's manual govern.

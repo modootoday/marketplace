@@ -36,6 +36,7 @@ codex plugin add home-hobbies@modootoday
 | Kind | Name | Covers |
 | --- | --- | --- |
 | skill | `game-state-rules-grounded-play` | chess, board games and family role-playing sessions played with an explicit state block rebuilt from the move list, every move checked against the rules with the rule named, rules answers quoted from the pasted rulebook and edition, and a resume note for sessions |
+| skill | `product-label-claim-and-trial-check` | a cosmetic or household product question answered from the pasted label rather than the name, observation kept apart from inference, a source to check and a small one-change trial, no efficacy or safety claim |
 | skill | `craft-pattern-count-and-assembly-check` | crochet and knit patterns with every round recomputed from its repeats and a running total, a parts table with a join point for each part, ranked causes for a photo diagnosis and reversible steps for alterations |
 
 ## Failure mode
@@ -75,6 +76,8 @@ The Sonnet-judged rows are below 1.00 for both cases: the skills fire every time
 one-word judge failed most runs. With an Opus subject and judge both cases reach 1.00 (the
 giraffe case only after the count script and format reference were added; 2 runs, so a
 single sample of the model's variance).
+
+| `serum-under-sunscreen-label` | product-label-claim-and-trial-check | 0.00 | 1.00 | 2, Opus subject and judge, 20261005 (both arms in one run, skill fired 2 of 2; earlier Sonnet round stayed at 0.50); rests on two weak records |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

@@ -26,7 +26,10 @@ not declare a cause. A technician decides the diagnosis and the repair.
    or damage, and whether the fault tracks a recent change such as weather or service). Number them in
    that order, so a check you call the first thing to do is question 1, and include whether the fault
    changes when the machine is dry, warm or rested when the symptom began with weather or use.
-   Say beside each what the answer would point toward or rule out.
+   Say beside each what the answer would point toward or rule out. The numbering is the ranking: the
+   question you consider the most useful or most decisive is number 1, and no
+   question is called more useful than one numbered above it. Do not label any question "the most
+   useful" unless it is number 1.
 3. Start the evidence log as a table with columns: step, symptom or test, reading with unit, result,
    conclusion limited to what the result shows, rules out, and still open. A reading without a unit is
    recorded as "unit not given". Record a test only when the user reports having done it; planned

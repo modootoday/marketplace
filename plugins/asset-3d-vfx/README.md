@@ -35,6 +35,8 @@ codex plugin add asset-3d-vfx@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
+| skill | `generated-3d-asset-qc` | a generated mesh, retexture or VFX element checked against a budget: triangles, non-manifold edges, normals, UV overlap, flicker frame ranges, with a pass or fail row per check and the acceptance left to the artist |
+| skill | `blender-procedural-and-rig-asset-verification` | a procedural or rigged asset tested at parameter minimum, default and maximum, junction connectivity and walk-cycle foot contact, each fix tied to a retest |
 | skill | `blender-scene-build-and-reference-check` | a spec written before the build, then module dimensions, connections, state collisions, a reference comparison and a web budget checked with measured values and a not-measured list |
 
 ## Failure mode
@@ -65,6 +67,10 @@ that passed every grader, without the plugin and with it:
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
 | `corridor-kit-web-budget` | blender-scene-build-and-reference-check | 0.00 | 1.00 | 2 |
+| `generated-crate-budget-and-retexture` | generated-3d-asset-qc | 0.00 | 1.00 | 2 |
+| `road-kit-parameter-and-walk-cycle` | blender-procedural-and-rig-asset-verification | 0.00 | 1.00 | 2 |
+
+The two newest skills rest on thin evidence: `generated-3d-asset-qc` on three single reports and `blender-procedural-and-rig-asset-verification` on three records. The first two rows were measured 20261005 with Sonnet as subject and judge. The road kit row was measured 20261005 with Opus as subject and judge, both arms: with Sonnet the skill scored 1.00 in a with-only run but 0.75 in a both-arm run, so it gained `references/worked-example.md` and the Opus run is the recorded score.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

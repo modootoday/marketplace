@@ -110,9 +110,9 @@ without the plugin to 1.0 with it, and the skill fired in every run.
 extension of `user-feedback-synthesis` (`survey-themes-to-actions`) were added 20261005 and measured the same
 day with Sonnet as subject and judge. Without the plugin every case scored 0.0. With it, after
 SKILL.md fixes: `stories-unmeasurable-export` 1.0 and `flow-missing-branches` 1.0 (2 runs per arm);
-`plan-change-order-buffer` 1.0 in 4 of 4 runs (one-arm); `survey-themes-to-actions` between 0.67 and 1.0 and
-passing in 3 of 4 runs in the last check, with the judge failing the owners-and-dates item without a stated
-reason in some runs. The skill fired in every run.
+`plan-change-order-buffer` 1.0 in 4 of 4 runs (one-arm); `survey-themes-to-actions` was
+re-recorded 20261005 with Opus as subject and judge on both arms, 2 runs per arm: 0.00 without, 1.00 with
+(replacing the earlier Sonnet rows). The skill fired in every run.
 
 A case that already passes without the plugin stays in the suite to catch a
 regression, not as evidence that the skill helps.

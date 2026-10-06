@@ -1,7 +1,7 @@
 {
   "name": "household-admin",
   "version": "0.1.0",
-  "description": "Household paperwork arithmetic on the numbers a person supplies: pay-period schedules where every dollar is placed once, and receipts split so the parts sum to the total.",
+  "description": "Household paperwork and planning on the facts a person supplies: pay-period schedules where every dollar is placed once, receipts split to the total, a small-step week for chores, a ledger of home service events, and total-cost comparisons of personal offers.",
   "author": {
     "name": "modootoday"
   },

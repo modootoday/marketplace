@@ -29,6 +29,10 @@ Source of truth is the approved list the user pasted.
    the advisor", never as confirmed.
 5. Give the next step: the exact questions to ask each shortlisted property.
 
+Open the reply with the checks and the matrix, and say that every cell uses the list's own
+wording or the client's brief; the properties' questions in the last step may ask about things
+the list lacks, as questions only.
+
 ## Never
 
 - Add properties, amenities, distances or prices that are not in the supplied list.

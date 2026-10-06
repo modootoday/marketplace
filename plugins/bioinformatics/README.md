@@ -35,6 +35,7 @@ codex plugin add bioinformatics@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
+| skill | `bio-analysis-script-pitfalls` | a differential-expression, GTF parser or figure script reviewed against its input contract and the known traps (inclusive coordinates, id version suffix, quoted attributes, transcripts per gene), with drop counts and a hand-worked fixture; reviewed, not run (rests on three first-person reports) |
 | skill | `analysis-pipeline-refactor-parity` | a migration plan and acceptance check for replacing an analysis step with a package, porting a pipeline to a workflow engine or accelerating it: baseline, step map, tolerances, explained and unexplained differences, no claim before the comparison runs |
 
 ## Failure mode
@@ -64,8 +65,9 @@ Scores are the share of runs that passed every grader, without the plugin and wi
 | Case | Skill | Without | With | Runs per arm | Subject and judge |
 | --- | --- | --- | --- | --- | --- |
 | `deseq2-nextflow-migration` | analysis-pipeline-refactor-parity | 0.00 | 1.00 | 2 | Sonnet, Sonnet (20261005) |
+| `gtf-gene-length-parser` | bio-analysis-script-pitfalls | 0.00 | 1.00 | 2 | Sonnet, Sonnet (20261005) |
 
-The new skill has one case; two more are needed for the three-case release gate.
+Each skill has one case; two more are needed for the three-case release gate.
 
 ## License
 

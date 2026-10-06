@@ -18,13 +18,25 @@ Notes:
 3. Same-line test: two cards from one note line are allowed only when each fact can be recalled without the
    other. Two cards about the same structure (its name and its purpose) are near-duplicates: keep one.
 
+4. Quote test: the source column holds the line number and a fragment copied from that line, and the back is
+   that fragment or a shortening of it. A back or front that adds a word the line does not hold (a reason, a
+   comparison such as "than other muscles", a synonym that changes meaning, a fact from general knowledge)
+   fails: rewrite it with the line's own words or drop the card. Even a true added fact fails.
+
 ## Worked result
 
-| # | Front | Back | Line |
+| # | Front | Back | Line and quote |
 | --- | --- | --- | --- |
-| 1 | Which chamber receives oxygen-poor blood from the body? | Right atrium | 1 |
-| 2 | Which valve lies between the left atrium and left ventricle? | Mitral valve | 2 |
-| 3 | Which structure sets the heart rate? | Sinoatrial node | 3 |
+| 1 | Which chamber receives oxygen-poor blood from the body? | Right atrium | 1 "right atrium receives oxygen-poor blood from the body" |
+| 2 | Which valve lies between the left atrium and left ventricle? | Mitral valve | 2 "the mitral valve" |
+| 3 | Which structure sets the heart rate? | Sinoatrial node | 3 "sinoatrial node sets the heart rate" |
+
+Run the quote test on the second-batch list and the skipped list too: "Line 1: the right ventricle sends blood
+to the lungs" is a restatement; "the circular atria" or "a one-way valve in every chamber" is a recombination
+and fails. A flag about the notes ("line 3 does not say which node") must not state a fact about the subject.
+
+Failing example: a front "Why is the heart called a double pump?" with the back "It has two circuits" adds a
+fact (and a label) that no line states, however true it is.
 
 Pick the load-bearing fact of each multi-fact line: the function or mechanism, not the label. For line 3 a
 better card is "What sets the heart rate?" than "Where is the sinoatrial node?". Rank cards that test a

@@ -1,0 +1,9 @@
+{
+  "name": "genealogy-research",
+  "version": "0.1.0",
+  "description": "Family-history research that marks what it does not know: surname mention indexes with page context, gaps and same-name risk, uncertain readings of damaged handwriting, tree-export consistency checks and evidence-separated ancestor sheets.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

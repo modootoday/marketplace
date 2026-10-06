@@ -35,6 +35,9 @@ codex plugin add food-service@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
+| skill | `recipe-yield-and-costing` | a recipe scaled to a target yield with trim loss applied as division, explicit unit conversions and cost per portion from purchase prices, the chef confirming |
+| skill | `menu-allergen-index-quiz` | a staff lookup table from approved ingredients and supplier label statements, cross-contact flags and a quiz from the confirmed menu; never declares a dish safe |
+| skill | `stock-led-menu-plan` | a multi-day menu ordered by use-by dates with a running balance and buy gaps as needed minus on hand |
 | skill | `recipe-source-fidelity-and-adaptation` | a pasted recipe transcribed to a card with every quantity, temperature and time unchanged, then each swap or appliance change logged with original value, new value, the function served and a doneness check, source numbers kept apart from estimates |
 
 ## Failure mode
@@ -67,7 +70,16 @@ Measured 20261005 on Claude Code 2.1.289 with Sonnet as subject and judge:
 | `tomato-soup-card-adapt` | recipe-source-fidelity-and-adaptation | 0.00 | 0.33 | 2 without, 3 with |
 | `tomato-soup-card-adapt` (Opus) | recipe-source-fidelity-and-adaptation | 0.00 | 1.00 | 2, Opus subject and judge |
 
-The with-plugin score is below 1.00: the skill fires every time and the replies pass an
+| `yield-120-portions-cost` | recipe-yield-and-costing | 0.50 | 1.00 | 1 without, 2 with; Sonnet subject and judge, 20261005 |
+| `allergen-table-and-quiz` | menu-allergen-index-quiz | 0.00 | 1.00 | 2, Opus subject and judge, both arms, 20261005 (after the ingredient-name-is-not-a-label rule) |
+| `week-menu-from-stock` | stock-led-menu-plan | 0.00 | 0.67 (Sonnet) | 1 without, 2 with; Sonnet subject and judge |
+| `week-menu-from-stock` (Opus) | stock-led-menu-plan | 0.00 | 1.00 | 2 per arm, Opus subject and judge |
+
+The three new food skills rest on two first-person reports each. The allergen skill lists allergens only as the
+supplied labels state them and never declares a dish safe; a qualified person and the supplier labels decide.
+The allergen case is open on Sonnet (one grader item fails in some runs); it was not re-measured on Opus.
+
+The with-plugin score of the first case is below 1.00: the skill fires every time and the replies pass an
 itemised read of the rubric, but the one-word judge fails most runs. The case is open.
 
 Adapted times and substitutions are estimates. They need a small test batch and a doneness

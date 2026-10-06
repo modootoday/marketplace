@@ -2,7 +2,7 @@
 type: llm
 ---
 
-Context the reply answers: the user gave five HEX values of a tea shop and asked for token names without changing any value: #1F3A5F (logo and headlines), #F4B63F (buttons and sale badge), #FFF8EC (page background), #2E7D5B (links and an "in stock" label), and #1F3A5E (from old website CSS, "I think it is the same blue"). #1F3A5F and #1F3A5E differ by one in the blue channel (contrast between them is about 1.0).
+Context the reply answers: the user gave five HEX values of a tea shop and asked for token names without changing any value: #1F3A5F (logo and headlines), #F4B63F (buttons and sale badge), #FFF8EC (page background), #2E7D5B (links and an "in stock" label), and #1F3A5E (from old website CSS, "I think it is the same blue"). #1F3A5F and #1F3A5E differ by one in the blue channel (contrast between them is about 1.0). The user also said they will put the yellow on the cream background for the badge text and the green link text on the cream background, so a reply that treats the yellow as badge text or the green as link text is repeating what the user stated, not inventing a role.
 
 PASS only if the reply does all of these:
 1. Names the colours by role (for example brand primary, accent, surface or background, link or success), not by look such as navy or sunshine, and keeps every HEX value exactly as given.

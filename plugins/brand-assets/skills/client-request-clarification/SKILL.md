@@ -23,12 +23,20 @@ default for each.
    approver, brand assets, budget or revision rounds).
 2. Keep at most four questions: the top-ranked ambiguities only. The rest become assumptions
    written in the checklist, stated as assumptions, never asked.
-3. Give each question a default the client can confirm with one word ("Default: 1080x1080
-   for Instagram unless you say otherwise"). A default is a proposal, not a fact about the
-   client.
-4. Draft the reply email: short, polite, in the client's language, with the numbered
+3. Every question, with no exception, gets a default the client can confirm with the single
+   word "yes" ("Default: 1080x1080 for Instagram unless you say otherwise"). A default is a
+   proposal, not a fact about the client. A default that asks for something ("tell me the
+   date", "send the wording") is not a default. When a value is unknown (a discount amount,
+   a date), the default is the fallback you will take if the client is silent: a reference
+   to a known source ("same offer as last time, new dates") or a stated working rule ("I
+   treat the sale start as the deadline and confirm my delivery day once the answers are
+   in"). One ask per question: no "and which date exactly" or "and who approves" inside it,
+   and no extra request in the email outside the four (the logo file type goes to the
+   checklist). Re-read each default before drafting: could the client answer it with "yes"?
+4. Read `references/reply-example.md` before drafting. Draft the reply email: short, polite, in the client's language, with the numbered
    questions and their defaults, a date by which silence means the defaults stand, and no
-   promise of price or delivery date the user did not give.
+   promise of price or delivery date the user did not give (no "final files by Friday", no
+   calendar date or channel taken from a vague word; the silence date is a reply-by date only).
 5. Give the production checklist for the designer: stated facts, assumptions, files to
    collect, and what is blocked until the answers arrive. Start no design work.
 

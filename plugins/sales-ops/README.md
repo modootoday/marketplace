@@ -36,6 +36,7 @@ codex plugin add sales-ops@modootoday
 | Kind | Name | Covers |
 | --- | --- | --- |
 | skill | `email-history-commitment-mining` | sent-email history mined for promised follow-ups, each marked done, open or unclear with the completing message or the quoted line, internal and automated senders excluded |
+| skill | `competitive-research-brief` | pasted public-page excerpts turned into a same-rows comparison, every claim tagged with its source and date, stated facts apart from inference, gaps listed; rests on two weak records |
 
 ## Failure mode
 
@@ -65,6 +66,9 @@ that passed every grader, without the plugin and with it:
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
 | `quote-promise-open-loops` | email-history-commitment-mining | 0.00 | 1.00 | 2 |
+| `two-competitor-pages` | competitive-research-brief | 0.00 | 1.00 | 2 |
+
+The last row was measured 20261005 on Claude Code 2.1.289 with Sonnet as subject and judge.
 
 The plugin reads only the emails you supply and sends nothing.
 

@@ -1,7 +1,7 @@
 {
   "name": "ux-research",
   "version": "0.1.0",
-  "description": "Index long interview transcripts by session, theme and timestamp, and pull quotes that are verbatim and audited against the source.",
+  "description": "Index interview transcripts by session, theme and timestamp with verbatim audited quotes, score SUS questionnaires with the scoring rule the user supplies, and draw an information-architecture sitemap from a feature list.",
   "author": {
     "name": "modootoday"
   },

@@ -48,6 +48,8 @@ codex plugin add data-analytics@modootoday
 | skill | `chart-geometry-and-claim-recompute` | charts checked by recomputing bar totals, axis origin, ratios and correlations from the data, with label overflow tested across widths; nothing read off the picture alone |
 | skill | `macro-logic-recovery-refactor` | old macros tabulated per routine, differences kept as parameters, shared state passed in, before and after outputs compared on sample rows |
 | skill | `bi-measure-context-debug` | BI measures debugged by naming model relationships and filter context, hand-computed values at row, subtotal and grand total, per-group scales from the model |
+| skill | `spreadsheet-formula-environment-check` | formulas written for a named spreadsheet engine, version and locale: missing functions listed, locale separators, blank and text-number sample rows, highlight totals rebuilt from the formatting rule, a fallback |
+| skill | `figure-source-key-join-and-total-check` | Sankey, map and heatmap figures built from parsed exports: totals checked before drawing, unmatched and renamed keys listed, mentions kept apart from visits, rerunnable code |
 
 ## Failure mode
 
@@ -90,6 +92,10 @@ passed every grader, without the plugin and with it:
 | `regional-charts-recompute`     | chart-geometry-and-claim-recompute | 0.00 | 1.00 | 2       |
 | `two-macros-shared-function`    | macro-logic-recovery-refactor | 0.00 | 1.00 | 2       |
 | `dept-share-slicer-total`       | bi-measure-context-debug | 0.50 | 1.00 | 2       |
+| `calc-highlight-sum-formula`    | spreadsheet-formula-environment-check | 0.00 | 1.00 | 2 |
+| `tag-export-sankey-country-map` | figure-source-key-join-and-total-check | 0.25 | 1.00 | 2 |
+
+The last two rows were measured 20261005 with Sonnet as subject and judge, both arms, after both skills were edited; each skill rests on two or four weak-to-moderate records.
 
 The retrieval case score was measured with Opus 5.5 as the subject model; the judge was Sonnet.
 It was measured 20261005 on Claude Code 2.1.289. Behaviour passed 2/2 with the skill and 0/2 without;

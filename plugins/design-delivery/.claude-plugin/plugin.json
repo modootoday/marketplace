@@ -1,0 +1,9 @@
+{
+  "name": "design-delivery",
+  "version": "0.1.0",
+  "description": "Design handoff checks: a wireframe mapped component by component onto the design system, missing components flagged and the design tokens kept, before any prototype is built.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

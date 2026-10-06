@@ -85,7 +85,7 @@ The four newer skills, measured 20261005 with Sonnet as subject and judge, one r
 | --- | --- | --- | --- | --- |
 | `fixture-and-mock-speedup` | test-fixture-and-mock-build | 0.00 | 1.00 | 2 |
 | `perf-single-run-claim` | perf-experiment-loop | 0.00 (0.50 partial) | 1.00 | 2 |
-| `merge-fee-and-free-items` | merge-conflict-dual-intent-check | 0.00 | 0.00 (0.50 partial; judge split on one item) | 2 |
+| `merge-fee-and-free-items` | merge-conflict-dual-intent-check | 0.50 | 1.00 | 2, Opus subject and judge, both arms, 20261005 |
 | `starter-three-year-old` | starter-template-freshness-smoke | 0.00 | 1.00 | 2 |
 
 Each skill has one case; two more per skill are needed for the three-case release gate.

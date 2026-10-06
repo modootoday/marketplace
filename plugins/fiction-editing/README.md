@@ -35,6 +35,7 @@ codex plugin add fiction-editing@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
+| skill | `series-treatment-causal-review` | a series bible compressed to a length limit with each episode's cause, choice and consequence kept, missing motivation marked as questions, and a cut list; rests on one moderate record |
 | skill | `manuscript-continuity-audit` | new chapters checked against a canon ledger and outline, with repeated information, unmotivated actions and tense or POV slips reported and the author's prose left alone |
 
 ## Failure mode
@@ -65,6 +66,7 @@ that passed every grader, without the plugin and with it:
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
 | `chapter-canon-drift` | manuscript-continuity-audit | 0.00 | 1.00 | 2 |
+| `bible-two-page-motivation` | series-treatment-causal-review | 0.00 | 0.75 (open: one with-run fails the second grader, 3 of 3 FAIL votes) | 2, Opus subject and judge, 20261005 (both arms in one run, skill fired 2 of 2; earlier Sonnet rounds stayed below 1.00) |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

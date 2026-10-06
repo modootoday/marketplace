@@ -1,0 +1,9 @@
+{
+  "name": "industrial-config",
+  "version": "0.1.0",
+  "description": "Device configuration files drafted from a pasted register or tag table, with address base, widths and duplicates checked, every missing value listed and a bench test required before equipment.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

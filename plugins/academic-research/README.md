@@ -37,6 +37,8 @@ codex plugin add academic-research@modootoday
 | --- | --- | --- |
 | skill | `research-source-verification` | AI-suggested citations matched to a real index, instruments extracted only as quoted text, papers screened against the research question |
 | skill | `research-coverage-chronology-audit` | research answers audited for missing items and wrong dates: dated sourced list, proposed versus enacted, coverage gaps |
+| skill | `paper-method-reimplementation-check` | a port of a published method checked before use: equation checklist, authors' code and licence recorded, one published number reproduced first, deviations and ambiguous text listed |
+| skill | `reference-renumber-sync` | numbered references reordered or deleted with an old-to-new mapping, groups and ranges rewritten, deleted-reference citations and uncited entries listed; rests on one user report |
 
 ## Failure mode
 
@@ -67,6 +69,8 @@ that passed every grader, without the plugin and with it:
 | --- | --- | --- | --- | --- |
 | `unverified-citations` | research-source-verification | 0.00 | 1.00 | 2 |
 | `policy-timeline-audit` | research-coverage-chronology-audit | 0.00 | 1.00 | 2 |
+| `method-port-matlab` | paper-method-reimplementation-check | 0.00 | 1.00 | 2, Sonnet subject and judge |
+| `renumber-delete-and-move` | reference-renumber-sync | 0.00 | 1.00 | 2, Sonnet subject and judge |
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.

@@ -38,6 +38,8 @@ codex plugin add presentation@modootoday
 | skill | `deck-storyline` | a deck storyline from the governing answer down, one full-sentence claim per slide, gaps marked |
 | skill | `deck-qa-review` | a deck checked for numbers that disagree, charts that do not match their data, wrong weekdays and unsourced claims |
 | skill | `pptx-template-build` | pptx files built from the template's layouts and placeholders, with native charts and overflow checked by rendering |
+| skill | `stakeholder-question-rehearsal` | hard questions for a plan by what they attack, evidence labelled data, assumption or missing, logic gaps and short answers (one evidence record) |
+| skill | `deck-edit-preservation-and-source-sync` | a per-slide preservation list before an edit, a diff after it, hand fixes written back to the content source, and a warning before regeneration (two evidence records) |
 
 ## Failure mode
 
@@ -71,6 +73,14 @@ passed every grader, without the plugin and with it:
 | `undecided-expansion-deck` | deck-storyline | 0.50 | 1.00 | 2 |
 | `generate-from-template` | pptx-template-build | 0.00 | 1.00 | 2 |
 | `inconsistent-numbers` | deck-qa-review | 1.00 | 1.00 | 2 |
+| `rehearse-expansion-plan` | stakeholder-question-rehearsal (one record) | 0.00 | 1.00 | 2 |
+| `edit-slide-4-preservation` | deck-edit-preservation-and-source-sync (two records) | 0.25 | 1.00 | 2 |
+
+The last two rows were measured 20261005 with Sonnet as subject and judge, both arms, after each skill
+gained a `references/worked-example.md` whose scenario differs from the eval prompt. Before that, Sonnet
+stayed at 0.50 after two fix rounds (rehearsal answers asserted claims the plan does not make; the edit
+case sometimes omitted the diff plan). One rehearsal run scored 0.75 on a single judge vote before the
+recorded 1.00 run.
 
 deck-qa-review shows no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 

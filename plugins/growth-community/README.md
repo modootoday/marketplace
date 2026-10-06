@@ -44,6 +44,10 @@ codex plugin add growth-community@modootoday
 | skill | `static-site-crawl-files` | robots.txt, a sitemap with canonical URLs and honest lastmod, IndexNow key and llms.txt per origin, reciprocal hreflang for language twins, noindex headers for app documents |
 | skill | `catalog-listing-with-options` | product registration driven by the company's option table: the full option matrix, prices and stock from stated rules, and every combination without a rule flagged, never priced by guess |
 | skill | `hosted-site-prelaunch-smoke` | a site tested on its real host before launch: routing, exposed config, open write paths, consent before measurement and API data gaps, triaged into blockers and fixes |
+| skill | `seo-audit-to-fix-plan` | an audit export grouped by root cause with affected counts, internal links placed only from existing pages and sentences, a staged rollout for large page sets and a check per fix |
+| skill | `search-query-regex-filter` | search-query regex filters written for the tool's dialect (RE2 for Search Console) and tested on a 10-query table with false-positive risks; rests on one record |
+| skill | `site-content-grounding-check` | a generated landing page, portfolio or explorer checked against its source: claim ledger, invented claims struck, totals recomputed, every link clicked; rests on a few records |
+| skill | `nontechnical-editor-content-model` | an editing path a non-developer can use: content as data, server-side login, the real edit tested for each frequent change and each permission level, and an owner how-to |
 
 ## Failure mode
 
@@ -82,6 +86,12 @@ passed every grader, without the plugin and with it:
 | `tumbler-option-sheet` | catalog-listing-with-options | 0.00 | 1.00 | 2 |
 | `static-site-crawl-files` | static-site-crawl-files | 0.00 | 1.00 | 2 |
 | `deployed-host-triage` | hosted-site-prelaunch-smoke | 0.00 | 1.00 | 2 |
+| `audit-fix-plan` | seo-audit-to-fix-plan | 0.00 | 1.00 | 2 |
+| `brand-query-regex` | search-query-regex-filter | 0.50 | 1.00 | 2 |
+| `generated-page-grounding` | site-content-grounding-check | 0.00 | 1.00 | 2 |
+| `restaurant-menu-editing` | nontechnical-editor-content-model | 0.00 | 1.00 (3 with-arm runs after a SKILL.md fix; 0.75 over 2 runs before it) | 2 without, 3 with |
+
+The four rows above ran with Sonnet as subject and judge, 20261005.
 
 store-listing-optimization and search-engine-submission show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. search-engine-submission fired in both runs with the plugin.
 

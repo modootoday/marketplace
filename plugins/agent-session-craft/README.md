@@ -42,6 +42,7 @@ codex plugin add agent-session-craft@modootoday
 | skill | `followup-wave-loop` | remaining work as a numbered table with recommended order and forgotten-if-deferred marks, one chosen wave at a time, gates respected, deploy targets named, standing instructions kept as session rules |
 | skill | `subagent-fanout-brief` | one BRIEF file, chunks of 16 to 25 items with disjoint ownership, a hard-rules block, integration notes, one integration agent, only the coordinator commits |
 | skill | `living-doc-sync` | one document per workstream updated in place: checklist, dated measurements, open decisions, restructured rather than appended, link returned each time |
+| skill | `repeated-failure-debug-escalation` | attempts logged by approach, a stop at three failures of one approach, a reproduction and hypotheses pass before any new fix, only verified findings handed back; rests on one weak record |
 
 ## Failure mode
 
@@ -72,6 +73,7 @@ The plugin ships an eval suite (`claude plugin eval plugins/agent-session-craft 
 | `next-wave-table` | followup-wave-loop | 0.00 | 0.50 | 2 |
 | `fanout-forty-files` | subagent-fanout-brief | 0.00 | 1.00 | 2 |
 | `workstream-doc-update` | living-doc-sync | 0.00 | 1.00 | 2 |
+| `same-fix-three-times` | repeated-failure-debug-escalation | 0.00 | 1.00 | 2 (Sonnet subject and judge, 20261005; skill fired 2 of 2; rests on one weak record) |
 
 Measured 20261005 on Claude Code 2.1.288 with Sonnet as judge. The skill fired in every run.
 session-status-briefing shows no lift: the baseline model already passed its case. A case that already passes without the plugin stays in the suite to catch

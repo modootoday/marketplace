@@ -96,6 +96,20 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `gis` | Raster NoData and scaling, geometry repair and merges, label and view expressions, slope areas from contours, tool substitution; CRS and units stated | no |
 | `engineering` | Work instructions from field notes, verbatim clause location with edition, sourced datasheet spec tables, manual-based PM schedules, fault evidence logs that name no root cause (all five rest on two to four weak records) | no |
 | `hr-ops` | Aggregate workforce metrics with group minimums, sourcing strings without protected-trait terms, shift hours by the user's rule, policy drafts checked against the user's checklist (each rests on one to three single-person reports) | no |
+| `photography` | Check a photo cull or batch grade from the scores and logs you supply: criteria per subject, rank and flag only, preview versus export | no |
+| `it-ops` | Admin script review without running it (invented commands, destructive steps, per-item error handling, dry run) and safe patch-back from an anonymized copy; one-to-two-record evidence | no |
+| `genealogy-research` | Surname mention index across volumes with gaps and same-name risk, uncertain handwriting readings, tree-export date and relationship checks, evidence-separated ancestor sheets (both rest on two moderate records) | no |
+| `design-delivery` | A wireframe mapped to design-system components with missing ones flagged and tokens kept (one weak record) | no |
+| `finance-ops` | Statement rows tied out to balances, documents named from evidence and cash flow bridged by driver; supplied figures only, no advice (two skills, each on two reports) | no |
+| `healthcare-admin` | Clinician notes placed into a required template with nothing added: empty fields marked NOT DOCUMENTED, model wording listed (rests on two weak records) | no |
+| `construction` | Inspection findings and warranty narratives split into one item per finding, routed by trade, unclear trades flagged, counts reconciled (rests on two first-person reports) | no |
+| `commerce` | Second-hand items identified from photos as ranked candidates with photos to request; authenticity and value not claimed (rests on one first-person report) | no |
+| `fitness` | Workout logs tabulated, equipment substitutes by movement pattern, load changes left to a trainer (rests on two first-person reports) | no |
+| `publishing-production` | Typeset text diffed against the approved manuscript by page and edition; print and EPUB checked against separate rules; automated accessibility results paired with manual items left unverified (rests on three records) | no |
+| `pr-comms` | Media targets and pitch angles checked against pasted pages, with unverified journalists and passed deadlines marked (single-source evidence: three records) | no |
+| `land-growing` | Garden plans checked against measured site facts: layout, frost-bounded calendar, soil, light and water test units (five single-record reports) | no |
+| `industrial-config` | Device config files drafted from a pasted register table with address base, widths, duplicates and a bench-test requirement (two records) | no |
+| `everyday-readings` | Numerology, chart and spread inputs computed only from the rules you name, every step shown, reflection only with no predictions | no |
 
 ## Trust
 

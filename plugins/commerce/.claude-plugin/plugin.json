@@ -1,0 +1,9 @@
+{
+  "name": "commerce",
+  "version": "0.1.0",
+  "description": "Identification of second-hand items from photos and markings: ranked candidates, photos to request, and what a photo cannot confirm, with no price or authenticity claims.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

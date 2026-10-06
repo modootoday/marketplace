@@ -83,15 +83,14 @@ that passed every grader, without the plugin and with it:
 | `integration-by-parts-first-error` | worked-solution-step-audit | 0.00 | 1.00 | 2 |
 | `brief-coverage-urban-heat` | requirements-coverage-check | 0.00 | 1.00 | 2 |
 | `calculus-key-double-correct` | assessment-rubric-and-item-check | 0.00 | 1.00 | 2 |
-| `biology-notes-recall-cards` | notes-to-recall-cards | 0.00 | 0.00 (open, grader score 0.67; Opus subject and judge also 0.00, Sonnet 0.50 in one of two runs) | 2 |
+| `biology-notes-recall-cards` | notes-to-recall-cards | 0.00 | 1.00 | 2, Opus subject and judge, both arms, 20261005 |
 | `mean-median-45-minute-plan` | lesson-plan-constraints | 0.00 | 1.00 | 2 |
 | `valve-quiz-import-diff` | authoring-import-fidelity-check | 0.00 | 1.00 | 2 |
 | `wordsearch-and-melody-check` | rule-checked-puzzle-and-score-generation | 0.00 | 1.00 | 2 |
 | `homeschool-20-week-calendar` | study-calendar-allocation | 0.00 | 1.00 | 2 |
 | `lecture-90-minute-fit` | lecture-script-timing-fit | 0.00 | 1.00 | 2 |
 
-The eight skills added in 0.3.0 have one case each; two more per skill are needed for the three-case release gate. Rows below are measured 20261005 with Sonnet as subject and judge; the case for `notes-to-recall-cards` still fails the `cards` grader with the skill and is open. The calendar and lecture rows are with-arm reruns after the repair (Sonnet subject and judge, 2 runs); the without-arm 0.00 is from the earlier both-arm run on the same graders. The notes-to-recall-cards row was last measured with the with arm only.
-
+The eight skills added in 0.3.0 have one case each; two more per skill are needed for the three-case release gate. Rows below are measured 20261005 with Sonnet as subject and judge; the `notes-to-recall-cards` row is Opus as subject and judge on both arms. The calendar and lecture rows are with-arm reruns after the repair (Sonnet subject and judge, 2 runs); the without-arm 0.00 is from the earlier both-arm run on the same graders.
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
 

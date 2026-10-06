@@ -43,6 +43,7 @@ codex plugin add image-assets@modootoday
 | skill | `generated-asset-delivery-spec-check` | a generated logo, print card, texture, map or transparent asset accepted or rejected by measured palette, alpha, size, seam and count checks, with one corrective line per failure and a three-round cap; it checks assets and does not generate them |
 | skill | `editable-layered-design-delivery-check` | a layered, editable design delivery checked by opening the file, listing layers and confirming the download exists, plus per-artboard linked, ratio, centre and margin checks for bulk scripts run on a copy; it verifies and does not generate designs |
 | skill | `subject-cutout-alpha-matte-check` | a background-removed subject checked by measured alpha, baked checkerboards, graded mattes for glass and hair, and composites over light, dark and target backgrounds; it checks cutouts and does not make them |
+| skill | `sprite-sheet-rig-and-frame-audit` | a generated 2D sprite sheet, direction atlas or equipment overlay checked against its frame manifest and rig: missing or duplicated directions, held-prop handedness, mirror-pair warnings and a per-frame fail table; it audits and does not draw frames |
 | skill | `comfyui-workflow-live-schema-check` | a ComfyUI graph written and checked against the installed nodes, model files and link types, missing parts reported instead of assumed, a condition-to-output table for batches and a failure log mapped to one cause with a before and after link diff; it checks and plans and does not run the graph or generate images |
 
 ## Failure mode
@@ -83,6 +84,9 @@ passed every grader, without the plugin and with it:
 | `banner-psd-120-artboards` | editable-layered-design-delivery-check | 0.00 | 1.00 | 2 |
 | `glass-bottle-binary-matte` | subject-cutout-alpha-matte-check | 0.00 | 1.00 | 2 |
 | `comfyui-missing-nodes-vae-log` | comfyui-workflow-live-schema-check | 0.00 | 1.00 | 2 |
+| `eight-direction-sword-atlas` | sprite-sheet-rig-and-frame-audit | 0.25 | 1.00 | 2 |
+
+`eight-direction-sword-atlas` was measured on 20261005 with Sonnet as subject and judge, both arms, after its `references/direction-table-example.md` was rewritten to a scenario that differs from the eval prompt; earlier Sonnet with-arm runs varied between 0.75 and 1.00. The skill rests on four first-person reports from one game-asset sub-domain.
 
 image-postprocess, svg-icon-illustration show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks.
 

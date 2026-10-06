@@ -58,6 +58,9 @@ When the request is only to name some HEX values (no full token file), do this a
    the value, and add a second name only when the user asks for a vocabulary name. Roles
    come from how the user says each colour is used; with no usage given, say the role is a
    guess.
+   Before writing the table read `references/naming-example.md`: the table carries a Basis column
+   that marks each role word the user did not use themselves as my label or a guess, and a value
+   with no stated use gets a placeholder name, not an invented role.
 3. Collision check: two values in the list that differ by 1 to 3 per channel are one colour
    in two spellings or an error; list the pair, give the contrast ratio (about 1.0) and ask
    which is intended. Also check that no two names are the same after lower-casing.

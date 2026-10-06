@@ -1,0 +1,9 @@
+{
+  "name": "fitness",
+  "version": "0.1.0",
+  "description": "Workout log tables and equipment substitutions by movement pattern, with every load change left for a trainer to approve.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}
