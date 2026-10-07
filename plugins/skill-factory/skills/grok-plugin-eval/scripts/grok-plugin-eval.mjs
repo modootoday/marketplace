@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { execFileSync, spawn, spawnSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
+import { spawnOwned, terminateOwned } from "../../../shared/owned-process.mjs";
 import { randomUUID } from "node:crypto";
 import { chmodSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, symlinkSync, writeFileSync,  } from "node:fs";
 import { homedir, tmpdir } from "node:os";
@@ -16,6 +17,7 @@ const { describeProxyStats, startRuntimeProxy } = await import(
 
 import { stripPluginMcp } from '../../../shared/plugin-copy.mjs';
 import { help, parseArgs as parseSharedArgs } from '../../../shared/options.mjs';
+import { assertRuntimeLock } from '../../../shared/runtime-contract.mjs';
 import { costOf as sharedCostOf, pricesFor } from '../../../shared/pricing.mjs';
 
 const USAGE = help('grok');
@@ -267,7 +269,10 @@ function runGrok(grok, h, prompt, args, timeoutSeconds, format) {
     const started = Date.now();
     const full = ["--prompt-file", promptFile, "--output-format", format, "--sandbox", h.sandbox, "--permission-mode", "bypassPermissions", ...args];
     const spec = launchSpec(grok, h, full);
-    const child = spawn(spec.command, spec.args, { cwd: h.cwd, env: spec.env, stdio: ["ignore", "pipe", "pipe"] });
+    const child = spawnOwned(spec, {
+      cwd: h.cwd,
+      stdio: ["ignore", "pipe", "pipe"],
+    });
     children.add(child);
     let stdout = "";
     let stderr = "";
@@ -281,7 +286,7 @@ function runGrok(grok, h, prompt, args, timeoutSeconds, format) {
     });
     const timer = setTimeout(() => {
       timedOut = true;
-      child.kill("SIGKILL");
+      terminateOwned(child);
     }, timeoutSeconds * 1000);
     child.on("error", (err) => {
       spawnError = String(err);
@@ -603,6 +608,18 @@ ${rows.join("\n")}
 
 async function main() {
   const opts = parseArgs(process.argv.slice(2));
+  if (opts.runtimeLock) {
+    try {
+      await assertRuntimeLock({
+        runtime: "grok",
+        binary: grokBinary(opts.grok),
+        path: opts.runtimeLock,
+      });
+      opts.notes.push("runtime compatibility lock verified");
+    } catch (error) {
+      fail(error.message);
+    }
+  }
   for (const note of opts.notes) console.error(`grok-plugin-eval: ${note}`);
   try {
     authState.auth = resolveAuth({ runtime: "grok", mode: opts.auth, authFrom: opts.authFrom, apiKeyEnv: opts.apiKeyEnv, operatorDir: realGrokHome() });
@@ -718,7 +735,9 @@ async function main() {
   };
   process.on("SIGINT", () => {
     stopReason = "interrupted";
-    for (const child of children) child.kill("SIGKILL");
+    for (const child of children) {
+      terminateOwned(child);
+    }
   });
 
   const pool = makePool(opts.concurrency);

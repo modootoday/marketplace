@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { execFileSync, spawn, spawnSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
+import { spawnOwned, terminateOwned } from "../../../shared/owned-process.mjs";
 import { randomUUID } from "node:crypto";
 import { chmodSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, symlinkSync, writeFileSync,  } from "node:fs";
 import { homedir, tmpdir } from "node:os";
@@ -16,6 +17,7 @@ const { describeProxyStats, startRuntimeProxy } = await import(
 
 import { stripPluginMcp } from '../../../shared/plugin-copy.mjs';
 import { help, parseArgs as parseSharedArgs } from '../../../shared/options.mjs';
+import { assertRuntimeLock } from '../../../shared/runtime-contract.mjs';
 import { costOf as sharedCostOf, pricesFor } from '../../../shared/pricing.mjs';
 
 const USAGE = help('codex');
@@ -218,7 +220,10 @@ function runCodex(codex, h, prompt, extra, timeoutSeconds) {
     const started = Date.now();
     const args = ["exec", "--json", "--skip-git-repo-check", "-o", last, ...extra, "-"];
     const spec = launchSpec(codex, h, args);
-    const child = spawn(spec.command, spec.args, { cwd: h.cwd, env: spec.env, stdio: ["pipe", "pipe", "pipe"] });
+    const child = spawnOwned(spec, {
+      cwd: h.cwd,
+      stdio: ["pipe", "pipe", "pipe"],
+    });
     children.add(child);
     let stdout = "";
     let stderr = "";
@@ -232,7 +237,7 @@ function runCodex(codex, h, prompt, extra, timeoutSeconds) {
     });
     const timer = setTimeout(() => {
       timedOut = true;
-      child.kill("SIGKILL");
+      terminateOwned(child);
     }, timeoutSeconds * 1000);
     child.on("error", (err) => {
       spawnError = String(err);
@@ -555,6 +560,18 @@ ${rows.join("\n")}
 
 async function main() {
   const opts = parseArgs(process.argv.slice(2));
+  if (opts.runtimeLock) {
+    try {
+      await assertRuntimeLock({
+        runtime: "codex",
+        binary: codexBinary(opts.codex),
+        path: opts.runtimeLock,
+      });
+      opts.notes.push("runtime compatibility lock verified");
+    } catch (error) {
+      fail(error.message);
+    }
+  }
   for (const note of opts.notes) console.error(`codex-plugin-eval: ${note}`);
   opts.model ??= userModel();
   if (!opts.model) fail("no model: pass --model or set model in ~/.codex/config.toml");
@@ -666,7 +683,9 @@ async function main() {
   };
   process.on("SIGINT", () => {
     stopReason = "interrupted";
-    for (const child of children) child.kill("SIGKILL");
+    for (const child of children) {
+      terminateOwned(child);
+    }
   });
 
   const pool = makePool(opts.concurrency);

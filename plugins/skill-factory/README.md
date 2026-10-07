@@ -4,7 +4,7 @@
 
 Write agent skills that change behaviour: evals before the body, descriptions that trigger on the right requests, rules tied to the failures they prevent, and a measured delta before release.
 
-Version 0.3.0 also includes four CLI evaluation harnesses for paired plugin runs,
+Version 0.3.0 also includes five CLI evaluation entrypoints for paired plugin runs,
 skill activation evidence, scored cases, result JSON, and HTML reports. Their scripts
 share helpers in `shared/`; distribute that directory together with `skills/`.
 
@@ -12,16 +12,17 @@ share helpers in `shared/`; distribute that directory together with `skills/`.
 
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
-| Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
+| Claude Code | authoring skills measured; native evaluation smoke checked | 2.1.289, with the eval suite in `evals/`; 2.1.291 native evaluator smoke (see Verify) |
 | Codex CLI | authoring and iteration skills measured; evaluation harness smoke checked | 0.160.1, gpt-6.1-sol / gpt-6.1-sol, 3 votes, 20261006 (see Verify); OAuth harness smoke below |
 | Grok CLI | evaluation harness smoke checked; skill activation unmeasured | 1.0.46, grok-4.7, OAuth harness smoke below |
-| Gemini CLI | help and argument validation checked; inference untested in this release | Harness developed against 0.62.0; no model calls in this release |
-| Antigravity CLI | help and argument validation checked; inference untested in this release | Harness developed against agy 1.3.0; no model calls in this release |
+| Gemini CLI | evaluation harness smoke checked; skill activation unmeasured | 0.62.0, gemini-3.8-flash, Vertex proxy smoke below |
+| Antigravity CLI | evaluation harness smoke checked; skill activation unmeasured | agy 1.3.0, Gemini 3.8 Flash (High), OAuth smoke below |
 
 Requirements: The authoring and iteration skills require no external tools. Evaluation
 scripts require Node.js 22 or later, Linux with bubblewrap (`bwrap`) and permission to
 create namespaces, and the chosen CLI (`codex`, `grok`, `gemini`, or `agy`) on PATH or
-selected with `--cli`. Log in outside the harness before using subscription OAuth.
+selected with `--cli`; Claude's adapter additionally requires `claude` 2.1.269 or later.
+Log in outside the harness before using subscription OAuth.
 Gemini Vertex authentication additionally requires `gcloud`, application default
 credentials, and a configured project and location. API-key runs can incur charges.
 
@@ -51,6 +52,7 @@ codex plugin add skill-factory@modootoday
 | skill | `grok-plugin-eval` | paired plugin evaluation using Grok CLI |
 | skill | `gemini-plugin-eval` | paired plugin evaluation using Gemini CLI |
 | skill | `antigravity-plugin-eval` | paired plugin evaluation using Antigravity CLI |
+| skill | `claude-plugin-eval` | native Claude plugin evaluation with shared flags and result envelope |
 
 Each evaluation entrypoint is `skills/<runtime>-plugin-eval/scripts/<runtime>-plugin-eval.mjs`.
 Run it with `--help` before supplying a plugin directory. The scripts import
@@ -133,8 +135,73 @@ and behavioural benefit of the four new evaluation skills remain unmeasured.
 | Codex | 0.160.1 | gpt-6.1-sol | 1.00 | 1 | 0 | read-only | yes |
 | Grok | 1.0.46 | grok-4.7 | 1.00 | 1 | 0 | read-only | yes |
 
-All four integrated entrypoints pass `--help` and argument validation. Gemini and
-Antigravity made no model calls for this release.
+Additional synthetic reply smoke checks on 20261007 passed for all four harnesses.
+Each scored case used one subject and a regex grader with zero judge calls. Codex
+and Grok used proxy authentication; Gemini used Vertex proxy authentication;
+Antigravity used a temporary consumer OAuth login bound read-only. The Antigravity
+check used the corrected named-preset effort handling: High is selected by the
+model preset, and a conflicting explicit effort is refused before inference.
+
+| Harness | CLI | Model | Smoke score | Subject runs | Judge calls |
+| --- | --- | --- | --- | --- | --- |
+| Codex | 0.160.1 | gpt-6.1-sol | 1.00 | 1 | 0 |
+| Grok | 1.0.46 | grok-4.7 | 1.00 | 1 | 0 |
+| Gemini | 0.62.0 | gemini-3.8-flash | 1.00 | 1 | 0 |
+| Antigravity | 1.3.0 | Gemini 3.8 Flash (High) | 1.00 | 1 | 0 |
+
+These smoke cases establish answer extraction and grading, not activation or
+behavioural benefit of the evaluation skills. All four entrypoints also pass help
+and argument validation.
+
+Claude Code 2.1.291's native claude plugin eval also passed a separate synthetic
+exact-reply smoke on 20261007, using the sonnet alias, one subject, no ablation,
+a last-message anchored regex grader, zero judge calls and no report publication.
+Native results record grader explanations rather than the shared wrappers'
+literal evidence field. The test used a private configuration directory and a
+read-only subscription login; original selected configuration/auth files were
+unchanged. This is native evaluator operation, not a fresh skill-benefit result.
+The claude-plugin-eval adapter adds the shared argument parser, runtime lock,
+private configuration, owned process cleanup and result envelope around the native
+Claude evaluator. Native grading and HTML reports remain authoritative. Its supported
+flags and explicit refusals are documented in skills/claude-plugin-eval/SKILL.md.
+Proxy authentication keeps saved OAuth credentials outside its bubblewrap sandbox;
+network access remains available. Reports are always local. A separate adapter smoke
+on 20261007 used one sonnet subject and a regex grader with zero judge calls; it
+measures evaluator operation, not activation or behavioural improvement.
+
+Shared-helper regressions can be run without login or model calls:
+
+```sh
+node --test --test-concurrency=1 plugins/skill-factory/shared/*.test.mjs
+```
+
+On Linux, each evaluator launches an owned process group. Timeouts and interrupts
+terminate that group, including descendants that still hold output pipes after the
+parent exits. This is cleanup, not containment of a process that creates another session.
+
+Antigravity tool evidence comes from native planner responses with stable conversation,
+step and call identifiers. Duplicate records are counted once. Collection refuses
+symbolic links and nonregular transcripts, and fails the evaluation on a read-budget
+error: at most 64 conversations, 4096 directory entries per directory, 256 chunk files,
+2 MiB per file, 8 MiB total and 4096 events. Missing history returns no tool evidence.
+These local journals are runtime evidence; they do not authenticate a hostile runtime.
+
+Optional runtime locks stop an evaluator before authentication when its recorded
+CLI version, launch artifacts or Node binary change. From the marketplace root:
+
+```sh
+node plugins/skill-factory/shared/runtime-contract.mjs capture codex ./codex-runtime-lock.json
+node plugins/skill-factory/skills/codex-plugin-eval/scripts/codex-plugin-eval.mjs ./plugins/example --runtime-lock ./codex-runtime-lock.json
+```
+
+The same helper supports grok, gemini, antigravity and claude, with an optional executable
+argument after the lock path. Capture runs only --version with a fresh HOME and
+scrubbed environment and refuses an existing lock. Store locks privately outside
+plugins; their hashes include absolute installation paths. A snapshot is not an
+upgrade qualification or cryptographic attestation. Re-run authorized acceptance
+checks after upgrades. The lock covers the entrypoint/package, Codex native
+payload, Gemini bundle and harness Node; transitive dependencies, native API
+schemas, sandbox containment and plugin behaviour need separate checks.
 
 ## License
 

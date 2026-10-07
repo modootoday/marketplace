@@ -25,6 +25,7 @@ export const FLAG_ROWS = [
   ['--timeout <seconds>', 'Positive subject and judge timeout; default 600'],
   ['--work <dir>', 'Temporary run parent; default OS temp directory'],
   ['--cli <bin>', 'Runtime executable; default CLI on PATH'],
+  ['--runtime-lock <file>', 'Verify CLI version, launch artifacts and Node before authentication'],
   ['--isolation bwrap|none', 'Default bwrap; none disables filesystem and environment isolation'],
   ['--auth proxy|oauth|api-key', 'Default proxy; unsupported modes are refused'],
   ['--auth-from <dir>', 'Login directory or Gemini ADC directory'],
@@ -70,7 +71,7 @@ export function parseArgs(argv, runtime) {
     '--judge-votes': 'judgeVotes', '--threshold': 'threshold', '--max-cost-usd': 'maxCostUsd',
     '--max-tokens': 'maxTokens', '--timeout': 'timeout', '--suite-minutes': 'suiteMinutes',
     '--price-in': 'priceIn', '--price-out': 'priceOut', '--price-cached': 'priceCached' };
-  const paths = { '--output-dir': 'outputDir', '--report': 'report', '--work': 'work' };
+  const paths = { '--output-dir': 'outputDir', '--report': 'report', '--work': 'work', '--runtime-lock': 'runtimeLock' };
   const lists = { '--case': 'cases', '--tag': 'tags', '--mcp': 'mcp', '--allow-tools': 'allowTools' };
   const bools = { '--keep-temp': 'keep', '--keep': 'keep', '--hooks': 'hooks', '--scaffold': 'scaffold', '--allow-real-servers': 'allowRealServers' };
   const noop = ['--no-publish', '--publish-report', '--trust-plugin', '--no-scaffold', '--verbose'];

@@ -1,7 +1,8 @@
 // Shared bubblewrap launcher for the plugin-eval harnesses (codex, grok, gemini).
 // The subject agent sees only what is bound here; the rest of the server, including the real
 // home directory and every other plugin's skills, does not exist inside the sandbox.
-import { spawn, spawnSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
+import { spawnOwned, terminateOwned } from "./owned-process.mjs";
 import { existsSync, readFileSync, readlinkSync, realpathSync, statSync } from "node:fs";
 import { delimiter, dirname, join, resolve, sep } from "node:path";
 
@@ -212,7 +213,7 @@ export function redactSecrets(text, auth) {
 // Runs a launch spec (from isolate() or a plain command) to completion; setup steps use it.
 export function runSpec(spec, { cwd, timeoutMs = 300_000 } = {}) {
   return new Promise((done) => {
-    const child = spawn(spec.command, spec.args, { cwd, env: spec.env, stdio: ["ignore", "pipe", "pipe"] });
+    const child = spawnOwned(spec, { cwd });
     let stdout = "";
     let stderr = "";
     child.stdout.on("data", (d) => {
@@ -221,7 +222,7 @@ export function runSpec(spec, { cwd, timeoutMs = 300_000 } = {}) {
     child.stderr.on("data", (d) => {
       stderr = (stderr + d).slice(-4000);
     });
-    const timer = setTimeout(() => child.kill("SIGKILL"), timeoutMs);
+    const timer = setTimeout(() => terminateOwned(child), timeoutMs);
     child.on("error", (err) => {
       clearTimeout(timer);
       done({ code: -1, stdout, stderr: String(err) });

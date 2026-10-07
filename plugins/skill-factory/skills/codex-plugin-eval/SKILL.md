@@ -64,6 +64,7 @@ Place the plugin directory before variadic flags. All four scripts share these n
 | --timeout <seconds> | Positive subject and judge timeout; default 600 |
 | --work <dir> | Temporary run parent; default OS temp directory |
 | --cli <bin> | Runtime executable; default CLI on PATH |
+| --runtime-lock <file> | Verify CLI version, launch artifacts and Node before authentication |
 | --isolation bwrap\|none | Default bwrap; none disables filesystem and environment isolation |
 | --auth proxy\|oauth\|api-key | Default proxy; unsupported modes are refused |
 | --auth-from <dir> | Login directory or Gemini ADC directory |
@@ -82,6 +83,8 @@ Place the plugin directory before variadic flags. All four scripts share these n
 | -h, --help | Show this help without loading configuration or credentials |
 
 --codex, --grok, --gemini, and --agy remain runtime-specific executable aliases. Prefer --cli in reusable commands. --keep aliases --keep-temp.
+
+For a qualified installation, capture a private lock with node ../../shared/runtime-contract.mjs capture codex ./runtime-lock.json, then pass --runtime-lock ./runtime-lock.json to this evaluator. Capture inspects --version with a fresh HOME and scrubbed environment; it makes no inference call. The lock records CLI entry/package hashes, Codex native payloads, Gemini bundle files and the harness Node binary. It excludes transitive dependencies, native API schemas and credentials. Capture is a snapshot, not qualification or a signature; retain evidence from authorized smoke/regression checks separately. Existing locks cannot be overwritten by capture. After an upgrade, repeat those checks before creating a replacement lock. Keep locks outside distributed plugins because they record absolute installation paths.
 
 ## Authentication and sandbox visibility
 

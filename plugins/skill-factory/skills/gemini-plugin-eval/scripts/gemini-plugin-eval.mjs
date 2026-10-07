@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import { execFileSync, spawn, spawnSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
+import { spawnOwned, terminateOwned } from "../../../shared/owned-process.mjs";
 
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { homedir, tmpdir } from "node:os";
@@ -15,6 +16,7 @@ const { describeProxyStats, startRuntimeProxy } = await import(
 
 import { stripPluginMcp } from '../../../shared/plugin-copy.mjs';
 import { help, parseArgs as parseSharedArgs } from '../../../shared/options.mjs';
+import { assertRuntimeLock } from '../../../shared/runtime-contract.mjs';
 import { priceFor as sharedPriceFor, costOf as sharedCostOf, pricesFor } from '../../../shared/pricing.mjs';
 import { adcPath as configuredAdcPath, vertexConfig } from '../../../shared/cloud-config.mjs';
 
@@ -270,7 +272,10 @@ function runGemini(gemini, h, model, prompt, timeoutSeconds) {
     const started = Date.now();
     const args = ["--skip-trust", "-m", model, "--approval-mode", "yolo", "-o", "stream-json", "-p", ""];
     const spec = launchSpec(gemini, h, args);
-    const child = spawn(spec.command, spec.args, { cwd: h.cwd, env: spec.env, stdio: ["pipe", "pipe", "pipe"] });
+    const child = spawnOwned(spec, {
+      cwd: h.cwd,
+      stdio: ["pipe", "pipe", "pipe"],
+    });
     children.add(child);
     let stdout = "";
     let stderr = "";
@@ -284,7 +289,7 @@ function runGemini(gemini, h, model, prompt, timeoutSeconds) {
     });
     const timer = setTimeout(() => {
       timedOut = true;
-      child.kill("SIGKILL");
+      terminateOwned(child);
     }, timeoutSeconds * 1000);
     child.on("error", (err) => {
       spawnError = String(err);
@@ -571,6 +576,18 @@ ${rows.join("\n")}
 
 async function main() {
   const opts = parseArgs(process.argv.slice(2));
+  if (opts.runtimeLock) {
+    try {
+      await assertRuntimeLock({
+        runtime: "gemini",
+        binary: geminiBinary(opts.gemini),
+        path: opts.runtimeLock,
+      });
+      opts.notes.push("runtime compatibility lock verified");
+    } catch (error) {
+      fail(error.message);
+    }
+  }
   for (const note of opts.notes) console.error(`gemini-plugin-eval: ${note}`);
   opts.model ??= userModel();
   if (!opts.model) fail("no model: pass --model or set model.name in ~/.gemini/settings.json");
@@ -699,7 +716,9 @@ async function main() {
   };
   process.on("SIGINT", () => {
     stopReason = "interrupted";
-    for (const child of children) child.kill("SIGKILL");
+    for (const child of children) {
+      terminateOwned(child);
+    }
   });
 
   const pool = makePool(opts.concurrency);

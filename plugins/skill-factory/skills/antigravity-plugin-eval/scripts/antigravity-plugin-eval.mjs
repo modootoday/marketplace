@@ -1,11 +1,13 @@
 #!/usr/bin/env node
-import { execFileSync, spawn, spawnSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
+import { spawnOwned, terminateOwned } from "../../../shared/owned-process.mjs";
 
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, symlinkSync, writeFileSync } from "node:fs";
 import { homedir, tmpdir } from "node:os";
 import { basename, dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { antigravityToolEvents } from '../../../shared/antigravity-events.mjs';
+import { antigravityModel } from "../../../shared/antigravity-model.mjs";
 import { stripPluginMcp } from '../../../shared/plugin-copy.mjs';
 
 const { bwrapAvailable, cleanEnv, cliBinds, describeIsolation, isolate, redactSecrets, runSpec } = await import(
@@ -14,6 +16,7 @@ const { bwrapAvailable, cleanEnv, cliBinds, describeIsolation, isolate, redactSe
 
 
 import { help, parseArgs as parseSharedArgs } from '../../../shared/options.mjs';
+import { assertRuntimeLock } from '../../../shared/runtime-contract.mjs';
 import { priceFor as sharedPriceFor, costOf as sharedCostOf, pricesFor } from '../../../shared/pricing.mjs';
 
 const USAGE = help('antigravity');
@@ -165,9 +168,24 @@ const children = new Set();
 function runGemini(gemini, h, model, prompt, timeoutSeconds, effort) {
   return new Promise((done) => {
     const started = Date.now();
-    const args = ["--model", model, "--effort", effort, "--dangerously-skip-permissions", "--sandbox", "--output-format", "json", "--print-timeout", `${timeoutSeconds}s`, "-p", prompt];
+    const args = [
+      "--model",
+      model,
+      ...antigravityModel(model, effort).args,
+      "--dangerously-skip-permissions",
+      "--sandbox",
+      "--output-format",
+      "json",
+      "--print-timeout",
+      `${timeoutSeconds}s`,
+      "-p",
+      prompt,
+    ];
     const spec = launchSpec(gemini, h, args);
-    const child = spawn(spec.command, spec.args, { cwd: h.cwd, env: spec.env, stdio: ["pipe", "pipe", "pipe"] });
+    const child = spawnOwned(spec, {
+      cwd: h.cwd,
+      stdio: ["pipe", "pipe", "pipe"],
+    });
     children.add(child);
     let stdout = "";
     let stderr = "";
@@ -181,7 +199,7 @@ function runGemini(gemini, h, model, prompt, timeoutSeconds, effort) {
     });
     const timer = setTimeout(() => {
       timedOut = true;
-      child.kill("SIGKILL");
+      terminateOwned(child);
     }, timeoutSeconds * 1000);
     child.on("error", (err) => {
       spawnError = String(err);
@@ -223,7 +241,11 @@ function runGemini(gemini, h, model, prompt, timeoutSeconds, effort) {
       if (!error && !result) error = `Antigravity produced no JSON result (exit ${code}; stdout length ${stdout.length}; stderr length ${stderr.length})`;
       if (!error && code !== 0) error = `gemini exited ${code}: ${stderr.slice(-300)}`;
       if (error) error = redactSecrets(error, authState.auth);
-      events.push(...antigravityToolEvents(h.home));
+      try {
+        events.push(...antigravityToolEvents(h.home));
+      } catch (evidenceError) {
+        error = redactSecrets(String(evidenceError), authState.auth);
+      }
       done({ events, reply: finalReply(events), usage, durationSeconds: Math.round((Date.now() - started) / 1000), error });
     });
     child.stdin.on("error", () => {});
@@ -482,10 +504,38 @@ ${rows.join("\n")}
 
 async function main() {
   const opts = parseArgs(process.argv.slice(2));
+  if (opts.runtimeLock) {
+    try {
+      await assertRuntimeLock({
+        runtime: "antigravity",
+        binary: geminiBinary(opts.gemini),
+        path: opts.runtimeLock,
+      });
+      opts.notes.push("runtime compatibility lock verified");
+    } catch (error) {
+      fail(error.message);
+    }
+  }
   for (const note of opts.notes) console.error(`antigravity-plugin-eval: ${note}`);
   opts.model ??= userModel();
   if (!opts.model) fail("no model: pass --model or set model.name in ~/.gemini/antigravity-cli/settings.json");
   opts.judgeModel ??= opts.model;
+  try {
+    const subject = antigravityModel(opts.model, opts.effort, {
+      explicitEffort: process.argv.includes("--effort"),
+    });
+    opts.effort = subject.effort;
+    opts.judgeEffort ??= opts.effort;
+    const judge = antigravityModel(opts.judgeModel, opts.judgeEffort, {
+      explicitEffort: process.argv.includes("--judge-effort"),
+    });
+    opts.judgeEffort = judge.effort;
+    if (subject.fixedPreset || judge.fixedPreset) {
+      opts.notes.push("Named Gemini model presets control effort; unsupported effort flags are omitted");
+    }
+  } catch (error) {
+    fail(error.message);
+  }
   opts.judgeEffort ??= opts.effort;
   opts.judgeTimeout = opts.timeout ?? 600;
   opts.work ??= defaultWork();
@@ -554,7 +604,9 @@ async function main() {
   };
   process.on("SIGINT", () => {
     stopReason = "interrupted";
-    for (const child of children) child.kill("SIGKILL");
+    for (const child of children) {
+      terminateOwned(child);
+    }
   });
 
   const pool = makePool(opts.concurrency);

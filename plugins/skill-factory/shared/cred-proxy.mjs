@@ -207,7 +207,7 @@ export async function startCredProxy({ creds, allow = creds.allow }) {
     const got = Buffer.from(presentedKey(req.headers));
     const path = stripKeyParam(req.url ?? "/");
     const bare = path.split("?")[0];
-    const ok = got.length === want.length && timingSafeEqual(got, want) && allow.some((p) => bare === p || bare.startsWith(`${p}/`) || bare.startsWith(`${p}:`));
+    const ok = got.length === want.length && timingSafeEqual(got, want) && allow.some((p) => bare === p || bare.startsWith(`${p}/`) || bare.startsWith(`${p}:`)) && (!creds.accept || creds.accept({ method: req.method, path, headers: req.headers }));
     if (!ok) {
       stats.refused += 1;
       count(req.method, path, 403);
