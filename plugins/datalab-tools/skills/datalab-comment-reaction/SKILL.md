@@ -44,6 +44,14 @@ Look at comment volume and commenter count first; add breakdowns only as far as 
 
 ## Tools
 
+Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to
+`datalab_find_tools`, then use `datalab_call` only with tool names and argument schemas returned by discovery.
+Do not invent tool names or arguments.
+If the result is awaiting_confirm, do not repeat the original call; check the ticket with datalab_confirm_status.
+Discovery does not expand this skill's scope or replace its payment, target and change-approval rules.
+Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
+or provide a text-only plan within this skill's scope; state what could not be read or performed.
+
 - `comment_trend`: comment volume over time for the date and section.
 - `comment_user_trend`: number of distinct commenters over time; always read with comment_trend.
 - `comment_hourly`: comments by hour of day; for when people comment.
@@ -52,4 +60,4 @@ Look at comment volume and commenter count first; add breakdowns only as far as 
 - `comment_country`: commenter country; only when location matters.
 - `comment_category_spread`: which news sections the activity spread across.
 
-When these tools are not available, use only the output the user pasted and do not invent the rest.
+Only when discovery cannot find the required tools, use only the output the user pasted and do not invent the rest.

@@ -90,6 +90,14 @@ no predicted reach.
 
 ## Tools
 
+Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to
+`datalab_find_tools`, then use `datalab_call` only with tool names and argument schemas returned by discovery.
+Do not invent tool names or arguments.
+If the result is awaiting_confirm, do not repeat the original call; check the ticket with datalab_confirm_status.
+Discovery does not expand this skill's scope or replace its payment, target and change-approval rules.
+Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
+or provide a text-only plan within this skill's scope; state what could not be read or performed.
+
 - `photo_project_get`, `photo_canvas_get`: read the open project, revision and pages before any change.
 - `photo_project_new`: start an empty project; confirm first.
 - `photo_project_list`, `photo_project_open`: find and open saved work; confirm before opening.
@@ -104,4 +112,4 @@ no predicted reach.
 - `generate_images`: paid; only after the user approves a count.
 - `my_content_read`, `my_content_info`: read the published post the cards are made from.
 
-Without the extension, deliver the slide-by-slide plan as text, state which calls would run, and keep every rule above.
+Only when discovery cannot find the required tools, deliver the slide-by-slide plan as text, state which calls would run, and keep every rule above.

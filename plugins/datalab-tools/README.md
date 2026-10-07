@@ -99,6 +99,16 @@ Both answers still give subjective formality and friendliness scores instead of 
 
 Other runtime measurements and live MCP/editor execution remain untested.
 
+### Hidden-tool discovery regression
+
+Measured 2026-10-07 on Codex CLI 0.160.1 with gpt-6.1-sol as subject and judge, two runs per arm and three judge votes. The new `tool-discovery-fallback` case uses `datalab-cta-rewrite` to plan discovery, schema-bound reads and confirmation-ticket polling when specialist tools are hidden.
+
+| Case                      | Skill               | With | Without | Fired | Use                                |
+| ------------------------- | ------------------- | ---- | ------- | ----- | ---------------------------------- |
+| `tool-discovery-fallback` | datalab-cta-rewrite | 1.00 | 1.00    | 2/2   | Regression check; no measured lift |
+
+All four responses and twelve judge verdicts passed. This synthetic next-call exercise made no application or MCP calls; it does not establish live connection success or behavioral coverage of the other sixteen changed skills. Existing runtime qualifications remain unchanged. No model retries were performed.
+
 ## Configuration and data
 
 Load or disable the plugin using the runtime's plugin controls. There is no plugin configuration. The skills themselves write nothing automatically. Following an editor workflow can modify the selected project; draft copy stays in the answer unless an authorized editor action is performed. Evaluation artifacts belong outside the plugin.

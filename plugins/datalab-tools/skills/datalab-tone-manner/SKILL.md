@@ -25,7 +25,7 @@ Extract a style from a few posts into a spec specific enough to write the next p
    else's blog to compare.
 3. Neither: ask for posts and stop. Invent nothing.
 
-Read only. No extension is the normal path: work from the paste.
+Read only. Discover the required tools before asking for pasted input when no source was supplied.
 
 ## Procedure
 
@@ -53,9 +53,16 @@ No publishing in the style; no similarity calculation tool.
 
 ## Tools
 
+Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to
+`datalab_find_tools`, then use `datalab_call` only with tool names and argument schemas returned by discovery.
+Do not invent tool names or arguments.
+If the result is awaiting_confirm, do not repeat the original call; check the ticket with datalab_confirm_status.
+Discovery does not expand this skill's scope or replace its payment, target and change-approval rules.
+Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
+or provide a text-only plan within this skill's scope; state what could not be read or performed.
+
 - `my_content_info`: find the user's posts by title or URL.
 - `my_content_read`, `my_content_detail`: read a post's full text.
 - `my_top_content`: pick posts to sample; mix with ordinary ones.
 - `blog_search`: find another blog to compare.
 - `blog_profile`, `blog_posts`, `blog_popular`: that blog's profile, posts and popular posts.
-

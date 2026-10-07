@@ -88,6 +88,14 @@ no predicted numbers.
 
 ## Tools
 
+Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to
+`datalab_find_tools`, then use `datalab_call` only with tool names and argument schemas returned by discovery.
+Do not invent tool names or arguments.
+If the result is awaiting_confirm, do not repeat the original call; check the ticket with datalab_confirm_status.
+Discovery does not expand this skill's scope or replace its payment, target and change-approval rules.
+Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
+or provide a text-only plan within this skill's scope; state what could not be read or performed.
+
 - `video_project_get`, `video_timeline_get`: read the project, revision, scenes and narration state first.
 - `video_project_new`, `video_project_list`, `video_project_open`: start or open a project; confirm first.
 - `video_canvas_resize`: set the ratio before the first scene only.
@@ -102,4 +110,4 @@ no predicted numbers.
 - `video_narration_generate`: paid; only after an approved scene count.
 - `my_content_read`, `my_content_info`: read a published post to adapt.
 
-Without the extension, deliver the scene-by-scene plan as text, say which calls would run, and keep every rule above.
+Only when discovery cannot find the required tools, deliver the scene-by-scene plan as text, say which calls would run, and keep every rule above.

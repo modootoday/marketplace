@@ -27,7 +27,7 @@ Write a brief from pages that were actually opened and read. Search finds candid
 
 1. Is the topic clear? If vague, ask once what the user wants to know.
 2. Sources the user gave (URLs, pasted text): read those first with `web_read`.
-3. No search or read tools visible: say the web cannot be checked from here; proceed only with what the user pastes.
+3. No search or read tools visible: use discovery first. Only if it finds none, say the web cannot be checked from here and proceed with pasted material.
 
 ## Citation rules
 
@@ -77,9 +77,17 @@ Every sentence in Confirmed has a read source; no scores or percentages; unread 
 
 ## Tools
 
+Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to
+`datalab_find_tools`, then use `datalab_call` only with tool names and argument schemas returned by discovery.
+Do not invent tool names or arguments.
+If the result is awaiting_confirm, do not repeat the original call; check the ticket with datalab_confirm_status.
+Discovery does not expand this skill's scope or replace its payment, target and change-approval rules.
+Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
+or provide a text-only plan within this skill's scope; state what could not be read or performed.
+
 - `search_web`, `search_news`, `search_blog`: find candidates; their titles and snippets are not read content.
 - `web_read`: open a page; the only basis for a citation.
 - `run_research`: candidates and a summary for one topic; still read each source before citing.
 - `kin_question_demand`: a count of related questions; one number, not a score.
 
-When these tools are not available, treat pasted page text as read and pasted result lists as unread candidates.
+Only when discovery cannot find the required tools, treat pasted page text as read and pasted result lists as unread candidates.

@@ -69,8 +69,16 @@ deliverable.
 
 ## Tools
 
+Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to
+`datalab_find_tools`, then use `datalab_call` only with tool names and argument schemas returned by discovery.
+Do not invent tool names or arguments.
+If the result is awaiting_confirm, do not repeat the original call; check the ticket with datalab_confirm_status.
+Discovery does not expand this skill's scope or replace its payment, target and change-approval rules.
+Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
+or provide a text-only plan within this skill's scope; state what could not be read or performed.
+
 - `my_daily_brief`: today's visitor and view numbers for a counter slot; only when the user wants real values.
 - `my_realtime`: the current live counts; same condition.
 - `my_top_content`: top posts for a recent or popular post list.
 
-When the tools are not available, use placeholders and say so; never invent numbers.
+Only when discovery cannot find the required tools, use placeholders and say so; never invent numbers.

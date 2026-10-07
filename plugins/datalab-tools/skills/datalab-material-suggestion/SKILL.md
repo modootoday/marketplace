@@ -79,6 +79,14 @@ as informational topics, with no definitive advice or promised returns.
 
 ## Tools
 
+Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to
+`datalab_find_tools`, then use `datalab_call` only with tool names and argument schemas returned by discovery.
+Do not invent tool names or arguments.
+If the result is awaiting_confirm, do not repeat the original call; check the ticket with datalab_confirm_status.
+Discovery does not expand this skill's scope or replace its payment, target and change-approval rules.
+Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
+or provide a text-only plan within this skill's scope; state what could not be read or performed.
+
 - `search_keywords`: search volume for candidate queries.
 - `autocomplete_keywords`: how people complete a query.
 - `kin_question_demand`: count of related questions on Naver KnowledgeiN.
@@ -92,5 +100,4 @@ as informational topics, with no definitive advice or promised returns.
 - `blog_profile`, `blog_posts`: a competing blog and its posts.
 - `benchmark_gap`: what a competitor covers that the user does not.
 
-When these tools are not available, use only pasted tool output and say what was not measured.
-
+Only when discovery cannot find the required tools, use only pasted tool output and say what was not measured.

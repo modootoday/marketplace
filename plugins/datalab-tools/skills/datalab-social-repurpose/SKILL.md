@@ -24,7 +24,7 @@ deliverable is text the user copies and pastes.
    the Naver editor; `my_content_read`, `my_content_detail` for a published post (needs a title or URL).
 3. Neither: ask for the post and stop. Invent nothing.
 
-This skill only reads. No extension or no tools is the normal path: work from the paste.
+This skill only reads. Discover the required tools before asking for pasted input when no source was supplied.
 
 ## Procedure
 
@@ -63,6 +63,13 @@ offer fewer first or ask priority; do not pad with engagement tables.
 
 ## Tools
 
+Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to
+`datalab_find_tools`, then use `datalab_call` only with tool names and argument schemas returned by discovery.
+Do not invent tool names or arguments.
+If the result is awaiting_confirm, do not repeat the original call; check the ticket with datalab_confirm_status.
+Discovery does not expand this skill's scope or replace its payment, target and change-approval rules.
+Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
+or provide a text-only plan within this skill's scope; state what could not be read or performed.
+
 - `editor_read`, `editor_read_structure`: read the unpublished draft open in the Naver editor.
 - `my_content_read`, `my_content_detail`: read a published post identified by title or URL.
-

@@ -42,9 +42,17 @@ See the money flow and the operations problems to handle now on one page, as sep
 
 ## Tools
 
+Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to
+`datalab_find_tools`, then use `datalab_call` only with tool names and argument schemas returned by discovery.
+Do not invent tool names or arguments.
+If the result is awaiting_confirm, do not repeat the original call; check the ticket with datalab_confirm_status.
+Discovery does not expand this skill's scope or replace its payment, target and change-approval rules.
+Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
+or provide a text-only plan within this skill's scope; state what could not be read or performed.
+
 - `commerce_settlement`: upcoming settlement date, amount, fees, holds.
 - `commerce_sales`: sales amount for the period.
 - `commerce_orders`: order changes such as claims and address changes, recent first.
 - `commerce_product_issues`: inspection correction requests and product problems.
 
-When these tools are not available, use only the output the user pasted and do not invent the rest.
+Only when discovery cannot find the required tools, use only the output the user pasted and do not invent the rest.

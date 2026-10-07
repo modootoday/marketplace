@@ -43,6 +43,14 @@ Read the store's state and review facts; propose operating priorities and reply 
 
 ## Tools
 
+Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to
+`datalab_find_tools`, then use `datalab_call` only with tool names and argument schemas returned by discovery.
+Do not invent tool names or arguments.
+If the result is awaiting_confirm, do not repeat the original call; check the ticket with datalab_confirm_status.
+Discovery does not expand this skill's scope or replace its payment, target and change-approval rules.
+Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
+or provide a text-only plan within this skill's scope; state what could not be read or performed.
+
 - `place_info`: identify the store and its details first.
 - `place_reviews`: the review texts.
 - `place_review_stats`: rating and review counts.
@@ -54,4 +62,4 @@ Read the store's state and review facts; propose operating priorities and reply 
 - `place_realtime_wait`: live waiting list; only for waiting questions.
 - `place_coupons`: active coupons; only for coupon questions.
 
-When these tools are not available, use only the output the user pasted and do not invent the rest.
+Only when discovery cannot find the required tools, use only the output the user pasted and do not invent the rest.

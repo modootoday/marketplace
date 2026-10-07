@@ -40,6 +40,14 @@ Settle the category first, then check change timing and shopper composition only
 
 ## Tools
 
+Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to
+`datalab_find_tools`, then use `datalab_call` only with tool names and argument schemas returned by discovery.
+Do not invent tool names or arguments.
+If the result is awaiting_confirm, do not repeat the original call; check the ticket with datalab_confirm_status.
+Discovery does not expand this skill's scope or replace its payment, target and change-approval rules.
+Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
+or provide a text-only plan within this skill's scope; state what could not be read or performed.
+
 - `shopping_categories`: find the category id; first when none is given.
 - `shopping_category_click`: category click index over time.
 - `shopping_category_rank`: popular keywords ranked within the category.
@@ -50,5 +58,4 @@ Settle the category first, then check change timing and shopper composition only
 - `shopping_keyword_gender`, `shopping_keyword_age`, `shopping_keyword_device`: shopper split for a keyword.
 - `shopping_category_gender`, `shopping_category_age`, `shopping_category_device`: shopper split for a category.
 
-When these tools are not available, use only the output the user pasted and do not invent the rest.
-
+Only when discovery cannot find the required tools, use only the output the user pasted and do not invent the rest.

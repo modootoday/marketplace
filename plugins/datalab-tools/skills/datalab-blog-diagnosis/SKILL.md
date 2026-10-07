@@ -40,6 +40,14 @@ Measure what changed first. Then narrow the possible explanations with metrics f
 
 ## Tools
 
+Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to
+`datalab_find_tools`, then use `datalab_call` only with tool names and argument schemas returned by discovery.
+Do not invent tool names or arguments.
+If the result is awaiting_confirm, do not repeat the original call; check the ticket with datalab_confirm_status.
+Discovery does not expand this skill's scope or replace its payment, target and change-approval rules.
+Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
+or provide a text-only plan within this skill's scope; state what could not be read or performed.
+
 - `my_daily_brief`: today's or yesterday's headline numbers; a quick first look.
 - `my_blog_summary`: period totals for visits, views and related counts; the comparison baseline.
 - `my_traffic_series`: daily series; find when the change started and spot missing days.
@@ -54,6 +62,5 @@ Measure what changed first. Then narrow the possible explanations with metrics f
 - `my_content_info`: find a post by title or URL.
 - `my_content_detail`: one post's statistics over time.
 
-When these tools are not available, work only from the output the user pasted, say which tool each figure came from,
+Only when discovery cannot find the required tools, work only from the output the user pasted, say which tool each figure came from,
 and do not invent the rest.
-

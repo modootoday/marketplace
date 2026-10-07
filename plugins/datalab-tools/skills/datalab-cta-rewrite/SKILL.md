@@ -61,10 +61,17 @@ no tool connects a reader to a purchase, and linking them would pass correlation
 
 ## Tools
 
+Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to
+`datalab_find_tools`, then use `datalab_call` only with tool names and argument schemas returned by discovery.
+Do not invent tool names or arguments.
+If the result is awaiting_confirm, do not repeat the original call; check the ticket with datalab_confirm_status.
+Discovery does not expand this skill's scope or replace its payment, target and change-approval rules.
+Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
+or provide a text-only plan within this skill's scope; state what could not be read or performed.
+
 - `editor_read`, `editor_read_structure`: read the unpublished draft open in the Naver editor.
 - `my_content_read`, `my_content_detail`: read a published post identified by title or URL.
 - `search_keywords`: search volume for the product's phrasings; only when the CTA promotes something.
 - `autocomplete_keywords`: how searchers complete the product name; same condition.
 
-When these tools are not available, work from the pasted text and any pasted keyword output.
-
+Only when discovery cannot find the required tools, work from the pasted text and any pasted keyword output.
