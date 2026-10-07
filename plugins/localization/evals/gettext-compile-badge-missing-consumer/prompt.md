@@ -1,0 +1,3 @@
+Reading available skill/instruction documents is allowed. All facts below are supplied synthetic reports. Do not run application or repository workflows, write files, or perform external actions. The working directory is empty. Answer the requested bounded review using these facts.
+
+We have a translated PO screenshot and successful compile exit0. No formatting dialect/flags, exact source IDs/context/callsite argument names/types, plural header/policy, compiled/shipped/loaded MO digest/path/domain/locale, or actual rendered count reports are supplied. Assess runtime parity and request evidence; no code/catalog edits. Do not assume an unspecified language has two plural forms.

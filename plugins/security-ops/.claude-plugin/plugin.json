@@ -1,0 +1,9 @@
+{
+  "name": "security-ops",
+  "version": "0.2.0",
+  "description": "Review archive extraction boundaries and applied PDF residual-content evidence with exact artifact, API and inspection limits.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

@@ -35,11 +35,14 @@ codex plugin add brand-assets@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
+| skill | `font-subset-shaping-parity-check` | Compare approved font repertoire and shaping controls before and after subsetting using supplied binary identities and named-shaper observations |
 | skill | `visual-concept-sparring` | two or three visual directions that differ in more than colour, each with its case against, narrowed to one test |
 | skill | `brand-token-kit` | one tokens.json traced to sources, with contrast checked and guesses marked; also names a list of HEX values by role with a collision and contrast check (extended; rests on one record) |
 | skill | `mockup-text-recovery` | text, hierarchy and colours recovered from an AI mockup description with every doubt marked and fonts as candidates only (rests on two records) |
 | skill | `client-request-clarification` | a vague client request split into ambiguities, at most four questions with confirmable defaults and a short reply (rests on one record) |
 | skill | `asset-qa-review` | rendered assets checked for clipping, contrast, logo misuse, forbidden patterns and licences before publishing |
+
+The added skill has supplied-fixture measurements in Verify; existing runtime scores retain their listed case scope.
 
 ## Failure mode
 
@@ -90,6 +93,32 @@ Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs p
 | Case | Skill | Without | With | Skill fired |
 | --- | --- | --- | --- | --- |
 | `carousel-slide-dense-readings` | asset-qa-review | 0.25 | 1.00 | 2 of 2 |
+
+### Added artifact contract fixture measurements
+
+Codex CLI 0.160.1 used gpt-6.1-sol subject and judge, two runs per arm, j2, three judge votes, proxy authentication and read-only bwrap isolation. All nine comparisons ran serially on supplied synthetic reports. They measure reasoning, not actual EPUB reader execution, gettext compilation or font shaping. Criteria and measured instructions were unchanged.
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `font-renumbered-glyph-shaping-match` | font-subset-shaping-parity-check | 1.00 | 1.00 (open) | 2 |
+| `font-cmap-pass-layout-failure` | font-subset-shaping-parity-check | 1.00 | 1.00 (open) | 2 |
+| `font-ascii-preview-missing-baseline` | font-subset-shaping-parity-check | 0.00 | 1.00 (open) | 2 |
+
+The standard table uses (open) to prevent inferred unmeasured Claude results. Runtime-specific raw scores qualify only where an applicable narrow effect is admitted; regression and OPEN rows remain nonqualifying.
+
+The missing-input contrast supports only explicit original/subset cluster membership and correspondence control collection, present in both With replies and absent from both baselines. All arms already request permission, artifact identities, repertoire, same-shaper/version controls, positions, UPM/frame/tolerance and fallback and hold readiness unknown. Normal semantic glyph renumbering and observed layout failures are regression evidence. No broad fidelity or readiness advantage is established.
+
+### Other runtimes: added artifact contract fixtures
+
+These rows apply only to the named added skill. Other clients and actual applications remain untested for the addition; historical sibling results retain their scope.
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | `font-renumbered-glyph-shaping-match` | font-subset-shaping-parity-check | 1.00 | 1.00 (open) | 2/2 | 2026-10-07 |
+| Codex CLI | gpt-6.1-sol | `font-cmap-pass-layout-failure` | font-subset-shaping-parity-check | 1.00 | 1.00 (open) | 2/2 | 2026-10-07 |
+| Codex CLI | gpt-6.1-sol | `font-ascii-preview-missing-baseline` | font-subset-shaping-parity-check | 0.00 | 1.00 | 2/2 | 2026-10-07 |
+
+Subscription Codex only; no metered runtime was used. costUsd and prices are null, so USD conversion is unavailable. Cached input is a subset of input; reasoning output is included in output. No OPEN row supports a badge.
 
 ## License
 

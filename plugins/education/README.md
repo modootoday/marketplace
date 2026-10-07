@@ -9,7 +9,7 @@ Reading passages that hit a measured grade level, language drills, and teacher-s
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | named fixture cases measured | added skill only; see Verify |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -48,6 +48,8 @@ codex plugin add education@modootoday
 | skill | `rule-checked-puzzle-and-score-generation` | word searches and simple notation generated as text or code and verified by a bundled checker word by word and bar by bar, answer key as coordinates, print format last |
 | skill | `study-calendar-allocation` | a textbook spread over school weeks: capacity against demand after breaks, optional chapters left as the user choice, shared-subject slots with parent conflicts checked, slippage shown; not a single day (see constrained-day-schedule) |
 | skill | `lecture-script-timing-fit` | script words converted to spoken minutes at a stated rate, activity time added, minutes per slide against the total, overrun and concrete cuts. Rests on one record |
+
+| skill | `scorm-attempt-state-persistence-check` | Trace SCORM completion/success, API returns, persisted state and relaunch observations for a specific SCO and attempt |
 
 ## Failure mode
 
@@ -94,6 +96,32 @@ that passed every grader, without the plugin and with it:
 The eight skills added in 0.3.0 have one case each; two more per skill are needed for the three-case release gate. Rows below are measured 20261005 with Sonnet as subject and judge; the `notes-to-recall-cards` row is Opus as subject and judge on both arms. The calendar and lecture rows are both-arm runs (2 per arm) from 20261006; the calendar passes 0.25 on Sonnet (the `slots` grader fails in most with-arm runs) and 1.00 on Opus.
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+### Artifact contract fixture measurements
+
+Codex CLI 0.160.1 used gpt-6.1-sol subject and judge, two runs per arm, j2, three judge votes, proxy authentication and read-only bwrap isolation. All nine comparisons ran serially on supplied synthetic reports. They measure reasoning, not actual LMS execution, bank imports or XLIFF merging. Criteria and measured instructions were unchanged.
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `scorm-completed-failed-resume` | scorm-attempt-state-persistence-check | 1.00 | 1.00 (open) | 2 |
+| `scorm-threshold-failed-commit` | scorm-attempt-state-persistence-check | 0.00 | 0.00 (open) | 2 |
+| `scorm-attempt-contract-missing` | scorm-attempt-state-persistence-check | 0.00 | 1.00 (open) | 2 |
+
+The standard table uses (open) to prevent inferred unmeasured Claude results. Runtime-specific raw scores qualify only where an applicable narrow effect is admitted; regression and OPEN rows remain nonqualifying.
+
+SCORM missing supports only collection of anonymized learner identity and chronological argument-bearing evidence. All arms already request core criteria, API, persistence and same-attempt evidence and decline certification. Approval wording alone is not diagnostic evidence, and no actual learner data exposure occurred. The normal case is regression evidence. Threshold/Commit exception is OPEN: all arms correctly apply the explicit progress contract and distinguish failed Commit from status and old readback; requesting the already supplied criteria/progress again is redundant, and baseline1 already proposes diagnostic/backend/readback evidence despite one judge absence claim.
+
+### Other runtimes: artifact contract fixtures
+
+These rows apply only to the named added skill. Other clients and actual applications remain untested for the addition; historical sibling results retain their scope.
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | `scorm-completed-failed-resume` | scorm-attempt-state-persistence-check | 1.00 | 1.00 (open) | 2/2 | 2026-10-07 |
+| Codex CLI | gpt-6.1-sol | `scorm-threshold-failed-commit` | scorm-attempt-state-persistence-check | 0.00 | 0.00 (open) | 2/2 | 2026-10-07 |
+| Codex CLI | gpt-6.1-sol | `scorm-attempt-contract-missing` | scorm-attempt-state-persistence-check | 0.00 | 1.00 | 2/2 | 2026-10-07 |
+
+Subscription Codex only; no metered runtime was used. costUsd and prices are null, so USD conversion is unavailable. Cached input is a subset of input; reasoning output is included in output. No OPEN row supports a badge.
 
 ## License
 

@@ -51,6 +51,7 @@ codex plugin add data-analytics@modootoday
 | skill | `spreadsheet-formula-environment-check` | formulas written for a named spreadsheet engine, version and locale: missing functions listed, locale separators, blank and text-number sample rows, highlight totals rebuilt from the formatting rule, a fallback |
 | skill | `figure-source-key-join-and-total-check` | Sankey, map and heatmap figures built from parsed exports: totals checked before drawing, unmatched and renamed keys listed, mentions kept apart from visits, rerunnable code |
 | skill | `open-response-theme-triangulation` | open responses merged into idea groups with ids, counts reconciled to the responses received, unclassified kept visible, and theme sets from different methods compared |
+| skill | `csv-formula-injection-export-check` | Check a CSV export against spreadsheet formula interpretation and machine-value contracts, including import and save/reopen evidence |
 
 ## Failure mode
 
@@ -121,6 +122,48 @@ Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs p
 | `function-on-key-join-order` | clickhouse-query-authoring | 0.00 | 1.00 | 2 of 2 |
 | `weekly-active-teams-target` | metric-definition | 0.00 | 1.00 | 2 of 2 |
 | `cross-request-volume-scaling` | naver-trend-analysis | 0.75 | 1.00 | 2 of 2 |
+
+### CSV/PDF fixture measurements
+
+These synthetic reports test bounded reasoning, not real spreadsheet/PDF tool
+execution or universal safety/accessibility. Supplied observations remain supplied
+evidence. Each case used gpt-6.1-sol subject/judge, two runs per arm, j2, three
+judge votes, proxy authentication and a read-only isolated sandbox. Cases ran
+serially on Codex CLI.
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `csv-normal-import-route` | csv-formula-injection-export-check | 1.00 | 1.00 | 2 |
+| `csv-resave-changes-contract` | csv-formula-injection-export-check | 0.00 | 1.00 (open) | 2 |
+| `csv-missing-consumer-contract` | csv-formula-injection-export-check | 0.00 | 1.00 | 2 |
+
+The normal CSV case is a 1.00/1.00 regression check. Both arms correctly preserve exact decoded values and restrict the supplied endorsement to the named text-import and machine routes; no added effect is claimed.
+
+The save/reopen case has raw Without 0.00 and With 1.00, but judging is open. Both arms reject the shared tab-prefixed export and preserve the machine contract. Judges inconsistently demand machine revalidation from baseline replies while similarly scoped With replies pass. No effect or runtime badge is derived from this row; criteria and raw results remain unchanged.
+
+The missing-consumer case supports a narrow planning effect: With requires a working untreated formula-evaluating control and links it to interpretation of a negative mitigation result. Baseline already rejects universal certification and separates recipient and machine contracts; one baseline also proposes untreated/treated comparisons, but neither makes the successful control a condition of interpreting non-evaluation. This is not evidence of generally better CSV safety or actual application execution.
+
+Baseline 1.00 is regression evidence. Only a defensible With 1.00, Without
+<1.00 and Fired 2/2 supports a runtime effect; open judging is excluded. No result
+is transferred to an unmeasured runtime.
+
+### Other runtimes: CSV/PDF fixtures
+
+The following comparisons used Codex CLI only.
+
+| Runtime | Model | Case | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | `csv-normal-import-route` | 1.00 | 1.00 | 2/2 | 2026-10-06 |
+| Codex CLI | gpt-6.1-sol | `csv-resave-changes-contract` | 0.00 | 1.00 (open) | 2/2 | 2026-10-06 |
+| Codex CLI | gpt-6.1-sol | `csv-missing-consumer-contract` | 0.00 | 1.00 | 2/2 | 2026-10-06 |
+
+Three initial CSV comparisons lacked the LLM grader declaration. They contain
+12 subject runs and no judge calls; their raw zeroes are unscored invocation-only
+results, excluded from semantic scores and retained in the evaluation ledger.
+Only the required grader frontmatter was added, preserving criteria unchanged.
+Their usage is included in total usage. No metered runtime was used. costUsd is
+null because the harness has no price mapping; USD conversion is unknown, not
+measured zero. Cached input is included in input, not additional consumption.
 
 ## License
 

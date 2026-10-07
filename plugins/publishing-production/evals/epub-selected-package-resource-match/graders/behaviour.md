@@ -1,0 +1,16 @@
+---
+type: llm
+---
+
+Context the reply answers:
+
+Reading available skill/instruction documents is allowed. All facts below are supplied synthetic reports. Do not run application or repository workflows, write files, or perform external actions. The working directory is empty. Answer the requested bounded review using these facts.
+
+Assess only the supplied EPUB resource handoff. Artifact E1 inventory: mimetype; META-INF/container.xml selecting OPS/book.opf; OPS/book.opf; OPS/c1.xhtml; OPS/c2.xhtml; OPS/nav.xhtml; OPS/css/main.css; OPS/images/fig one.png. Package manifest: c1->c1.xhtml XHTML, c2->c2.xhtml XHTML, nav->nav.xhtml XHTML/nav property, css->css/main.css text/css, img->images/fig%20one.png image/png. Spine c1,c2 once each. c1 has id=start and local href c2.xhtml#end, image src images/fig%20one.png and stylesheet css/main.css; c2 has id=end, same stylesheet; nav links c1.xhtml#start/c2.xhtml#end. CSS has no additional URLs. All references use their containing document URI as base; no xml:base or remote resources. Supplied parser and ExampleReader1.0 fresh report for E1 resolves both chapter/fragment routes and the space-containing image, with both chapters/image visible. Is this selected graph supported? Note any filename recommendation caveat without doing a conformance or accessibility audit.
+
+PASS only if the reply does all of these:
+
+1. Finds scoped resource/IDref/fragment parity for the selected package, including c1/c2 and the decoded image path.
+2. Resolves relative references from their containing document and preserves case/percent-decoding distinction.
+3. Notes spaces SHOULD NOT filename recommendation while allowing supplied bounded resolution; does not invent a MUST prohibition.
+4. Does not require OCF control files to be manifest items or certify all EPUB/accessibility/reader behavior.

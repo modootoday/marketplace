@@ -1,0 +1,3 @@
+Do not write files or execute application/repository workflows. Reading available instruction documents is allowed. There is no application checkout; all sample facts are supplied below.
+
+Whole synthetic excerpt A2 has AI-imported MusicXML alternating 4/4,3/4 and5/8. Owner's supplied source-audio annotations explicitly mark the pickup/rubato passage unresolved; no steady-meter beat/bar boundary is approved there. The edit authorization permits review/proposals only and requires all notes, voices, tuplets, pitches and both sound/notated ties retained. Active divisions changes inside the supplied score; chord flags and backup/forward elements exist, but their detailed timeline has not been inspected. The owner asks whether flattening everything to4/4 is acceptable.

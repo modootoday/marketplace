@@ -131,6 +131,47 @@ passed every grader, without the plugin and with it:
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as evidence that the skill helps.
 
+### Codex fixture measurements
+
+Measured 2026-10-06 with Codex CLI 0.160.1, gpt-6.1-sol subject and judge, two
+runs per arm and three judge votes, proxy authentication and isolated read-only
+sandboxes. Only the following skill cases were measured. These are reasoning
+fixtures, not live MCP-client integration, public package installation, or remote
+catalog publication. Baseline 1.00 cases are regression checks.
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `mcp-connected-no-client-tools` | mcp-client-probe | 0.00 | 0.50 (open) | 2 |
+| `mcp-listed-authorization-failure` | mcp-client-probe | 1.00 | 1.00 | 2 |
+| `mcp-schema-call-control` | mcp-client-probe | 1.00 | 1.00 | 2 |
+| `mcp-client-probe` | mcp-client-probe | 0.00 | 1.00 | 2 |
+
+The connected/no-tools case has an open judging issue: its failing with reply
+correctly observes a first-page tool absent from client exposure while keeping
+pagination and root cause unverified. The grader's discovery-before-localization
+ordering is overconstrained for that evidence; no effect is claimed. The initial
+authorization case scored Without 1.00, With 0.50 because one with reply omitted
+actual schema field/type evidence. A later narrow report-contract correction and
+one unchanged-criteria comparison are recorded separately. Earlier measurements
+used the pre-correction body; they are not measurements of the later correction.
+The legacy stdio case's effect concerns config restoration and the recorded
+headless comparison procedure, not successful real-client integrations. Its old
+Claude 0.50 result above remains visible.
+
+### Other runtimes
+
+| Runtime | Model | Case | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | `mcp-connected-no-client-tools` | 0.00 | 0.50 (open) | 2/2 | 2026-10-06 |
+| Codex CLI | gpt-6.1-sol | `mcp-listed-authorization-failure` | 1.00 | 1.00 | 2/2 | 2026-10-06 |
+| Codex CLI | gpt-6.1-sol | `mcp-schema-call-control` | 1.00 | 1.00 | 2/2 | 2026-10-06 |
+| Codex CLI | gpt-6.1-sol | `mcp-client-probe` | 0.00 | 1.00 | 2/2 | 2026-10-06 |
+
+No metered runtime was used. The harness has no price mapping and reports
+costUsd as null; USD conversion is unknown, not a measured zero. Subscription
+quota is separate from metered charges. Failed attempts remain in the private
+evaluation ledger. A result is not transferred to an unmeasured runtime.
+
 ## Measured contract
 
 The most recent run is committed under `results/`, so you can read the answer

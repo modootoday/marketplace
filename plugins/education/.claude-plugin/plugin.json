@@ -1,6 +1,6 @@
 {
   "name": "education",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Reading passages that hit a measured grade level, language drills, and teacher-side checks for coverage, answer keys, lesson timing, study calendars and rule-valid puzzles, with the numbers and logs shown.",
   "author": {
     "name": "modootoday"

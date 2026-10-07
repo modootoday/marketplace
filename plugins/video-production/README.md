@@ -35,6 +35,7 @@ codex plugin add video-production@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
+| skill | `subtitle-media-timebase-check` | subtitle/media clock mapping from independent fit and held-out anchors, preserving intentional overlap |
 | skill | `remotion-explainer` | Remotion videos driven by frame math, with assets loaded before render and the output verified with ffprobe |
 | skill | `talking-head-edit` | talking-head edits with ffmpeg: silences cut with margins, voice levelled, subtitles re-timed, every cut listed |
 | skill | `video-brief-storyboard` | a video brief and a scene table someone else can produce from, with durations that add up and sourced assets |
@@ -44,6 +45,8 @@ codex plugin add video-production@modootoday
 | skill | `lipsync-viseme-timeline-check` | a mouth-animation plan for a cartoon or non-human character, a song or long audio: viseme timeline with a length check, closed-mouth mapping, per-segment frame counts and sampled-frame verification; it checks and plans and does not render |
 | skill | `scripted-code-animation-verification` | a code-driven animation checked against its required event order, deterministic timeline, scene continuity, reused motion, mechanical phase and preview-versus-export timing; it verifies and does not generate the animation |
 | skill | `subject-continuity-reference-sheet-check` | fictional or user-owned characters in generated shots checked against the approved reference sheet: fixed traits split from per-episode state, each re-appearance labelled match, intended change, drift or cannot judge with frame evidence, approval left to the director; it checks and does not generate footage or identify real people |
+
+The newly added `subtitle-media-timebase-check` reviews subtitle/media clock mapping from independent fit and held-out anchors, preserving intentional overlap. It ships three self-contained synthetic cases (normal, exception and missing input). These cases were compared as supplied-fixture reasoning; the results and limitations are recorded under Verify. Existing sibling-skill runtime results do not verify this skill.
 
 ## Failure mode
 
@@ -95,6 +98,34 @@ Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs p
 | --- | --- | --- | --- | --- |
 | `three-scene-durations` | remotion-explainer | 0.00 | 1.00 | 2 of 2 |
 | `false-start-word-boundary` | talking-head-edit | 0.25 | 1.00 | 2 of 2 |
+
+### Added skill reasoning comparisons
+
+The added `subtitle-media-timebase-check` was measured on 2026-10-07 with Codex CLI 0.160.1, gpt-6.1-sol subject and judge, two runs per arm and three judge votes, in a read-only empty application workspace. All three initial comparisons and their raw scores are retained. There is no admitted applicable effect case; this skill's minimum-effect requirement remains unmet. Regression agreement and OPEN judging interpretations do not establish an effect. No application workflow or actual artifact transformation was executed.
+
+| Case | Skill | Without | With | Runs per arm | Interpretation |
+| --- | --- | --- | --- | --- | --- |
+| `subtitle-offset-heldout` | subtitle-media-timebase-check | 0.00 | 1.00 (open) | 2 | OPEN: held-out anchor already separated from fit, failure only explicit independent wording. |
+| `subtitle-edit-heldout-overlap` | subtitle-media-timebase-check | 0.00 | 0.00 (open) | 2 | OPEN: diagnostic-next-check task does not yet establish a correction; future corrected-artifact acceptance requirement over-applied. One With reply omits explicit nonexecution disclosure but claims no playback. |
+| `subtitle-missing-clock-anchors` | subtitle-media-timebase-check | 0.00 | 1.00 (open) | 2 | OPEN: cue-specific verification and wider-track coverage distinguished; unconditional early/middle/late and player-environment wording requirements exceed established scope. |
+
+Reproduce one reasoning comparison from the marketplace root:
+
+```
+node plugins/skill-factory/skills/codex-plugin-eval/scripts/codex-plugin-eval.mjs plugins/video-production --case subtitle-offset-heldout --runs 2 -j 2 --model gpt-6.1-sol --judge-model gpt-6.1-sol --judge-votes 3 --auth proxy --isolation bwrap --threshold 0 --output-dir /tmp/subtitle-offset-heldout --json /tmp/subtitle-offset-heldout.json
+```
+
+### Other runtimes
+
+Codex reasoning rows for the added skill only. The (open) marker excludes them from verified-runtimes inference; existing measured sibling-skill records retain their scope. No new runtime badge is supported. Other runtimes remain untested for the added skill.
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | `subtitle-offset-heldout` | subtitle-media-timebase-check | 0.00 | 1.00 (open) | 2/2 | 2026-10-07 |
+| Codex CLI | gpt-6.1-sol | `subtitle-edit-heldout-overlap` | subtitle-media-timebase-check | 0.00 | 0.00 (open) | 2/2 | 2026-10-07 |
+| Codex CLI | gpt-6.1-sol | `subtitle-missing-clock-anchors` | subtitle-media-timebase-check | 0.00 | 1.00 (open) | 2/2 | 2026-10-07 |
+
+Measurements used subscription Codex and no metered runtimes. USD cost and token prices were null, so USD conversion is unavailable. Cached input is a subset of input tokens; reasoning output is included in output tokens.
 
 ## License
 

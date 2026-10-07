@@ -1,0 +1,9 @@
+{
+  "name": "music-notation",
+  "version": "0.1.0",
+  "description": "Review MusicXML imports and proposed edits against explicit playback paths, sounding-pitch references, percussion bindings and approved beat boundaries while preserving musical content.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}

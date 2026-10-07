@@ -1,0 +1,3 @@
+Do not write files or execute application/repository workflows. Reading available instruction documents is allowed. There is no application checkout; all sample facts are supplied below.
+
+Whole synthetic score R2 has four visible measures with D.C. text at m4 and Fine text at m2. The XML excerpts supplied contain only those directions; the sound navigation instructions, ending/repeat context, owner's intended visit sequence, destination application/version/import settings and actual playback visits are unavailable. Can the import's playback be approved from these markings? What should we obtain?

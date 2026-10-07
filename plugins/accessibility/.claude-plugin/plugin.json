@@ -1,6 +1,6 @@
 {
   "name": "accessibility",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Read images, scans, charts and device screens for blind and low-vision users: the text first, in order, with trends stated and uncertainty marked.",
   "author": {
     "name": "modootoday"

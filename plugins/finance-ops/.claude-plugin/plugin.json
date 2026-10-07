@@ -1,6 +1,6 @@
 {
   "name": "finance-ops",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Supplied financial figures checked by arithmetic: statement rows tied out to opening and closing balances, documents inventoried with evidence, and cash flow movements bridged by driver.",
   "author": {
     "name": "modootoday"

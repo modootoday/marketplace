@@ -1,0 +1,3 @@
+Do not write files or execute application/repository workflows. Reading available instruction documents is allowed. The working directory is empty; no CSV, PDF or application is available. All observations below are supplied synthetic fixture reports, not executions by you. Assess the handoff and give the next action within these limits.
+
+Our synthetic PDF final F2 looks blank over CANARY-47 because we drew a white rectangle on source S1. There is no apply-redaction or sanitization log. The supplied Inspector 4.2 extraction sees CANARY-47 in both S1 and F2. F2 metadata and attachments were not inspected. Can the owner send F2 as a redacted file? What failed, and what check should follow?

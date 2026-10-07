@@ -81,6 +81,7 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `software-qa` | Test cases traced to the change: gaps and duplicates listed, automation proposed for approval | no |
 | `accessibility` | Images, charts and screens read for blind and low-vision users: text first, uncertainty marked; alt text drafts reviewed against caption, link target and exported page | no |
 | `data-engineering` | Migrated or rewritten SQL proven equal to the original: statement map, two-way key diffs, seeded-difference test; many similar lab workbooks merged with per-file row reconciliation | no |
+| `music-notation` | MusicXML playback visits, sounding pitch, percussion bindings and approved beat boundaries reviewed with musical content preserved | no |
 | `interactive-web-demos` | Browser simulations checked against a reference result, timestep convergence and measured frame time; assistant-built demos made portable with a clean-browser test | no |
 | `asset-3d-vfx` | Blender scenes checked against planned dimensions, state collisions, a reference render and web budgets | no |
 | `food-service` | Pasted recipes copied to a card unchanged; swaps and appliance changes logged as marked estimates | no |
@@ -94,6 +95,7 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `procurement` | Spend projection with ledger reconciliation, dedicated lane cost models, provisional freight classification, verified vendor shortlists, purchase-request intake and stage checks, ERP navigation with verification notes (freight classification and ERP navigation rest on one and three weak records) | no |
 | `gis` | Raster NoData and scaling, geometry repair and merges, label and view expressions, slope areas from contours, tool substitution; CRS and units stated | no |
 | `engineering` | Work instructions from field notes, verbatim clause location with edition, sourced datasheet spec tables, fault evidence logs that name no root cause, device config files built from a pasted register table (rest on one to four weak records) | no |
+| `security-ops` | Two skills: approved PDF residual-content verification and bounded archive extraction policy; no automatic extraction or universal safety guarantee | no |
 | `hr-ops` | Sourcing strings built from stated job requirements without protected-trait terms (one single-person report) | no |
 | `photography` | Check a photo cull or batch grade from the scores and logs you supply: criteria per subject, rank and flag only, preview versus export; stock-site metadata and CSV checked against the destination's limits | no |
 | `it-ops` | Safe patch-back of a fix made on an anonymized script copy, with no real value sent to a model; one-record evidence | no |

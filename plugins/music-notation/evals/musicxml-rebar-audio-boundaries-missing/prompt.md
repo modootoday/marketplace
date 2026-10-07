@@ -1,0 +1,3 @@
+Do not write files or execute application/repository workflows. Reading available instruction documents is allowed. There is no application checkout; all sample facts are supplied below.
+
+Whole synthetic excerpt A3 is AI-produced MusicXML. User says it should be4/4 but supplies no source audio, audio annotations or approved beat/bar boundaries. The XML includes notes/voices/durations/divisions, chord flags, backup/forward and sound/notated ties, so a structural timeline could be inspected, but no such detailed inspection or playback has occurred. The user wants all musical content retained. Can we restore the rhythm by rebarring?

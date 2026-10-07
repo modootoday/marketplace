@@ -1,0 +1,3 @@
+Do not write files or execute application/repository workflows. Reading available instruction documents is allowed. The working directory is empty; no CSV, PDF or application is available. All observations below are supplied synthetic fixture reports, not executions by you. Assess the handoff and give the next action within these limits.
+
+The only evidence for an exported PDF is a screenshot of two columns and two form labels. There is no final PDF, no expected semantic/focus sequence, no tag or label/control association report and no reader/assistive technology versions or observations. The author says "it looks readable, so accessibility passed." Can we accept that, and what minimum inputs would settle the reading-order question?

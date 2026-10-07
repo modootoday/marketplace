@@ -1,0 +1,3 @@
+Do not write files or execute application/repository workflows. Reading available instruction documents is allowed. The working directory is empty; no CSV, PDF or application is available. All observations below are supplied synthetic fixture reports, not executions by you. Assess the handoff and give the next action within these limits.
+
+I have a screenshot of a white box in a PDF and a note saying "search and extraction on final F2: CANARY-47 not found." It gives no tool/version, no final PDF, no applied-redaction/save log, no source detection control, and no metadata or attachment results. Is that enough to say the synthetic canary was removed? What should we request before accepting the claim?

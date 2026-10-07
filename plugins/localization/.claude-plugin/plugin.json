@@ -1,6 +1,6 @@
 {
   "name": "localization",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Quality checks for translations and subtitles: omissions, footnote parity, naturalness, and cue limits reported by id.",
   "author": {
     "name": "modootoday"

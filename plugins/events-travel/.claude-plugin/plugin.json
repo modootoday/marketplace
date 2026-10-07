@@ -1,6 +1,6 @@
 {
   "name": "events-travel",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Day plans, seating plans, deadline registers, hotel shortlists and route checks that survive arithmetic: fixed bookings, opening hours, travel time, supplied rules and official sources, with buffers, backups and unverified items marked.",
   "author": {
     "name": "modootoday"

@@ -1,6 +1,6 @@
 {
   "name": "bioinformatics",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Refactors of analysis pipelines that must keep results equal: baseline frozen, steps mapped, outputs compared at a stated tolerance, differences explained apart from unexplained ones.",
   "author": {
     "name": "modootoday"

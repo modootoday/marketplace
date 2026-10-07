@@ -1,6 +1,6 @@
 {
   "name": "data-engineering",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Prove that migrated, converted or rewritten SQL returns the same result as the original: statements mapped one to one, two-way key diffs, and checkers shown to catch seeded differences.",
   "author": {
     "name": "modootoday"

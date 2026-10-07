@@ -1,6 +1,6 @@
 {
   "name": "software-qa",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Keep test cases aligned with change: a trace from requirement to changed behavior to case, with gaps and duplicates listed and automation proposed for QA approval.",
   "author": {
     "name": "modootoday"

@@ -35,12 +35,18 @@ codex plugin add academic-research@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
+| skill | `bibliography-creator-export-semantics-check` | approved personal/literal creator identities, roles and order compared through export, parsing and style display |
+| skill | `ome-series-calibration-roundtrip-check` | OME physical quantity equivalence and series/IFD/ZCT correspondence through supplied roundtrip observations |
 | skill | `research-source-verification` | AI-suggested citations matched to a real index, instruments extracted only as quoted text, papers screened against the research question |
 | skill | `research-coverage-chronology-audit` | research answers audited for missing items and wrong dates: dated sourced list, proposed versus enacted, coverage gaps |
 | skill | `paper-method-reimplementation-check` | a port of a published method checked before use: equation checklist, authors' code and licence recorded, one published number reproduced first, deviations and ambiguous text listed |
 | skill | `reference-renumber-sync` | numbered references reordered or deleted with an old-to-new mapping, groups and ranges rewritten, deleted-reference citations and uncited entries listed; rests on one user report |
 | skill | `lab-calculation-and-claim-check` | dilution and unit math redone, result tables checked against raw numbers, citations tested for method and sample fit |
 | skill | `structure-record-ligand-presence-check` | a recommended structure entry checked for the named ligand against the record text you paste: ligand code, chain and occupancy reported or "not found in the pasted text", no entry named from memory, source-database confirmations listed; rests on one first-person report (weak evidence) |
+
+The newly added `bibliography-creator-export-semantics-check` reviews approved personal/literal creator identities, roles and order compared through export, parsing and style display. It ships three self-contained synthetic cases (normal, exception and missing input). These cases were compared as supplied-fixture reasoning; the results and limitations are recorded under Verify. Existing sibling-skill runtime results do not verify this skill.
+
+The newly added `ome-series-calibration-roundtrip-check` reviews supplied synthetic scientific artifact evidence. Each ships three synthetic cases (normal, exception and missing input); the named Codex fixture comparisons and limits are recorded below. Historical results apply only to their named skills. No biological or clinical interpretation is provided.
 
 ## Failure mode
 
@@ -86,6 +92,17 @@ Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs p
 
 ### Other runtimes
 
+Codex reasoning rows for the added skill only. The (open) marker excludes them from verified-runtimes inference; existing measured sibling-skill records retain their scope. No new runtime badge is supported. Other runtimes remain untested for the added skill.
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | `creator-style-preserves-identity` | bibliography-creator-export-semantics-check | 1.00 | 1.00 (open) | 2/2 | 2026-10-07 |
+| Codex CLI | gpt-6.1-sol | `creator-literal-parser-mismatch` | bibliography-creator-export-semantics-check | 0.00 | 0.00 (open) | 2/2 | 2026-10-07 |
+| Codex CLI | gpt-6.1-sol | `creator-source-mode-missing` | bibliography-creator-export-semantics-check | 0.00 | 1.00 (open) | 2/2 | 2026-10-07 |
+
+Measurements used subscription Codex and no metered runtimes. USD cost and token prices were null, so USD conversion is unavailable. Cached input is a subset of input tokens; reasoning output is included in output tokens.
+
+
 Grok CLI, both arms, 2 runs per arm, 3 judge votes, the model as subject and judge, 20261006. A row where the skill fired and With is 1.00 sets the runtime in the skill's verified-runtimes.
 
 | Runtime | Model | Case | Without | With | Fired | Date |
@@ -94,6 +111,48 @@ Grok CLI, both arms, 2 runs per arm, 3 judge votes, the model as subject and jud
 | Antigravity CLI | gemini-3.8-flash-low | `kinase-ligand-entry-check` | 0.00 | 1.00 | 2/2 | 20261006 |
 | Gemini CLI | gemini-3.8-flash | `kinase-ligand-entry-check` | 0.25 | 1.00 | 2/2 | 20261006 |
 
+### Scientific artifact fixture measurements
+
+Codex CLI 0.160.1 used gpt-6.1-sol subject and judge, two runs per arm, j2, three judge votes, proxy authentication and read-only bwrap isolation. All nine comparisons ran serially on supplied synthetic reports. They measure reasoning, not executed exporters, sequence analysis or microscopy applications. Criteria and measured instructions were unchanged.
+
+| Case | Skill | Without | With | Runs per arm |
+| --- | --- | --- | --- | --- |
+| `ome-unit-plane-match` | ome-series-calibration-roundtrip-check | 1.00 | 1.00 (open) | 2 |
+| `ome-bytes-match-calibration-loss` | ome-series-calibration-roundtrip-check | 0.00 | 0.00 (open) | 2 |
+| `ome-calibration-series-missing` | ome-series-calibration-roundtrip-check | 0.50 | 1.00 (open) | 2 |
+
+The standard table uses (open) to prevent inferred unmeasured Claude results. Runtime-specific raw scores below qualify only where an applicable narrow effect is admitted; regression and OPEN rows remain nonqualifying.
+
+No applicable effect is admitted for OME. Normal quantity and semantic-plane matching is regression evidence. The exception is OPEN: all arms preserve originals and propose current saved-metadata versus reader investigation; graders demand future conditional correction verification, despite the requested next evidence check. With0 already mentions a later fresh saved artifact and reader report. Missing-input grading is OPEN: both baselines collect series/source-saved mapping, quantity/provenance, versions and reimport comparisons. Baseline1 omits explicit pixel type, but broader claims of missing artifact/output evidence are disputed; baseline0 fully passes. No microscope-calibration, biological or general certification advantage is established.
+
+### Other runtimes: scientific artifact fixtures
+
+These rows apply only to the named additions. Other clients and actual applications remain untested for these additions; historical sibling results retain their scope.
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | `ome-unit-plane-match` | ome-series-calibration-roundtrip-check | 1.00 | 1.00 (open) | 2/2 | 2026-10-07 |
+| Codex CLI | gpt-6.1-sol | `ome-bytes-match-calibration-loss` | ome-series-calibration-roundtrip-check | 0.00 | 0.00 (open) | 2/2 | 2026-10-07 |
+| Codex CLI | gpt-6.1-sol | `ome-calibration-series-missing` | ome-series-calibration-roundtrip-check | 0.50 | 1.00 (open) | 2/2 | 2026-10-07 |
+
+Subscription Codex only; no metered runtime was used. costUsd and prices are null, so USD conversion is unavailable. Cached input is a subset of input; reasoning output is included in output. No OPEN row supports a badge.
+
+
 ## License
 
 MIT
+### Added skill reasoning comparisons
+
+The added `bibliography-creator-export-semantics-check` was measured on 2026-10-07 with Codex CLI 0.160.1, gpt-6.1-sol subject and judge, two runs per arm and three judge votes, in a read-only empty application workspace. All three initial comparisons and their raw scores are retained. There is no admitted applicable effect case; this skill's minimum-effect requirement remains unmet. Regression agreement and OPEN judging interpretations do not establish an effect. No application workflow or actual artifact transformation was executed.
+
+| Case | Skill | Without | With | Runs per arm | Interpretation |
+| --- | --- | --- | --- | --- | --- |
+| `creator-style-preserves-identity` | bibliography-creator-export-semantics-check | 1.00 | 1.00 (open) | 2 | Regression only: both arms preserve creator semantics and distinguish rendering. |
+| `creator-literal-parser-mismatch` | bibliography-creator-export-semantics-check | 0.00 | 0.00 (open) | 2 | OPEN: bounded brace-sensitivity diagnostic experiment is valid; frozen grader mandates fresh-export repair-acceptance cycle for minimal next diagnostic test. No effect; no correction. |
+| `creator-source-mode-missing` | bibliography-creator-export-semantics-check | 0.00 | 1.00 (open) | 2 | OPEN: supplied .bib context versus explicit format-request wording and full-render certification coverage; both baselines preserve unknown identity, no admitted effect. |
+
+Reproduce one reasoning comparison from the marketplace root:
+
+```
+node plugins/skill-factory/skills/codex-plugin-eval/scripts/codex-plugin-eval.mjs plugins/academic-research --case creator-style-preserves-identity --runs 2 -j 2 --model gpt-6.1-sol --judge-model gpt-6.1-sol --judge-votes 3 --auth proxy --isolation bwrap --threshold 0 --output-dir /tmp/creator-style-preserves-identity --json /tmp/creator-style-preserves-identity.json
+```

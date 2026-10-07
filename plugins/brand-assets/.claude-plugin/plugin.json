@@ -1,6 +1,6 @@
 {
   "name": "brand-assets",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Brand work that decides something: visual directions argued before drawing, a tokens.json and colour names every asset reads, client requests clarified before design, mockup text recovered with its doubts marked, and QA of the rendered asset before it is published.",
   "author": {
     "name": "modootoday"

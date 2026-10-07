@@ -1,0 +1,3 @@
+Do not write files or execute application/repository workflows. Reading available instruction documents is allowed. The working directory is empty; no CSV, PDF or application is available. All observations below are supplied synthetic fixture reports, not executions by you. Assess the handoff and give the next action within these limits.
+
+I have a CSV note whose raw value is =1+2 and want one escaping rule that makes it safe for spreadsheets and our data loader. Someone suggested adding a tab and surrounding the field with quotes. We have no recorded recipient app/version/locale, import method, save/reopen observations or loader value-fidelity requirements. Can you certify that rule and tell me what evidence to collect?
