@@ -239,3 +239,16 @@ export function describeIsolation(mode) {
   if (mode === "none") return "isolation none: the agent can read any file the operator can (debugging only)";
   return "isolation bwrap: only system dirs, the CLI install, the run dir (and, under --auth oauth only, the login files) are visible; /home is empty, /tmp is private, env is scrubbed";
 }
+
+export function isolationScope(mode) {
+  if (!ISOLATION_MODES.includes(mode))
+    throw new Error("Unknown isolation scope");
+  return {
+    filesystem: mode === "bwrap" ? "selected-mounts" : "host-readable",
+    processNamespaces: mode === "bwrap",
+    network: "host",
+    kernel: "shared",
+    directEgressBlocked: false,
+    dockerControlPlane: false,
+  };
+}

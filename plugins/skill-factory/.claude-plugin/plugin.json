@@ -1,6 +1,6 @@
 {
   "name": "skill-factory",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Write agent skills that change behaviour: evals before the body, descriptions that trigger on the right requests, rules tied to the failures they prevent, and a measured delta before release.",
   "author": {
     "name": "modootoday"

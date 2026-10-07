@@ -17,6 +17,7 @@ const { describeProxyStats, startRuntimeProxy } = await import(
 import { stripPluginMcp } from '../../../shared/plugin-copy.mjs';
 import { help, parseArgs as parseSharedArgs } from '../../../shared/options.mjs';
 import { assertRuntimeLock } from '../../../shared/runtime-contract.mjs';
+import { isolationScope } from "../../../shared/isolate.mjs";
 import { priceFor as sharedPriceFor, costOf as sharedCostOf, pricesFor } from '../../../shared/pricing.mjs';
 import { adcPath as configuredAdcPath, vertexConfig } from '../../../shared/cloud-config.mjs';
 
@@ -578,7 +579,7 @@ async function main() {
   const opts = parseArgs(process.argv.slice(2));
   if (opts.runtimeLock) {
     try {
-      await assertRuntimeLock({
+      opts.verifyRuntime = await assertRuntimeLock({
         runtime: "gemini",
         binary: geminiBinary(opts.gemini),
         path: opts.runtimeLock,
@@ -914,17 +915,24 @@ async function main() {
       mcp: opts.mcp,
       hooks: opts.hooks,
       isolation: opts.isolation,
+      isolationScope: isolationScope(opts.isolation),
       auth: authState.auth.record,
       evalDir: evalDirName,
       sandbox,
       approvalMode: "yolo",
       toolsExcluded: exclude,
       allowTools: toolNotes,
-      prices: pricesFor('gemini', opts),
+      prices: pricesFor("gemini", opts),
       maxCostUsd: opts.maxCostUsd ?? null,
       maxTokens: opts.maxTokens ?? null,
       notes: opts.notes,
-      plugins: [{ name: manifest.name ?? plugin, version: manifest.version ?? null, path: opts.pluginDir }],
+      plugins: [
+        {
+          name: manifest.name ?? plugin,
+          version: manifest.version ?? null,
+          path: opts.pluginDir,
+        },
+      ],
     },
     cases: caseResults,
     aggregates,
@@ -938,6 +946,11 @@ async function main() {
     for (const c of caseResults) for (const runs of Object.values(c.arms)) for (const r of runs) r.tracePath = null;
     rmSync(runRoot, { recursive: true, force: true });
   }
+  if (opts.verifyRuntime) await opts.verifyRuntime();
+  result.suite.runtimeLock = {
+    checkedBefore: Boolean(opts.verifyRuntime),
+    checkedAfter: Boolean(opts.verifyRuntime),
+  };
   const out = JSON.stringify(result, null, 2);
   mkdirSync(outputDir, { recursive: true });
   writeFileSync(join(outputDir, "aggregate-result.json"), out);

@@ -179,6 +179,12 @@ export async function assertRuntimeLock({ runtime, binary, path }) {
     lock.fingerprint,
     await runtimeLaunchFingerprint(runtime, binary),
   );
+  return async () => {
+    compareRuntimeLock(
+      lock.fingerprint,
+      await runtimeLaunchFingerprint(runtime, binary),
+    );
+  };
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === import.meta.filename) {

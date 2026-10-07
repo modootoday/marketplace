@@ -109,3 +109,10 @@ node --test --test-concurrency=1 ../../shared/*.test.mjs
 
 Source reference: [Claude Code plugin evals](https://code.claude.com/docs/en/plugin-evals).
 Recheck CLI help and authorized runtime acceptance after upgrades.
+## Coordination evaluations
+
+For mailbox, notification, recovery or subagent cases, read
+[coordination evidence](../../shared/coordination-evidence.md). The normalized
+suite records isolationScope and before/after runtime-lock checks. These fields
+describe the evaluator's own boundary; a separate container pilot does not qualify
+this launcher for network confinement.

@@ -58,12 +58,26 @@ test("fingerprint inspection uses private HOME and scrubbed credentials and reje
       path,
       JSON.stringify({ schemaVersion: 1, runtime: "grok", fingerprint }),
     );
-    await assertRuntimeLock({ runtime: "grok", binary, path });
+    const recheck = await assertRuntimeLock({ runtime: "grok", binary, path });
+    await recheck();
     await assert.rejects(
       assertRuntimeLock({ runtime: "gemini", binary, path }),
       /runtime mismatch/,
     );
     writeFileSync(binary, source + "\n");
+    writeFileSync(
+      path,
+      JSON.stringify({
+        schemaVersion: 1,
+        runtime: "grok",
+        fingerprint: await runtimeLaunchFingerprint("grok", binary),
+      }),
+    );
+    await assert.rejects(recheck(), /mismatch: artifacts/);
+    writeFileSync(
+      path,
+      JSON.stringify({ schemaVersion: 1, runtime: "grok", fingerprint }),
+    );
     await assert.rejects(
       assertRuntimeLock({ runtime: "grok", binary, path }),
       /mismatch: artifacts/,

@@ -149,3 +149,10 @@ shared/pricing.mjs holds model-specific snapshot prices in USD per million token
 Cases defined by case.yaml are skipped; max_turns is recorded but not enforced. Skill activation is observable evidence, not a proof that the model followed every instruction. Eval graders are removed from standard installed evals directories where supported; custom eval directories may remain visible in copied plugins. Missing or incomplete CLI usage can undercount cost. A judge outage can leave null scores even if some subject calls succeed; inspect aggregates and graders, not just exit 0.
 
 Plugin hooks use runtime-specific event/tool mappings; Antigravity keeps native hook definitions and its hook evidence remains unverified. Antigravity refuses --mcp and --allow-tools because importing MCP and enforcing those settings is not implemented. Its built-in skills can remain in both arms, and default Gemini tool exclusions do not apply; its native --sandbox restricts terminal commands. Subject tool allowances do not create identical tool behavior across CLIs. API schemas, subscription endpoints, CLI storage formats, and price snapshots can change; revalidate after a CLI upgrade. runtime-usage.mjs reports source/error information and supports GEMINI_CLI_CORE_CHUNK when Gemini's credential-storage module cannot be discovered. It never prints or refreshes credential contents.
+## Coordination evaluations
+
+For mailbox, notification, recovery or subagent cases, read
+[coordination evidence](../../shared/coordination-evidence.md). The normalized
+suite records isolationScope and before/after runtime-lock checks. These fields
+describe the evaluator's own boundary; a separate container pilot does not qualify
+this launcher for network confinement.

@@ -13,12 +13,23 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import test from "node:test";
 import { antigravityToolEvents } from "./antigravity-events.mjs";
-import { runSpec } from "./isolate.mjs";
+import { runSpec, isolationScope } from "./isolate.mjs";
 import { spawnOwned, terminateOwned } from "./owned-process.mjs";
 
 const first = "00000000-0000-0000-0000-000000000001";
 const second = "00000000-0000-0000-0000-000000000002";
 const fixture = join(import.meta.dirname, "fixtures/process-tree.mjs");
+
+test("filesystem isolation never claims a confined network or Docker control plane", () => {
+  const wrapped = isolationScope("bwrap");
+  assert.equal(wrapped.filesystem, "selected-mounts");
+  assert.equal(wrapped.processNamespaces, true);
+  assert.equal(wrapped.directEgressBlocked, false);
+  assert.equal(wrapped.network, "host");
+  assert.equal(wrapped.dockerControlPlane, false);
+  assert.equal(isolationScope("none").filesystem, "host-readable");
+  assert.throws(() => isolationScope("docker"), /Unknown/);
+});
 const step = {
   type: "PLANNER_RESPONSE",
   step_index: 4,

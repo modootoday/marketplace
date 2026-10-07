@@ -4,6 +4,7 @@ import { dirname, join, resolve } from "node:path";
 import { help, parseArgs } from "./options.mjs";
 import { assertRuntimeLock, runtimeLaunchFingerprint } from "./runtime-contract.mjs";
 import { bwrapAvailable, cliBinds, cleanEnv, isolate } from "./isolate.mjs";
+import { isolationScope } from "./isolate.mjs";
 import { startCredProxy } from "./cred-proxy.mjs";
 import { spawnOwned, terminateOwned } from "./owned-process.mjs";
 
@@ -158,7 +159,11 @@ export async function main(argv = process.argv.slice(2)) {
         throw new Error("bubblewrap is required for default isolation");
       }
       if (opts.runtimeLock) {
-        await assertRuntimeLock({ runtime: "claude", binary: opts.claude, path: opts.runtimeLock });
+        opts.verifyRuntime = await assertRuntimeLock({
+          runtime: "claude",
+          binary: opts.claude,
+          path: opts.runtimeLock,
+        });
       }
     } catch (error) {
       console.error(`claude-plugin-eval: ${error.message}`);
@@ -250,6 +255,12 @@ export async function main(argv = process.argv.slice(2)) {
     }
     const data = JSON.parse(readFileSync(aggregate, "utf8"));
     const result = normalizeClaudeResult(data, { version, opts, timedOut, interrupted });
+    if (opts.verifyRuntime) await opts.verifyRuntime();
+    result.suite.isolationScope = isolationScope(opts.isolation);
+    result.suite.runtimeLock = {
+      checkedBefore: Boolean(opts.verifyRuntime),
+      checkedAfter: Boolean(opts.verifyRuntime),
+    };
     const out = JSON.stringify(result, null, 2);
     writeFileSync(aggregate, out);
     if (typeof opts.json === "string") {
