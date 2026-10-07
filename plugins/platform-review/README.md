@@ -103,6 +103,8 @@ Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs p
 
 ### Codex measurement
 
+Publication sanitization renamed two synthetic path labels in existing-capability-wiring without changing its supplied behavior or assertions. Measurements used the original frozen prompt (SHA256 e7b61ddacbc41d6925a0cf49bbc69225671bc907a4812199e39432cf8bbfc0c4); the published prompt has SHA256 e8a3e46cc068848fe0b40241e29663e7cb3cb538f92fcb3c80fa895064852657. The renamed prompt has not been rerun and receives no separate measured behavior claim.
+
 Measured 2026-10-06 with Codex CLI 0.160.1 and gpt-6.1-sol as subject and judge,
 two runs per arm and three judge votes. Runs use a read-only empty application
 sandbox; prompts contain the repository evidence. Only the listed cases were

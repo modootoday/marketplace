@@ -3,12 +3,12 @@ We need a delivery-retry status endpoint. Please recommend the smallest implemen
 Required behavior: authenticated users can read the last failure reason and next retry time for their own delivery. Tenant isolation is mandatory. No new retry scheduler is requested.
 
 Supplied evidence:
-- packages/delivery-core/src/retry-state.ts exports readRetryState(store, tenantId, deliveryId). Its return type contains lastFailure and nextRetryAt. Unit tests show cross-tenant reads return null.
-- packages/delivery-core/package.json exports only ./send and ./types. retry-state.ts is absent from the export map.
+- packages/delivery-engine/src/retry-state.ts exports readRetryState(store, tenantId, deliveryId). Its return type contains lastFailure and nextRetryAt. Unit tests show cross-tenant reads return null.
+- packages/delivery-engine/package.json exports only ./send and ./types. retry-state.ts is absent from the export map.
 - services/dispatch/src/worker.ts imports readRetryState through a relative source path and uses it in the delivery retry loop.
-- services/http/src/routes/deliveries.ts imports delivery-core/send. It mounts POST /deliveries and GET /deliveries/:id; the latter returns state and createdAt only. Authentication middleware supplies request.tenantId.
-- apps/dashboard/src/deliveries.ts fetches GET /deliveries/:id and shows state. No lastFailure or nextRetryAt strings appear in this file.
-- A grep for readRetryState in apps/dashboard returned zero matches. Its control search for fetchDelivery returned one match at the known API call.
-- The team says the HTTP service imports delivery-core through its published package export map, but we have no integration test, built package listing, or production trace for that claim.
+- services/http/src/routes/deliveries.ts imports delivery-engine/send. It mounts POST /deliveries and GET /deliveries/:id; the latter returns state and createdAt only. Authentication middleware supplies request.tenantId.
+- web/dashboard/src/deliveries.ts fetches GET /deliveries/:id and shows state. No lastFailure or nextRetryAt strings appear in this file.
+- A grep for readRetryState in web/dashboard returned zero matches. Its control search for fetchDelivery returned one match at the known API call.
+- The team says the HTTP service imports delivery-engine through its published package export map, but we have no integration test, built package listing, or production trace for that claim.
 
 What should be reused, what change is actually missing, and what remains unverified before implementation?
