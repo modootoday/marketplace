@@ -11,7 +11,7 @@ This plugin is a preview: the other HR skills are available to signed-in users.
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | measured, nonqualifying | codex-cli 0.161.0, 2026-10-08; failure and regression coverage only (see Other runtimes) |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -70,6 +70,17 @@ without the plugin and with it:
 
 The plugin reads only the text you supply and sends nothing. Its outputs are arithmetic and
 checklists for a person to review: local law, payroll, HR and legal review decide.
+
+### Other runtimes: supplied-fixture closeout
+
+Measured on 2026-10-08 with gpt-6.1-sol as subject and judge, two runs per arm and three judge votes. Scores below are original behavioural aggregates. Process exit zero at threshold zero is not quality evidence.
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | `boolean-sourcing-alternative-capability-groups` | boolean-sourcing-query | 0.50 | 0.50 | 2/2 | 2026-10-08 |
+| Codex CLI | gpt-6.1-sol | `boolean-sourcing-missing-platform-proficiency` | boolean-sourcing-query | 1.00 | 1.00 | 2/2 | 2026-10-08 |
+
+The alternative-capability case retains With-1's omitted broadening tradeoff and untested-search statement. Without-0 also omits the tradeoff, but one judge understates its actual no-access statement; equivalent no-access language passed elsewhere. Preserve that judge-reason mismatch and all raw votes. The missing-platform case is baseline-perfect regression coverage. Neither supports comparative qualification, platform syntax validity or candidate suitability.
 
 ## License
 

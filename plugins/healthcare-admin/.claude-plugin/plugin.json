@@ -1,6 +1,6 @@
 {
   "name": "healthcare-admin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fact-preserving drafting of clinical notes: a clinician's own brief notes placed into a required template, empty fields marked NOT DOCUMENTED, model wording listed for the clinician to confirm.",
   "author": {
     "name": "modootoday"

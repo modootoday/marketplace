@@ -507,7 +507,7 @@
     {
       "name": "it-ops",
       "description": "A fix made on an anonymized copy of an administration script patched back to the real script through a local replacement table, changed hunks only, with no real value sent to a model.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "source": "./plugins/it-ops",
       "author": {
         "name": "modootoday"
@@ -543,7 +543,7 @@
     {
       "name": "healthcare-admin",
       "description": "Fact-preserving drafting of clinical notes: a clinician's own brief notes placed into a required template, empty fields marked NOT DOCUMENTED, model wording listed for the clinician to confirm.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "source": "./plugins/healthcare-admin",
       "author": {
         "name": "modootoday"
