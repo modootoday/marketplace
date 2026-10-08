@@ -66,8 +66,8 @@ the share of runs that passed every grader, without the plugin and with it:
 | --- | --- | --- | --- | --- |
 | `chat-content-object-conversion` | training-data-format-contract-check | 0.00 | 1.00 | 2 |
 
-Measured 20261005 on Claude Code 2.1.289 with Sonnet as subject and judge. Each skill has one
-case; two more are needed for the three-case release gate.
+Measured 20261005 on Claude Code 2.1.289 with Sonnet as subject and judge. At that recorded cut, each skill had one
+case and two more were needed for the three-case release gate.
 
 Codex CLI, measured 20261006 (Codex, gpt-6.1-sol / gpt-6.1-sol, 3 votes), both arms:
 
@@ -76,6 +76,18 @@ Codex CLI, measured 20261006 (Codex, gpt-6.1-sol / gpt-6.1-sol, 3 votes), both a
 | `bbox-voc-labelled-coco` | bbox-annotation-format-conversion-check | 0.00 | 1.00 | 2 |
 
 The bounding box skill rests on two web records (a bug report and a value-added reseller note).
+
+### Other runtimes: reviewed supplied-case comparison
+
+Measured 2026-10-08 on codex-cli 0.161.0 with gpt-6.1-sol as subject and judge, two runs per arm and three votes per semantic grader. Scores are the original behavioural aggregates; process exit zero at threshold zero is not quality evidence.
+
+| Runtime   | Model       | Case                           | Skill                                   | Without | With | Fired | Date       |
+| --------- | ----------- | ------------------------------ | --------------------------------------- | ------- | ---- | ----- | ---------- |
+| Codex CLI | gpt-6.1-sol | `bbox-mixed-size-yolo-to-coco` | bbox-annotation-format-conversion-check | 0.00    | 1.00 | 2/2   | 2026-10-08 |
+
+Four answers produce twelve judge votes: six With PASS and six baseline FAIL. Both arms derive the correct mixed-size boxes and category mapping. Both baseline answers omit the reverse-conversion comparison with pixel-scaled tolerance; both With answers include it while bounding their unexecuted code proposals. This is a supplied-row validation-planning effect, not actual image, full-dataset or training validation.
+
+The plugin now has three case paths across two skills. The bounding-box skill has two and the training-data skill has one; this does not establish three-case coverage or a quality gate for either skill.
 
 ## License
 

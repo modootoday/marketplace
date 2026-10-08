@@ -11,7 +11,7 @@ Payment integrations, refunds and disputes, payment provider choice and USD pric
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | measured, incomplete comparison; unqualified | codex-cli 0.161.0, 2026-10-08; see comparison limits |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -68,10 +68,16 @@ passed every grader, without the plugin and with it:
 | --- | --- | --- | --- | --- |
 | `price-feels-right` | pricing-hypothesis | 0.00 | 1.00 | 2 |
 
-The skill has one case; two more are needed for the three-case release gate.
+At the recorded 20261004 cut, the skill had one case and two more were needed for the three-case release gate.
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+### Codex comparison with incomplete judge evidence
+
+The supplied `pricing-free-alternative-unit-test` case for pricing-hypothesis was run on 2026-10-08 using codex-cli 0.161.0 and gpt-6.1-sol as subject and judge, with two runs per arm and three requested judge votes. The untouched aggregate reports Without 0.00, With 1.00 and skill activation 2/2. One baseline judge call returned a capacity ERROR instead of a verdict: only eleven of the twelve required votes are valid, comprising six PASS and five FAIL. The aggregate's partial=false flag does not establish complete judge coverage.
+
+These raw values are retained as incomplete evidence in prose, not a qualifying runtime result. No runtime qualification, automatic retry, score override or general pricing benefit is claimed. The existing Claude runtime qualification remains unchanged. The skill now has two case paths, still short of three-case coverage.
 
 ## License
 

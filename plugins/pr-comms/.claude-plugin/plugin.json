@@ -1,6 +1,6 @@
 {
   "name": "pr-comms",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Media targets and pitch angles for a PR pitch, checked against what was actually pasted: journalist beats and bylines marked verified or unverified, no contact details that are not on a source page, calendar deadlines compared with today and hooks tied to approved expertise only. It prepares a checkable worksheet; it does not write the pitch or profile anyone.",
   "author": {
     "name": "modootoday"

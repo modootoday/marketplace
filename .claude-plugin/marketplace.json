@@ -147,7 +147,7 @@
     {
       "name": "monetization",
       "description": "Prices framed as hypotheses with a test: who pays, for what unit of value, against which alternative, what result would change the decision, and the cheapest test before anyone builds a pricing page.",
-      "version": "0.4.0",
+      "version": "0.4.1",
       "author": {
         "name": "modootoday"
       },
@@ -435,7 +435,7 @@
     {
       "name": "ml-data",
       "description": "Checks fine-tuning data against the target trainer or provider schema before an upload or a training run: roles, field names and content types per row, one JSON record per example, a reload with the real loader, and tool-call turn structure. It checks data; it does not train.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "modootoday"
       },
@@ -588,7 +588,7 @@
     {
       "name": "pr-comms",
       "description": "Media targets and pitch angles for a PR pitch, checked against what was actually pasted: journalist beats and bylines marked verified or unverified, no contact details that are not on a source page, calendar deadlines compared with today and hooks tied to approved expertise only. It prepares a checkable worksheet; it does not write the pitch or profile anyone.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "source": "./plugins/pr-comms",
       "author": {
         "name": "modootoday"

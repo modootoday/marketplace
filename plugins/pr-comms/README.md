@@ -90,6 +90,16 @@ Both arms, 2 runs per arm, 3 judge votes, the model as subject and judge. A row 
 | Antigravity CLI | gemini-3.8-flash-low | `press-release-quote-polish` | 0.00 | 1.00 | 2/2 | 20261006 |
 | Gemini CLI | gemini-3.8-flash | `press-release-quote-polish` | 0.25 | 1.00 | 2/2 | 20261006 |
 
+### Other runtimes: reviewed supplied-case comparison
+
+Measured 2026-10-08 on codex-cli 0.161.0 with gpt-6.1-sol as subject and judge, two runs per arm and three votes per semantic grader. Scores are the original behavioural aggregates; process exit zero at threshold zero is not quality evidence.
+
+| Runtime   | Model       | Case                           | Skill                        | Without | With | Fired | Date       |
+| --------- | ----------- | ------------------------------ | ---------------------------- | ------- | ---- | ----- | ---------- |
+| Codex CLI | gpt-6.1-sol | `interview-brief-stale-figure` | interview-briefing-fact-pack | 0.00    | 1.00 | 2/2   | 2026-10-08 |
+
+This comparison uses clarified supplied-context criteria and preserves the earlier recorded results. Four answers produce twenty-four judge votes: ten PASS and fourteen FAIL, including two minority With FAIL. One dissent concerns the engine-failure question also appearing in Safety despite a separate off-limits response; the other requires an explicit absent fare-source statement beyond the missing figure and owner request. Both baseline answers omit the prescribed staleness treatment and separate approved holding-response structure. The accepted effect is confined to this briefing structure, not a new skill-body improvement, general interview reliability or approval authority.
+
 ## License
 
 MIT
