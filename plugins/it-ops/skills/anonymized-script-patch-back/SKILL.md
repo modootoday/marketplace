@@ -43,6 +43,9 @@ Evidence is a single report; the method keeps the mapping local so the model nev
    rotate it.
 6. State what could not be checked: the real file or the table was not seen, so the apply
    step is instructions, not a performed edit, unless the user ran it.
+   Explicitly report that script behavior and absence of leakage remain unverified until
+   the owner completes the corresponding local checks; an own-answer placeholder scan
+   does not establish either.
 
 Read `references/worked-example.md` (relative to this skill) before answering; it shows the
 hunk confined to its line range, the mapping table and the apply-by-line-context step.
