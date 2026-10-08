@@ -138,6 +138,18 @@ Video's first comparison had one capacity error before a With answer, leaving th
 
 This update measured seven cases across eleven comparisons: 44 subject attempts, 43 valid answers and 129 judge votes. Two comparisons follow diagnosed body clarifications, one corrects missing fixture context and one replaces the capacity-failed comparison. No original result was overwritten or regraded. Only Codex subscription models were used; USD conversion was not measured. No other runtime qualification is inferred.
 
+### Other runtimes: aggregate activity completeness
+
+Measured 2026-10-08 on Codex CLI 0.161.0 with gpt-6.1-sol as subject and judge, two runs per arm and three judge votes. The original comparison completed with four answers and twelve valid votes: nine PASS and three FAIL. Threshold-zero process success is not quality evidence.
+
+| Runtime   | Model       | Case                                | Skill                    | Without | With | Fired | Date       |
+| --------- | ----------- | ----------------------------------- | ------------------------ | ------- | ---- | ----- | ---------- |
+| Codex CLI | gpt-6.1-sol | `comment-aggregate-identity-limits` | datalab-comment-reaction | 0.50    | 1.00 | 2/2   | 2026-10-08 |
+
+The accepted effect is completeness of absolute-count reporting: both With answers report the absolute and percentage changes and daily comments per commenter. One baseline also meets every requirement; the other omits the absolute increases of 33,100 comments and 1,200 commenters. All four answers correctly limit cross-date identity, sentiment and population inference. This comparison therefore establishes no improvement in identity safety, sentiment interpretation or causal attribution.
+
+The two-sentence clarification distinguishes aggregate activity from individual behavior, but regenerated answers do not isolate its causal effect. The original invalid `comment-surge` case and its historical results remain unchanged. Only supplied synthetic reports were assessed; no extension collection, identity tracking, posting or public-opinion verification occurred. This qualification applies only to datalab-comment-reaction and this bounded reporting effect.
+
 ## Configuration and data
 
 Load or disable the plugin using the runtime's plugin controls. There is no plugin configuration. The skills themselves write nothing automatically. Following an editor workflow can modify the selected project; draft copy stays in the answer unless an authorized editor action is performed. Evaluation artifacts belong outside the plugin.

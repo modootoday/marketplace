@@ -9,13 +9,14 @@ metadata:
   keywords: [naver news, news comments, comment trend, commenters, public reaction, demographics, datalab]
   requires:
     mcp: [datalab]
+  verified-runtimes: [codex-cli]
 ---
 
 # News comment reaction check
 
 Report activity and its limits together: compute comment growth, commenter growth, and comments per commenter for
-each date. When comment growth greatly exceeds headcount growth, explain that the jump mainly reflects people
-commenting more rather than a comparable increase in participants. This is an aggregate repeat-activity finding;
+each date. When comment growth greatly exceeds headcount growth, report the increase in aggregate comments per daily
+commenter without attributing it to individual behavior, participant composition or a cause. This is an aggregate repeat-activity finding;
 the counts do not track individual identities. Explicitly say the comments' content, stance, and sentiment were
 not read before declining public-opinion claims.
 
@@ -25,8 +26,8 @@ Look at comment volume and commenter count first; add breakdowns only as far as 
 
 1. Confirm the reference date and news section. If none, say you use all sections over the latest available period.
 2. `comment_trend` and `comment_user_trend`: did comment volume and the number of commenters move together? Compute
-   both changes and comments per commenter. Comments rising much faster than commenters indicates mainly increased
-   commenting by participants, rather than headcount growth. Do not claim the exact same individuals were tracked.
+   both changes and comments per commenter. Comments rising much faster than commenters indicates increased aggregate comments per daily
+   commenter. Do not claim the exact same individuals were tracked.
 3. Activity time questions: `comment_hourly`. Composition questions: `comment_genderage`.
 4. Only when access environment or spread matters: `comment_device`, `comment_country`, `comment_category_spread`.
 5. Write three sections: **Activity** (volumes and their changes), **Who takes part** (composition as reported),

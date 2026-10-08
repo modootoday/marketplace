@@ -615,7 +615,7 @@
     {
       "name": "datalab-tools",
       "description": "Your own Naver blog, Place, Smart Store, shopping, search ad and news comment data read through the datalab.tools browser extension, plus card news, short-form video, tutorial posts and social copy built in its editors, with no invented numbers and no change made without asking.",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "author": {
         "name": "modootoday"
       },
