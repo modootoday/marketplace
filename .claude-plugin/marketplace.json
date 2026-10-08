@@ -147,7 +147,7 @@
     {
       "name": "monetization",
       "description": "Prices framed as hypotheses with a test: who pays, for what unit of value, against which alternative, what result would change the decision, and the cheapest test before anyone builds a pricing page.",
-      "version": "0.4.1",
+      "version": "0.4.2",
       "author": {
         "name": "modootoday"
       },
