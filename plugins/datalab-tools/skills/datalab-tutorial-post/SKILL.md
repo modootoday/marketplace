@@ -9,6 +9,7 @@ metadata:
   keywords: [tutorial post, beginner guide, explainer, analogy, blog writing, naver blog, datalab]
   requires:
     mcp: [datalab]
+  verified-runtimes: [codex-cli]
 ---
 
 # Tutorial blog post
@@ -41,6 +42,22 @@ the solution first.
 6. **Placing it**: with an editor open, `outline_suggest` for structure, `write_draft` for the draft, then
    `editor_insert_draft` or `editor_place_draft`. No editor open: return the draft text; that is the normal path.
 
+## Check the returned draft
+
+Keep a short acceptance list from the user's compatible requirements: one post, required sections, distinct practice items, format and must-keep wording.
+Compare the actual draft against each item before delivering it; repeated items do not satisfy a requested distinct count, and a heading alone does not supply its missing content.
+Repair only the missing or duplicated material within this post's scope and length ceiling, retaining correct material.
+If a tool returns only delegated instructions or an incomplete draft, label that state rather than report that the requested text or editor change is complete.
+Generation refusal or a missing element is not evidence of a platform publication restriction.
+When repairing supplied drafting output, briefly report the actual missing or duplicated requirement, the bounded change made in your proposed text, and the final check of distinct count, required content and must-keep wording.
+Distinguish the supplied output from your proposed replacement, and state that generation or editor placement was not performed when it was not.
+
+For a photo-supported explanation, map each supplied or actually inspected photo observation to the paragraph or step it supports.
+Keep photo order separate from explanatory order, flag missing scenes, and ask for the specific observation needed to fill a gap.
+An image filename, source URL or caption alone does not establish what the picture shows; do not invent contents or the author's experience.
+When observing the editor, follow editor_read_document's returned nextOffset to the end with the same target and revision before claiming whole-document coverage.
+Keep actual component types separate from visible styling: large or bold paragraph text and quote blocks do not establish semantic headings, and a text-style change does not prove heading conversion or search benefit.
+
 ## When it needs several posts
 
 A topic that is big by nature ("from zero to production") is not crammed into one post. Propose a series ("Part 1:
@@ -72,5 +89,6 @@ or provide a text-only plan within this skill's scope; state what could not be r
 - `write_draft`: write the draft text through the extension.
 - `editor_insert_draft`, `editor_place_draft`: put the draft into the open Naver editor.
 - `editor_open_window`: open an editor window when the user asks for it.
+- `editor_read_document`: page ordered component evidence with stable target/revision when checking an existing photo-supported draft.
 - `kin_question_demand`: real questions people ask about the concept.
 - `web_read`: confirm a fact before stating it.

@@ -54,6 +54,17 @@ characters, BODY 40, CTA 20): references/scene-structure.md.
 
 This skill never deletes scenes or elements; a delete needs its own destructive confirmation.
 
+## Review readability and timing on an editable copy
+
+For a supplied timing problem, compare the actual scene subtitle, duration and narration state with the user's observed reading difficulty and requested pacing.
+Keep a channel preference separate from an observed problem; do not invent a universal platform duration or reading-speed threshold.
+Propose a local change on a small editable copy and retain unaffected scenes, the original script and the approved project target.
+video_scene_update supports the actual returned scene ref, durationMs and durationLocked fields; a locked duration will not automatically extend for newly generated narration.
+Use only the discovered schema, including actual target/revision fields, and stop for fresh state if they no longer match.
+A changed subtitle may leave its existing voice stale; identify that dependency and obtain separate paid-generation approval before regeneration.
+After an authorized change, distinguish the operation receipt from a supplied or actual playback/readability check; neither proves channel performance.
+No arbitrary source-video import, exported upload file or cross-channel upload endpoint is established here.
+
 ## AI images and voices are paid
 
 - `generate_images` bills per image. Default to colour backgrounds with subtitles; if the user wants AI images, ask how

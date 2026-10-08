@@ -49,6 +49,13 @@ Collect the questions and phrasings people actually use about the topic with `ki
 - **Form**: apply only general readability principles tied to a measured profile value, for example a high mobile share
   flags long unbroken paragraphs. Skip this branch when the profile has no device value.
 
+For a photo-supported draft, add a photo-to-paragraph or step check using only supplied contents or actual inspected observations.
+Record which confirmed question each observed photo supports, whether its position matches the explanation, and which required scene is still unevidenced.
+Image metadata, a filename or caption alone does not prove image contents; mark that limit and request the missing observation instead of inventing a scene.
+Do not rewrite the draft or claim that the proposed order improved real reader reactions.
+For editor evidence, editor_read_document can supply ordered text, image metadata and links across pages.
+Follow returned nextOffset with a consistent target and revision before claiming full coverage; changed revisions or missing pages leave the affected comparison unresolved.
+
 Format: references/checklist-format.md.
 
 ## A simulation is not evidence
@@ -86,6 +93,7 @@ or provide a text-only plan within this skill's scope; state what could not be r
 - `my_country`: reader country.
 - `my_content_info`, `my_content_read`, `my_content_detail`: find and read a published post.
 - `editor_read`, `editor_read_structure`: read the draft open in the editor.
+- `editor_read_document`: ordered component evidence with page.nextOffset and revision; image metadata alone is not inspected contents.
 - `kin_question_demand`: real questions on the topic and their counts.
 - `search_keywords`, `autocomplete_keywords`: real search phrasings on the topic.
 

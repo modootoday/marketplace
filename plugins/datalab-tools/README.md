@@ -4,7 +4,7 @@ Skills for Naver blog, Place, Smart Store, shopping demand, search ads, and news
 
 ## What it registers
 
-Nineteen skills, with no hooks, commands, services, or bundled MCP server:
+Twenty skills, with no hooks, commands, services, or bundled MCP server:
 
 | Skill | Purpose |
 | --- | --- |
@@ -18,6 +18,7 @@ Nineteen skills, with no hooks, commands, services, or bundled MCP server:
 | `datalab-commerce-health` | Settlement gaps and operations ordered by deadline |
 | `datalab-cta-rewrite` | Copyable CTA alternatives grounded in supplied claims |
 | `datalab-material-suggestion` | Varied topic ideas backed by demand and competition facts |
+| `datalab-neighbor-post-reply-draft` | Explain an actual neighbour's post and draft a reply grounded in the user's questions and opinion |
 | `datalab-place-reputation` | Review facts, response priorities, and unposted reply drafts |
 | `datalab-pumasi` | Read-only likes and neighbour-state checks |
 | `datalab-reader-simulation` | Aggregate audience profile and confirmed-question checklist |
@@ -39,7 +40,7 @@ Editor work preserves existing projects and requests a project choice when neede
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | Procedures available; untested | No behavioral measurement |
-| Codex CLI | 14/19 skills have measured lift; see per-case results | codex-cli 0.160.1; gpt-6.1-sol |
+| Codex CLI | 16/20 skills have measured lift; see per-case results | codex-cli 0.160.1; gpt-6.1-sol |
 | Gemini CLI | Extension manifest provided; untested | No behavioral measurement |
 | Grok CLI | Procedures available; untested | No behavioral measurement |
 | Antigravity CLI | Procedures available; untested | No behavioral measurement |
@@ -108,6 +109,34 @@ Measured 2026-10-07 on Codex CLI 0.160.1 with gpt-6.1-sol as subject and judge, 
 | `tool-discovery-fallback` | datalab-cta-rewrite | 1.00 | 1.00    | 2/2   | Regression check; no measured lift |
 
 All four responses and twelve judge verdicts passed. This synthetic next-call exercise made no application or MCP calls; it does not establish live connection success or behavioral coverage of the other sixteen changed skills. Existing runtime qualifications remain unchanged. No model retries were performed.
+
+### Neighbour replies and returned-output review
+
+The 2026-10-08 update adds one neighbour-post comprehension and personal-reply draft workflow, plus bounded checks for returned tutorial requirements, photo-to-paragraph evidence, editor component semantics and local video readability. Existing descriptions, tiers, levels and domains are preserved. The new skill is open/L3/blog-community in this plugin; it drafts answer text and never enters or submits a browser comment.
+
+Measurements use Codex CLI 0.160.1 and gpt-6.1-sol, two runs per arm and three judge votes. Prompts use supplied synthetic observations; no live extension, browser, paid generation or posting is exercised. The new normal and truncated cases used the initial body. A conditional next-call-plan clarification affects the missing-source branch; its original prompt and criteria remain unchanged.
+
+### Other runtimes
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | `neighbor-post-grounded-personal-reply` | datalab-neighbor-post-reply-draft | 0.00 | 1.00 | 2/2 | 2026-10-08 |
+| Codex CLI | gpt-6.1-sol | `neighbor-post-truncated-source` | datalab-neighbor-post-reply-draft | 1.00 | 1.00 | 2/2 | 2026-10-08 |
+| Codex CLI | gpt-6.1-sol | `neighbor-post-missing-body-and-opinion` | datalab-neighbor-post-reply-draft | 0.50 | 1.00 | 2/2 | 2026-10-08 |
+| Codex CLI | gpt-6.1-sol | `promotion-output-constraints` | datalab-tutorial-post | 0.00 | 1.00 | 2/2 | 2026-10-08 |
+| Codex CLI | gpt-6.1-sol | `promotion-photo-paragraphs` | datalab-reader-simulation | 0.00 | 0.50 | 2/2 | 2026-10-08 |
+| Codex CLI | gpt-6.1-sol | `promotion-heading-components` | datalab-naver-workbench | 1.00 | 1.00 | 2/2 | 2026-10-08 |
+| Codex CLI | gpt-6.1-sol | `promotion-video-readability` | datalab-video-script | 1.00 | 1.00 | 2/2 | 2026-10-08 |
+
+The normal reply result supports explicit unposted-draft disclosure only: both arms already explain the post and ground the personal response. The repaired missing-source result supports completeness of an optional original-intent discovery and schema-bound next-call plan. The repaired tutorial result supports reporting the supplied duplicate and its bounded repair; both arms already produce distinct tasks. These are narrow planning/reporting effects, not comprehension, publishing, readership or live tool-execution guarantees. The older beginner-tutorial result remains unresolved.
+
+The truncated-source and corrected heading cases are regression checks with baseline 1.00. Initial missing-source 0.50/0.00 and tutorial 0.00/0.00 results remain preserved before one diagnosed body clarification each. Heading's original 0.00/1.00 comparison omitted known discovery-adapter contracts from its context; it is invalid quality evidence. The corrected prompt and mirrored context retain the same four semantic criteria. No workbench body repair or retrospective regrading followed that context correction.
+
+Photo review remains unresolved at With0.50/Without0.00: one answer explicitly calls the profile aggregate but fails the not-a-person criterion, while another similarly bounded answer passes. The existing rule already covers that distinction. No repeated instruction, rerun or new reader runtime qualification follows. All original failures and judge disagreements are retained.
+
+Video's first comparison had one capacity error before a With answer, leaving three valid answers and nine judge votes. One identical-condition infrastructure replacement completed both arms and is a baseline-perfect regression check. No video body or fixture change followed that error.
+
+This update measured seven cases across eleven comparisons: 44 subject attempts, 43 valid answers and 129 judge votes. Two comparisons follow diagnosed body clarifications, one corrects missing fixture context and one replaces the capacity-failed comparison. No original result was overwritten or regraded. Only Codex subscription models were used; USD conversion was not measured. No other runtime qualification is inferred.
 
 ## Configuration and data
 
