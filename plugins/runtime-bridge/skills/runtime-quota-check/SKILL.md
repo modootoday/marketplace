@@ -7,7 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [runtime quota, remaining allowance, reset time, subscription, routing]
-  verified-runtimes: [codex-cli]
+  verified-runtimes: [codex-cli, grok-cli]
 ---
 
 # Runtime quota check

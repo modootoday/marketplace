@@ -15,7 +15,7 @@ references give concrete headless patterns for the five target CLIs.
 | Claude Code | procedures; untested | - |
 | Codex CLI | yes; see per-skill scores | 0.160.1; see Verify |
 | Gemini CLI | procedures; untested | - |
-| Grok CLI | procedures; untested | - |
+| Grok CLI | yes, for runtime-quota-check; see dated observation | 1.0.50; grok-4.7-build-fast; 2026-10-09 |
 | Antigravity CLI | procedures; untested | - |
 
 Requirements: an installed target CLI with working authentication and the tools the job needs.
@@ -133,6 +133,46 @@ not a current pending-registration blocker.
 These cases validate prepared procedures, not live provider quota reads, paid cap enforcement or
 actual cross-runtime execution. Other runtime measurements remain pending. One case per skill
 does not meet a three-case release gate.
+
+## Grok quota handoff observation
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Runs per arm | Judge votes | Round | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Grok CLI | grok-4.7-build-fast | `near-limit-build` | runtime-quota-check | 0.00 | 1.00 | 2/2 | 2 | 3 | Supplied quota handoff | 2026-10-09 |
+
+Measured with Grok CLI 1.0.50 and grok-4.7-build-fast as subject and judge. Four complete replies and twelve semantic judge votes produced six PASS and six FAIL, With 1.00 and Without 0.00, fired 2/2. The narrow admitted difference is complete proposed allowance-record contents and a runnable save command, a numerical freshness limit, prelaunch refresh and the selected Grok route's consumption-versus-allowance distinction. Both With runs also opened runtime-cost-routing; exclusive causal attribution to runtime-quota-check is not established.
+
+Both baselines already calculate the historical reserve arithmetic correctly, and one conditionally selects Grok after a fresh read. This result does not demonstrate better basic arithmetic or universal routing superiority. The prepared save commands were not executed; no saved file, fresh provider observation, paid-cap enforcement or real handoff execution is established. The hypothetical decision clock remains distinct from the actual host date.
+
+Original judge reasons and scores remain unchanged. Some baseline reasons incorrectly call supplied historical Gemini values invented or reject equivalent used-versus-remaining arithmetic; those subreasons are not claimed benefits. Raw cached input exceeds input, raw passRateWithout conflicts with the score/votes, and USD is null. These accounting inconsistencies remain unresolved; null is not zero. Other runtime-bridge cases and runtimes retain their own historical or pending status.
+
+### Unqualified original cost-routing observation
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Runs per arm | Judge votes | Round | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Grok CLI | grok-4.7-build-fast | `cache-priced-route` | runtime-cost-routing | 0.00 | 0.50 | 2/2 | 2 | 3 | Original supplied cost route | 2026-10-09 |
+
+This completed original comparison produced four answers and twelve votes, three PASS and nine FAIL. With 0.50 does not qualify runtime-cost-routing for Grok. All four answers correctly calculate the supplied token split and USD 0.242 estimate; both baselines reject the subscription reserve and choose the hypothetical paid route. No arithmetic superiority or qualified effect is claimed.
+
+One With answer supplies complete JSON separately but its save command writes only a paste placeholder; that is a genuine incomplete artifact handoff. The current body already requires complete contents and a concrete write command, so this observation remains NOFIX rather than grounds for a duplicate instruction or another automatic comparison. The other With answer supplies complete save commands. These commands and hypothetical provider dispatch were not executed.
+
+Original scores, judge reasons and aggregate-field inconsistencies remain unchanged. This case reports input 250208 and cached input 148480; cached input is below input and must not inherit the near-limit observation's cache-greater-than-input anomaly. USD is null, not zero. Raw passRate fields conflict with case scores/votes and remain unreconciled. Both With runs also opened runtime-quota-check; no exclusive causal attribution is established. Existing historical Codex qualification remains distinct from this unqualified Grok observation.
+
+### Unqualified original delegation observation
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Runs per arm | Judge votes | Round | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Grok CLI | grok-4.7-build-fast | `file-bound-parser-audit` | cross-runtime-delegation | 0.00 | 0.00 | 2/2 | 2 | 3 | Original supplied file handoff | 2026-10-09 |
+
+This complete original comparison produced four answers and twelve FAIL votes. Neither arm qualifies this skill for Grok. One With reply places the five-minute limit only on the outer command, omitting it inside the brief; its proposed script also references unexported shell variables through Python's environment. The other With reply points to a locally prepared handoff without supplying the complete brief and invocation in the final answer. The body already explicitly requires those contracts; this remains NOFIX, with no automatic retry or redundant instruction. The worker did not execute a Codex audit or its proposed acceptance command.
+
+All raw scores and reasons remain unchanged. Input is 397794, cached input 2450432, output 69533 and reasoning output 40355; the cache-greater-than-input anomaly and raw pass-rate inconsistencies remain unresolved. USD is null, not zero. Both With runs also opened quota and cost guidance, so exclusive attribution is not assumed.
+
+### Authentication-dependent pending observations
+
+The original Grok `search-capped-migration` attempt on 2026-10-09 exited 64 before answering: proxy-token validity was 21 minutes, below the unchanged 30-minute suite requirement. There are zero subject answers and zero judge votes, no aggregate and no quality score. Adequate observed allowance did not authorize authentication refresh, a shorter validity requirement or another billing route. No Gemini research, search or migration was executed.
+
+The original Grok `agreement-schema-release` comparison was not attempted because the same authentication dependency remains unresolved. It has no new score or firing result. Neither hold creates a badge or replaces the historical Codex records. No authentication refresh, API-key fallback, automatic retry or new case was performed.
 
 ## License
 

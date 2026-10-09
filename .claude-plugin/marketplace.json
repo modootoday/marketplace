@@ -624,7 +624,7 @@
     {
       "name": "runtime-bridge",
       "description": "Procedures for working across agent runtimes: check remaining allowance, hand off bounded jobs through files, research with cited peer reports, compare subscription and token costs, and verify an adversarial second opinion.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "modootoday"
       },
