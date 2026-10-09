@@ -20,7 +20,8 @@ Measure what changed first. Then narrow the possible explanations with metrics f
 
 1. Fix the period and the comparison baseline. If none is given, compare the latest period with the previous period
    of the same length, and say so with both date ranges.
-2. Locate where and how much it changed: `my_daily_brief`, `my_blog_summary`, `my_traffic_series`, `my_top_content`.
+2. Locate where and how much it changed with returned period evidence from `my_traffic_series` and `my_top_content`.
+   `my_daily_brief` and `my_blog_summary` are headline checks, not substitutes for requested-period totals.
 3. Only when a change is actually visible, add the fewest metrics that can explain it: `my_inflow`,
    `my_inflow_domain`, `my_audience`, `my_device`, `my_dwell`, `my_revisit`, `my_revenue`.
 4. Check whether a specific post contributed with `my_content_info` and `my_content_detail`.
@@ -30,6 +31,8 @@ Measure what changed first. Then narrow the possible explanations with metrics f
    tool to look at and the result that would confirm it and the result that would rule it out.
 
 ## Rules
+
+For mismatched definitions, report windows, missing days or incompatible totals, read [metric reconciliation](references/metric-reconciliation.md) before interpreting the change.
 
 - Compare like with like: same period length, same unit, same metric definition.
 - Missing, unsupported or partially aggregated values are never turned into 0. Name the gap, leave the day or metric
@@ -49,7 +52,7 @@ Only when discovery cannot find the required tools, work from supplied text or p
 or provide a text-only plan within this skill's scope; state what could not be read or performed.
 
 - `my_daily_brief`: today's or yesterday's headline numbers; a quick first look.
-- `my_blog_summary`: period totals for visits, views and related counts; the comparison baseline.
+- `my_blog_summary`: settled yesterday's date, views, visits and unique visitors; accepts no period arguments.
 - `my_traffic_series`: daily series; find when the change started and spot missing days.
 - `my_top_content`: posts ranked by views; see whether a few posts carry the change.
 - `my_inflow`: inflow by source type (search, social, direct); call when inflow moved.
@@ -60,7 +63,8 @@ or provide a text-only plan within this skill's scope; state what could not be r
 - `my_revisit`: returning-reader rate.
 - `my_revenue`: ad revenue; only for revenue questions.
 - `my_content_info`: find a post by title or URL.
-- `my_content_detail`: one post's statistics over time.
+- `my_content_detail`: one post's recent daily views and engagement; `contentId` is a URL and `days` defaults to 14.
+  It does not accept arbitrary start/end dates; use the returned window and date context rather than assuming the requested period.
 
 Only when discovery cannot find the required tools, work only from the output the user pasted, say which tool each figure came from,
 and do not invent the rest.

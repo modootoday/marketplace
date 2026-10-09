@@ -27,6 +27,9 @@ A profile-only request stops after stage 1. A comparison always passes through s
 
 ## Stage 1. Reader profile
 
+Build the profile table from returned measurements of this blog's readers before adding interpretation.
+Put missing inputs, intended audiences and other populations in a separate evidence note, not profile rows.
+
 Tools: `my_audience`, `my_content_audience` (when a post is named), `my_followers`, `my_revisit`, `my_dwell`,
 `my_inflow`, `my_inflow_domain`, `my_device`, `my_country`. These aggregate people who actually read this blog.
 
@@ -46,6 +49,7 @@ Collect the questions and phrasings people actually use about the topic with `ki
 
 - **Content**: for each confirmed question, mark answered / not answered / partly answered, citing the draft passage
   (or "no matching paragraph").
+- For competing audience claims or passages that answer only part of a question, read [question evidence](references/question-paragraph-evidence.md).
 - **Form**: apply only general readability principles tied to a measured profile value, for example a high mobile share
   flags long unbroken paragraphs. Skip this branch when the profile has no device value.
 

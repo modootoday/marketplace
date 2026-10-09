@@ -128,7 +128,7 @@ Measurements use Codex CLI 0.160.1 and gpt-6.1-sol, two runs per arm and three j
 | Codex CLI | gpt-6.1-sol | `promotion-heading-components` | datalab-naver-workbench | 1.00 | 1.00 | 2/2 | 2026-10-08 |
 | Codex CLI | gpt-6.1-sol | `promotion-video-readability` | datalab-video-script | 1.00 | 1.00 | 2/2 | 2026-10-08 |
 
-The normal reply result supports explicit unposted-draft disclosure only: both arms already explain the post and ground the personal response. The repaired missing-source result supports completeness of an optional original-intent discovery and schema-bound next-call plan. The repaired tutorial result supports reporting the supplied duplicate and its bounded repair; both arms already produce distinct tasks. These are narrow planning/reporting effects, not comprehension, publishing, readership or live tool-execution guarantees. The older beginner-tutorial result remains unresolved.
+The normal reply result supports explicit unposted-draft disclosure only: both arms already explain the post and ground the personal response. The repaired missing-source result supports completeness of an optional original-intent discovery and schema-bound next-call plan. The repaired tutorial result supports reporting the supplied duplicate and its bounded repair; both arms already produce distinct tasks. These are narrow planning/reporting effects, not comprehension, publishing, readership or live tool-execution guarantees. The original-generation beginner-tutorial recheck completed on 2026-10-09 without effect qualification; its quality shortcomings remain unresolved, separately from the earlier supplied-draft repair result.
 
 The truncated-source and corrected heading cases are regression checks with baseline 1.00. Initial missing-source 0.50/0.00 and tutorial 0.00/0.00 results remain preserved before one diagnosed body clarification each. Heading's original 0.00/1.00 comparison omitted known discovery-adapter contracts from its context; it is invalid quality evidence. The corrected prompt and mirrored context retain the same four semantic criteria. No workbench body repair or retrospective regrading followed that context correction.
 
@@ -137,6 +137,12 @@ Photo review remains unresolved at With0.50/Without0.00: one answer explicitly c
 Video's first comparison had one capacity error before a With answer, leaving three valid answers and nine judge votes. One identical-condition infrastructure replacement completed both arms and is a baseline-perfect regression check. No video body or fixture change followed that error.
 
 This update measured seven cases across eleven comparisons: 44 subject attempts, 43 valid answers and 129 judge votes. Two comparisons follow diagnosed body clarifications, one corrects missing fixture context and one replaces the capacity-failed comparison. No original result was overwritten or regraded. Only Codex subscription models were used; USD conversion was not measured. No other runtime qualification is inferred.
+
+### Original-generation tutorial recheck
+
+On 2026-10-09, the existing `beginner-tutorial` case completed a fresh Codex comparison with gpt-6.1-sol as subject and judge, two runs per arm and three votes per semantic grader. Without was 0.00, With was 0.00, and firing was 2/2. All four answers completed; all 24 semantic judge votes were FAIL. The result was not partial and contained no run errors. Reported input plus output usage was 775,907 tokens; USD cost was not reported.
+
+The eight tutorial inputs were unchanged, and both With answers read the actual skill body. This does not claim immutability of the entire plugin, which contained unrelated authorized reader and sponsor changes. Original historical scores remain preserved. The earlier `promotion-output-constraints` qualification concerns supplied-draft repair traceability only; this generation recheck neither qualifies original tutorial generation nor expands that narrow result. Existing runtime metadata is unchanged.
 
 ### Other runtimes: aggregate activity completeness
 
