@@ -34,6 +34,8 @@ groups the issues, fixes what the source supports, and says plainly what it cann
    counted as resolved.
 5. Re-check every row against its issue after the proposed fix and mark it resolved, needs source or
    needs decision. Output counts per issue before and after.
+   When proposing a documented exemption instead of a missing attribute value, keep the row unresolved until the evidence establishes that the rule applies to this product; a product label or a suggested flag is not that confirmation.
+   State the missing applicability evidence and count the row as needing source or a decision, rather than as resolved.
 6. Say that approval is decided by the platform on re-crawl, so "resolved" means the row now fits the
    documented rule, not that it was approved.
 

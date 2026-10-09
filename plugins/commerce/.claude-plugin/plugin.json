@@ -1,6 +1,6 @@
 {
   "name": "commerce",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Seller checks: second-hand items identified from photos and markings, listing copy kept to each SKU's spec row, reorder points from a sales sheet, and shopping-feed disapprovals triaged without invented identifiers or prices.",
   "author": {
     "name": "modootoday"

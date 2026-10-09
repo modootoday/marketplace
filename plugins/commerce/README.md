@@ -90,6 +90,24 @@ Grok CLI, both arms, 2 runs per arm, 3 judge votes, the model as subject and jud
 | Antigravity CLI | gemini-3.8-flash-low | `feed-diagnostics-missing-gtin` | 0.00 | 0.25 | 2/2 | 20261006 |
 | Gemini CLI | gemini-3.8-flash | `feed-diagnostics-missing-gtin` | 0.00 | 0.50 | 2/2 | 20261006 |
 
+### Feed comparison follow-up (2026-10-09)
+
+The original feed fixture was rechecked on the previous body with Antigravity: three answers were generated, only one With answer was graded, and the other With run timed out. The graded answer incorrectly treated an unverified exemption as resolved. This interrupted comparison does not qualify that runtime.
+
+A fresh Codex comparison of the repaired body on `feed-diagnostics-missing-gtin` scored With 0.50 and Without 0.00, fired 2/2. Its six With price failures interpreted retaining the unchanged feed value pending the merchant's decision as choosing a selling price. The result is preserved and remains nonqualifying.
+
+The distinct successor keeps the supplied request, source facts, issue-count requirements and activation contract unchanged. Its price criterion explicitly distinguishes an unresolved source column or withheld price patch from selecting or approving either selling price.
+
+| Case | Skill | Without | With | Fired | Runs per arm | Subject and judge |
+| --- | --- | --- | --- | --- | --- | --- |
+| `feed-diagnostics-unresolved-price-hold` | product-feed-disapproval-triage | 0.00 | 1.00 | 2/2 | 2 per arm | Codex, gpt-6.1-sol / gpt-6.1-sol, 3 votes, 2026-10-09 |
+
+| Runtime | Model | Case | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | `feed-diagnostics-unresolved-price-hold` | 0.00 | 1.00 | 2/2 | 2026-10-09 |
+
+The successor's 24 judge votes comprise twelve PASS and twelve FAIL. Its narrow effect is source-linked correction, complete before/after counts, and explicit withholding of resolution until exemption evidence or a merchant decision is available. One baseline already conditionally withheld the price change; both baselines rejected invented GTINs. This is not evidence of universal invention prevention, actual feed changes, platform approval, or a causal estimate of the body repair. The historical Grok row above does not measure this revised body; the interrupted Antigravity comparison and historical Gemini row do not qualify it.
+
 ## License
 
 MIT
