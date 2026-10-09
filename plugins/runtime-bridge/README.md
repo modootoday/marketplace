@@ -40,7 +40,7 @@ codex plugin marketplace add https://github.com/modootoday/marketplace
 codex plugin add runtime-bridge@modootoday
 ```
 
-Registration is pending the coordinator's merge; these commands become available after that merge.
+runtime-bridge is registered in the landed open marketplace. These commands remain subject to the calling CLI's current plugin support and authenticated installation; registration alone is not runtime qualification.
 
 ## What it registers
 
@@ -124,9 +124,11 @@ four prompts remain unchanged. The plain model finds the schema-key mismatch but
 runnable handoff and full-report verification procedure.
 
 Runtime metadata is regenerated from the final table, skipping every other plugin. The quota
-claim follows its latest measured score; other runtime measurements remain pending. The shared
-marketplace checker still reports the pending runtime-bridge registration; the research
-registration view validates all five skills. The shared manifest remains unchanged.
+claim follows its latest measured score; other runtime measurements remain pending. At the 20261006 measurement stage, the shared marketplace checker still reported pending
+runtime-bridge registration, while the research registration view validated all five skills.
+Registration subsequently landed in cff9c8a6c103f037b31f260bf6f5f70cc79a9f64 and is present in
+the current shared and owned marketplace manifests. The historical checker observation is
+not a current pending-registration blocker.
 
 These cases validate prepared procedures, not live provider quota reads, paid cap enforcement or
 actual cross-runtime execution. Other runtime measurements remain pending. One case per skill
