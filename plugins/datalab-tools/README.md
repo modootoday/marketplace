@@ -4,7 +4,7 @@ Skills for Naver blog, Place, Smart Store, shopping demand, search ads, and news
 
 ## What it registers
 
-Twenty-three skills, with no hooks, commands, services, or bundled MCP server:
+Twenty-four skills, with no hooks, commands, services, or bundled MCP server:
 
 | Skill | Purpose |
 | --- | --- |
@@ -28,6 +28,7 @@ Twenty-three skills, with no hooks, commands, services, or bundled MCP server:
 | `datalab-social-repurpose` | Platform-specific captions within working limits |
 | `datalab-sponsor-approval-timeline` | Source-linked relative deadlines, revision requests and explicit approval states |
 | `datalab-sponsor-fee-quote` | Scoped production-cost scenarios and separately supplied reuse-right terms |
+| `datalab-sponsor-payment-evidence` | Supplied agreement, acceptance and actual receipt reconciliation |
 | `datalab-tone-manner` | Provisional or multi-post style instructions with quotes |
 | `datalab-tutorial-post` | One beginner tutorial within a 12,000-character drafting budget |
 | `datalab-video-script` | Image, subtitle, and voice scene plans and timeline builds |
@@ -43,7 +44,7 @@ Editor work preserves existing projects and requests a project choice when neede
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | Procedures available; untested | No behavioral measurement |
-| Codex CLI | Historical qualification covers 16 of the prior 20 skills; group-buy adds one narrow evidence-request result, while sponsorship quoting and approval timeline are unqualified | codex-cli 0.160.1 and 0.161.0; gpt-6.1-sol |
+| Codex CLI | Historical qualification covers 16 of the prior 20 skills; group-buy adds one narrow evidence-request result, while sponsorship quoting, approval timeline and payment evidence are unqualified | codex-cli 0.160.1 and 0.161.0; gpt-6.1-sol |
 | Gemini CLI | Extension manifest provided; untested | No behavioral measurement |
 | Grok CLI | Procedures available; untested | No behavioral measurement |
 | Antigravity CLI | Procedures available; untested | No behavioral measurement |
@@ -193,7 +194,19 @@ The original comparison retains nine PASS and three FAIL votes: one With answer 
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Codex CLI | gpt-6.1-sol | sponsor-approval-relative-dates-and-unaccepted-extension | datalab-sponsor-approval-timeline | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
 
-This original comparison preserves four answers and twelve PASS votes. Both arms correctly anchor the relative date and preserve the unaccepted extension and missing final approval. It is regression-only, with no demonstrated skill advantage or runtime badge. One case is prepared and measured; two of the usual three-case coverage requirement remain outstanding. CLI 0.161.0 used concurrency one, isolated subscription proxy execution, no external MCP calls, and threshold zero for collection rather than qualification. USD cost is unknown.
+This original comparison preserves four answers and twelve PASS votes. Both arms correctly anchor the relative date and preserve the unaccepted extension and missing final approval. It is regression-only, with no demonstrated skill advantage or runtime badge. The two coverage cases below complete three measured timeline cases. CLI 0.161.0 used concurrency one, isolated subscription proxy execution, no external MCP calls, and threshold zero for collection rather than qualification. USD cost is unknown.
+
+### Other runtimes: timeline coverage and payment evidence
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | sponsor-approval-version-specific-and-publication-authority | datalab-sponsor-approval-timeline | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | sponsor-approval-forwarded-anchor-and-authority-gaps | datalab-sponsor-approval-timeline | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | sponsor-payment-matched-fee-and-reimbursement | datalab-sponsor-payment-evidence | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | sponsor-payment-withholding-and-ambiguous-credit | datalab-sponsor-payment-evidence | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | sponsor-payment-missing-agreement-and-receipt-identity | datalab-sponsor-payment-evidence | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+
+All five comparisons are regression-only: both arms pass, and all twenty answers and sixty original semantic votes are retained. Timeline cases distinguish valid version-specific approval from separate publication authority and unresolved forwarded-message anchors. Payment cases distinguish fee, reimbursement and gift; identified cash from ambiguous credits; duplicate evidence from additional transactions; and acceptance-based due conditions from delivery. These results establish no incremental advantage or new runtime badge. The prior timeline result and both quote revisions remain unchanged. CLI 0.161.0 used two runs per arm, three judge votes and concurrency one with subscription proxy and bwrap; no external MCP or bank action occurred. Inputs stayed frozen, errors and partial flags were absent, and USD remains unknown.
 
 ## Configuration and data
 
