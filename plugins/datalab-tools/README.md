@@ -4,7 +4,7 @@ Skills for Naver blog, Place, Smart Store, shopping demand, search ads, and news
 
 ## What it registers
 
-Twenty skills, with no hooks, commands, services, or bundled MCP server:
+Twenty-two skills, with no hooks, commands, services, or bundled MCP server:
 
 | Skill | Purpose |
 | --- | --- |
@@ -16,6 +16,7 @@ Twenty skills, with no hooks, commands, services, or bundled MCP server:
 | `datalab-card-news` | Gallery-first slide plans and photo-editor builds |
 | `datalab-comment-reaction` | Comment activity and its interpretation limits |
 | `datalab-commerce-health` | Settlement gaps and operations ordered by deadline |
+| `datalab-groupbuy-margin` | Commission or resale contribution and separate cash-settlement reconciliation |
 | `datalab-cta-rewrite` | Copyable CTA alternatives grounded in supplied claims |
 | `datalab-material-suggestion` | Varied topic ideas backed by demand and competition facts |
 | `datalab-neighbor-post-reply-draft` | Explain an actual neighbour's post and draft a reply grounded in the user's questions and opinion |
@@ -25,6 +26,7 @@ Twenty skills, with no hooks, commands, services, or bundled MCP server:
 | `datalab-research-brief` | Facts cited to pages actually read |
 | `datalab-shopping-demand` | Shopping trend and audience interpretation |
 | `datalab-social-repurpose` | Platform-specific captions within working limits |
+| `datalab-sponsor-fee-quote` | Scoped production-cost scenarios and separately supplied reuse-right terms |
 | `datalab-tone-manner` | Provisional or multi-post style instructions with quotes |
 | `datalab-tutorial-post` | One beginner tutorial within a 12,000-character drafting budget |
 | `datalab-video-script` | Image, subtitle, and voice scene plans and timeline builds |
@@ -40,7 +42,7 @@ Editor work preserves existing projects and requests a project choice when neede
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | Procedures available; untested | No behavioral measurement |
-| Codex CLI | 16/20 skills have measured lift; see per-case results | codex-cli 0.160.1; gpt-6.1-sol |
+| Codex CLI | Historical qualification covers 16 of the prior 20 skills; group-buy adds one narrow evidence-request result, while sponsorship quoting is unqualified | codex-cli 0.160.1 and 0.161.0; gpt-6.1-sol |
 | Gemini CLI | Extension manifest provided; untested | No behavioral measurement |
 | Grok CLI | Procedures available; untested | No behavioral measurement |
 | Antigravity CLI | Procedures available; untested | No behavioral measurement |
@@ -156,7 +158,28 @@ The accepted effect is completeness of absolute-count reporting: both With answe
 
 The two-sentence clarification distinguishes aggregate activity from individual behavior, but regenerated answers do not isolate its causal effect. The original invalid `comment-surge` case and its historical results remain unchanged. Only supplied synthetic reports were assessed; no extension collection, identity tracking, posting or public-opinion verification occurred. This qualification applies only to datalab-comment-reaction and this bounded reporting effect.
 
+### Other runtimes: creator economics
+
+Measured 2026-10-10 with Codex CLI 0.161.0, gpt-6.1-sol at low effort as subject and judge, two runs per arm, three judge votes and concurrency one. All six cases completed in one invocation: 24 answers and 72 votes, 67 PASS and 5 FAIL. No answer errors or partial result were reported. Threshold zero allowed collection and is not a quality gate. The `(open)` marker in With denotes an unqualified or regression-only row, not a revised raw score.
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | `groupbuy-commission-net-fee-once` | datalab-groupbuy-margin | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | `groupbuy-resale-refunds-and-hold` | datalab-groupbuy-margin | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | `groupbuy-unknown-role-and-campaign` | datalab-groupbuy-margin | 0.50 | 1.00 | 2/2 | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | `sponsor-fee-added-channel-and-gift` | datalab-sponsor-fee-quote | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | `sponsor-fee-cpa-missing-inputs` | datalab-sponsor-fee-quote | 0.50 | 1.00 (open) | 2/2 | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | `sponsor-fee-scoped-cost-and-rights` | datalab-sponsor-fee-quote | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+
+The admitted group-buy difference is completeness of requests for explicit paid-transaction status and gross/net fee deduction evidence when the operating model and allocation are unresolved; the baseline also requests campaign and refund records. Both arms already withhold a profit or acceptance conclusion; one baseline fully passes and the other has one minority PASS and two FAIL votes. This is not an arithmetic, broader acceptance-safety or live MCP advantage.
+
+The sponsor CPA result remains interpretation-sensitive: the baseline already requests evidence, while its three FAIL votes concern request specificity. All original scores and votes are retained, with no regrading or sponsor runtime qualification. The other four cases are baseline-perfect regression checks. Optional MCP discovery and live execution were not exercised; no orders, payments, messages, tax work or counterpart verification occurred.
+
+Reported usage is 1,444,570 input tokens, including 704,640 cached input tokens, and 19,498 output tokens, including 1,679 reasoning tokens. Cached and reasoning tokens are subsets rather than additional totals. USD cost is null and remains unknown. Recorded metric caveat: the result reports passRateWithout 1.00 for the two scoreWithout 0.50 cases under threshold-zero collection. Both raw metrics are preserved; passRate does not establish an effect or override the scores.
+
 ## Configuration and data
+
+Sponsorship quotes separate production scope and reuse terms; group-buy review separates commission from resale, contribution from payout, and recoverable inventory from losses. Supplied inputs suffice without MCP. Optional discovered tools provide supporting evidence only, with no rates, tax assumptions, orders, payments or messages invented or executed.
 
 Load or disable the plugin using the runtime's plugin controls. There is no plugin configuration. The skills themselves write nothing automatically. Following an editor workflow can modify the selected project; draft copy stays in the answer unless an authorized editor action is performed. Evaluation artifacts belong outside the plugin.
 
