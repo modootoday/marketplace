@@ -4,7 +4,7 @@ Skills for Naver blog, Place, Smart Store, shopping demand, search ads, and news
 
 ## What it registers
 
-Twenty-two skills, with no hooks, commands, services, or bundled MCP server:
+Twenty-three skills, with no hooks, commands, services, or bundled MCP server:
 
 | Skill | Purpose |
 | --- | --- |
@@ -26,6 +26,7 @@ Twenty-two skills, with no hooks, commands, services, or bundled MCP server:
 | `datalab-research-brief` | Facts cited to pages actually read |
 | `datalab-shopping-demand` | Shopping trend and audience interpretation |
 | `datalab-social-repurpose` | Platform-specific captions within working limits |
+| `datalab-sponsor-approval-timeline` | Source-linked relative deadlines, revision requests and explicit approval states |
 | `datalab-sponsor-fee-quote` | Scoped production-cost scenarios and separately supplied reuse-right terms |
 | `datalab-tone-manner` | Provisional or multi-post style instructions with quotes |
 | `datalab-tutorial-post` | One beginner tutorial within a 12,000-character drafting budget |
@@ -42,7 +43,7 @@ Editor work preserves existing projects and requests a project choice when neede
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | Procedures available; untested | No behavioral measurement |
-| Codex CLI | Historical qualification covers 16 of the prior 20 skills; group-buy adds one narrow evidence-request result, while sponsorship quoting is unqualified | codex-cli 0.160.1 and 0.161.0; gpt-6.1-sol |
+| Codex CLI | Historical qualification covers 16 of the prior 20 skills; group-buy adds one narrow evidence-request result, while sponsorship quoting and approval timeline are unqualified | codex-cli 0.160.1 and 0.161.0; gpt-6.1-sol |
 | Gemini CLI | Extension manifest provided; untested | No behavioral measurement |
 | Grok CLI | Procedures available; untested | No behavioral measurement |
 | Antigravity CLI | Procedures available; untested | No behavioral measurement |
@@ -185,6 +186,14 @@ Reported usage is 1,444,570 input tokens, including 704,640 cached input tokens,
 | Codex CLI | gpt-6.1-sol | sponsor-fee-bundled-offer-and-reimbursed-costs (repaired) | datalab-sponsor-fee-quote | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
 
 The original comparison retains nine PASS and three FAIL votes: one With answer contradicted its correct cost table by first naming the wrong preferred offer before correcting itself. A bounded output-consistency instruction and reference check were added without changing the fixture or criteria. The repaired comparison has twelve PASS votes and is regression-only because both baseline answers also pass. Both rows remain unqualified, and no sponsor runtime badge is added. CLI 0.161.0 used subscription proxy isolation with no external MCP execution; threshold-zero exits indicate collection completion only, and USD cost remains unknown.
+
+### Other runtimes: sponsor approval timeline
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | sponsor-approval-relative-dates-and-unaccepted-extension | datalab-sponsor-approval-timeline | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+
+This original comparison preserves four answers and twelve PASS votes. Both arms correctly anchor the relative date and preserve the unaccepted extension and missing final approval. It is regression-only, with no demonstrated skill advantage or runtime badge. One case is prepared and measured; two of the usual three-case coverage requirement remain outstanding. CLI 0.161.0 used concurrency one, isolated subscription proxy execution, no external MCP calls, and threshold zero for collection rather than qualification. USD cost is unknown.
 
 ## Configuration and data
 
