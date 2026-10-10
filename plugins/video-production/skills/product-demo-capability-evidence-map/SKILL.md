@@ -6,14 +6,7 @@ metadata:
   level: L3
   domain: video-production
   install: optional
-  keywords:
-    [
-      demo evidence,
-      supported features,
-      product claims,
-      UI flow,
-      simulated demonstration,
-    ]
+  keywords: [demo evidence, capability scope, versioned claims]
   verified-runtimes: [codex-cli]
 ---
 
