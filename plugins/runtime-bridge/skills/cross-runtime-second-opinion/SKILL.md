@@ -7,7 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [second opinion, adversarial review, peer agreement, counterexample, verification]
-  verified-runtimes: [codex-cli]
+  verified-runtimes: [codex-cli, grok-cli]
 ---
 
 # Cross-runtime second opinion

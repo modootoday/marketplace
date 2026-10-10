@@ -15,7 +15,7 @@ references give concrete headless patterns for the five target CLIs.
 | Claude Code | procedures; untested | - |
 | Codex CLI | yes; see per-skill scores | 0.160.1; see Verify |
 | Gemini CLI | procedures; untested | - |
-| Grok CLI | yes, for runtime-quota-check; see dated observation | 1.0.50; grok-4.7-build-fast; 2026-10-09 |
+| Grok CLI | yes, for runtime-quota-check and cross-runtime-second-opinion; see dated observations | 1.0.50; grok-4.7-build-fast; 2026-10-09 and 2026-10-10 |
 | Antigravity CLI | procedures; untested | - |
 
 Requirements: an installed target CLI with working authentication and the tools the job needs.
@@ -172,7 +172,25 @@ All raw scores and reasons remain unchanged. Input is 397794, cached input 24504
 
 The original Grok `search-capped-migration` attempt on 2026-10-09 exited 64 before answering: proxy-token validity was 21 minutes, below the unchanged 30-minute suite requirement. There are zero subject answers and zero judge votes, no aggregate and no quality score. Adequate observed allowance did not authorize authentication refresh, a shorter validity requirement or another billing route. No Gemini research, search or migration was executed.
 
-The original Grok `agreement-schema-release` comparison was not attempted because the same authentication dependency remains unresolved. It has no new score or firing result. Neither hold creates a badge or replaces the historical Codex records. No authentication refresh, API-key fallback, automatic retry or new case was performed.
+At that historical cut, the original Grok `agreement-schema-release` comparison was not attempted because of the same authentication dependency. Neither historical hold creates a badge or replaces the Codex records. The operator subsequently renewed login; the separate complete observations below preserve that earlier failure without merging votes or rewriting it.
+
+### Renewed search observation: HOLD
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Runs per arm | Judge votes | Round | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Grok CLI | grok-4.7-build-fast | `search-capped-migration` | research-via-peer-runtime | 0.00 | 1.00 (open) | 2/2 | 2 | 3 | Operator-renewed original case | 2026-10-10 |
+
+Four complete answers and twelve votes produced six PASS and six FAIL. The renewed comparison began on 2026-10-09 and ended on 2026-10-10 UTC. Raw 1.00/0.00 and firing 2/2 are retained, but this result is HOLD and does not qualify a Grok badge. One With reply proposes another attempt after policy adjustment despite the original one-attempt cap; the other records a denied brief-write attempt despite preparation-only instructions. Both baselines already reject migration from the unsupported peer summary and check sources. No superior callback-removal detection or actual Gemini research is established. Input 339986, cached 332672, output 31169 and reasoning 20108 are preserved; raw passRateWithout conflicts with the scores. USD is null, not zero. The previous auth exit 64 remains separate.
+
+### Grok second-opinion handoff observation
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Runs per arm | Judge votes | Round | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Grok CLI | grok-4.7-build-fast | `agreement-schema-release` | cross-runtime-second-opinion | 0.00 | 1.00 | 2/2 | 2 | 3 | Original preparation-only handoff | 2026-10-10 |
+
+Four complete answers and twelve votes produced six PASS and six FAIL, without run errors or partial completion. Parent and independent review admit only complete adversarial brief-file and captured-report commands plus a separate runnable parent acceptance probe. Both baselines already identify the schema-key mismatch, reject model consensus and supply equality probes; no exclusive defect detection or consensus-rejection advantage is claimed. No adapter, peer review or acceptance probe was executed.
+
+Some judge reasons describe baseline predictions as observed despite an explicit no-execution statement; preserve those reasons without claiming that interpretation as an effect. One With permitted-read list omits its supplied brief, a narrow consistency caveat. Input 303976, cached 422912, output 27122 and reasoning 16655 remain raw; cached input exceeds input and passRateWithout conflicts with the scores. USD is null, not zero. These caveats do not establish universal robustness, actual runtime compatibility or paid-cap enforcement. The historical Codex measurements and all original Grok votes remain unchanged.
 
 ## License
 
