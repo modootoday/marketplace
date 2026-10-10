@@ -1,6 +1,6 @@
 {
   "name": "video-production",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Video work that can be executed and verified: briefs and storyboards someone else can produce from, Remotion explainers rendered from frame math, talking-head edits with ffmpeg that keep a list of every cut, and Korean subtitles timed to the voice by forced alignment.",
   "author": {
     "name": "modootoday"

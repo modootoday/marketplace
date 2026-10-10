@@ -35,6 +35,7 @@ codex plugin add video-production@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
+| skill | `product-demo-capability-evidence-map` | version/mode-bound feature and scene claims separated into documented, observed, simulated and unconfirmed evidence |
 | skill | `subtitle-media-timebase-check` | subtitle/media clock mapping from independent fit and held-out anchors, preserving intentional overlap |
 | skill | `remotion-explainer` | Remotion videos driven by frame math, with assets loaded before render and the output verified with ffprobe |
 | skill | `talking-head-edit` | talking-head edits with ffmpeg: silences cut with margins, voice levelled, subtitles re-timed, every cut listed |
@@ -126,6 +127,18 @@ Codex reasoning rows for the added skill only. The (open) marker excludes them f
 | Codex CLI | gpt-6.1-sol | `subtitle-missing-clock-anchors` | subtitle-media-timebase-check | 0.00 | 1.00 (open) | 2/2 | 2026-10-07 |
 
 Measurements used subscription Codex and no metered runtimes. USD cost and token prices were null, so USD conversion is unavailable. Cached input is a subset of input tokens; reasoning output is included in output tokens.
+
+### Other runtimes: capability evidence
+
+Measured 2026-10-10 with codex-cli 0.161.0, gpt-6.1-sol subject and judge, two runs per arm and three judge votes. These are supplied-text reasoning comparisons in an empty read-only application workspace. No application investigation, file operation, render or playback was executed. Only the changed-mode case establishes lift; the mixed evidence and unrelated colour question are regression checks.
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | capability-changed-mode-boundary | product-demo-capability-evidence-map | 0.00 | 1.00 | 2/2 | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | capability-mixed-demo-evidence | product-demo-capability-evidence-map | 1.00 | 1.00 | 2/2 | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | capability-logo-colour-negative | negative: no capability skill | 1.00 | 1.00 | 0/2 | 2026-10-10 |
+
+The comparison tests version/mode-specific evidence boundaries. A simulated screen or an old capture cannot certify current production capabilities. Subscription usage has no measured USD conversion here; metered runtimes were not used.
 
 ## License
 
