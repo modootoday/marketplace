@@ -13,3 +13,5 @@ Use the creator's proposal and cost records, not an industry multiplier.
 | Payment and tax | Contracted amount, received cash and documented deductions are separate; do not assume tax rates or final liability |
 
 Show base scope and separately priced options in the same currency. If a supplied price bundles production and reuse without an allocation, preserve that bundle and flag its limits instead of inventing a split. A maximum budget is not a cost estimate. A draft quote remains subject to the owner's approval.
+
+For a same-currency comparison, check that fee plus documented expense reimbursement minus actual cost equals fee minus creator-borne cost. Count reimbursement once; it is distinct from a refund or returned payment. Compute each offer's residual before stating which offer leaves more. Reconcile the headline, table, summary and draft with those results, removing contradictions rather than leaving a correction alongside the wrong claim. Label new counteroffer conditions as proposals distinct from the original supplied terms.

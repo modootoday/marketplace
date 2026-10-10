@@ -177,6 +177,15 @@ The sponsor CPA result remains interpretation-sensitive: the baseline already re
 
 Reported usage is 1,444,570 input tokens, including 704,640 cached input tokens, and 19,498 output tokens, including 1,679 reasoning tokens. Cached and reasoning tokens are subsets rather than additional totals. USD cost is null and remains unknown. Recorded metric caveat: the result reports passRateWithout 1.00 for the two scoreWithout 0.50 cases under threshold-zero collection. Both raw metrics are preserved; passRate does not establish an effect or override the scores.
 
+### Other runtimes: sponsor bundled-offer followup
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | sponsor-fee-bundled-offer-and-reimbursed-costs (original) | datalab-sponsor-fee-quote | 1.00 | 0.50 (open) | 2/2 | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | sponsor-fee-bundled-offer-and-reimbursed-costs (repaired) | datalab-sponsor-fee-quote | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+
+The original comparison retains nine PASS and three FAIL votes: one With answer contradicted its correct cost table by first naming the wrong preferred offer before correcting itself. A bounded output-consistency instruction and reference check were added without changing the fixture or criteria. The repaired comparison has twelve PASS votes and is regression-only because both baseline answers also pass. Both rows remain unqualified, and no sponsor runtime badge is added. CLI 0.161.0 used subscription proxy isolation with no external MCP execution; threshold-zero exits indicate collection completion only, and USD cost remains unknown.
+
 ## Configuration and data
 
 Sponsorship quotes separate production scope and reuse terms; group-buy review separates commission from resale, contribution from payout, and recoverable inventory from losses. Supplied inputs suffice without MCP. Optional discovered tools provide supporting evidence only, with no rates, tax assumptions, orders, payments or messages invented or executed.
