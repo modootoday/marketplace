@@ -11,7 +11,7 @@ Voice rights reviews are available to signed-in users.
 | Runtime | Supported | Measured on |
 | --- | --- | --- |
 | Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
+| Codex CLI | partial | gpt-6.1-sol, scene-narration-change-ledger only; supplied-text comparisons below |
 | Grok CLI | untested | - |
 | Gemini CLI | untested | - |
 
@@ -37,12 +37,32 @@ codex plugin add audio-production@modootoday
 
 | Kind | Name | Covers |
 | --- | --- | --- |
+| skill | `scene-narration-change-ledger` | requested scene-take validity and caption/alignment dependencies reconciled across script, display and approved voice/settings revisions; generation and spending remain separate |
 | skill | `voice-script-writing` | scripts for the ear: spoken numbers and English, one-breath sentences, pauses, pronunciation list, length estimate |
 | skill | `audio-mix-master` | speech cleaned, ducked under music and normalised with two-pass loudnorm to a stated target, then measured |
 | skill | `korean-tts-production` | Korean TTS from script to file: spoken numbers, pronunciation fixes, chunked synthesis, loudness and listening QA |
 | skill | `sfx-design` | UI and video sound effects designed as one family with length, timbre and loudness rules and recorded licences |
 | skill | `sonic-identity-sparring` | two or three distinct sonic directions for a brand, with the case against each and one cheap listening test |
 | skill | `longform-narration-text-prep-and-proof` | long text prepared for synthetic narration (main text versus footnotes, pronunciation list with chosen readings) and the result proofed against a transcript by span, with chapter order and file sequence checks; it prepares and checks text and does not synthesize audio |
+
+### Scene narration ledger release 0.4.1
+
+This candidate adds only `scene-narration-change-ledger` and four supplied-text cases: local/global take invalidation, ordinary grammar scope, missing global-choice evidence and display-only caption changes. Existing narration identities remain authoritative; missing measurements stay pending. MCP access is optional, and this skill neither synthesizes audio nor authorizes spending.
+
+Independent Codex validation of this clean plugin context completed on 2026-10-11: four paired cases, two runs per arm and three behaviour votes per run, sixteen subjects and 48 votes. Native execution exited 0 with cleanup, partial false and zero failed-before-answer runs. Existing unrelated skill sources are unchanged; sibling-skill history does not qualify the new ledger.
+
+### Other runtimes: scene narration ledger
+
+| Runtime | Model | Case | Skill | Without | With | Fired | Date |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Codex CLI | gpt-6.1-sol | take-invalidation-effect | scene-narration-change-ledger | 0.00 | 1.00 | 2/2 | 2026-10-11 |
+| Codex CLI | gpt-6.1-sol | take-ledger-missing-evidence | scene-narration-change-ledger | 1.00 | 1.00 | 2/2 | 2026-10-11 |
+| Codex CLI | gpt-6.1-sol | take-ledger-display-only | scene-narration-change-ledger | 1.00 | 1.00 | 2/2 | 2026-10-11 |
+| Codex CLI | gpt-6.1-sol | take-invalidation-negative | negative: no scene ledger | 1.00 | 1.00 | 0/2 | 2026-10-11 |
+
+The effect case distinguishes dependent duration/cue invalidation and pending new measured duration. Baseline answers correctly separated local from global changes, preserved supplied A2/L2 identities and held spending, but omitted those timing dependencies. Both With answers included them. This is a supplied-text dependency-ledger effect; missing-evidence, display-only and grammar-only cases are three regression checks, not additional lift.
+
+No audio synthesis, listening, measured duration, playback or synchronization was performed or certified. Missing identities remain pending rather than invented. The measurements used subscription Codex; reported monetary cost is unknown. Runtime badge derivation is handled separately from these recorded rows.
 
 ## Failure mode
 
