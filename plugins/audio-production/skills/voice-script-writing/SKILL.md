@@ -8,10 +8,16 @@ metadata:
   install: optional
   keywords: [voice script, narration, TTS script, read aloud, pronunciation]
   locales: [ko]
-  verified-runtimes: [claude-code]
 ---
 
 # Scripts for the ear
+
+## Applicability and evidence
+
+Use the requested narration language and preserve the source's meaning, quantities and
+conditions. Provide display/spoken pairs only when screen text is part of the task; unknown
+pronunciations remain proposals for approval. A script-only plan does not establish measured
+audio duration or require synthesis. Missing source text calls for that text, not audio tools.
 
 A listener cannot reread. Anything that needs the eye (a table, a parenthesis,
 "see above", "3/4") fails when spoken, and a text-to-speech engine reads exactly
@@ -54,3 +60,7 @@ if it exceeds the slot.
 
 The spoken script, the pronunciation list, the length estimate, and a list of
 every change made from the written original.
+
+## Display and spoken pairs
+
+Return stable phrase IDs with display text and spoken text when the script accompanies a screen. Keep readable numbers/brand spelling on screen while making speech pronounceable. Avoid reading both an English word and its parenthetical Korean rendering unless repetition is intentional. Preserve meaning, versions, conditions and quantities; mark uncertain brand/model readings for approval. Display edits alone do not necessarily require a new spoken take. Estimated reading duration remains an estimate until measured audio exists.

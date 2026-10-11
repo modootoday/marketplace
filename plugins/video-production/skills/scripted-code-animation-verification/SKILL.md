@@ -7,7 +7,6 @@ metadata:
   domain: video-production
   install: optional
   keywords: [code animation, deterministic timeline, scene continuity, Manim, HTML animation, frame timing, motion reuse]
-  verified-runtimes: [claude-code]
 ---
 
 # Scripted animation verification
@@ -50,3 +49,7 @@ delivered code and its output against the request. It does not generate the anim
 
 A table of required events (order, start, end, status), the duration check, a continuity
 table per cut, the linkage or reuse checks that apply, and a list of unverified items.
+
+## Conversation and interactive-state continuity
+
+For app simulations, compare message IDs/history, selected project/folder, draft text, focus and tool-result state across cuts. A follow-up should not reset the session unless the brief requires it. Verify the same state at time t reached by forward playback, backward seek and direct frame render; append callbacks must not duplicate messages or SFX. Capture before/after each boundary and preserve cursor/input phases. Source inspection supports only source-level findings; report rendered-state checks separately.

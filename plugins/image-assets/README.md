@@ -80,7 +80,7 @@ passed every grader, without the plugin and with it:
 | `icon-set` | svg-icon-illustration | 1.00 | 1.00 | 2 |
 | `tea-tin-lifestyle` | product-shot-direction | 0.00 | 1.00 | 2 |
 | `wedding-retouch-review` | ai-photo-retouch-qc | 0.50 | 1.00 | 2 |
-| `monochrome-logo-alpha-report` | generated-asset-delivery-spec-check | 0.00 | 1.00 | 2 |
+| `monochrome-logo-alpha-report` | generated-asset-delivery-spec-check | 0.00 | 1.00 (open) | 2 |
 | `banner-psd-120-artboards` | editable-layered-design-delivery-check | 0.00 | 1.00 | 2 |
 | `glass-bottle-binary-matte` | subject-cutout-alpha-matte-check | 0.00 | 1.00 | 2 |
 | `comfyui-missing-nodes-vae-log` | comfyui-workflow-live-schema-check | 0.00 | 1.00 | 2 |
@@ -99,6 +99,21 @@ Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs p
 | --- | --- | --- | --- | --- |
 | `ceramics-webp-batch` | image-postprocess | 0.00 | 1.00 | 2 of 2 |
 | `tidy-pasted-toolbar-svgs` | svg-icon-illustration | 0.00 | 1.00 | 2 of 2 |
+
+## Scene asset maintenance release 0.5.1
+
+The existing `generated-asset-delivery-spec-check` binds requested scene packages to exact asset versions and measured delivery evidence. Its scope guard requires scene/cut/style mapping only when the supplied or requested package needs it. Missing intended-use/spec inputs remain pending. Historical qualification values marked (open) retain their original numbers.
+
+Codex CLI 0.161.0 with gpt-6.1-sol subjects and judges measured With-only supplied-text regressions on 2026-10-11, two runs and one behaviour vote per run. Three initial cases produced six subjects and six votes: four PASS, two FAIL, exit 0, cleanup complete, partial false and no execution errors.
+
+| Case                                       | Phase                     | Behaviour votes | Exact target opening |
+| ------------------------------------------ | ------------------------- | --------------- | -------------------- |
+| scene-asset-version-check-effect           | Initial                   | 2 PASS          | 2/2                  |
+| scene-asset-version-check-missing-evidence | Initial                   | 2 FAIL          | 2/2                  |
+| scene-asset-version-check-negative         | Initial                   | 2 PASS          | 0/2                  |
+| scene-asset-version-check-missing-evidence | Bounded source correction | 2 PASS          | 2/2                  |
+
+The original missing-evidence answers made scene/style mapping mandatory for a generic checklist; the correction leaves it conditional rather than inventing a package. Raw failures remain unchanged. No paired effect, new badge, actual pixel inspection or generation is claimed. Unknown measurements and external actions remain unknown; other skills and runtime history retain their scope.
 
 ## License
 

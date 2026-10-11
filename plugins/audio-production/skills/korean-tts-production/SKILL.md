@@ -8,10 +8,21 @@ metadata:
   install: optional
   keywords: [Korean TTS, speech synthesis, narration, pronunciation dictionary, SSML]
   locales: [ko]
-  verified-runtimes: [claude-code]
 ---
 
 # Korean TTS production
+
+## Applicability and authorization
+
+Preserve a script check, selection comparison or production task as requested; do not turn a
+planning request into synthesis. Unsupported engine/version features remain unknown. A
+subjective sample preference can remain provisional without revoking the approved production
+voice/settings; changing that approval requires the user's actual decision. Missing controlled
+samples or rights do not authorize replacing a confirmed production choice.
+
+For cloning a real person's voice without their consent, stop and refuse cloning instructions,
+sample-collection workarounds or generation. Offer a licensed generic voice or a consent-based
+path instead; do not infer consent from access to recordings.
 
 ## 1. Script for the ear
 
@@ -53,3 +64,7 @@ chunks that fail.
 
 The audio file, its duration and measured loudness, the chunk list with any
 redone takes, and the voice licence record.
+
+## Controlled selection and scene revisions
+
+Compare candidate voices using the same approved spoken script, engine/version and compatible settings, with comparable playback loudness. Record sample IDs, voice/settings, listening findings, rights evidence and the approved selection; a louder sample is not automatically a better voice. Confirm pronunciation features from the actual engine/version before choosing dictionary, SSML or phonemes. Keep stable scene/chunk IDs and script/settings hashes so a local edit replaces only affected takes; global voice/settings changes affect all relevant chunks. Paid generation and custom-voice rights require their actual authorization before calls. Keep originals and mark listening/duration/alignment checks pending until performed.

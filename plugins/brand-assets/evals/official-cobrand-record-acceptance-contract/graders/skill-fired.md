@@ -1,0 +1,7 @@
+---
+type: tool_used
+tool: Skill
+input_match: '"skill"\s*:\s*"(?:[\w-]+:)?brand-token-kit"'
+min: 1
+arm: with
+---

@@ -9,7 +9,6 @@ metadata:
   keywords: [generated image, delivery spec, alpha channel, palette check, tileable texture, pillow]
   requires:
     bin: [python3]
-  verified-runtimes: [claude-code]
 ---
 
 # Generated asset delivery spec check
@@ -47,3 +46,8 @@ generation tool changes the asset, this skill decides whether it may be accepted
 
 A table (check, measured value, limit, pass or fail), one corrective line per failure, the
 verdict (accept or reject), and the round count.
+
+## Scene package identity
+
+Require scene/cut/style mapping only when the requested or supplied package needs it; otherwise ask for minimum intended-use and delivery-spec inputs and leave mapping not applicable or pending without inventing it.
+For a multi-scene package, map scene/cut IDs to actual asset paths, hashes, dimensions/alpha requirements, generation revision and approved style reference. Inspect the delivered files; prompts, thumbnails or a claimed filename are not proof of the current full-resolution artifact. Flag missing, stale or substituted assets before reviewing visual consistency. A palette/alpha/size pass does not by itself prove style continuity; report its separate evidence. Keep generation outside this acceptance workflow and return corrective constraints to the producing step.

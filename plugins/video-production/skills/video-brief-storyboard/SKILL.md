@@ -7,7 +7,6 @@ metadata:
   domain: video-production
   install: optional
   keywords: [storyboard, video brief, shot list, short-form video, explainer video]
-  verified-runtimes: [claude-code]
 ---
 
 # Video brief and storyboard
@@ -44,3 +43,24 @@ and the global settings (width, height, fps, duration in frames).
 
 Total duration, readability of each text at its duration, every asset sourced,
 and the acceptance criteria restated at the end.
+
+## Product journey and continuing scenes
+
+When the brief is a product demonstration, carry the supported viewer promise into the scene
+table. The opening shows the existing task and materials; the final action fulfills that same
+promise. Replace a feature list with what the viewer does and checks. Do not add publishing,
+measured savings or private-folder access the supplied capability evidence does not establish.
+
+For before/after scenes keep materials, goal and decision constraints identical. Label proposed
+benefits or synthetic results; an outline is not a completed or published article. Give each
+scene a stable ID and preserve it through edits and in the machine-readable scene list.
+
+Connect each cut to a previous result or unfinished question. For a continuing conversation,
+include the retained messages, user-selected workspace and pending input in the handoff; do not
+return to a blank first screen unless the story explicitly starts a new task. State the transition
+in visuals, screen text and narration rather than leaving the renderer to invent it.
+
+For silent-first viewing, visible text and actions must carry the meaning. Measure or shorten
+overfull narration rather than assuming it fits a slot. Missing logos, licensed music and
+testimonials stay missing until their sources are supplied. Give a vertical short its own hook,
+scene timing and CTA, with shared asset IDs; cropping the long version is not a storyboard.

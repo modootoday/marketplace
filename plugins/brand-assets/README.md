@@ -73,9 +73,9 @@ passed every grader, without the plugin and with it:
 | --- | --- | --- | --- | --- |
 | `bakery-visual-directions` | visual-concept-sparring | 0.00 | 1.00 | 3 |
 | `hex-to-rgb-not-brand` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
-| `qa-render-report` | asset-qa-review | 1.00 | 1.00 | 2 |
-| `tokens-from-guide` | brand-token-kit | 1.00 | 1.00 | 2 |
-| `name-five-hex-values` | brand-token-kit (colour naming) | 0.25 | 1.00 | 2, Opus subject and judge, both arms, 20261005 (after the names grader context named the user's badge-text and link-text statements) |
+| `qa-render-report` | asset-qa-review | 1.00 | 1.00 (open) | 2 |
+| `tokens-from-guide` | brand-token-kit | 1.00 | 1.00 (open) | 2 |
+| `name-five-hex-values` | brand-token-kit (colour naming) | 0.25 | 1.00 (open) | 2, Opus subject and judge, both arms, 20261005 (after the names grader context named the user's badge-text and link-text statements) |
 | `mockup-text-garbled-ad` | mockup-text-recovery | 0.00 | 1.00 | 2, Opus subject and judge, both arms, 20261005 |
 | `vague-client-email` | client-request-clarification | 0.00 | 1.00 | 2, Opus subject and judge, both arms, 20261005 (after the defaults rule in SKILL.md and the reply example were tightened) |
 
@@ -92,7 +92,7 @@ Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs p
 
 | Case | Skill | Without | With | Skill fired |
 | --- | --- | --- | --- | --- |
-| `carousel-slide-dense-readings` | asset-qa-review | 0.25 | 1.00 | 2 of 2 |
+| `carousel-slide-dense-readings` | asset-qa-review | 0.25 | 1.00 (open) | 2 of 2 |
 
 ### Added artifact contract fixture measurements
 
@@ -119,6 +119,26 @@ These rows apply only to the named added skill. Other clients and actual applica
 | Codex CLI | gpt-6.1-sol | `font-ascii-preview-missing-baseline` | font-subset-shaping-parity-check | 0.00 | 1.00 | 2/2 | 2026-10-07 |
 
 Subscription Codex only; no metered runtime was used. costUsd and prices are null, so USD conversion is unavailable. Cached input is a subset of input; reasoning output is included in output. No OPEN row supports a badge.
+
+## Brand evidence maintenance release 0.3.1
+
+Two existing skills are reinforced: `brand-token-kit` separates canonical source and use evidence from provisional token facts; `asset-qa-review` connects scene capture defects to matched correction and retest evidence. Historical values marked (open) preserve their numbers without qualifying the revised sources.
+
+Codex CLI 0.161.0 with gpt-6.1-sol subjects and judges measured With-only supplied-text regressions on 2026-10-11, two runs and one behaviour vote per run. Six initial cases produced 12 subjects and 12 votes: nine PASS, three FAIL, exit 0, cleanup complete, partial false and no execution errors. No paired effect or new runtime badge is established.
+
+| Case                                         | Phase                     | Behaviour votes | Exact target opening |
+| -------------------------------------------- | ------------------------- | --------------- | -------------------- |
+| official-cobrand-record-acceptance-contract  | Initial                   | 2 PASS          | 2/2                  |
+| official-cobrand-provenance-missing-evidence | Initial                   | 1 PASS, 1 FAIL  | 2/2                  |
+| official-cobrand-provenance-negative         | Initial                   | 2 PASS          | 0/2                  |
+| scene-gallery-retest-contract                | Initial                   | 2 PASS          | 2/2                  |
+| scene-gallery-occlusion-missing-evidence     | Initial                   | 2 FAIL          | 2/2                  |
+| scene-gallery-occlusion-negative             | Initial                   | 2 PASS          | 0/2                  |
+| official-cobrand-provenance-missing-evidence | Bounded source correction | 2 PASS          | 2/2                  |
+
+The original provenance omission concerned explicitly requesting canonical files; the correction provides a provisional inventory while requesting missing source and permitted-use evidence. The original score remains unchanged.
+
+The two optical-balance missing-evidence failures demanded pending brand/platform rules beyond the prompt's optical-only question. Both answers requested an actual viewing-size capture, separated source geometry from rendered evidence and withheld optical approval. The maintenance review accepts that requested workflow semantically while preserving both raw FAIL votes; it does not claim six of six native case passes or rewrite the grader. No actual image inspection, render or optical approval is certified; external actions unavailable in evidence remain unknown.
 
 ## License
 

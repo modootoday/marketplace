@@ -7,7 +7,6 @@ metadata:
   domain: brand-design
   install: optional
   keywords: [asset QA, design review, rendered image check, contrast, text overflow]
-  verified-runtimes: [codex-cli]
 ---
 
 # Asset QA from the render
@@ -41,3 +40,7 @@ A table of defects: where (top left, slide 3, the price badge), what is wrong,
 severity (blocks publishing, should fix, optional), and the fix. Do not mark the
 asset approved while a blocking defect remains; say what you could not check
 from the image alone.
+
+## Video capture gallery
+
+For video assets, index captures by exact media/project revision, scene ID, time/frame and intended viewport. Check persistent logos/disclosures against each changing background and subtitle area, not only the intro. Review co-brand optical balance separately from bounding-box equality; use actual brand clear-space rules and target crop/overlay evidence rather than a universal safe-zone margin. Record severity and matching before/after captures for occlusion, overflow, alignment and softness. A source template or textual capture report can support a scoped finding, but cannot be described as image inspection.

@@ -77,14 +77,14 @@ passed every grader, without the plugin and with it:
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
 | `fps-question-negative` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
-| `reel-storyboard` | video-brief-storyboard | 0.00 | 1.00 | 2 |
-| `remotion-timers` | remotion-explainer | 1.00 | 1.00 | 2 |
+| `reel-storyboard` | video-brief-storyboard | 0.00 | 1.00 (open) | 2 |
+| `remotion-timers` | remotion-explainer | 1.00 | 1.00 (open) | 2 |
 | `remove-silences` | talking-head-edit | 1.00 | 1.00 | 2 |
 | `subtitles-from-whisper` | tts-subtitle-sync | 0.00 | 1.00 (open) | 2 |
 | `roman-market-locked-shot` | generated-video-clip-spec-check | 0.00 | 1.00 | 2 |
 | `podcast-clip-incomplete-end` | transcript-cut-boundary-check | 0.00 | 1.00 | 2 |
 | `bird-beak-long-narration` | lipsync-viseme-timeline-check | 0.00 | 1.00 | 2 |
-| `rabbit-train-timeline` | scripted-code-animation-verification | 0.00 | 1.00 | 2 |
+| `rabbit-train-timeline` | scripted-code-animation-verification | 0.00 | 1.00 (open) | 2 |
 | `webseries-reference-sheet-drift` | subject-continuity-reference-sheet-check | 0.00 | 0.83 | 2 and 3 |
 | `webseries-reference-sheet-drift` (Opus) | subject-continuity-reference-sheet-check | 0.00 | 1.00 | 2, Opus subject and judge |
 
@@ -99,7 +99,7 @@ Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs p
 
 | Case | Skill | Without | With | Skill fired |
 | --- | --- | --- | --- | --- |
-| `three-scene-durations` | remotion-explainer | 0.00 | 1.00 | 2 of 2 |
+| `three-scene-durations` | remotion-explainer | 0.00 | 1.00 (open) | 2 of 2 |
 | `false-start-word-boundary` | talking-head-edit | 0.25 | 1.00 | 2 of 2 |
 
 ### Added skill reasoning comparisons
@@ -162,6 +162,29 @@ Normal positive validation completed: two cases, four subjects and four behaviou
 The TTS positive launched before removal of the inherited Claude badge. Reconstructing that one metadata line reproduces the measured source hash; behavioural instructions are byte-identical to the final source. The timebase source hash is unchanged. This correspondence is documented rather than described as measurement of an already badge-free snapshot. No new badge or effect is claimed.
 
 The four cases in the table ship in `evals/` with their original prompts and graders for scoped reproduction. Select those exact case names using the installed evaluator's documented case filters. The unchanged strict no-opening negative checks still fail on the recorded runs; the operator's maintenance policy reports those opens as efficiency warnings rather than rewriting the graders. No additional model run is implied by shipping these fixtures.
+
+## Video workflow maintenance release 0.4.3
+
+Three existing skills are reinforced: `video-brief-storyboard` connects audience decisions to scene handoff; `scripted-code-animation-verification` separates source-state correctness from rendered continuity; `remotion-explainer` preserves the requested rendering stack and requires input-audio and version-bound output evidence. Published capability-map and subtitle-scope maintenance sources remain unchanged.
+
+Codex CLI 0.161.0 with gpt-6.1-sol subjects and judges ran With-only supplied-text regressions on 2026-10-11, two runs and one behaviour vote per run. The initial nine cases produced 18 subjects and 18 votes: 16 PASS, two FAIL. Execution exited 0 with cleanup complete, partial false and no execution errors. This is maintenance regression, not paired effect or new runtime qualification.
+
+| Case                                         | Phase                     | Behaviour votes | Exact target opening |
+| -------------------------------------------- | ------------------------- | --------------- | -------------------- |
+| storyboard-continuation-budget               | Initial                   | 2 PASS          | 2/2                  |
+| storyboard-unsourced-cut-boundary            | Initial                   | 2 PASS          | 2/2                  |
+| storyboard-audio-container-negative          | Initial                   | 2 PASS          | 0/2                  |
+| conversation-source-render-boundary-contract | Initial                   | 2 PASS          | 2/2                  |
+| conversation-state-source-audit              | Initial                   | 2 PASS          | 2/2                  |
+| conversation-state-check-negative            | Initial                   | 2 PASS          | 0/2                  |
+| frame-derived-motion-contract                | Initial                   | 2 PASS          | 2/2                  |
+| remotion-audio-decode-missing-evidence       | Initial                   | 2 FAIL          | 2/2                  |
+| remotion-audio-decode-negative               | Initial                   | 2 PASS          | 0/2                  |
+| remotion-audio-decode-missing-evidence       | Bounded source correction | 2 PASS          | 2/2                  |
+
+The original Remotion failures omitted the request for input-audio identity and measurable source duration while correctly leaving output probing, decode and playback pending. The correction addresses that omission without inventing track length. Historical raw failures and qualification rows marked (open) remain unchanged. No new badge or effect is claimed.
+
+The four unpublished video-workflow drafts and the consumer-journey draft remain on publication hold and are excluded, with their measured cases preserved separately. Missing editor/media/capture evidence remains pending. MCP is optional; these reasoning checks certify no rendering or playback and do not establish unknown external action outcomes.
 
 ## License
 

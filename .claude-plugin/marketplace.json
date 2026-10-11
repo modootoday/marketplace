@@ -174,7 +174,7 @@
     {
       "name": "brand-assets",
       "description": "Brand work that decides something: visual directions argued before drawing, a tokens.json and colour names every asset reads, client requests clarified before design, mockup text recovered with its doubts marked, and QA of the rendered asset before it is published.",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "author": {
         "name": "modootoday"
       },
@@ -183,7 +183,7 @@
     {
       "name": "image-assets",
       "description": "Images that hold up at their real size: share images rendered from HTML with Korean text that wraps, consistent hand-written SVG icon sets, batch post-processing that crops, compresses and strips location data, and product shots edited from the real product photo with a ledger and a label check.",
-      "version": "0.5.0",
+      "version": "0.5.1",
       "author": {
         "name": "modootoday"
       },
@@ -210,7 +210,7 @@
     {
       "name": "audio-production",
       "description": "Audio from brief to file: a brand's sonic directions, scripts written for the ear, Korean TTS with spoken numbers, mixing to a measured loudness, and consistent sound effect sets.",
-      "version": "0.4.1",
+      "version": "0.4.2",
       "author": {
         "name": "modootoday"
       },
@@ -264,7 +264,7 @@
     {
       "name": "video-production",
       "description": "Video work that can be executed and verified: briefs and storyboards someone else can produce from, Remotion explainers rendered from frame math, talking-head edits with ffmpeg that keep a list of every cut, and Korean subtitles timed to the voice by forced alignment.",
-      "version": "0.4.2",
+      "version": "0.4.3",
       "author": {
         "name": "modootoday"
       },

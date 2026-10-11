@@ -7,7 +7,6 @@ metadata:
   domain: brand-design
   install: optional
   keywords: [design tokens, tokens.json, brand guidelines, colour palette, typography]
-  verified-runtimes: [claude-code]
 ---
 
 # Brand tokens
@@ -75,3 +74,8 @@ Say that colour names are a naming proposal from one source of requests, and tha
 owner decides.
 
 End with the open questions the brand owner must answer.
+
+## Official assets and co-brand use
+
+If canonical files, source or permitted-use evidence are missing, provide a provisional inventory and request those missing files, sources and terms without implying approval.
+Keep canonical asset source, retrieval date, version/hash, background variant and permitted-use evidence beside each logo/font entry. Separate supplied official rules from provisional layout choices. For co-brand lockups, respect each mark's minimum size and clear space; equal bounding-box widths do not establish optical balance. Record separator, spacing, background and placement variants for rendered review without stretching or recoloring original files. Do not infer usage rights from a downloadable asset or repost.

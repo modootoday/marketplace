@@ -91,12 +91,12 @@ passed every grader, without the plugin and with it:
 
 | Case | Skill | Without | With | Runs per arm |
 | --- | --- | --- | --- | --- |
-| `ad-script-for-tts` | voice-script-writing | 0.50 | 1.00 | 2 |
-| `podcast-louder` | audio-mix-master | 0.50 | 1.00 | 2 |
+| `ad-script-for-tts` | voice-script-writing | 0.50 | 1.00 (open) | 2 |
+| `podcast-louder` | audio-mix-master | 0.50 | 1.00 (open) | 2 |
 | `wav-to-mp3-not-mastering` | negative: the skill must not fire | 1.00 | 1.00 | 3 |
 | `cafe-sound` | sonic-identity-sparring | 0.00 | 1.00 | 2 |
-| `tts-numbers` | korean-tts-production | 0.00 | 1.00 | 2 |
-| `ui-sound-set` | sfx-design | 0.00 | 1.00 | 2 |
+| `tts-numbers` | korean-tts-production | 0.00 | 1.00 (open) | 2 |
+| `ui-sound-set` | sfx-design | 0.00 | 1.00 (open) | 2 |
 | `academic-chapter-main-text-only` | longform-narration-text-prep-and-proof | 0.00 | 1.00 | 2 |
 
 `academic-chapter-main-text-only` was measured on 20261005 with Sonnet as subject and judge. The skill rests on three first-person reports; treat the lift as moderate evidence.
@@ -105,6 +105,33 @@ korean-tts-production first scored lower with the plugin (1.00 without, 0.50 wit
 
 A case that already passes without the plugin stays in the suite to catch a regression, not as
 evidence that the skill helps.
+
+## Audio maintenance release 0.4.2
+
+Four existing skills have requested-intent and evidence guards updated. Historical Claude values marked (open) preserve their original numbers but do not qualify revised sources. Existing scene-narration-change-ledger Codex qualification and unrelated sibling history retain their original scope.
+
+Codex CLI 0.161.0 with gpt-6.1-sol subjects and judges measured supplied-text maintenance regressions on 2026-10-11: With only, two runs per case and one behaviour vote per run. The initial thirteen cases produced 26 subjects and 26 votes: 22 PASS, four FAIL, exit 0, cleanup complete, partial false and no execution errors. No paired effect or new runtime badge is established.
+
+| Case                                               | Phase                                 | Behaviour votes          | Exact target opening |
+| -------------------------------------------------- | ------------------------------------- | ------------------------ | -------------------- |
+| spoken-display-duplicate-effect / missing-evidence | Initial                               | 4 PASS                   | 2/2 per case         |
+| spoken-display-duplicate-negative                  | Initial                               | 2 PASS                   | 0/2                  |
+| controlled-voice-samples-effect                    | Initial                               | 2 FAIL                   | 0/2                  |
+| controlled-voice-samples-missing-evidence          | Initial                               | 2 PASS                   | 2/2                  |
+| controlled-voice-samples-negative                  | Initial                               | 2 PASS                   | 0/2                  |
+| boundary-noise-duration-effect                     | Initial                               | 2 PASS                   | 2/2                  |
+| boundary-noise-duration-missing-evidence           | Initial                               | 2 FAIL                   | 2/2                  |
+| boundary-noise-duration-negative                   | Initial                               | 2 PASS                   | 0/2                  |
+| sfx-seek-dedup-effect / missing-evidence           | Initial                               | 4 PASS                   | 2/2 per case         |
+| sfx-seek-dedup-negative                            | Initial                               | 2 PASS                   | 0/2                  |
+| real-voice-consent-boundary                        | Initial                               | 2 PASS                   | 0/2                  |
+| boundary-noise-duration-missing-evidence           | Bounded source correction             | 2 PASS                   | 2/2                  |
+| korean-voice-provider-compatibility-contract       | Initial operationally invalid fixture | No valid behaviour votes | Not a quality result |
+| korean-voice-provider-compatibility-contract       | Corrected fixture regression          | 2 PASS                   | 2/2                  |
+
+The original boundary-noise failures omitted explicit original preservation; the corrected source preserves originals and leaves actual edit length pending inspection. The mixed voice-selection case legitimately selected the published scene ledger for its dependency task; its original failures remain, including the licensing criterion, rather than being relabelled as a wrong skill response. The separate provider-compatibility contract tests controlled sample preference, confirmed dictionary support, unknown phoneme support, rights and approval blockers without scene revision. Its first invocation had an unsupported grader type and escaped activation pattern, produced zero valid behaviour votes, and retains its original raw zero scores; after an operational fixture repair with unchanged semantic criteria, both runs passed.
+
+These tests certify bounded answers, not synthesis, listening, mixing or synchronization. Unknown external actions are not inferred from skill openings. No metered generation was performed by these measurements. The held consumer-journey and other new video/release-package drafts are excluded from this release.
 
 ## License
 
