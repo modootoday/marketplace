@@ -1,6 +1,6 @@
 ---
 name: subtitle-media-timebase-check
-description: Diagnose subtitle offset, drift or edit discontinuities against a named media artifact using independent clock anchors and held-out residuals. Use when subtitles parse correctly but lose synchronization, or a frame-rate conversion is proposed without a source clock contract. Not for transcription, translation, readability-only QC or generating speech alignment.
+description: Verify subtitle-to-media synchronization and diagnose offset, drift and edit discontinuities with independent residual checks. Use when the user requests timing verification or correction using identifiable subtitle/media versions and supplied observations or clock anchors.
 metadata:
   tier: open
   level: L3
@@ -10,6 +10,18 @@ metadata:
 ---
 
 # Subtitle media timebase check
+
+## Applicability
+
+Continue only when the user requests synchronization verification, a timing diagnosis or a
+clock-based timing correction. Subtitle and media files existing together do not establish
+that intent. For an eligible request, use the supplied timing evidence or ask for the minimum
+missing version and observation information needed for its requested scope.
+
+For font, text, line-break or layout-only changes with timestamps intentionally unchanged,
+stop this timing workflow and preserve the original editing task. Keep cue timestamps and
+intended overlap; do not require anchors, retiming or a clock ledger. Apply the procedures
+below only after the synchronization branch qualifies.
 
 Check synchronization against external media observations. Valid cue syntax and matching frame-rate labels do not establish synchronization. Review supplied measurements or explain what to collect; do not claim playback or rendering without evidence.
 
@@ -32,3 +44,7 @@ Use identifiable speech or sound events near the beginning, middle and end, with
 Provide a clock/artifact ledger, anchor table with fit-versus-held-out labels, model and residuals, offset/drift/edit decision, scoped retiming proposal and saved-player checks still required. If inputs are missing, report inspectable syntax separately and request the minimum clock evidence. Do not claim global sync beyond the tested region.
 
 For format contracts, consult [WebVTT cue timings](https://www.w3.org/TR/webvtt1/#webvtt-cue-timings) and the [Library of Congress SRT description](https://www.loc.gov/preservation/digital/formats/fdd/fdd000569.shtml). [Subtitle Edit time-code guidance](https://github.com/SubtitleEdit/subtitleedit/blob/main/docs/features/improve-time-codes.md) distinguishes kinds of synchronization; the main-branch document does not certify an installed release. [Issue 9551](https://github.com/SubtitleEdit/subtitleedit/issues/9551) is closed and reports difficult alignment plus unverified AI-assisted success, not an AI failure or current software defect. Historical source evidence does not establish model effect; comparative results and limits are recorded in the plugin README.
+
+## Export and boundary coverage
+
+Carry media/export, subtitle, player and delay identities through every check. An earlier preview check does not validate a newer export. Use beginning/middle/end plus independent anchors adjacent to changed scene/cut boundaries; localize failures instead of absorbing them into a global fit. Preserve intended overlapping cues unless a verified target-specific rule forbids them. Record a saved-artifact observation separately from a calculated proposal.

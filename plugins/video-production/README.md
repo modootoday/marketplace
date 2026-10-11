@@ -80,13 +80,15 @@ passed every grader, without the plugin and with it:
 | `reel-storyboard` | video-brief-storyboard | 0.00 | 1.00 | 2 |
 | `remotion-timers` | remotion-explainer | 1.00 | 1.00 | 2 |
 | `remove-silences` | talking-head-edit | 1.00 | 1.00 | 2 |
-| `subtitles-from-whisper` | tts-subtitle-sync | 0.00 | 1.00 | 2 |
+| `subtitles-from-whisper` | tts-subtitle-sync | 0.00 | 1.00 (open) | 2 |
 | `roman-market-locked-shot` | generated-video-clip-spec-check | 0.00 | 1.00 | 2 |
 | `podcast-clip-incomplete-end` | transcript-cut-boundary-check | 0.00 | 1.00 | 2 |
 | `bird-beak-long-narration` | lipsync-viseme-timeline-check | 0.00 | 1.00 | 2 |
 | `rabbit-train-timeline` | scripted-code-animation-verification | 0.00 | 1.00 | 2 |
 | `webseries-reference-sheet-drift` | subject-continuity-reference-sheet-check | 0.00 | 0.83 | 2 and 3 |
 | `webseries-reference-sheet-drift` (Opus) | subject-continuity-reference-sheet-check | 0.00 | 1.00 | 2, Opus subject and judge |
+
+The `subtitles-from-whisper` 1.00 is the unchanged historical Claude result for the former source snapshot. Its (open) marker excludes current qualification inference: Claude has not verified the revised scope guards, and the inherited Claude badge was removed. This annotation does not change the historical numeric result.
 
 remotion-explainer, talking-head-edit show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. The Codex scores below add a case with lift for remotion-explainer and talking-head-edit.
 
@@ -139,6 +141,25 @@ Measured 2026-10-10 with codex-cli 0.161.0, gpt-6.1-sol subject and judge, two r
 | Codex CLI | gpt-6.1-sol | capability-logo-colour-negative | negative: no capability skill | 1.00 | 1.00 | 0/2 | 2026-10-10 |
 
 The comparison tests version/mode-specific evidence boundaries. A simulated screen or an old capture cannot certify current production capabilities. Subscription usage has no measured USD conversion here; metered runtimes were not used.
+
+## Scope guard maintenance release 0.4.2
+
+This release candidate changes two existing skills: `tts-subtitle-sync` and `subtitle-media-timebase-check`. Concise intent/input descriptions and top-level applicability guards preserve transcription requests and unchanged-time presentation edits instead of importing alignment or clock diagnosis. The exact R3 candidate also includes the cue/export revision-boundary additions in these two bodies; other wave drafts are excluded.
+
+The operator approved a bounded novice-facing maintenance exception: unnecessary skill opening is an efficiency warning, while task diversion, unrelated input prerequisites, retiming, fabricated evidence and unauthorized actions remain hard failures. The original strict no-opening graders and historical failures remain intact. This is not a strict nonactivation or minimum-effect gate pass and does not relax new-skill qualification.
+
+Grok subscription checks used supplied-text requests, With only, two runs per case and one behaviour vote per run. Both unknown-speech and presentation-only cases passed content in both runs, but each target opened twice; raw scores remain 0.50/0.50. Reading a skill and producing a safe answer does not prove absence of external execution; unavailable action evidence remains unknown. No media processing or synchronization success is certified, no effect is claimed and no Grok runtime badge is awarded.
+
+Normal positive validation completed: two cases, four subjects and four behaviour votes passed, exit 0 with cleanup, partial false and zero execution errors. Without was not measured in these screens, so no lift is inferred. Delivery checks and landing/publication remain pending. No current-source Claude qualification is claimed.
+
+| Case | With raw scores | Behaviour passes | Target opens | Interpretation |
+| --- | --- | --- | --- | --- |
+| cue-revision-check-negative | 0.5, 0.5 | 2/2 | 2/2 | Efficiency warning; strict no-opening FAIL retained |
+| export-clock-boundary-negative | 0.5, 0.5 | 2/2 | 2/2 | Efficiency warning; strict no-opening FAIL retained |
+| cue-revision-check-missing-evidence | 1, 1 | 2/2 | 2/2 | Expected application; positive regression |
+| clock-verification-contract | 1, 1 | 2/2 | 2/2 | Expected application; positive regression |
+
+The TTS positive launched before removal of the inherited Claude badge. Reconstructing that one metadata line reproduces the measured source hash; behavioural instructions are byte-identical to the final source. The timebase source hash is unchanged. This correspondence is documented rather than described as measurement of an already badge-free snapshot. No new badge or effect is claimed.
 
 ## License
 
