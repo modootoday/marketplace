@@ -161,6 +161,8 @@ Normal positive validation completed: two cases, four subjects and four behaviou
 
 The TTS positive launched before removal of the inherited Claude badge. Reconstructing that one metadata line reproduces the measured source hash; behavioural instructions are byte-identical to the final source. The timebase source hash is unchanged. This correspondence is documented rather than described as measurement of an already badge-free snapshot. No new badge or effect is claimed.
 
+The four cases in the table ship in `evals/` with their original prompts and graders for scoped reproduction. Select those exact case names using the installed evaluator's documented case filters. The unchanged strict no-opening negative checks still fail on the recorded runs; the operator's maintenance policy reports those opens as efficiency warnings rather than rewriting the graders. No additional model run is implied by shipping these fixtures.
+
 ## License
 
 MIT
