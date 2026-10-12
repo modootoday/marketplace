@@ -53,3 +53,7 @@ Return target/version/mode/date, a capability table and a scene map:
 Separate a documented capability from a demonstrated operation and both from synthetic staging.
 Include the unconfirmed claims and release-blocking corrections. The output is a review contract,
 not an execution receipt, adoption measurement or assurance that a mock screen represents the product.
+
+Capability evidence does not establish audience demand or a typical routine. Keep supplied
+observations separate from illustrative personas, and carry that distinction into the scene
+corrections as well as the supported promise. Do not invent user research from product support.

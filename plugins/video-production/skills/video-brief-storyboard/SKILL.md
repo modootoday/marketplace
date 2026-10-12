@@ -64,3 +64,7 @@ For silent-first viewing, visible text and actions must carry the meaning. Measu
 overfull narration rather than assuming it fits a slot. Missing logos, licensed music and
 testimonials stay missing until their sources are supplied. Give a vertical short its own hook,
 scene timing and CTA, with shared asset IDs; cropping the long version is not a storyboard.
+
+When audience or routine research is absent, mark the example as illustrative. For a requested
+script correction, include a replacement table linking each technical or unsupported phrase
+to the viewer action, supported benefit and evidence boundary; do not claim measured adoption.

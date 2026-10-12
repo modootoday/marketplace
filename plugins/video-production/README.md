@@ -184,7 +184,23 @@ Codex CLI 0.161.0 with gpt-6.1-sol subjects and judges ran With-only supplied-te
 
 The original Remotion failures omitted the request for input-audio identity and measurable source duration while correctly leaving output probing, decode and playback pending. The correction addresses that omission without inventing track length. Historical raw failures and qualification rows marked (open) remain unchanged. No new badge or effect is claimed.
 
-The four unpublished video-workflow drafts and the consumer-journey draft remain on publication hold and are excluded, with their measured cases preserved separately. Missing editor/media/capture evidence remains pending. MCP is optional; these reasoning checks certify no rendering or playback and do not establish unknown external action outcomes.
+The four earlier standalone video-workflow drafts remain excluded, with their original measured cases preserved separately. The consumer-journey draft is absorbed into two existing procedures rather than released as a new skill. Missing editor/media/capture evidence remains pending. MCP is optional; these reasoning checks certify no rendering or playback and do not establish unknown external action outcomes.
+
+## Illustrative audience maintenance release 0.4.4
+
+Two existing skills are reinforced. `video-brief-storyboard` marks an unresearched audience or routine as illustrative and connects requested script replacements to viewer actions, supported benefits and evidence boundaries. `product-demo-capability-evidence-map` keeps product support separate from audience demand and carries that distinction into corrected scenes. Existing descriptions, metadata and runtime qualifications are unchanged; no standalone skill is added.
+
+One Codex CLI 0.162.1 invocation used gpt-6.1-sol subjects and judges with low effort, two With-only runs, three requested behaviour votes and concurrency one on 2026-10-12. All six actual answers were reviewed and satisfy the supplied-text tasks. Native scores are 1.00, but only 15 of 18 requested votes returned: all 15 are PASS, and each case lacks one vote. Complete three-judge measurement remains held for all three cases. Do not use the aggregate scores as complete coverage, paired effect or new runtime qualification.
+
+| Case | Skill | Native With | Fired | Run 0 votes | Run 1 votes | Measurement disposition |
+| --- | --- | --- | --- | --- | --- | --- |
+| capability-audience-evidence-separation | product-demo-capability-evidence-map | 1.00 | 2/2 | 2 PASS, 1 missing | 3 PASS | Held: incomplete judging |
+| storyboard-illustrative-routine-replacements | video-brief-storyboard | 1.00 | 2/2 | 3 PASS | 2 PASS, 1 missing | Held: incomplete judging |
+| storyboard-audio-container-negative | Negative: no storyboard | 1.00 | 0/2 | 2 PASS, 1 missing | 3 PASS | Held: incomplete judging |
+
+The positive answers preserve illustrative personas, supported local selection and conditional approval, and reject invented adoption, time savings, saves or publication. Both storyboard answers map all three requested phrases and total exactly 600 frames at 30 fps. Both negative answers explain WAV and MP3 only; the unchanged strict nonactivation checks pass. Original scores and votes remain intact, and missing judges are not supplemented.
+
+Observed input plus output totals 310394 tokens; cached input is already included and USD conversion is unknown. The directly approved maintenance paragraphs ship with static validation and explicit semantic review. The incomplete regressions add no qualified coverage or badge. No rendering, product investigation, external write or publishing operation was tested.
 
 ## License
 
