@@ -6,12 +6,12 @@ Growth and community work: store listings written for the people searching that 
 
 ## Runtime support
 
-| Runtime | Supported | Measured on |
-| --- | --- | --- |
-| Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
-| Grok CLI | untested | - |
-| Gemini CLI | untested | - |
+| Runtime     | Supported | Measured on                                                |
+| ----------- | --------- | ---------------------------------------------------------- |
+| Claude Code | yes       | 2.1.289, with the eval suite in `evals/` (see Verify)      |
+| Codex CLI   | yes       | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
+| Grok CLI    | untested  | -                                                          |
+| Gemini CLI  | untested  | -                                                          |
 
 Requirements: None.
 
@@ -33,21 +33,21 @@ codex plugin add growth-community@modootoday
 
 ## What it registers
 
-| Kind | Name | Covers |
-| --- | --- | --- |
-| skill | `discord-community-ops` | a Discord server shaped by what members come to do, with FAQ posts that stay true and a written moderation ladder |
-| skill | `store-listing-optimization` | store listings that state the user's outcome plainly, with the search phrase once and no unprovable claims |
-| skill | `newsletter-editorial` | newsletter issues with one reason, a subject and preview that state it, short sections and a pre-send check |
-| skill | `social-content-calendar` | a month of social posts sized to the team's hours: pillars, cadence, a dated calendar with hook and CTA, a weekly check |
-| skill | `launch-announcement-email` | launch and opening emails with one message, tested subject lines, one call to action and the marketing-email footer |
-| skill | `search-engine-submission` | DNS ownership proof, Search Console sitemap submission as a service account, IndexNow for Naver and Bing, and the resubmit wired into publishing |
-| skill | `static-site-crawl-files` | robots.txt, a sitemap with canonical URLs and honest lastmod, IndexNow key and llms.txt per origin, reciprocal hreflang for language twins, noindex headers for app documents |
-| skill | `catalog-listing-with-options` | product registration driven by the company's option table: the full option matrix, prices and stock from stated rules, and every combination without a rule flagged, never priced by guess |
-| skill | `hosted-site-prelaunch-smoke` | a site tested on its real host before launch: routing, exposed config, open write paths, consent before measurement and API data gaps, triaged into blockers and fixes |
-| skill | `seo-audit-to-fix-plan` | an audit export grouped by root cause with affected counts, internal links placed only from existing pages and sentences, a staged rollout for large page sets and a check per fix |
-| skill | `search-query-regex-filter` | search-query regex filters written for the tool's dialect (RE2 for Search Console) and tested on a 10-query table with false-positive risks; rests on one record |
-| skill | `site-content-grounding-check` | a generated landing page, portfolio or explorer checked against its source: claim ledger, invented claims struck, totals recomputed, every link clicked; rests on a few records |
-| skill | `nontechnical-editor-content-model` | an editing path a non-developer can use: content as data, server-side login, the real edit tested for each frequent change and each permission level, and an owner how-to |
+| Kind  | Name                                | Covers                                                                                                                                                                                     |
+| ----- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| skill | `discord-community-ops`             | a Discord server shaped by what members come to do, with FAQ posts that stay true and a written moderation ladder                                                                          |
+| skill | `store-listing-optimization`        | store listings that state the user's outcome plainly, with the search phrase once and no unprovable claims                                                                                 |
+| skill | `newsletter-editorial`              | newsletter issues with one reason, a subject and preview that state it, short sections and a pre-send check                                                                                |
+| skill | `social-content-calendar`           | a month of social posts sized to the team's hours: pillars, cadence, a dated calendar with hook and CTA, a weekly check                                                                    |
+| skill | `launch-announcement-email`         | launch and opening emails with one message, tested subject lines, one call to action and the marketing-email footer                                                                        |
+| skill | `search-engine-submission`          | DNS ownership proof, Search Console sitemap submission as a service account, IndexNow for Naver and Bing, and the resubmit wired into publishing                                           |
+| skill | `static-site-crawl-files`           | robots.txt, a sitemap with canonical URLs and honest lastmod, IndexNow key and llms.txt per origin, reciprocal hreflang for language twins, noindex headers for app documents              |
+| skill | `catalog-listing-with-options`      | product registration driven by the company's option table: the full option matrix, prices and stock from stated rules, and every combination without a rule flagged, never priced by guess |
+| skill | `hosted-site-prelaunch-smoke`       | a site tested on its real host before launch: routing, exposed config, open write paths, consent before measurement and API data gaps, triaged into blockers and fixes                     |
+| skill | `seo-audit-to-fix-plan`             | an audit export grouped by root cause with affected counts, internal links placed only from existing pages and sentences, a staged rollout for large page sets and a check per fix         |
+| skill | `search-query-regex-filter`         | search-query regex filters written for the tool's dialect (RE2 for Search Console) and tested on a 10-query table with false-positive risks; rests on one record                           |
+| skill | `site-content-grounding-check`      | a generated landing page, portfolio or explorer checked against its source: claim ledger, invented claims struck, totals recomputed, every link clicked; rests on a few records            |
+| skill | `nontechnical-editor-content-model` | an editing path a non-developer can use: content as data, server-side login, the real edit tested for each frequent change and each permission level, and an owner how-to                  |
 
 ## Failure mode
 
@@ -74,22 +74,22 @@ The plugin ships an eval suite (`claude plugin eval plugins/growth-community --n
 20261005 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
 passed every grader, without the plugin and with it:
 
-| Case | Skill | Without | With | Runs per arm |
-| --- | --- | --- | --- | --- |
-| `listing-rewrite` | store-listing-optimization | 0.50 | 0.50 | 2 |
-| `messy-server` | discord-community-ops | 0.50 | 1.00 | 2 |
-| `utm-question-negative` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
-| `plan-issue` | newsletter-editorial | 0.00 | 1.00 | 2 |
-| `bakery-month-plan` | social-content-calendar | 0.00 | 0.50 | 2 |
-| `feature-launch-email` | launch-announcement-email | 0.00 | 1.00 | 2 |
-| `new-domain-indexing` | search-engine-submission | 1.00 | 1.00 | 2 |
-| `tumbler-option-sheet` | catalog-listing-with-options | 0.00 | 1.00 | 2 |
-| `static-site-crawl-files` | static-site-crawl-files | 0.00 | 1.00 | 2 |
-| `deployed-host-triage` | hosted-site-prelaunch-smoke | 0.00 | 1.00 | 2 |
-| `audit-fix-plan` | seo-audit-to-fix-plan | 0.00 | 1.00 | 2 |
-| `brand-query-regex` | search-query-regex-filter | 0.50 | 1.00 | 2 |
-| `generated-page-grounding` | site-content-grounding-check | 0.00 | 1.00 | 2 |
-| `restaurant-menu-editing` | nontechnical-editor-content-model | 0.00 | 1.00 | 2 per arm, Sonnet subject and judge, 20261006 |
+| Case                       | Skill                             | Without | With | Runs per arm                                  |
+| -------------------------- | --------------------------------- | ------- | ---- | --------------------------------------------- |
+| `listing-rewrite`          | store-listing-optimization        | 0.50    | 0.50 | 2                                             |
+| `messy-server`             | discord-community-ops             | 0.50    | 1.00 | 2                                             |
+| `utm-question-negative`    | negative: the skill must not fire | 1.00    | 1.00 | 2                                             |
+| `plan-issue`               | newsletter-editorial              | 0.00    | 1.00 | 2                                             |
+| `bakery-month-plan`        | social-content-calendar           | 0.00    | 0.50 | 2                                             |
+| `feature-launch-email`     | launch-announcement-email         | 0.00    | 1.00 | 2                                             |
+| `new-domain-indexing`      | search-engine-submission          | 1.00    | 1.00 | 2                                             |
+| `tumbler-option-sheet`     | catalog-listing-with-options      | 0.00    | 1.00 | 2                                             |
+| `static-site-crawl-files`  | static-site-crawl-files           | 0.00    | 1.00 | 2                                             |
+| `deployed-host-triage`     | hosted-site-prelaunch-smoke       | 0.00    | 1.00 | 2                                             |
+| `audit-fix-plan`           | seo-audit-to-fix-plan             | 0.00    | 1.00 | 2                                             |
+| `brand-query-regex`        | search-query-regex-filter         | 0.50    | 1.00 | 2                                             |
+| `generated-page-grounding` | site-content-grounding-check      | 0.00    | 1.00 | 2                                             |
+| `restaurant-menu-editing`  | nontechnical-editor-content-model | 0.00    | 1.00 | 2 per arm, Sonnet subject and judge, 20261006 |
 
 The four rows above ran with Sonnet as subject and judge, 20261005.
 
@@ -100,10 +100,45 @@ evidence that the skill helps.
 
 Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
 
-| Case | Skill | Without | With | Skill fired |
-| --- | --- | --- | --- | --- |
-| `brand-site-host-inventory` | search-engine-submission | 0.25 | 1.00 | 2 of 2 |
+| Case                        | Skill                    | Without | With | Skill fired |
+| --------------------------- | ------------------------ | ------- | ---- | ----------- |
+| `brand-site-host-inventory` | search-engine-submission | 0.25    | 1.00 | 2 of 2      |
 
 ## License
 
 MIT
+
+## Maintenance cases: 2026-10-12
+
+Codex CLI 0.162.1, gpt-6.1-sol subject and judges, two With-only runs per case, three requested judge votes per run and concurrency 1. P and F below preserve individual PASS and FAIL votes; missing votes are incomplete evidence. Actual answers were reviewed separately from native scores.
+
+18 of 24 added coverage slots passed both complete native judging and answer review. The remaining slots are held. Clarified fixtures are distinct attempts; they do not repair or overwrite earlier execution, arithmetic, content-boundary or grading failures.
+
+| Case                                                   | Skill                             | Activation | Recorded votes by run | Review                                                   |
+| ------------------------------------------------------ | --------------------------------- | ---------- | --------------------- | -------------------------------------------------------- |
+| conflicting-rules-and-zero-stock-contract              | catalog-listing-with-options      | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| missing-bundle-exception-and-group-stock-contract      | catalog-listing-with-options      | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| member-purpose-roles-and-appeals-contract              | discord-community-ops             | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| stale-faq-and-consistent-moderation-contract           | discord-community-ops             | 2/2        | PFP / FFF             | held: disputed rubric                                    |
+| api-gap-consent-refusal-and-conversion-dedup-contract  | hosted-site-prelaunch-smoke       | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| supplied-host-blockers-and-unrun-storage-contract      | hosted-site-prelaunch-smoke       | 2/2        | FPF / FFF             | held: disputed checklist and synthetic exposure boundary |
+| new-feature-segments-one-action-contract               | launch-announcement-email         | 2/2        | FFF / FFF             | held: conflicting CTA fixture                            |
+| opening-dates-no-invented-offer-contract               | launch-announcement-email         | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| community-issue-fixed-sections-contract                | newsletter-editorial              | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| thin-issue-skip-or-shorter-contract                    | newsletter-editorial              | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| guest-list-private-sheet-and-item-lifecycle-contract   | nontechnical-editor-content-model | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| owner-three-edits-role-matrix-contract                 | nontechnical-editor-content-model | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| literal-dot-two-filters-and-case-contract              | search-query-regex-filter         | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| re2-word-boundary-and-ten-query-contract               | search-query-regex-filter         | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| cause-groups-explicit-recrawl-contract                 | seo-audit-to-fix-plan             | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| existing-anchors-explicit-recrawl-contract             | seo-audit-to-fix-plan             | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| explorer-exact-ids-and-retest-plan-contract            | site-content-grounding-check      | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| page-claim-build-evidence-and-priority-contract        | site-content-grounding-check      | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| capacity-shortfall-and-missing-sales-evidence-contract | social-content-calendar           | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| hours-limit-four-week-calendar-contract                | social-content-calendar           | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| locale-index-intent-and-dated-source-contract          | static-site-crawl-files           | 2/2        | PPP / PPP             | Reviewed pass                                            |
+| two-origin-sitemap-omissions-contract                  | static-site-crawl-files           | 2/2        | FFF / FFF             | held: ambiguous unquoted key body                        |
+| brand-only-name-and-permission-disclosure-contract     | store-listing-optimization        | 2/2        | FFF / FFF             | held: feature fidelity and pricing request dispute       |
+| real-feature-screenshots-no-superlatives-contract      | store-listing-optimization        | 2/2        | PPP / PPP             | held: inaccurate count despite native pass               |
+
+These are maintenance checks on unchanged skill procedures and runtime metadata. They establish no new paired effect or runtime badge. Earlier evidence and held outcomes remain separate.

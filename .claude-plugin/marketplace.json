@@ -165,7 +165,7 @@
     {
       "name": "data-analytics",
       "description": "Numbers that mean what they say: ClickHouse SQL that reads the key and deduplicates correctly, Naver trend data read as ratios, metrics defined once, experiments designed before launch, retention read by cohort, and open survey responses grouped with every response id kept.",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "author": {
         "name": "modootoday"
       },
@@ -237,7 +237,7 @@
     {
       "name": "growth-community",
       "description": "Growth and community work: store listings written for the people searching that store, Discord servers run with structure and consistent moderation, newsletters readers open and finish, a month of social posts a small team can ship, launch emails that lead with what changed, and sites submitted to Google, Naver and IndexNow engines from a pipeline.",
-      "version": "0.6.0",
+      "version": "0.6.1",
       "author": {
         "name": "modootoday"
       },
@@ -300,7 +300,7 @@
     {
       "name": "education",
       "description": "Reading passages that hit a measured grade level, language drills, and teacher-side checks for coverage, answer keys, lesson timing, study calendars and rule-valid puzzles, with the numbers and logs shown.",
-      "version": "0.3.1",
+      "version": "0.3.2",
       "author": {
         "name": "modootoday"
       },
@@ -615,7 +615,7 @@
     {
       "name": "datalab-tools",
       "description": "Your own Naver blog, Place, Smart Store, shopping, search ad and news comment data read through the datalab.tools browser extension, plus card news, short-form video, tutorial posts and social copy built in its editors, with no invented numbers and no change made without asking.",
-      "version": "0.1.8",
+      "version": "0.1.9",
       "author": {
         "name": "modootoday"
       },

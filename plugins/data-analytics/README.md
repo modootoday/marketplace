@@ -6,12 +6,12 @@ Numbers that mean what they say: ClickHouse SQL that reads the key and deduplica
 
 ## Runtime support
 
-| Runtime     | Supported | Measured on                                           |
-| ----------- | --------- | ----------------------------------------------------- |
-| Claude Code | yes       | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | yes | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
-| Grok CLI    | untested  | -                                                     |
-| Gemini CLI  | untested  | -                                                     |
+| Runtime     | Supported | Measured on                                                |
+| ----------- | --------- | ---------------------------------------------------------- |
+| Claude Code | yes       | 2.1.289, with the eval suite in `evals/` (see Verify)      |
+| Codex CLI   | yes       | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
+| Grok CLI    | untested  | -                                                          |
+| Gemini CLI  | untested  | -                                                          |
 
 Requirements: None. A project can keep its own database facts in an overlay the agent reads with the skill.
 
@@ -78,25 +78,25 @@ The plugin ships an eval suite (`claude plugin eval plugins/data-analytics --no-
 20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
 passed every grader, without the plugin and with it:
 
-| Case                            | Skill                             | Without | With | Runs per arm |
-| ------------------------------- | --------------------------------- | ------- | ---- | ------------ |
-| `daily-active-query-review`     | clickhouse-query-authoring        | 1.00    | 1.00 | 2            |
-| `postgres-index-not-clickhouse` | negative: the skill must not fire | 1.00    | 1.00 | 2            |
-| `replacing-double-count`        | clickhouse-query-authoring        | 1.00    | 1.00 | 2            |
-| `trend-ratio-misread`           | naver-trend-analysis              | 1.00    | 1.00 | 2            |
-| `two-dashboards-dau`            | metric-definition                 | 1.00    | 1.00 | 2            |
-| `blended-retention-drop`        | cohort-retention                  | 0.00    | 1.00 | 2            |
-| `stop-test-early`               | experiment-design-readout         | 0.50    | 1.00 | 2            |
-| `survey-summary-recount`        | survey-recount-and-anonymize      | 0.00    | 1.00 | 2            |
-| `retrieval-slice-regression`    | retrieval-ranking-readout         | 0.00    | 1.00 | 2            |
-| `list-diff-ids`                 | list-normalize-and-diff           | 0.00    | 1.00 | 2            |
-| `three-generated-calculators`   | calculator-reference-case-verification | 0.50 | 1.00 | 2       |
-| `regional-charts-recompute`     | chart-geometry-and-claim-recompute | 0.00 | 1.00 | 2       |
-| `two-macros-shared-function`    | macro-logic-recovery-refactor | 0.00 | 1.00 | 2       |
-| `dept-share-slicer-total`       | bi-measure-context-debug | 0.50 | 1.00 | 2       |
-| `calc-highlight-sum-formula`    | spreadsheet-formula-environment-check | 0.00 | 1.00 | 2 |
-| `tag-export-sankey-country-map` | figure-source-key-join-and-total-check | 0.25 | 1.00 | 2 |
-| `twelve-responses-idea-groups` | open-response-theme-triangulation | 0.00 | 1.00 | 2, Sonnet subject and judge, 20261005; skill fired in both with runs; rests on two first-person records (moved 20261006) |
+| Case                            | Skill                                  | Without | With | Runs per arm                                                                                                             |
+| ------------------------------- | -------------------------------------- | ------- | ---- | ------------------------------------------------------------------------------------------------------------------------ |
+| `daily-active-query-review`     | clickhouse-query-authoring             | 1.00    | 1.00 | 2                                                                                                                        |
+| `postgres-index-not-clickhouse` | negative: the skill must not fire      | 1.00    | 1.00 | 2                                                                                                                        |
+| `replacing-double-count`        | clickhouse-query-authoring             | 1.00    | 1.00 | 2                                                                                                                        |
+| `trend-ratio-misread`           | naver-trend-analysis                   | 1.00    | 1.00 | 2                                                                                                                        |
+| `two-dashboards-dau`            | metric-definition                      | 1.00    | 1.00 | 2                                                                                                                        |
+| `blended-retention-drop`        | cohort-retention                       | 0.00    | 1.00 | 2                                                                                                                        |
+| `stop-test-early`               | experiment-design-readout              | 0.50    | 1.00 | 2                                                                                                                        |
+| `survey-summary-recount`        | survey-recount-and-anonymize           | 0.00    | 1.00 | 2                                                                                                                        |
+| `retrieval-slice-regression`    | retrieval-ranking-readout              | 0.00    | 1.00 | 2                                                                                                                        |
+| `list-diff-ids`                 | list-normalize-and-diff                | 0.00    | 1.00 | 2                                                                                                                        |
+| `three-generated-calculators`   | calculator-reference-case-verification | 0.50    | 1.00 | 2                                                                                                                        |
+| `regional-charts-recompute`     | chart-geometry-and-claim-recompute     | 0.00    | 1.00 | 2                                                                                                                        |
+| `two-macros-shared-function`    | macro-logic-recovery-refactor          | 0.00    | 1.00 | 2                                                                                                                        |
+| `dept-share-slicer-total`       | bi-measure-context-debug               | 0.50    | 1.00 | 2                                                                                                                        |
+| `calc-highlight-sum-formula`    | spreadsheet-formula-environment-check  | 0.00    | 1.00 | 2                                                                                                                        |
+| `tag-export-sankey-country-map` | figure-source-key-join-and-total-check | 0.25    | 1.00 | 2                                                                                                                        |
+| `twelve-responses-idea-groups`  | open-response-theme-triangulation      | 0.00    | 1.00 | 2, Sonnet subject and judge, 20261005; skill fired in both with runs; rests on two first-person records (moved 20261006) |
 
 The two rows before the last were measured 20261005 with Sonnet as subject and judge, both arms, after both skills were edited; each skill rests on two or four weak-to-moderate records.
 
@@ -117,11 +117,11 @@ evidence that the skill helps.
 
 Codex scores, measured 20261006 with the Codex eval harness, both arms, 2 runs per arm, subject gpt-6.1-sol, judge gpt-6.1-sol with 3 votes:
 
-| Case | Skill | Without | With | Skill fired |
-| --- | --- | --- | --- | --- |
-| `function-on-key-join-order` | clickhouse-query-authoring | 0.00 | 1.00 | 2 of 2 |
-| `weekly-active-teams-target` | metric-definition | 0.00 | 1.00 | 2 of 2 |
-| `cross-request-volume-scaling` | naver-trend-analysis | 0.75 | 1.00 | 2 of 2 |
+| Case                           | Skill                      | Without | With | Skill fired |
+| ------------------------------ | -------------------------- | ------- | ---- | ----------- |
+| `function-on-key-join-order`   | clickhouse-query-authoring | 0.00    | 1.00 | 2 of 2      |
+| `weekly-active-teams-target`   | metric-definition          | 0.00    | 1.00 | 2 of 2      |
+| `cross-request-volume-scaling` | naver-trend-analysis       | 0.75    | 1.00 | 2 of 2      |
 
 ### CSV/PDF fixture measurements
 
@@ -131,11 +131,11 @@ evidence. Each case used gpt-6.1-sol subject/judge, two runs per arm, j2, three
 judge votes, proxy authentication and a read-only isolated sandbox. Cases ran
 serially on Codex CLI.
 
-| Case | Skill | Without | With | Runs per arm |
-| --- | --- | --- | --- | --- |
-| `csv-normal-import-route` | csv-formula-injection-export-check | 1.00 | 1.00 | 2 |
-| `csv-resave-changes-contract` | csv-formula-injection-export-check | 0.00 | 1.00 (open) | 2 |
-| `csv-missing-consumer-contract` | csv-formula-injection-export-check | 0.00 | 1.00 | 2 |
+| Case                            | Skill                              | Without | With        | Runs per arm |
+| ------------------------------- | ---------------------------------- | ------- | ----------- | ------------ |
+| `csv-normal-import-route`       | csv-formula-injection-export-check | 1.00    | 1.00        | 2            |
+| `csv-resave-changes-contract`   | csv-formula-injection-export-check | 0.00    | 1.00 (open) | 2            |
+| `csv-missing-consumer-contract` | csv-formula-injection-export-check | 0.00    | 1.00        | 2            |
 
 The normal CSV case is a 1.00/1.00 regression check. Both arms correctly preserve exact decoded values and restrict the supplied endorsement to the named text-import and machine routes; no added effect is claimed.
 
@@ -151,11 +151,11 @@ is transferred to an unmeasured runtime.
 
 The following comparisons used Codex CLI only.
 
-| Runtime | Model | Case | Without | With | Fired | Date |
-| --- | --- | --- | --- | --- | --- | --- |
-| Codex CLI | gpt-6.1-sol | `csv-normal-import-route` | 1.00 | 1.00 | 2/2 | 2026-10-06 |
-| Codex CLI | gpt-6.1-sol | `csv-resave-changes-contract` | 0.00 | 1.00 (open) | 2/2 | 2026-10-06 |
-| Codex CLI | gpt-6.1-sol | `csv-missing-consumer-contract` | 0.00 | 1.00 | 2/2 | 2026-10-06 |
+| Runtime   | Model       | Case                            | Without | With        | Fired | Date       |
+| --------- | ----------- | ------------------------------- | ------- | ----------- | ----- | ---------- |
+| Codex CLI | gpt-6.1-sol | `csv-normal-import-route`       | 1.00    | 1.00        | 2/2   | 2026-10-06 |
+| Codex CLI | gpt-6.1-sol | `csv-resave-changes-contract`   | 0.00    | 1.00 (open) | 2/2   | 2026-10-06 |
+| Codex CLI | gpt-6.1-sol | `csv-missing-consumer-contract` | 0.00    | 1.00        | 2/2   | 2026-10-06 |
 
 Three initial CSV comparisons lacked the LLM grader declaration. They contain
 12 subject runs and no judge calls; their raw zeroes are unscored invocation-only
@@ -168,3 +168,45 @@ measured zero. Cached input is included in input, not additional consumption.
 ## License
 
 MIT
+
+## Maintenance cases: 2026-10-12
+
+Codex CLI 0.162.1, gpt-6.1-sol subject and judges, two With-only runs per case, three requested judge votes per run and concurrency 1. P and F below preserve individual PASS and FAIL votes; missing votes are incomplete evidence. Actual answers were reviewed separately from native scores.
+
+24 of 24 added coverage slots passed both complete native judging and answer review. The remaining slots are held. Clarified fixtures are distinct attempts; they do not repair or overwrite earlier execution, arithmetic, content-boundary or grading failures.
+
+| Case                                                | Skill                                  | Activation | Recorded votes by run | Review        |
+| --------------------------------------------------- | -------------------------------------- | ---------- | --------------------- | ------------- |
+| group-colour-and-unobserved-history-contract        | bi-measure-context-debug               | 2/2        | PPP / PPP             | Reviewed pass |
+| region-slicer-denominator-context-contract          | bi-measure-context-debug               | 2/2        | PPP / PPP             | Reviewed pass |
+| binary-storage-halfway-reference-contract           | calculator-reference-case-verification | 2/2        | PPP / PPP             | Reviewed pass |
+| tank-fill-domain-and-roundtrip-contract             | calculator-reference-case-verification | 2/2        | PPP / PPP             | Reviewed pass |
+| nonzero-bars-render-limits-contract                 | chart-geometry-and-claim-recompute     | 2/2        | PPP / PPP             | Reviewed pass |
+| paired-data-correlation-equivalent-layout-contract  | chart-geometry-and-claim-recompute     | 2/2        | PPP / PPP             | Reviewed pass |
+| right-censored-completed-window-boundary-contract   | cohort-retention                       | 2/2        | PPP / PPP             | Reviewed pass |
+| weekly-cohort-deduplicate-activity-contract         | cohort-retention                       | 2/2        | PPP / PPP             | Reviewed pass |
+| binary-experiment-planning-whole-weeks-contract     | experiment-design-readout              | 2/2        | PPP / PPP             | Reviewed pass |
+| interval-crosses-zero-and-allocation-check-contract | experiment-design-readout              | 2/2        | PPP / PPP             | Reviewed pass |
+| alias-join-and-unreadable-source-contract           | figure-source-key-join-and-total-check | 2/2        | PPP / PPP             | Reviewed pass |
+| sankey-source-rows-and-mass-balance-contract        | figure-source-key-join-and-total-check | 2/2        | PPP / PPF             | Reviewed pass |
+| ambiguous-name-order-does-not-automerge-contract    | list-normalize-and-diff                | 2/2        | PPP / PPP             | Reviewed pass |
+| key-leading-zero-and-fullwidth-contract             | list-normalize-and-diff                | 2/2        | PPP / PPP             | Reviewed pass |
+| rounding-boundary-explicit-callback-policy-contract | macro-logic-recovery-refactor          | 2/2        | PPP / PPP             | Reviewed pass |
+| skip-empty-and-stale-explicit-state-contract        | macro-logic-recovery-refactor          | 2/2        | PPP / PPP             | Reviewed pass |
+| human-ai-theme-split-reconciliation-contract        | open-response-theme-triangulation      | 2/2        | PPP / PPP             | Reviewed pass |
+| response-ids-multitheme-scope-boundary-contract     | open-response-theme-triangulation      | 2/2        | PPP / PPP             | Reviewed pass |
+| multi-positive-and-zero-denominator-contract        | retrieval-ranking-readout              | 2/2        | PPP / PPP             | Reviewed pass |
+| permission-mismatch-required-evidence-contract      | retrieval-ranking-readout              | 2/2        | PPP / PPP             | Reviewed pass |
+| capability-gated-declared-environment-contract      | spreadsheet-formula-environment-check  | 2/2        | PPP / PPP             | Reviewed pass |
+| manual-colour-helper-and-date-unknown-contract      | spreadsheet-formula-environment-check  | 2/2        | PPP / PPP             | Reviewed pass |
+| conditional-denominator-and-small-cells-contract    | survey-recount-and-anonymize           | 2/2        | PPP / PPP             | Reviewed pass |
+| reported-only-public-redaction-plan-contract        | survey-recount-and-anonymize           | 2/2        | PPP / PPP             | Reviewed pass |
+
+Retained valid historical regression fixtures remain held for their original findings. Passing a distinct fallback or boundary task does not erase these outcomes.
+
+| Historical case                                    | Original review                                      |
+| -------------------------------------------------- | ---------------------------------------------------- |
+| binary-storage-calculator-reference-contract       | held: incorrect extra rounding claim                 |
+| reported-only-table-and-release-redaction-contract | held: public-output scope ambiguity and missing vote |
+
+These are maintenance checks on unchanged skill procedures and runtime metadata. They establish no new paired effect or runtime badge. Earlier evidence and held outcomes remain separate.

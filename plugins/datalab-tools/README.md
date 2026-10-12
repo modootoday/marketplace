@@ -6,32 +6,32 @@ Skills for Naver blog, Place, Smart Store, shopping demand, search ads, and news
 
 Twenty-four skills, with no hooks, commands, services, or bundled MCP server:
 
-| Skill | Purpose |
-| --- | --- |
-| `datalab-naver-workbench` | Discover real extension tools, select the target, and follow confirmation tickets |
-| `datalab-ad-budget-review` | Actual spend, remaining budget, and separate bid estimates |
-| `datalab-ad-disclosure-check` | Compare pasted disclosure wording with bundled translated excerpts |
-| `datalab-blog-diagnosis` | Measured blog changes, possible explanations, and checks |
-| `datalab-blog-widget` | Static Naver-compatible widget HTML |
-| `datalab-card-news` | Gallery-first slide plans and photo-editor builds |
-| `datalab-comment-reaction` | Comment activity and its interpretation limits |
-| `datalab-commerce-health` | Settlement gaps and operations ordered by deadline |
-| `datalab-groupbuy-margin` | Commission or resale contribution and separate cash-settlement reconciliation |
-| `datalab-cta-rewrite` | Copyable CTA alternatives grounded in supplied claims |
-| `datalab-material-suggestion` | Varied topic ideas backed by demand and competition facts |
+| Skill                               | Purpose                                                                                           |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `datalab-naver-workbench`           | Discover real extension tools, select the target, and follow confirmation tickets                 |
+| `datalab-ad-budget-review`          | Actual spend, remaining budget, and separate bid estimates                                        |
+| `datalab-ad-disclosure-check`       | Compare pasted disclosure wording with bundled translated excerpts                                |
+| `datalab-blog-diagnosis`            | Measured blog changes, possible explanations, and checks                                          |
+| `datalab-blog-widget`               | Static Naver-compatible widget HTML                                                               |
+| `datalab-card-news`                 | Gallery-first slide plans and photo-editor builds                                                 |
+| `datalab-comment-reaction`          | Comment activity and its interpretation limits                                                    |
+| `datalab-commerce-health`           | Settlement gaps and operations ordered by deadline                                                |
+| `datalab-groupbuy-margin`           | Commission or resale contribution and separate cash-settlement reconciliation                     |
+| `datalab-cta-rewrite`               | Copyable CTA alternatives grounded in supplied claims                                             |
+| `datalab-material-suggestion`       | Varied topic ideas backed by demand and competition facts                                         |
 | `datalab-neighbor-post-reply-draft` | Explain an actual neighbour's post and draft a reply grounded in the user's questions and opinion |
-| `datalab-place-reputation` | Review facts, response priorities, and unposted reply drafts |
-| `datalab-pumasi` | Read-only likes and neighbour-state checks |
-| `datalab-reader-simulation` | Aggregate audience profile and confirmed-question checklist |
-| `datalab-research-brief` | Facts cited to pages actually read |
-| `datalab-shopping-demand` | Shopping trend and audience interpretation |
-| `datalab-social-repurpose` | Platform-specific captions within working limits |
-| `datalab-sponsor-approval-timeline` | Source-linked relative deadlines, revision requests and explicit approval states |
-| `datalab-sponsor-fee-quote` | Scoped production-cost scenarios and separately supplied reuse-right terms |
-| `datalab-sponsor-payment-evidence` | Supplied agreement, acceptance and actual receipt reconciliation |
-| `datalab-tone-manner` | Provisional or multi-post style instructions with quotes |
-| `datalab-tutorial-post` | One beginner tutorial within a 12,000-character drafting budget |
-| `datalab-video-script` | Image, subtitle, and voice scene plans and timeline builds |
+| `datalab-place-reputation`          | Review facts, response priorities, and unposted reply drafts                                      |
+| `datalab-pumasi`                    | Read-only likes and neighbour-state checks                                                        |
+| `datalab-reader-simulation`         | Aggregate audience profile and confirmed-question checklist                                       |
+| `datalab-research-brief`            | Facts cited to pages actually read                                                                |
+| `datalab-shopping-demand`           | Shopping trend and audience interpretation                                                        |
+| `datalab-social-repurpose`          | Platform-specific captions within working limits                                                  |
+| `datalab-sponsor-approval-timeline` | Source-linked relative deadlines, revision requests and explicit approval states                  |
+| `datalab-sponsor-fee-quote`         | Scoped production-cost scenarios and separately supplied reuse-right terms                        |
+| `datalab-sponsor-payment-evidence`  | Supplied agreement, acceptance and actual receipt reconciliation                                  |
+| `datalab-tone-manner`               | Provisional or multi-post style instructions with quotes                                          |
+| `datalab-tutorial-post`             | One beginner tutorial within a 12,000-character drafting budget                                   |
+| `datalab-video-script`              | Image, subtitle, and voice scene plans and timeline builds                                        |
 
 ## Requirements
 
@@ -41,13 +41,13 @@ Editor work preserves existing projects and requests a project choice when neede
 
 ## Runtime support
 
-| Runtime | Supported | Measured on |
-| --- | --- | --- |
-| Claude Code | Procedures available; untested | No behavioral measurement |
-| Codex CLI | Historical qualification covers 16 of the prior 20 skills; group-buy adds one narrow evidence-request result, while sponsorship quoting, approval timeline and payment evidence are unqualified | codex-cli 0.160.1 and 0.161.0; gpt-6.1-sol |
-| Gemini CLI | Extension manifest provided; untested | No behavioral measurement |
-| Grok CLI | Procedures available; untested | No behavioral measurement |
-| Antigravity CLI | Procedures available; untested | No behavioral measurement |
+| Runtime         | Supported                                                                                                                                                                                       | Measured on                                |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Claude Code     | Procedures available; untested                                                                                                                                                                  | No behavioral measurement                  |
+| Codex CLI       | Historical qualification covers 16 of the prior 20 skills; group-buy adds one narrow evidence-request result, while sponsorship quoting, approval timeline and payment evidence are unqualified | codex-cli 0.160.1 and 0.161.0; gpt-6.1-sol |
+| Gemini CLI      | Extension manifest provided; untested                                                                                                                                                           | No behavioral measurement                  |
+| Grok CLI        | Procedures available; untested                                                                                                                                                                  | No behavioral measurement                  |
+| Antigravity CLI | Procedures available; untested                                                                                                                                                                  | No behavioral measurement                  |
 
 ## Evaluation
 
@@ -59,28 +59,28 @@ Second-round changes clarify unsupported scores/personas, gallery-first paid-gen
 
 Final rows use the latest complete measurement. Widget, card-news, video, commerce, research, and review cases received focused clarifications and reruns after measured misses.
 
-| Runtime | Model | Case | Skill | Before With | Before Without | With | Without | Fired | Use |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Codex CLI | gpt-6.1-sol | `ad-week-spend` | datalab-ad-budget-review | 1.00 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
-| Codex CLI | gpt-6.1-sol | `beginner-tutorial` | datalab-tutorial-post | 0.00 | 0.00 | 0.00 | 0.00 | 2/2 | Needs follow-up |
-| Codex CLI | gpt-6.1-sol | `c-rank-question-negative` | negative; must not fire | 1.00 | 1.00 | 1.00 | 1.00 | 0/2 | Regression check; no lift claim |
-| Codex CLI | gpt-6.1-sol | `card-news-build` | datalab-card-news | 0.25 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
-| Codex CLI | gpt-6.1-sol | `closing-cta` | datalab-cta-rewrite | 1.00 | 0.50 | 1.00 | 0.50 | 2/2 | Measured lift |
-| Codex CLI | gpt-6.1-sol | `comment-surge` | datalab-comment-reaction | 0.50 | 0.25 | 0.75 | 0.25 | 2/2 | Needs follow-up |
-| Codex CLI | gpt-6.1-sol | `draft-reader` | datalab-reader-simulation | 0.50 | 0.00 | 0.50 | 0.00 | 2/2 | Needs follow-up |
-| Codex CLI | gpt-6.1-sol | `inflow-drop` | datalab-blog-diagnosis | 1.00 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
-| Codex CLI | gpt-6.1-sol | `like-check` | datalab-pumasi | 0.75 | 0.50 | 1.00 | 0.25 | 2/2 | Measured lift |
-| Codex CLI | gpt-6.1-sol | `next-topics` | datalab-material-suggestion | 0.50 | 0.00 | 0.75 | 0.00 | 2/2 | Needs follow-up |
-| Codex CLI | gpt-6.1-sol | `reels-build` | datalab-video-script | 0.00 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
-| Codex CLI | gpt-6.1-sol | `season-demand` | datalab-shopping-demand | 1.00 | 0.25 | 1.00 | 0.25 | 2/2 | Measured lift |
-| Codex CLI | gpt-6.1-sol | `settlement-gap` | datalab-commerce-health | 0.50 | 0.25 | 1.00 | 0.25 | 2/2 | Measured lift |
-| Codex CLI | gpt-6.1-sol | `sidebar-widget` | datalab-blog-widget | 0.50 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
-| Codex CLI | gpt-6.1-sol | `sns-repurpose` | datalab-social-repurpose | 1.00 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
-| Codex CLI | gpt-6.1-sol | `sourced-brief` | datalab-research-brief | 0.50 | 0.50 | 1.00 | 0.00 | 2/2 | Measured lift |
-| Codex CLI | gpt-6.1-sol | `sponsored-review-draft` | datalab-ad-disclosure-check | 1.00 | 0.50 | 1.00 | 0.00 | 2/2 | Measured lift |
-| Codex CLI | gpt-6.1-sol | `store-reviews` | datalab-place-reputation | 0.25 | 0.00 | 1.00 | 0.25 | 2/2 | Measured lift |
-| Codex CLI | gpt-6.1-sol | `style-spec` | datalab-tone-manner | 0.50 | 0.00 | 0.50 | 0.00 | 2/2 | Needs follow-up |
-| Codex CLI | gpt-6.1-sol | `tool-routing` | datalab-naver-workbench | 0.00 | 0.00 | 1.00 | 0.00 | 2/2 | Measured lift |
+| Runtime   | Model       | Case                       | Skill                       | Before With | Before Without | With | Without | Fired | Use                             |
+| --------- | ----------- | -------------------------- | --------------------------- | ----------- | -------------- | ---- | ------- | ----- | ------------------------------- |
+| Codex CLI | gpt-6.1-sol | `ad-week-spend`            | datalab-ad-budget-review    | 1.00        | 0.00           | 1.00 | 0.00    | 2/2   | Measured lift                   |
+| Codex CLI | gpt-6.1-sol | `beginner-tutorial`        | datalab-tutorial-post       | 0.00        | 0.00           | 0.00 | 0.00    | 2/2   | Needs follow-up                 |
+| Codex CLI | gpt-6.1-sol | `c-rank-question-negative` | negative; must not fire     | 1.00        | 1.00           | 1.00 | 1.00    | 0/2   | Regression check; no lift claim |
+| Codex CLI | gpt-6.1-sol | `card-news-build`          | datalab-card-news           | 0.25        | 0.00           | 1.00 | 0.00    | 2/2   | Measured lift                   |
+| Codex CLI | gpt-6.1-sol | `closing-cta`              | datalab-cta-rewrite         | 1.00        | 0.50           | 1.00 | 0.50    | 2/2   | Measured lift                   |
+| Codex CLI | gpt-6.1-sol | `comment-surge`            | datalab-comment-reaction    | 0.50        | 0.25           | 0.75 | 0.25    | 2/2   | Needs follow-up                 |
+| Codex CLI | gpt-6.1-sol | `draft-reader`             | datalab-reader-simulation   | 0.50        | 0.00           | 0.50 | 0.00    | 2/2   | Needs follow-up                 |
+| Codex CLI | gpt-6.1-sol | `inflow-drop`              | datalab-blog-diagnosis      | 1.00        | 0.00           | 1.00 | 0.00    | 2/2   | Measured lift                   |
+| Codex CLI | gpt-6.1-sol | `like-check`               | datalab-pumasi              | 0.75        | 0.50           | 1.00 | 0.25    | 2/2   | Measured lift                   |
+| Codex CLI | gpt-6.1-sol | `next-topics`              | datalab-material-suggestion | 0.50        | 0.00           | 0.75 | 0.00    | 2/2   | Needs follow-up                 |
+| Codex CLI | gpt-6.1-sol | `reels-build`              | datalab-video-script        | 0.00        | 0.00           | 1.00 | 0.00    | 2/2   | Measured lift                   |
+| Codex CLI | gpt-6.1-sol | `season-demand`            | datalab-shopping-demand     | 1.00        | 0.25           | 1.00 | 0.25    | 2/2   | Measured lift                   |
+| Codex CLI | gpt-6.1-sol | `settlement-gap`           | datalab-commerce-health     | 0.50        | 0.25           | 1.00 | 0.25    | 2/2   | Measured lift                   |
+| Codex CLI | gpt-6.1-sol | `sidebar-widget`           | datalab-blog-widget         | 0.50        | 0.00           | 1.00 | 0.00    | 2/2   | Measured lift                   |
+| Codex CLI | gpt-6.1-sol | `sns-repurpose`            | datalab-social-repurpose    | 1.00        | 0.00           | 1.00 | 0.00    | 2/2   | Measured lift                   |
+| Codex CLI | gpt-6.1-sol | `sourced-brief`            | datalab-research-brief      | 0.50        | 0.50           | 1.00 | 0.00    | 2/2   | Measured lift                   |
+| Codex CLI | gpt-6.1-sol | `sponsored-review-draft`   | datalab-ad-disclosure-check | 1.00        | 0.50           | 1.00 | 0.00    | 2/2   | Measured lift                   |
+| Codex CLI | gpt-6.1-sol | `store-reviews`            | datalab-place-reputation    | 0.25        | 0.00           | 1.00 | 0.25    | 2/2   | Measured lift                   |
+| Codex CLI | gpt-6.1-sol | `style-spec`               | datalab-tone-manner         | 0.50        | 0.00           | 0.50 | 0.00    | 2/2   | Needs follow-up                 |
+| Codex CLI | gpt-6.1-sol | `tool-routing`             | datalab-naver-workbench     | 0.00        | 0.00           | 1.00 | 0.00    | 2/2   | Measured lift                   |
 
 Final measurements: 2026-10-06; codex-cli 0.160.1; 80 runs across both arms. Positive cases are the runtime-support evidence only when With is 1.00, Without is below 1.00, and the skill fired. Cases whose baseline or final Without is 1.00 remain regression checks.
 
@@ -122,15 +122,15 @@ Measurements use Codex CLI 0.160.1 and gpt-6.1-sol, two runs per arm and three j
 
 ### Other runtimes
 
-| Runtime | Model | Case | Skill | Without | With | Fired | Date |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Codex CLI | gpt-6.1-sol | `neighbor-post-grounded-personal-reply` | datalab-neighbor-post-reply-draft | 0.00 | 1.00 | 2/2 | 2026-10-08 |
-| Codex CLI | gpt-6.1-sol | `neighbor-post-truncated-source` | datalab-neighbor-post-reply-draft | 1.00 | 1.00 | 2/2 | 2026-10-08 |
-| Codex CLI | gpt-6.1-sol | `neighbor-post-missing-body-and-opinion` | datalab-neighbor-post-reply-draft | 0.50 | 1.00 | 2/2 | 2026-10-08 |
-| Codex CLI | gpt-6.1-sol | `promotion-output-constraints` | datalab-tutorial-post | 0.00 | 1.00 | 2/2 | 2026-10-08 |
-| Codex CLI | gpt-6.1-sol | `promotion-photo-paragraphs` | datalab-reader-simulation | 0.00 | 0.50 | 2/2 | 2026-10-08 |
-| Codex CLI | gpt-6.1-sol | `promotion-heading-components` | datalab-naver-workbench | 1.00 | 1.00 | 2/2 | 2026-10-08 |
-| Codex CLI | gpt-6.1-sol | `promotion-video-readability` | datalab-video-script | 1.00 | 1.00 | 2/2 | 2026-10-08 |
+| Runtime   | Model       | Case                                     | Skill                             | Without | With | Fired | Date       |
+| --------- | ----------- | ---------------------------------------- | --------------------------------- | ------- | ---- | ----- | ---------- |
+| Codex CLI | gpt-6.1-sol | `neighbor-post-grounded-personal-reply`  | datalab-neighbor-post-reply-draft | 0.00    | 1.00 | 2/2   | 2026-10-08 |
+| Codex CLI | gpt-6.1-sol | `neighbor-post-truncated-source`         | datalab-neighbor-post-reply-draft | 1.00    | 1.00 | 2/2   | 2026-10-08 |
+| Codex CLI | gpt-6.1-sol | `neighbor-post-missing-body-and-opinion` | datalab-neighbor-post-reply-draft | 0.50    | 1.00 | 2/2   | 2026-10-08 |
+| Codex CLI | gpt-6.1-sol | `promotion-output-constraints`           | datalab-tutorial-post             | 0.00    | 1.00 | 2/2   | 2026-10-08 |
+| Codex CLI | gpt-6.1-sol | `promotion-photo-paragraphs`             | datalab-reader-simulation         | 0.00    | 0.50 | 2/2   | 2026-10-08 |
+| Codex CLI | gpt-6.1-sol | `promotion-heading-components`           | datalab-naver-workbench           | 1.00    | 1.00 | 2/2   | 2026-10-08 |
+| Codex CLI | gpt-6.1-sol | `promotion-video-readability`            | datalab-video-script              | 1.00    | 1.00 | 2/2   | 2026-10-08 |
 
 The normal reply result supports explicit unposted-draft disclosure only: both arms already explain the post and ground the personal response. The repaired missing-source result supports completeness of an optional original-intent discovery and schema-bound next-call plan. The repaired tutorial result supports reporting the supplied duplicate and its bounded repair; both arms already produce distinct tasks. These are narrow planning/reporting effects, not comprehension, publishing, readership or live tool-execution guarantees. The original-generation beginner-tutorial recheck completed on 2026-10-09 without effect qualification; its quality shortcomings remain unresolved, separately from the earlier supplied-draft repair result.
 
@@ -164,14 +164,14 @@ The two-sentence clarification distinguishes aggregate activity from individual 
 
 Measured 2026-10-10 with Codex CLI 0.161.0, gpt-6.1-sol at low effort as subject and judge, two runs per arm, three judge votes and concurrency one. All six cases completed in one invocation: 24 answers and 72 votes, 67 PASS and 5 FAIL. No answer errors or partial result were reported. Threshold zero allowed collection and is not a quality gate. The `(open)` marker in With denotes an unqualified or regression-only row, not a revised raw score.
 
-| Runtime | Model | Case | Skill | Without | With | Fired | Date |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Codex CLI | gpt-6.1-sol | `groupbuy-commission-net-fee-once` | datalab-groupbuy-margin | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
-| Codex CLI | gpt-6.1-sol | `groupbuy-resale-refunds-and-hold` | datalab-groupbuy-margin | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
-| Codex CLI | gpt-6.1-sol | `groupbuy-unknown-role-and-campaign` | datalab-groupbuy-margin | 0.50 | 1.00 | 2/2 | 2026-10-10 |
-| Codex CLI | gpt-6.1-sol | `sponsor-fee-added-channel-and-gift` | datalab-sponsor-fee-quote | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
-| Codex CLI | gpt-6.1-sol | `sponsor-fee-cpa-missing-inputs` | datalab-sponsor-fee-quote | 0.50 | 1.00 (open) | 2/2 | 2026-10-10 |
-| Codex CLI | gpt-6.1-sol | `sponsor-fee-scoped-cost-and-rights` | datalab-sponsor-fee-quote | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+| Runtime   | Model       | Case                                 | Skill                     | Without | With        | Fired | Date       |
+| --------- | ----------- | ------------------------------------ | ------------------------- | ------- | ----------- | ----- | ---------- |
+| Codex CLI | gpt-6.1-sol | `groupbuy-commission-net-fee-once`   | datalab-groupbuy-margin   | 1.00    | 1.00 (open) | 2/2   | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | `groupbuy-resale-refunds-and-hold`   | datalab-groupbuy-margin   | 1.00    | 1.00 (open) | 2/2   | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | `groupbuy-unknown-role-and-campaign` | datalab-groupbuy-margin   | 0.50    | 1.00        | 2/2   | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | `sponsor-fee-added-channel-and-gift` | datalab-sponsor-fee-quote | 1.00    | 1.00 (open) | 2/2   | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | `sponsor-fee-cpa-missing-inputs`     | datalab-sponsor-fee-quote | 0.50    | 1.00 (open) | 2/2   | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | `sponsor-fee-scoped-cost-and-rights` | datalab-sponsor-fee-quote | 1.00    | 1.00 (open) | 2/2   | 2026-10-10 |
 
 The admitted group-buy difference is completeness of requests for explicit paid-transaction status and gross/net fee deduction evidence when the operating model and allocation are unresolved; the baseline also requests campaign and refund records. Both arms already withhold a profit or acceptance conclusion; one baseline fully passes and the other has one minority PASS and two FAIL votes. This is not an arithmetic, broader acceptance-safety or live MCP advantage.
 
@@ -181,30 +181,30 @@ Reported usage is 1,444,570 input tokens, including 704,640 cached input tokens,
 
 ### Other runtimes: sponsor bundled-offer followup
 
-| Runtime | Model | Case | Skill | Without | With | Fired | Date |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Codex CLI | gpt-6.1-sol | sponsor-fee-bundled-offer-and-reimbursed-costs (original) | datalab-sponsor-fee-quote | 1.00 | 0.50 (open) | 2/2 | 2026-10-10 |
-| Codex CLI | gpt-6.1-sol | sponsor-fee-bundled-offer-and-reimbursed-costs (repaired) | datalab-sponsor-fee-quote | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+| Runtime   | Model       | Case                                                      | Skill                     | Without | With        | Fired | Date       |
+| --------- | ----------- | --------------------------------------------------------- | ------------------------- | ------- | ----------- | ----- | ---------- |
+| Codex CLI | gpt-6.1-sol | sponsor-fee-bundled-offer-and-reimbursed-costs (original) | datalab-sponsor-fee-quote | 1.00    | 0.50 (open) | 2/2   | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | sponsor-fee-bundled-offer-and-reimbursed-costs (repaired) | datalab-sponsor-fee-quote | 1.00    | 1.00 (open) | 2/2   | 2026-10-10 |
 
 The original comparison retains nine PASS and three FAIL votes: one With answer contradicted its correct cost table by first naming the wrong preferred offer before correcting itself. A bounded output-consistency instruction and reference check were added without changing the fixture or criteria. The repaired comparison has twelve PASS votes and is regression-only because both baseline answers also pass. Both rows remain unqualified, and no sponsor runtime badge is added. CLI 0.161.0 used subscription proxy isolation with no external MCP execution; threshold-zero exits indicate collection completion only, and USD cost remains unknown.
 
 ### Other runtimes: sponsor approval timeline
 
-| Runtime | Model | Case | Skill | Without | With | Fired | Date |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Codex CLI | gpt-6.1-sol | sponsor-approval-relative-dates-and-unaccepted-extension | datalab-sponsor-approval-timeline | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+| Runtime   | Model       | Case                                                     | Skill                             | Without | With        | Fired | Date       |
+| --------- | ----------- | -------------------------------------------------------- | --------------------------------- | ------- | ----------- | ----- | ---------- |
+| Codex CLI | gpt-6.1-sol | sponsor-approval-relative-dates-and-unaccepted-extension | datalab-sponsor-approval-timeline | 1.00    | 1.00 (open) | 2/2   | 2026-10-10 |
 
 This original comparison preserves four answers and twelve PASS votes. Both arms correctly anchor the relative date and preserve the unaccepted extension and missing final approval. It is regression-only, with no demonstrated skill advantage or runtime badge. The two coverage cases below complete three measured timeline cases. CLI 0.161.0 used concurrency one, isolated subscription proxy execution, no external MCP calls, and threshold zero for collection rather than qualification. USD cost is unknown.
 
 ### Other runtimes: timeline coverage and payment evidence
 
-| Runtime | Model | Case | Skill | Without | With | Fired | Date |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Codex CLI | gpt-6.1-sol | sponsor-approval-version-specific-and-publication-authority | datalab-sponsor-approval-timeline | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
-| Codex CLI | gpt-6.1-sol | sponsor-approval-forwarded-anchor-and-authority-gaps | datalab-sponsor-approval-timeline | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
-| Codex CLI | gpt-6.1-sol | sponsor-payment-matched-fee-and-reimbursement | datalab-sponsor-payment-evidence | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
-| Codex CLI | gpt-6.1-sol | sponsor-payment-withholding-and-ambiguous-credit | datalab-sponsor-payment-evidence | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
-| Codex CLI | gpt-6.1-sol | sponsor-payment-missing-agreement-and-receipt-identity | datalab-sponsor-payment-evidence | 1.00 | 1.00 (open) | 2/2 | 2026-10-10 |
+| Runtime   | Model       | Case                                                        | Skill                             | Without | With        | Fired | Date       |
+| --------- | ----------- | ----------------------------------------------------------- | --------------------------------- | ------- | ----------- | ----- | ---------- |
+| Codex CLI | gpt-6.1-sol | sponsor-approval-version-specific-and-publication-authority | datalab-sponsor-approval-timeline | 1.00    | 1.00 (open) | 2/2   | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | sponsor-approval-forwarded-anchor-and-authority-gaps        | datalab-sponsor-approval-timeline | 1.00    | 1.00 (open) | 2/2   | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | sponsor-payment-matched-fee-and-reimbursement               | datalab-sponsor-payment-evidence  | 1.00    | 1.00 (open) | 2/2   | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | sponsor-payment-withholding-and-ambiguous-credit            | datalab-sponsor-payment-evidence  | 1.00    | 1.00 (open) | 2/2   | 2026-10-10 |
+| Codex CLI | gpt-6.1-sol | sponsor-payment-missing-agreement-and-receipt-identity      | datalab-sponsor-payment-evidence  | 1.00    | 1.00 (open) | 2/2   | 2026-10-10 |
 
 All five comparisons are regression-only: both arms pass, and all twenty answers and sixty original semantic votes are retained. Timeline cases distinguish valid version-specific approval from separate publication authority and unresolved forwarded-message anchors. Payment cases distinguish fee, reimbursement and gift; identified cash from ambiguous credits; duplicate evidence from additional transactions; and acceptance-based due conditions from delivery. These results establish no incremental advantage or new runtime badge. The prior timeline result and both quote revisions remain unchanged. CLI 0.161.0 used two runs per arm, three judge votes and concurrency one with subscription proxy and bwrap; no external MCP or bank action occurred. Inputs stayed frozen, errors and partial flags were absent, and USD remains unknown.
 
@@ -217,3 +217,44 @@ Load or disable the plugin using the runtime's plugin controls. There is no plug
 ## License
 
 MIT; see [LICENSE](LICENSE).
+
+## Maintenance cases: 2026-10-12
+
+Codex CLI 0.162.1, gpt-6.1-sol subject and judges, two With-only runs per case, three requested judge votes per run and concurrency 1. P and F below preserve individual PASS and FAIL votes; missing votes are incomplete evidence. Actual answers were reviewed separately from native scores.
+
+19 of 24 added coverage slots passed both complete native judging and answer review. The remaining slots are held. Clarified fixtures are distinct attempts; they do not repair or overwrite earlier execution, arithmetic, content-boundary or grading failures.
+
+| Case                                                      | Skill                       | Activation | Recorded votes by run | Review                                               |
+| --------------------------------------------------------- | --------------------------- | ---------- | --------------------- | ---------------------------------------------------- |
+| account-pool-device-days-and-estimates-contract           | datalab-ad-budget-review    | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| zero-spend-no-infinite-budget-claim-contract              | datalab-ad-budget-review    | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| gifted-text-middle-label-bundled-contract                 | datalab-ad-disclosure-check | 2/2        | PPP / PP              | held: missing judge                                  |
+| no-pasted-draft-source-limits-contract                    | datalab-ad-disclosure-check | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| static-counter-placeholder-and-tags-contract              | datalab-blog-widget         | 2/2        | PFP / PFP             | Reviewed pass                                        |
+| supplied-snapshot-exact-byte-plan-contract                | datalab-blog-widget         | 2/2        | FFF / FFF             | held: native judgement and additional-output dispute |
+| approved-two-images-fixed-target-no-extra-charge-contract | datalab-card-news           | 2/2        | FFP / PPP             | held: content boundary failure                       |
+| gallery-first-existing-project-plan-contract              | datalab-card-news           | 2/2        | PPP / FFF             | held: disputed provenance wording                    |
+| cash-gap-and-cross-queue-deadlines-contract               | datalab-commerce-health     | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| missing-settlement-not-zero-contract                      | datalab-commerce-health     | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| naver-supplied-volume-topic-boundary-contract             | datalab-material-suggestion | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| pasted-demand-varied-topics-no-scores-contract            | datalab-material-suggestion | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| naver-place-multiple-branches-review-boundary-contract    | datalab-place-reputation    | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| rating-scale-and-reply-drafts-contract                    | datalab-place-reputation    | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| naver-blog-ambiguous-pumasi-target-contract               | datalab-pumasi              | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| timeout-like-and-three-browser-actions-contract           | datalab-pumasi              | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| conflicting-dates-and-unread-summary-contract             | datalab-research-brief      | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| read-text-not-search-snippet-contract                     | datalab-research-brief      | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| relative-clicks-season-heuristic-contract                 | datalab-shopping-demand     | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| risers-window-and-category-ambiguity-contract             | datalab-shopping-demand     | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| two-platform-source-facts-and-counts-contract             | datalab-social-repurpose    | 2/2        | FPP / FPP             | Reviewed pass                                        |
+| two-version-no-winner-and-real-link-contract              | datalab-social-repurpose    | 2/2        | PFP / PPP             | Reviewed pass                                        |
+| one-post-provisional-rules-and-limits-contract            | datalab-tone-manner         | 2/2        | PPP / PPP             | Reviewed pass                                        |
+| three-post-quote-counted-style-spec-contract              | datalab-tone-manner         | 2/2        | FFF / PPP             | held: genuine counting error                         |
+
+Retained valid historical regression fixtures remain held for their original findings. Passing a distinct fallback or boundary task does not erase these outcomes.
+
+| Historical case                          | Original review       |
+| ---------------------------------------- | --------------------- |
+| supplied-snapshot-profile-links-contract | held: capacity outage |
+
+These are maintenance checks on unchanged skill procedures and runtime metadata. They establish no new paired effect or runtime badge. Earlier evidence and held outcomes remain separate.
