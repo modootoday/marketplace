@@ -647,6 +647,15 @@
         "name": "modootoday"
       },
       "source": "./plugins/security-ops"
+    },
+    {
+      "name": "browser-relay",
+      "description": "Run Claude in Chrome work from any session: directly when it has the browser, otherwise by a request to a session that does, with answers in one fixed format.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      },
+      "source": "./plugins/browser-relay"
     }
   ],
   "renames": {
