@@ -130,12 +130,15 @@ per case and arm, run on 2026-10-15. The release gate passes with a mean delta o
 | `req-to-bridge-session` | 0.00 | 1.00 | 2/2 |
 | `executor-without-browser-unsupported` | 0.00 | 1.00 | 2/2 |
 | `executor-sign-in-needs-a-person` | 0.00 | 1.00 | 2/2 |
-| `no-route-reports-without-acting` | 0.50 | 1.00 | 2/2 |
-| `ops-status-report` | 0.00 | 0.50 | 2/2 |
+| `no-route-reports-without-acting` | 1.00 | 1.00 | 2/2 |
+| `ops-status-report` | 0.00 | 1.00 | 2/2 |
 | `plain-summary-no-skill` (negative control) | 1.00 | 1.00 | 0/2 |
 
-`ops-status-report` passed once in two runs with the plugin, so treat its status
-format as likely rather than certain.
+The table is the run on commit b254c91 (6 cases, cost 0.88 USD). The no-route
+case scores 1.00 without the plugin in this run, so it guards against
+regressions and is not evidence of an effect. An earlier run on the previous
+commit scored `ops-status-report` 0.50 with the plugin, so that status format
+varies between runs.
 
 ## License
 
