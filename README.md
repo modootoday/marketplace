@@ -116,6 +116,7 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `platform-review` | Reviews of platform pieces that fail in production for configuration reasons: Cloudflare Worker bindings, Manifest V3 extension lifecycles, Chrome Web Store policy before submission, MCP tool design... | no |
 | `operations-cs` | Customer operations: Korean support tickets triaged with incidents spotted across them, status updates that say what is affected and when the next update comes, read-only runbooks for on-call, and... | no |
 | `runtime-bridge` | Check allowance, delegate bounded jobs across runtimes, research with cited reports, route costs and verify second opinions | no |
+| `browser-relay` | Run Claude in Chrome work from any session: directly when it has the browser, otherwise by a request to a session that does, with answers in one fixed format | no |
 | `video-production` | Video work that can be executed and verified: briefs and storyboards someone else can produce from, Remotion explainers rendered from frame math, talking-head edits with ffmpeg that keep a list of... | no |
 
 ## Trust
