@@ -6,6 +6,7 @@ metadata:
   level: L3
   domain: browser-automation
   install: optional
+  version: 0.2.2
   keywords: [claude in chrome, browser, cross-session, remote control, executor]
   approval: none
 ---
@@ -31,7 +32,7 @@ format below to the session that sent it.
 | --- | --- |
 | `claude-in-chrome` | Look for `mcp__claude-in-chrome__*` tools (load them with one ToolSearch call if deferred) and call `list_connected_browsers`. No tools or no connected browser means answer `status=unsupported`. Do not try to reach the page another way |
 | `site-mcp` | Look for a site-specific MCP tool set in this session: tools of one `mcp__<server>__*` server that offer a find-tools step, a call step and a browsers listing. This session's own instructions say which server it is. If there is none, answer `status=unsupported` and name the missing route. If there is one, run the task with it and follow that MCP's own approval and confirmation rules (for example its confirm-status tool). Never decide those again yourself |
-| `codex-app` | Reserved. Always answer `status=unsupported` with the reason `route reserved, not available in 0.2.0`. Run nothing |
+| `codex-app` | Reserved. Always answer `status=unsupported` with the reason `route reserved, not available in this version`. Run nothing |
 | anything else | Answer `status=unsupported` and name the route you do not know. Run nothing |
 
 ## 2. Run it

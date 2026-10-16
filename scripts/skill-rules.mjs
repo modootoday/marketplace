@@ -105,6 +105,9 @@ export function skillFindings({ tier, dirName, front, body, hasScripts, localeFi
   if (m.domain !== undefined && !new RegExp(META.properties.domain.pattern, "u").test(m.domain)) {
     add("metadata.domain must be kebab-case");
   }
+  if (m.version !== undefined && !new RegExp(META.properties.version.pattern, "u").test(String(m.version))) {
+    add("metadata.version must be MAJOR.MINOR.PATCH, for example 1.0.0");
+  }
   if (m.level !== undefined && !RULES.levels[tier].includes(m.level)) {
     add(`metadata.level ${m.level} does not belong in the ${tier} tier (${RULES.levels[tier].join(", ")})`);
   }

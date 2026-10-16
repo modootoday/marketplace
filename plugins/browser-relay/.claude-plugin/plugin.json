@@ -1,6 +1,6 @@
 {
   "name": "browser-relay",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Run Claude in Chrome work from any session: directly when it has the browser, otherwise by a request to a session that does, with answers in one fixed format.",
   "author": {
     "name": "modootoday"

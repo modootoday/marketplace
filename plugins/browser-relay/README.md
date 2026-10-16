@@ -23,7 +23,7 @@ protocol stays v1 and a request without the line means `claude-in-chrome`):
 | --- | --- |
 | `claude-in-chrome` | The Claude in Chrome browser tools. The default |
 | `site-mcp` | A site-specific MCP tool set in the receiving session: a find-tools step, a call step and a browsers listing from one MCP server, under that MCP's own approval rules. An example of a site-specific route for pages Claude in Chrome refuses |
-| `codex-app` | Reserved. Always answered `unsupported` with the reason `route reserved, not available in 0.2.0` |
+| `codex-app` | Reserved. Always answered `unsupported` with the reason `route reserved, not available in this version` |
 
 An unknown route, or a route whose tools are absent in the receiving session, is
 answered `unsupported` and names the route. The answer's `via:` line is the route
@@ -67,6 +67,12 @@ needs no install.
 - A session started with `--chrome` on a machine with no browser of its own can
   still see a browser the account has connected elsewhere. Run
   `claude-in-chrome-remote-ops status` to see what a session can reach.
+- If you use the skills through the catalog instead of installing the plugin, the
+  catalog MCP has to be connected and authorized in every runtime that executes
+  requests, Remote Control server sessions included. A session where it is missing
+  or waiting for authorization runs without these skills and falls back to its own
+  instructions, which is easy to mistake for the skills working. The status
+  report's `catalog:` line shows which case a session is in.
 
 ## Message format
 
@@ -142,7 +148,7 @@ parts are documented behavior, not measured behavior. The no-route case can pass
 without the plugin, so it only guards against regressions.
 
 Measured on Claude Code 2.1.301 with `--model sonnet --judge-model sonnet`, two runs
-per case and arm, run on 2026-10-16 on the skills and cases of commit b2c387a.
+per case and arm, run on 2026-10-16 on the skills and cases of commit 182875e.
 The release gate passes: nine of nine cases score 1.00 with the plugin, and the
 mean delta reported by the tool is 0.83 across all nine cases.
 
@@ -158,10 +164,13 @@ mean delta reported by the tool is 0.83 across all nine cases.
 | `ops-status-report` | 0.00 | 1.00 | 2/2 |
 | `plain-summary-no-skill` (negative control) | 1.00 | 1.00 | 0/2 |
 
-The run cost 1.25 USD. The no-route case scored 1.00 without the plugin in the
+The run cost 1.31 USD. The no-route case scored 1.00 without the plugin in the
 0.1.0 run and 0.50 here, so it guards against regressions and is not evidence of
 an effect. In the 0.1.0 runs `ops-status-report` once scored 0.50 with the plugin,
-so that status format varies between runs.
+so that status format varies between runs. An earlier run of this version scored
+`executor-res-echoes-route` 0.50 because its grader read a reply that opened with
+a sentence as failing on the first line although the message was right; the
+grader now looks for the message wherever it starts, and the case passes 2/2.
 
 ## License
 
