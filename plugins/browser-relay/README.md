@@ -16,6 +16,20 @@ browser, so it runs the task itself; otherwise a session named `browser-bridge`
 (or the name you give) is visible, so it sends that session a request; otherwise
 it reports that no browser is reachable and does nothing.
 
+A request can also name a route with an optional `via:` line (new in 0.2.0, the
+protocol stays v1 and a request without the line means `claude-in-chrome`):
+
+| via | Meaning |
+| --- | --- |
+| `claude-in-chrome` | The Claude in Chrome browser tools. The default |
+| `datalab-mcp` | The datalab MCP tools in the receiving session (`datalab_find_tools`, `datalab_call`, `datalab_browsers`), under that MCP's own approval rules. An example of a site-specific route for pages Claude in Chrome refuses |
+| `codex-app` | Reserved. Always answered `unsupported` with the reason `route reserved, not available in 0.2.0` |
+
+An unknown route, or a route whose tools are absent in the receiving session, is
+answered `unsupported` and names the route. The answer's `via:` line is the route
+that was really used. A blocked task is never retried through another route
+without saying so.
+
 ## Runtime support
 
 | Runtime | Supported | Measured on |
@@ -42,11 +56,12 @@ needs no install.
   its browser tools exist. Plain Claude Code does not load them.
 - A session that should receive requests is usually a Remote Control server
   started with `claude remote-control --chrome`. The sessions it spawns show up in
-  ListAgents under the name of the folder it was started from plus a changing
-  suffix (for example `browser-bridge-b0`), not under `--name`. The skills match a
-  row whose name is the wanted name or starts with it and a dash, so start the
-  server from a folder named for the role, and tell a session "use <name>" when
-  the default `browser-bridge` is not what you called it.
+  ListAgents under a name that depends on where you look from. From another
+  machine it is the Remote Control environment name (the first `--name` used in
+  that folder, for example `browser-bridge`). From the same machine it is the
+  folder name plus a changing suffix (for example `whale-bridge-98`). Tell a
+  session "use <name>" with the name you see from the requesting side. The skills
+  match a row whose name is exactly the wanted name or starts with it and a dash.
 - Messages between sessions reach only sessions of the same claude.ai account.
   They pass through Anthropic's servers. This is not a remote execution API.
 - A session started with `--chrome` on a machine with no browser of its own can
@@ -63,10 +78,12 @@ task: one sentence
 url: starting address
 expect: the data you want back and its format
 limits: for example read-only, at most 5 minutes
+via: claude-in-chrome
 ```
 
-The answer is `RES` with the same ID and a status: `ok`, `needs_user`,
-`blocked`, `error`, `version_mismatch` or `unsupported`. A `HANDOFF` passes
+The `via:` line is optional. The answer is `RES` with the same ID, a status:
+`ok`, `needs_user`, `blocked`, `error`, `version_mismatch` or `unsupported`, and
+a `via:` line naming the route used. A `HANDOFF` passes
 browser results to a session for follow-up work that needs no browser. The
 format is in the skills themselves, so a catalog install carries all of it.
 
@@ -111,34 +128,40 @@ person (permission prompt, sign-in, CAPTCHA, dialog), the answer is
 
 ## Verify
 
-`claude plugin eval plugins/browser-relay` runs six cases that need no browser:
+`claude plugin eval plugins/browser-relay` runs nine cases that need no browser:
 the request format, reporting when no route exists, an unsupported answer, a
-sign-in that needs a person, the status report, and a plain request that must
-not fire any of the skills.
+sign-in that needs a person, the status report, a `via: datalab-mcp` request
+without datalab tools, the reserved `codex-app` route, the `via:` echo, and a
+plain request that must not fire any of the skills.
 
 Not covered by an eval: reading an answer message and its status table in the
-relay skill. A case for it did not make the skill fire reliably, so that part is
-documented behavior, not measured behavior. The no-route case passes with and
+relay skill, running a request on the `datalab-mcp` route when its tools exist,
+and the blocked-route rule. A case for the first did not make the skill fire
+reliably, and the other two need a live browser or the datalab tools, so those
+parts are documented behavior, not measured behavior. The no-route case can pass
 without the plugin, so it only guards against regressions.
 
 Measured on Claude Code 2.1.301 with `--model sonnet --judge-model sonnet`, two runs
-per case and arm, run on 2026-10-15. The release gate passes with a mean delta of
-0.80 across the five positive cases.
+per case and arm, run on 2026-10-16 on the skills and cases of commit 936cfb5.
+The release gate passes: nine of nine cases score 1.00 with the plugin, and the
+mean delta reported by the tool is 0.83 across all nine cases.
 
 | Case | Without | With | Fired |
 | --- | --- | --- | --- |
 | `req-to-bridge-session` | 0.00 | 1.00 | 2/2 |
 | `executor-without-browser-unsupported` | 0.00 | 1.00 | 2/2 |
 | `executor-sign-in-needs-a-person` | 0.00 | 1.00 | 2/2 |
-| `no-route-reports-without-acting` | 1.00 | 1.00 | 2/2 |
+| `executor-datalab-route-absent-unsupported` | 0.00 | 1.00 | 2/2 |
+| `executor-codex-app-route-reserved` | 0.00 | 1.00 | 2/2 |
+| `executor-res-echoes-route` | 0.00 | 1.00 | 2/2 |
+| `no-route-reports-without-acting` | 0.50 | 1.00 | 2/2 |
 | `ops-status-report` | 0.00 | 1.00 | 2/2 |
 | `plain-summary-no-skill` (negative control) | 1.00 | 1.00 | 0/2 |
 
-The table is the run on commit b254c91 (6 cases, cost 0.88 USD). The no-route
-case scores 1.00 without the plugin in this run, so it guards against
-regressions and is not evidence of an effect. An earlier run on the previous
-commit scored `ops-status-report` 0.50 with the plugin, so that status format
-varies between runs.
+The run cost 1.29 USD. The no-route case scored 1.00 without the plugin in the
+0.1.0 run and 0.50 here, so it guards against regressions and is not evidence of
+an effect. In the 0.1.0 runs `ops-status-report` once scored 0.50 with the plugin,
+so that status format varies between runs.
 
 ## License
 
