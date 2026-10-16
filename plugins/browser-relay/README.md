@@ -22,7 +22,7 @@ protocol stays v1 and a request without the line means `claude-in-chrome`):
 | via | Meaning |
 | --- | --- |
 | `claude-in-chrome` | The Claude in Chrome browser tools. The default |
-| `datalab-mcp` | The datalab MCP tools in the receiving session (`datalab_find_tools`, `datalab_call`, `datalab_browsers`), under that MCP's own approval rules. An example of a site-specific route for pages Claude in Chrome refuses |
+| `site-mcp` | A site-specific MCP tool set in the receiving session: a find-tools step, a call step and a browsers listing from one MCP server, under that MCP's own approval rules. An example of a site-specific route for pages Claude in Chrome refuses |
 | `codex-app` | Reserved. Always answered `unsupported` with the reason `route reserved, not available in 0.2.0` |
 
 An unknown route, or a route whose tools are absent in the receiving session, is
@@ -130,19 +130,19 @@ person (permission prompt, sign-in, CAPTCHA, dialog), the answer is
 
 `claude plugin eval plugins/browser-relay` runs nine cases that need no browser:
 the request format, reporting when no route exists, an unsupported answer, a
-sign-in that needs a person, the status report, a `via: datalab-mcp` request
-without datalab tools, the reserved `codex-app` route, the `via:` echo, and a
-plain request that must not fire any of the skills.
+sign-in that needs a person, the status report, a `via: site-mcp` request
+without site-specific tools, the reserved `codex-app` route, the `via:` echo, and
+a plain request that must not fire any of the skills.
 
 Not covered by an eval: reading an answer message and its status table in the
-relay skill, running a request on the `datalab-mcp` route when its tools exist,
+relay skill, running a request on the `site-mcp` route when its tools exist,
 and the blocked-route rule. A case for the first did not make the skill fire
-reliably, and the other two need a live browser or the datalab tools, so those
+reliably, and the other two need a live browser or the site-specific tools, so those
 parts are documented behavior, not measured behavior. The no-route case can pass
 without the plugin, so it only guards against regressions.
 
 Measured on Claude Code 2.1.301 with `--model sonnet --judge-model sonnet`, two runs
-per case and arm, run on 2026-10-16 on the skills and cases of commit 936cfb5.
+per case and arm, run on 2026-10-16 on the skills and cases of commit b2c387a.
 The release gate passes: nine of nine cases score 1.00 with the plugin, and the
 mean delta reported by the tool is 0.83 across all nine cases.
 
@@ -151,14 +151,14 @@ mean delta reported by the tool is 0.83 across all nine cases.
 | `req-to-bridge-session` | 0.00 | 1.00 | 2/2 |
 | `executor-without-browser-unsupported` | 0.00 | 1.00 | 2/2 |
 | `executor-sign-in-needs-a-person` | 0.00 | 1.00 | 2/2 |
-| `executor-datalab-route-absent-unsupported` | 0.00 | 1.00 | 2/2 |
+| `executor-site-route-absent-unsupported` | 0.00 | 1.00 | 2/2 |
 | `executor-codex-app-route-reserved` | 0.00 | 1.00 | 2/2 |
 | `executor-res-echoes-route` | 0.00 | 1.00 | 2/2 |
 | `no-route-reports-without-acting` | 0.50 | 1.00 | 2/2 |
 | `ops-status-report` | 0.00 | 1.00 | 2/2 |
 | `plain-summary-no-skill` (negative control) | 1.00 | 1.00 | 0/2 |
 
-The run cost 1.29 USD. The no-route case scored 1.00 without the plugin in the
+The run cost 1.25 USD. The no-route case scored 1.00 without the plugin in the
 0.1.0 run and 0.50 here, so it guards against regressions and is not evidence of
 an effect. In the 0.1.0 runs `ops-status-report` once scored 0.50 with the plugin,
 so that status format varies between runs.

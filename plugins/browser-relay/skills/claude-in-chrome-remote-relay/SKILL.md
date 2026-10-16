@@ -69,7 +69,7 @@ means `claude-in-chrome`, so a request written for 0.1.0 still works.
 | via | Meaning |
 | --- | --- |
 | `claude-in-chrome` | The Claude in Chrome browser tools. The default |
-| `datalab-mcp` | The datalab MCP tools (`datalab_find_tools`, then `datalab_call`, and `datalab_browsers`) in the receiving session, under that MCP's own approval rules |
+| `site-mcp` | A site-specific MCP tool set in the receiving session: a find-tools step, a call step and a browsers listing from one MCP server. That MCP's own approval rules apply |
 | `codex-app` | Reserved. It is always answered `unsupported` in this version |
 
 Send `via:` only when the user asked for a route, or an earlier answer or a status
