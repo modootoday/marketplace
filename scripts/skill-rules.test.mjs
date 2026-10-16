@@ -61,6 +61,19 @@ test("required fields, enums and unknown keys are reported", () => {
   assert.ok(wrong.includes("metadata.domain must be kebab-case"));
 });
 
+test("version is optional and, when present, three numbers", () => {
+  assert.deepEqual(findings("open", [...BASE, "version: 1.0.0"]), []);
+  assert.deepEqual(findings("open", [...BASE, "version: 0.12.3"]), []);
+  assert.deepEqual(findings("open", BASE), []);
+  for (const bad of ["1.0", "v1.0.0", "1.0.0-beta", "01.0.0", "1.0.0.0", "latest"]) {
+    assert.deepEqual(
+      findings("open", [...BASE, `version: ${bad}`]),
+      ["metadata.version must be MAJOR.MINOR.PATCH, for example 1.0.0"],
+      bad,
+    );
+  }
+});
+
 test("verified-runtimes accepts the five runtimes and rejects others and repeats", () => {
   assert.deepEqual(findings("open", [...BASE, "verified-runtimes: [claude-code, codex-cli]"]), []);
   const bad = findings("open", [...BASE, "verified-runtimes: [claude-code, claude-code, cursor]"]);

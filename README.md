@@ -148,6 +148,13 @@ plugin that seems to do nothing in a script has probably never been trusted.
   or not passing. `node scripts/verified-runtimes.mjs <marketplace> --write` derives it
   from the README tables, `--check` reports drift, and `check-skills.mjs` fails a claim
   no README row supports and only warns about an omission.
+- `metadata.version` (optional, `MAJOR.MINOR.PATCH`) is the skill's own version. It
+  follows the skill's files (`SKILL.md`, `references/`, `scripts/`), not the plugin
+  that ships it: patch for wording that changes no behaviour, minor for a compatible
+  addition such as a new optional field or step, major for a break. A skill without
+  it is unversioned. Raise it in the same commit that changes the skill, and a
+  plugin release lists the skill versions it carries. The catalog's `skill_describe`
+  returns it with the rest of `metadata`.
 - A plugin with skills ships `evals/` cases for `claude plugin eval`, and its
   README reports the measured scores with and without the plugin.
 - A plugin release passes `node scripts/release-gate.mjs plugins/<name>`, which runs
