@@ -24,6 +24,9 @@ browser tools: present | absent
 connected browsers: name, OS and whether it is local, one per line; or none
 browser session: browser-bridge visible | not visible
 route: direct | relay | none
+routes:
+  claude-in-chrome: yes | no
+  datalab-mcp: yes | no
 ```
 
 - `browser tools`: look for `mcp__claude-in-chrome__*` tools, loading deferred
@@ -31,10 +34,17 @@ route: direct | relay | none
 - `connected browsers`: call `list_connected_browsers` only if the tools exist.
 - `browser session`: run ListAgents and look for `browser-bridge`, or the name
   the user gave. Match a row whose name is exactly that name or starts with it
-  and a dash, because a session started by `claude remote-control` is listed
-  under its folder name plus a changing suffix. Say which row matched.
+  and a dash. The name depends on where you look from: from another machine it is
+  the Remote Control environment name, from the same machine it is the folder name
+  plus a changing suffix, so use the name your own ListAgents shows. Say which row
+  matched.
 - `route`: `direct` when a browser is connected here, else `relay` when the
   browser session is visible, else `none`.
+- `routes`: the routes this session could run a request on, one line each.
+  `claude-in-chrome` is `yes` when a browser is connected here. `datalab-mcp` is
+  `yes` when `mcp__datalab__*` tools exist; if they do, call `datalab_browsers`
+  (it only reads) and add its answer, otherwise write `no` and that the tools are
+  absent. `codex-app` is reserved and is not listed.
 
 If a line could not be checked, write `unknown` and why. Do not guess.
 
