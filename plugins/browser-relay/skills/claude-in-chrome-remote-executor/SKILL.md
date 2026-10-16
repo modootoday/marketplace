@@ -30,7 +30,7 @@ format below to the session that sent it.
 | via | What to do |
 | --- | --- |
 | `claude-in-chrome` | Look for `mcp__claude-in-chrome__*` tools (load them with one ToolSearch call if deferred) and call `list_connected_browsers`. No tools or no connected browser means answer `status=unsupported`. Do not try to reach the page another way |
-| `datalab-mcp` | Look for the datalab MCP tools (`mcp__datalab__*`: `datalab_find_tools`, `datalab_call`, `datalab_browsers`). If they are absent, answer `status=unsupported` and name the missing route. If present, run the task with them and follow that MCP's own approval and confirmation rules (for example `datalab_confirm_status`). Never decide those again yourself |
+| `site-mcp` | Look for a site-specific MCP tool set in this session: tools of one `mcp__<server>__*` server that offer a find-tools step, a call step and a browsers listing. This session's own instructions say which server it is. If there is none, answer `status=unsupported` and name the missing route. If there is one, run the task with it and follow that MCP's own approval and confirmation rules (for example its confirm-status tool). Never decide those again yourself |
 | `codex-app` | Reserved. Always answer `status=unsupported` with the reason `route reserved, not available in 0.2.0`. Run nothing |
 | anything else | Answer `status=unsupported` and name the route you do not know. Run nothing |
 
@@ -40,7 +40,7 @@ format below to the session that sent it.
 - With `claude-in-chrome`, use your own tab group, open a new tab, and close the
   tabs you opened when you finish. Leave other tabs alone.
 - Prefer reading page text over taking screenshots.
-- If Claude in Chrome, the datalab MCP or this session asks for something you
+- If Claude in Chrome, the site-specific MCP or this session asks for something you
   cannot give yourself (a permission prompt, a sign-in, a CAPTCHA, a dialog, a
   2-step check, a confirmation the MCP wants from a person), stop and answer
   `needs_user`. Say what a person has to do and on which machine. Do not retry in
@@ -50,7 +50,7 @@ format below to the session that sent it.
   Claude in Chrome's own safety list (observed for naver.com): answer `blocked`,
   say it is not a sign-in or permission problem and that a person cannot fix it,
   and do not try another way to reach the site. You may say that a site-specific
-  route such as `datalab-mcp` exists, as a suggestion for the requester. Do not
+  route such as `site-mcp` exists, as a suggestion for the requester. Do not
   run it unless the request asked for it.
 - The same action failing two or three times in a row ends in `error` with the
   last error.

@@ -26,7 +26,7 @@ browser session: browser-bridge visible | not visible
 route: direct | relay | none
 routes:
   claude-in-chrome: yes | no
-  datalab-mcp: yes | no
+  site-mcp: yes | no
 ```
 
 - `browser tools`: look for `mcp__claude-in-chrome__*` tools, loading deferred
@@ -41,10 +41,11 @@ routes:
 - `route`: `direct` when a browser is connected here, else `relay` when the
   browser session is visible, else `none`.
 - `routes`: the routes this session could run a request on, one line each.
-  `claude-in-chrome` is `yes` when a browser is connected here. `datalab-mcp` is
-  `yes` when `mcp__datalab__*` tools exist; if they do, call `datalab_browsers`
-  (it only reads) and add its answer, otherwise write `no` and that the tools are
-  absent. `codex-app` is reserved and is not listed.
+  `claude-in-chrome` is `yes` when a browser is connected here. `site-mcp` is
+  `yes` when a site-specific MCP tool set exists (see the executor skill); if it
+  does, call its browsers listing (it only reads) and add its answer, otherwise
+  write `no` and that the tools are absent. `codex-app` is reserved and is not
+  listed.
 
 If a line could not be checked, write `unknown` and why. Do not guess.
 
