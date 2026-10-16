@@ -6,6 +6,7 @@ metadata:
   level: L3
   domain: browser-automation
   install: optional
+  version: 0.2.2
   keywords: [claude in chrome, browser, cross-session, remote control, executor]
   approval: none
 ---

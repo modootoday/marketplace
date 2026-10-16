@@ -6,6 +6,7 @@ metadata:
   level: L2
   domain: browser-automation
   install: optional
+  version: 0.2.2
   keywords: [claude in chrome, browser, status, smoke test, remote control]
   approval: none
 ---
