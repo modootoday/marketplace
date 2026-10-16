@@ -27,6 +27,7 @@ route: direct | relay | none
 routes:
   claude-in-chrome: yes | no
   site-mcp: yes | no
+catalog: reachable | needs_auth | absent
 ```
 
 - `browser tools`: look for `mcp__claude-in-chrome__*` tools, loading deferred
@@ -46,6 +47,15 @@ routes:
   does, call its browsers listing (it only reads) and add its answer, otherwise
   write `no` and that the tools are absent. `codex-app` is reserved and is not
   listed.
+- `catalog`: whether this session reaches the skills catalog, which matters when
+  these skills came from the catalog and not from an installed plugin. Look for the
+  tools of an MCP server that offers skill lookup (a find, a describe and a read
+  step), loading deferred ones with one ToolSearch call. They are present and
+  answer: `reachable`. Only an authenticate tool of such a server is present:
+  `needs_auth`, and say a person has to authorize it in this runtime. No such
+  server: `absent`, and say the skills came from an installed plugin or from the
+  session's own instructions. Without the catalog, a request may be answered from
+  the session's own instructions and not from these skills.
 
 If a line could not be checked, write `unknown` and why. Do not guess.
 
