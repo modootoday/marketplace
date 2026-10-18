@@ -48,7 +48,7 @@
     {
       "name": "build-concurrency-guard",
       "description": "Cap the concurrency of build and test commands an agent starts, advising by default and rewriting only when asked.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": {
         "name": "modootoday"
       },
@@ -656,6 +656,15 @@
         "name": "modootoday"
       },
       "source": "./plugins/browser-relay"
+    },
+    {
+      "name": "build-performance",
+      "source": "./plugins/build-performance",
+      "description": "Build benchmark controls, portability reviews and toolchain equivalence pilots.",
+      "version": "0.1.0",
+      "author": {
+        "name": "modootoday"
+      }
     }
   ],
   "renames": {

@@ -79,6 +79,7 @@ gemini extensions link <repo>/plugins/<plugin> --consent
 | `real-estate` | Listings screened against must-haves, room layouts checked, tenant dispute records arranged with no legal conclusions | no |
 | `sales-ops` | Promised follow-ups recovered from sent email; CRM fields and follow-ups filled only from call transcripts | no |
 | `software-qa` | Test cases traced to the change: gaps and duplicates listed, automation proposed for approval | no |
+| `build-performance` | Build benchmark controls, portability reviews and toolchain equivalence pilots | no |
 | `accessibility` | Images, charts and screens read for blind and low-vision users: text first, uncertainty marked; alt text drafts reviewed against caption, link target and exported page | no |
 | `data-engineering` | Migrated or rewritten SQL proven equal to the original: statement map, two-way key diffs, seeded-difference test; many similar lab workbooks merged with per-file row reconciliation | no |
 | `music-notation` | MusicXML playback visits, sounding pitch, percussion bindings and approved beat boundaries reviewed with musical content preserved | no |

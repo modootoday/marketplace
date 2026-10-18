@@ -6,6 +6,7 @@ metadata:
   level: L1
   domain: build-tooling
   install: optional
+  version: 0.1.0
   keywords: [build parallelism, test concurrency, shared host, slow builds]
   verified-runtimes: [claude-code]
 ---
@@ -30,6 +31,18 @@ in every profile that measures the tasks rather than the tool.
 
 Capping the first does nothing to the second. When a build is slow and the task
 count is already one, the second axis is where the time went.
+
+## The resource boundary
+
+Use the tighter applicable host and process/container resource budget when both
+are known. Host free RAM can overstate what a constrained process can use. If a
+limit cannot be established, choose a conservative documented default and
+measure; do not invent capacity. Keep explicit operator overrides visible.
+
+Account for the parent's total fan-out as well as each command's task and worker
+pools. Several individually capped builds can still exhaust shared memory.
+Observe per-task peaks and concurrent work before assigning the total budget;
+do not carry one host's lane count or memory threshold into another project.
 
 ## When more threads make it slower
 

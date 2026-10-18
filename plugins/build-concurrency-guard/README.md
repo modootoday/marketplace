@@ -10,7 +10,7 @@ what capping them would look like. It rewrites the command only if you ask it to
 | Runtime     | Supported | Measured on              |
 | ----------- | --------- | ------------------------ |
 | Claude Code | yes       | 2.1.251                  |
-| Codex CLI   | untested  | manifest reads on 0.151.0 |
+| Codex CLI   | skill maintenance only | 0.163.0; hook behavior unverified |
 | Grok CLI    | skills only | 1.0.13 — registers plugin hooks but never runs them |
 | Gemini CLI  | skills only | 0.57.0 — different hook event names, units and variables |
 
@@ -109,3 +109,7 @@ sent.
 ## License
 
 MIT
+
+## Policy maintenance on Codex CLI
+
+Measured 2026-10-18 on Codex CLI 0.163.0, gpt-6.1-sol subject and judge, low effort and three judge votes. Two with-only runs per case passed for `process-budget` and `slow-with-concurrency-one`, with policy activation 2/2 each. These checks cover process/container and parent fan-out budgeting plus the existing task/worker-pool distinction. They do not establish paired effect, a new runtime badge or hook behavior.

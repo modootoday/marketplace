@@ -1,0 +1,9 @@
+{
+  "name": "build-performance",
+  "version": "0.1.0",
+  "description": "Build benchmark controls, portability reviews and toolchain equivalence pilots.",
+  "author": {
+    "name": "modootoday"
+  },
+  "skills": "./skills/"
+}
