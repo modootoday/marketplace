@@ -7,7 +7,7 @@ metadata:
   domain: sales-ops
   install: optional
   keywords: [sent email, follow-up, commitments, open loops, relationship recovery, contact history]
-  verified-runtimes: [claude-code]
+  verified-runtimes: [claude-code, grok-cli]
 ---
 
 # Email history commitment mining

@@ -7,7 +7,7 @@ metadata:
   domain: sales-ops
   install: optional
   keywords: [MEDDICC, call transcript, CRM fields, discovery call, follow-up email, sales]
-  verified-runtimes: [claude-code]
+  verified-runtimes: [claude-code, grok-cli]
 ---
 
 # Sales call extraction and follow-up
