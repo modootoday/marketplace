@@ -8,15 +8,20 @@ Version 0.3.0 also includes five CLI evaluation entrypoints for paired plugin ru
 skill activation evidence, scored cases, result JSON, and HTML reports. Their scripts
 share helpers in `shared/`; distribute that directory together with `skills/`.
 
+Version 0.3.2 corrects Grok input accounting: native uncached input, cache reads
+and cache creation contribute to total input, with cache reads discounted once.
+Reasoning remains a reported subset of output. Regression coverage uses Grok
+1.0.50 stream and end usage; it does not establish skill activation quality.
+
 ## Runtime support
 
-| Runtime | Supported | Measured on |
-| --- | --- | --- |
-| Claude Code | authoring skills measured; native evaluation smoke checked | 2.1.289, with the eval suite in `evals/`; 2.1.291 native evaluator smoke (see Verify) |
-| Codex CLI | authoring and iteration skills measured; evaluation harness smoke checked | 0.160.1, gpt-6.1-sol / gpt-6.1-sol, 3 votes, 20261006 (see Verify); OAuth harness smoke below |
-| Grok CLI | evaluation harness smoke checked; skill activation unmeasured | 1.0.46, grok-4.7, OAuth harness smoke below |
-| Gemini CLI | evaluation harness smoke checked; skill activation unmeasured | 0.62.0, gemini-3.8-flash, Vertex proxy smoke below |
-| Antigravity CLI | evaluation harness smoke checked; skill activation unmeasured | agy 1.3.0, Gemini 3.8 Flash (High), OAuth smoke below |
+| Runtime         | Supported                                                                 | Measured on                                                                                   |
+| --------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Claude Code     | authoring skills measured; native evaluation smoke checked                | 2.1.289, with the eval suite in `evals/`; 2.1.291 native evaluator smoke (see Verify)         |
+| Codex CLI       | authoring and iteration skills measured; evaluation harness smoke checked | 0.160.1, gpt-6.1-sol / gpt-6.1-sol, 3 votes, 20261006 (see Verify); OAuth harness smoke below |
+| Grok CLI        | evaluation harness smoke checked; skill activation unmeasured             | 1.0.46, grok-4.7, OAuth harness smoke below                                                   |
+| Gemini CLI      | evaluation harness smoke checked; skill activation unmeasured             | 0.62.0, gemini-3.8-flash, Vertex proxy smoke below                                            |
+| Antigravity CLI | evaluation harness smoke checked; skill activation unmeasured             | agy 1.3.0, Gemini 3.8 Flash (High), OAuth smoke below                                         |
 
 Requirements: The authoring and iteration skills require no external tools. Evaluation
 scripts require Node.js 22 or later, Linux with bubblewrap (`bwrap`) and permission to
@@ -44,15 +49,15 @@ codex plugin add skill-factory@modootoday
 
 ## What it registers
 
-| Kind | Name | Covers |
-| --- | --- | --- |
-| skill | `domain-skill-authoring` | new skills written evals first, with a triggering description and rules tied to the failures they prevent |
-| skill | `eval-iteration` | reading a skill eval result and deciding what to change next |
-| skill | `codex-plugin-eval` | paired plugin evaluation using Codex CLI |
-| skill | `grok-plugin-eval` | paired plugin evaluation using Grok CLI |
-| skill | `gemini-plugin-eval` | paired plugin evaluation using Gemini CLI |
-| skill | `antigravity-plugin-eval` | paired plugin evaluation using Antigravity CLI |
-| skill | `claude-plugin-eval` | native Claude plugin evaluation with shared flags and result envelope |
+| Kind  | Name                      | Covers                                                                                                    |
+| ----- | ------------------------- | --------------------------------------------------------------------------------------------------------- |
+| skill | `domain-skill-authoring`  | new skills written evals first, with a triggering description and rules tied to the failures they prevent |
+| skill | `eval-iteration`          | reading a skill eval result and deciding what to change next                                              |
+| skill | `codex-plugin-eval`       | paired plugin evaluation using Codex CLI                                                                  |
+| skill | `grok-plugin-eval`        | paired plugin evaluation using Grok CLI                                                                   |
+| skill | `gemini-plugin-eval`      | paired plugin evaluation using Gemini CLI                                                                 |
+| skill | `antigravity-plugin-eval` | paired plugin evaluation using Antigravity CLI                                                            |
+| skill | `claude-plugin-eval`      | native Claude plugin evaluation with shared flags and result envelope                                     |
 
 Each evaluation entrypoint is `skills/<runtime>-plugin-eval/scripts/<runtime>-plugin-eval.mjs`.
 Run it with `--help` before supplying a plugin directory. The scripts import
@@ -102,21 +107,21 @@ The plugin ships an eval suite (`claude plugin eval plugins/skill-factory --no-p
 20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
 passed every grader, without the plugin and with it:
 
-| Case | Skill | Without | With | Runs per arm |
-| --- | --- | --- | --- | --- |
-| `new-skill-request` | domain-skill-authoring | 0.00 | 1.00 | 2 |
-| `readme-typo-not-skill` | negative: the skill must not fire | 1.00 | 1.00 | 2 |
-| `skill-never-fires` | domain-skill-authoring | 0.00 | 1.00 | 2 |
+| Case                    | Skill                             | Without | With | Runs per arm |
+| ----------------------- | --------------------------------- | ------- | ---- | ------------ |
+| `new-skill-request`     | domain-skill-authoring            | 0.00    | 1.00 | 2            |
+| `readme-typo-not-skill` | negative: the skill must not fire | 1.00    | 1.00 | 2            |
+| `skill-never-fires`     | domain-skill-authoring            | 0.00    | 1.00 | 2            |
 
 Codex CLI 0.160.1, 20261006, after integrating the evaluation harnesses: gpt-6.1-sol
 subject and judge, 3 judge votes, 2 runs per arm, concurrency 2, and threshold 0.
 
-| Case | Skill | Without | With | Fired |
-| --- | --- | --- | --- | --- |
-| `eval-table-readings` | eval-iteration | 0.00 | 1.00 | 2/2 |
-| `new-skill-request` | domain-skill-authoring | 0.00 | 1.00 | 2/2 |
-| `skill-never-fires` | eval-iteration | 0.00 | 1.00 | 2/2 |
-| `readme-typo-not-skill` | negative regression check | 1.00 | 1.00 | 0/2 |
+| Case                    | Skill                     | Without | With | Fired |
+| ----------------------- | ------------------------- | ------- | ---- | ----- |
+| `eval-table-readings`   | eval-iteration            | 0.00    | 1.00 | 2/2   |
+| `new-skill-request`     | domain-skill-authoring    | 0.00    | 1.00 | 2/2   |
+| `skill-never-fires`     | eval-iteration            | 0.00    | 1.00 | 2/2   |
+| `readme-typo-not-skill` | negative regression check | 1.00    | 1.00 | 0/2   |
 
 `eval-iteration` is new (reading an eval result table: description first, both arms, rerun on
 a single judge failure, references independent of the eval prompt, two fix rounds at most);
@@ -130,10 +135,10 @@ one subscription-backed subject run per runtime, and a regex grader with zero ju
 calls. These scores verify harness operation and read-only login mounts; activation
 and behavioural benefit of the four new evaluation skills remain unmeasured.
 
-| Harness | CLI | Model | Smoke score | Subject runs | Judge calls | Login mount | Login unchanged |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Codex | 0.160.1 | gpt-6.1-sol | 1.00 | 1 | 0 | read-only | yes |
-| Grok | 1.0.46 | grok-4.7 | 1.00 | 1 | 0 | read-only | yes |
+| Harness | CLI     | Model       | Smoke score | Subject runs | Judge calls | Login mount | Login unchanged |
+| ------- | ------- | ----------- | ----------- | ------------ | ----------- | ----------- | --------------- |
+| Codex   | 0.160.1 | gpt-6.1-sol | 1.00        | 1            | 0           | read-only   | yes             |
+| Grok    | 1.0.46  | grok-4.7    | 1.00        | 1            | 0           | read-only   | yes             |
 
 Additional synthetic reply smoke checks on 20261007 passed for all four harnesses.
 Each scored case used one subject and a regex grader with zero judge calls. Codex
@@ -142,12 +147,12 @@ Antigravity used a temporary consumer OAuth login bound read-only. The Antigravi
 check used the corrected named-preset effort handling: High is selected by the
 model preset, and a conflicting explicit effort is refused before inference.
 
-| Harness | CLI | Model | Smoke score | Subject runs | Judge calls |
-| --- | --- | --- | --- | --- | --- |
-| Codex | 0.160.1 | gpt-6.1-sol | 1.00 | 1 | 0 |
-| Grok | 1.0.46 | grok-4.7 | 1.00 | 1 | 0 |
-| Gemini | 0.62.0 | gemini-3.8-flash | 1.00 | 1 | 0 |
-| Antigravity | 1.3.0 | Gemini 3.8 Flash (High) | 1.00 | 1 | 0 |
+| Harness     | CLI     | Model                   | Smoke score | Subject runs | Judge calls |
+| ----------- | ------- | ----------------------- | ----------- | ------------ | ----------- |
+| Codex       | 0.160.1 | gpt-6.1-sol             | 1.00        | 1            | 0           |
+| Grok        | 1.0.46  | grok-4.7                | 1.00        | 1            | 0           |
+| Gemini      | 0.62.0  | gemini-3.8-flash        | 1.00        | 1            | 0           |
+| Antigravity | 1.3.0   | Gemini 3.8 Flash (High) | 1.00        | 1            | 0           |
 
 These smoke cases establish answer extraction and grading, not activation or
 behavioural benefit of the evaluation skills. All four entrypoints also pass help

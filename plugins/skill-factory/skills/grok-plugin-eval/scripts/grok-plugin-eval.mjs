@@ -20,6 +20,7 @@ import { help, parseArgs as parseSharedArgs } from '../../../shared/options.mjs'
 import { assertRuntimeLock } from '../../../shared/runtime-contract.mjs';
 import { isolationScope } from "../../../shared/isolate.mjs";
 import { costOf as sharedCostOf, pricesFor } from '../../../shared/pricing.mjs';
+import { normalizeGrokUsage as normalizeUsage } from "../../../shared/grok-usage.mjs";
 
 const USAGE = help('grok');
 function fail(message) {
@@ -216,15 +217,6 @@ const USAGE_KEYS = ["input_tokens", "cached_input_tokens", "output_tokens", "rea
 
 function addUsage(total, usage) {
   for (const k of USAGE_KEYS) total[k] = (total[k] ?? 0) + (usage?.[k] ?? 0);
-}
-
-function normalizeUsage(u) {
-  return {
-    input_tokens: u?.input_tokens ?? 0,
-    cached_input_tokens: u?.cache_read_input_tokens ?? 0,
-    output_tokens: u?.output_tokens ?? 0,
-    reasoning_output_tokens: u?.reasoning_tokens ?? 0,
-  };
 }
 
 function toolCallsOf(events) {

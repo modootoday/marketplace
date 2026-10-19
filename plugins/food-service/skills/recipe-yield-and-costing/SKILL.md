@@ -7,6 +7,7 @@ metadata:
   domain: food-service
   install: optional
   keywords: [recipe scaling, yield, trim loss, food cost, cost per portion, purchase quantity]
+  verified-runtimes: [codex-cli]
 ---
 
 # Recipe yield and costing
@@ -20,9 +21,9 @@ costing the cooked amount instead of what was bought. Show each step so the chef
    recipe quantity means: as purchased (AP) or edible portion after trimming (EP). If the
    recipe does not say, state the assumption and show how the answer changes under the other.
 2. Scale each EP quantity by the factor. Then compute the purchase quantity with loss:
-   `AP = EP / (1 - loss)`. A 12% loss on 15 kg EP needs 15 / 0.88 = 17.05 kg, not 15 x 1.12.
+   `AP = EP / (1 - loss)`. A 20% loss on 8 kg EP needs 8 / 0.80 = 10 kg, not 8 x 1.20.
    Items with no loss have AP = EP.
-3. Convert units explicitly in a column: g to kg, ml to l, and purchase packs (a 450 g block,
+3. Convert units explicitly in a column: g to kg, ml to l, and purchase packs (a 500 g block,
    a 10 kg bag). Write the conversion used for each item. Keep currency units as given.
 4. Cost from the purchase unit price: cost = AP x price per purchase unit. Give the exact
    cost on usage and the cost if only whole packs can be bought (round the pack count up).

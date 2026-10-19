@@ -7,7 +7,7 @@ metadata:
   domain: food-service
   install: optional
   keywords: [recipe card, substitution, slow cooker, air fryer, appliance conversion, source fidelity, test batch]
-  verified-runtimes: [claude-code]
+  verified-runtimes: [claude-code, codex-cli, grok-cli]
 ---
 
 # Recipe source fidelity and adaptation
@@ -36,6 +36,8 @@ compare with the original. Keep the source intact first, then log each change.
    moisture, structure, browning), what will differ in the result, and whether it needs a
    test batch. A swap that changes structure (binder, leavening, sugar in baking) needs a
    small test batch before it is served to anyone.
+   For sauces and soups, distinguish richness from body or thickness and state the expected
+   change in each.
 5. For an appliance change give the new time, liquid, temperature or setting with the rule
    used from the table in `references/card-and-log.md` (slow cooker, air fryer, pressure
    cooker rules of thumb; little evaporation in a slow cooker so reduce added liquid) and
