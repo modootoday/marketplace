@@ -9,12 +9,12 @@ procedures are runtime-neutral; Claude Code subagents and workflow scripts are u
 
 ## Runtime support
 
-| Runtime | Supported | Measured on |
-| --- | --- | --- |
-| Claude Code | yes | yes; eval suite in `evals/` (see Verify) |
-| Codex CLI | untested | - |
-| Grok CLI | yes | measured 20261006 on grok-4.7 and grok-4.7-build-fast for 2 cases; see Other runtimes |
-| Gemini CLI | yes | measured 20261006 on gemini-3.1-pro-preview and gemini-3.8-flash for 2 cases; see Other runtimes |
+| Runtime     | Supported          | Measured on                                                                                      |
+| ----------- | ------------------ | ------------------------------------------------------------------------------------------------ |
+| Claude Code | yes                | yes; eval suite in `evals/` (see Verify)                                                         |
+| Codex CLI   | two cases verified | CLI 0.163.0, gpt-6.1-sol, 2026-10-19; see Codex comparison                                       |
+| Grok CLI    | yes                | measured 20261006 on grok-4.7 and grok-4.7-build-fast for 2 cases; see Other runtimes            |
+| Gemini CLI  | yes                | measured 20261006 on gemini-3.1-pro-preview and gemini-3.8-flash for 2 cases; see Other runtimes |
 
 Requirements: None.
 
@@ -36,14 +36,14 @@ codex plugin add agent-orchestration@modootoday
 
 ## What it registers
 
-| Kind | Name | Covers |
-| --- | --- | --- |
-| skill | `delegation-decision-and-sizing` | zero, one or several agents by task shape, the reason stated, a token multiple, mechanism by who holds the plan, caps and a pilot slice before launch; evidence 7 sources (5 vendor, 1 measured, 1 practitioner) |
-| skill | `subagent-brief-and-handback` | objective and done-state, context the agent cannot see, owned write set, field value contracts, stop rule, forbidden shortcuts with a blocked exit, hand-back schema; evidence 5 sources (3 vendor, 2 measured) and 3 observed cases |
-| skill | `parallel-write-partitioning-and-merge` | one owner per write, isolation and what it does not cover, per-agent pending files, serial idempotent compare-and-set merge; evidence 6 sources (3 vendor, 3 practitioner) and 2 observed cases |
-| skill | `subagent-claim-verification` | load-bearing claims re-measured from artifacts, shortcut checks, independent refutation, verified, refuted and unverified reported apart; evidence 7 sources (4 vendor, 3 measured) and 2 observed cases |
-| skill | `eval-comparison-hygiene` | both arms held constant, baselines invalidated by grader edits, references independent of the case, judge strength, reruns, round caps and reserved budget; evidence 4 sources (1 vendor, 3 measured) and 3 observed cases |
-| skill | `fan-out-script-design` | discover, pipeline, verify, reduce; deterministic scripts and what a resume reruns, schema hand-backs, caps on heavy tools, pilot slice; evidence 6 sources (5 vendor, 1 practitioner) |
+| Kind  | Name                                    | Covers                                                                                                                                                                                                                               |
+| ----- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| skill | `delegation-decision-and-sizing`        | zero, one or several agents by task shape, the reason stated, a token multiple, mechanism by who holds the plan, caps and a pilot slice before launch; evidence 7 sources (5 vendor, 1 measured, 1 practitioner)                     |
+| skill | `subagent-brief-and-handback`           | objective and done-state, context the agent cannot see, owned write set, field value contracts, stop rule, forbidden shortcuts with a blocked exit, hand-back schema; evidence 5 sources (3 vendor, 2 measured) and 3 observed cases |
+| skill | `parallel-write-partitioning-and-merge` | one owner per write, isolation and what it does not cover, per-agent pending files, serial idempotent compare-and-set merge; evidence 6 sources (3 vendor, 3 practitioner) and 2 observed cases                                      |
+| skill | `subagent-claim-verification`           | load-bearing claims re-measured from artifacts, shortcut checks, independent refutation, verified, refuted and unverified reported apart; evidence 7 sources (4 vendor, 3 measured) and 2 observed cases                             |
+| skill | `eval-comparison-hygiene`               | both arms held constant, baselines invalidated by grader edits, references independent of the case, judge strength, reruns, round caps and reserved budget; evidence 4 sources (1 vendor, 3 measured) and 3 observed cases           |
+| skill | `fan-out-script-design`                 | discover, pipeline, verify, reduce; deterministic scripts and what a resume reruns, schema hand-backs, caps on heavy tools, pilot slice; evidence 6 sources (5 vendor, 1 practitioner)                                               |
 
 ## Failure mode
 
@@ -69,15 +69,15 @@ Four agents will edit the same index file in separate worktrees. How should we p
 The plugin ships an eval suite (`claude plugin eval plugins/agent-orchestration --no-publish`).
 Scores are the share of runs that passed every grader, without the plugin and with it, 2 runs per arm:
 
-| Case | Skill | Without | With | Subject and judge |
-| --- | --- | --- | --- | --- |
-| `agents-for-fix-and-audit` | delegation-decision-and-sizing | 0.00 | 1.00 | Sonnet, Sonnet (20261006) |
-| `brief-for-fixture-worker` | subagent-brief-and-handback | 0.00 | 1.00 | Sonnet, Sonnet (20261006) |
-| `four-agents-one-routes-file` | parallel-write-partitioning-and-merge | 0.00 | 1.00 | Sonnet, Sonnet (20261006) |
-| `five-cases-pass-report` | subagent-claim-verification | 0.00 | 1.00 | Opus, Opus (20261006) |
-| `five-cases-pass-report` | subagent-claim-verification | 0.00 | 0.50 (open) | Sonnet, Sonnet (20261006) |
-| `skill-uplift-log` | eval-comparison-hygiene | 0.00 | 1.00 | Opus, Opus (20261006) |
-| `pytest-migration-script` | fan-out-script-design | 0.00 | 1.00 | Opus, Opus (20261006) |
+| Case                          | Skill                                 | Without | With        | Subject and judge         |
+| ----------------------------- | ------------------------------------- | ------- | ----------- | ------------------------- |
+| `agents-for-fix-and-audit`    | delegation-decision-and-sizing        | 0.00    | 1.00        | Sonnet, Sonnet (20261006) |
+| `brief-for-fixture-worker`    | subagent-brief-and-handback           | 0.00    | 1.00        | Sonnet, Sonnet (20261006) |
+| `four-agents-one-routes-file` | parallel-write-partitioning-and-merge | 0.00    | 1.00        | Sonnet, Sonnet (20261006) |
+| `five-cases-pass-report`      | subagent-claim-verification           | 0.00    | 1.00        | Opus, Opus (20261006)     |
+| `five-cases-pass-report`      | subagent-claim-verification           | 0.00    | 0.50 (open) | Sonnet, Sonnet (20261006) |
+| `skill-uplift-log`            | eval-comparison-hygiene               | 0.00    | 1.00        | Opus, Opus (20261006)     |
+| `pytest-migration-script`     | fan-out-script-design                 | 0.00    | 1.00        | Opus, Opus (20261006)     |
 
 Measured on Claude Code 2.1.291. The skill fired in every recorded with-arm run. The three Opus rows
 stayed below 1.00 on Sonnet after two fix rounds (a strict one-word Sonnet judge on long answers, and
@@ -92,19 +92,50 @@ Each skill has one case; two more are needed for the three-case release gate.
 
 Gemini CLI and Grok CLI, both arms, 2 runs per arm, 3 judge votes, the model as subject and judge, 20261006. A row where the skill fired and With is 1.00 sets the runtime in the skill's verified-runtimes.
 
-| Runtime | Model | Case | Without | With | Fired | Date |
-| --- | --- | --- | --- | --- | --- | --- |
-| Gemini CLI | gemini-3.1-pro-preview | `agents-for-fix-and-audit` | 0.50 | 0.50 | 2/2 | 20261006 |
-| Gemini CLI | gemini-3.1-pro-preview | `five-cases-pass-report` | 0.25 | 1.00 | 2/2 | 20261006 |
-| Gemini CLI | gemini-3.8-flash | `agents-for-fix-and-audit` | 0.50 | 1.00 | 2/2 | 20261006 |
-| Gemini CLI | gemini-3.8-flash | `five-cases-pass-report` | 0.50 | 1.00 | 2/2 | 20261006 |
-| Grok CLI | grok-4.7 | `agents-for-fix-and-audit` | 0.50 | 1.00 | 2/2 | 20261006 |
-| Grok CLI | grok-4.7 | `five-cases-pass-report` | 0.25 | 0.75 | 2/2 | 20261006 |
-| Grok CLI | grok-4.7-build-fast | `agents-for-fix-and-audit` | 0.25 | 1.00 | 2/2 | 20261006 |
-| Grok CLI | grok-4.7-build-fast | `five-cases-pass-report` | 0.75 | 0.75 | 2/2 | 20261006 |
-| Grok CLI | grok-4.7-build-fast | `brief-for-fixture-worker` | 0.00 | 1.00 | 2/2 | 20261006 |
-| Antigravity CLI | gemini-3.8-flash-low | `brief-for-fixture-worker` | 0.00 | 1.00 | 2/2 | 20261006 |
-| Gemini CLI | gemini-3.8-flash | `brief-for-fixture-worker` | 0.00 | 1.00 | 2/2 | 20261006 |
+| Runtime         | Model                  | Case                       | Without | With | Fired | Date     |
+| --------------- | ---------------------- | -------------------------- | ------- | ---- | ----- | -------- |
+| Gemini CLI      | gemini-3.1-pro-preview | `agents-for-fix-and-audit` | 0.50    | 0.50 | 2/2   | 20261006 |
+| Gemini CLI      | gemini-3.1-pro-preview | `five-cases-pass-report`   | 0.25    | 1.00 | 2/2   | 20261006 |
+| Gemini CLI      | gemini-3.8-flash       | `agents-for-fix-and-audit` | 0.50    | 1.00 | 2/2   | 20261006 |
+| Gemini CLI      | gemini-3.8-flash       | `five-cases-pass-report`   | 0.50    | 1.00 | 2/2   | 20261006 |
+| Grok CLI        | grok-4.7               | `agents-for-fix-and-audit` | 0.50    | 1.00 | 2/2   | 20261006 |
+| Grok CLI        | grok-4.7               | `five-cases-pass-report`   | 0.25    | 0.75 | 2/2   | 20261006 |
+| Grok CLI        | grok-4.7-build-fast    | `agents-for-fix-and-audit` | 0.25    | 1.00 | 2/2   | 20261006 |
+| Grok CLI        | grok-4.7-build-fast    | `five-cases-pass-report`   | 0.75    | 0.75 | 2/2   | 20261006 |
+| Grok CLI        | grok-4.7-build-fast    | `brief-for-fixture-worker` | 0.00    | 1.00 | 2/2   | 20261006 |
+| Antigravity CLI | gemini-3.8-flash-low   | `brief-for-fixture-worker` | 0.00    | 1.00 | 2/2   | 20261006 |
+| Gemini CLI      | gemini-3.8-flash       | `brief-for-fixture-worker` | 0.00    | 1.00 | 2/2   | 20261006 |
+
+### Codex comparison
+
+Codex CLI 0.163.0, gpt-6.1-sol as subject and judge, two runs per arm,
+three judge votes per behavioral criterion, concurrency one, proxy authentication
+and bubblewrap isolation, 2026-10-19. All eight replies and 48 behavioral votes
+were reviewed; neither target skill needed a source repair.
+
+| Runtime   | Model       | Case                       | Skill                          | Without | With | Fired | Date       |
+| --------- | ----------- | -------------------------- | ------------------------------ | ------- | ---- | ----- | ---------- |
+| Codex CLI | gpt-6.1-sol | `agents-for-fix-and-audit` | delegation-decision-and-sizing | 0.50    | 1.00 | 2/2   | 2026-10-19 |
+| Codex CLI | gpt-6.1-sol | `brief-for-fixture-worker` | subagent-brief-and-handback    | 0.00    | 1.00 | 2/2   | 2026-10-19 |
+
+All four audit plans keep the dependent rename in one agent. Guided audit plans
+also weigh fan-out cost, set runner-enforced limits and pilot three files; the
+baselines omit those safeguards. One guided verdict dissents over whether the
+consolidated result fields explicitly constrain every worker; the majority accepts
+the plan. Both guided answers leave inherited Docker users unknown when metadata
+is unavailable. Cost multiples are estimates, not measured performance.
+
+Both guided brief replies protect the shared index through coordinator-merged
+pending entries, bound validation retries, protect other workers and validation
+sources, and separate evidence, unverified work and open issues. They defer to
+documented severity values and mark fallback vocabularies for confirmation.
+Both also activate parallel-write-partitioning-and-merge: this is a plugin
+comparison with the target skill activated, not isolated causal attribution to
+the brief skill. It grants no additional runtime claim to the coactivated skill.
+Both baselines permit direct shared-index edits and omit numeric retry caps and
+parts of the return contract. These are planning-only cases; no subagents were
+launched. Other Codex cases remain unverified, including evaluation hygiene after
+bounded failed retries. Existing per-skill case-count gaps remain unchanged.
 
 ## License
 

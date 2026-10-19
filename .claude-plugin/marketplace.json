@@ -147,7 +147,7 @@
     {
       "name": "monetization",
       "description": "Prices framed as hypotheses with a test: who pays, for what unit of value, against which alternative, what result would change the decision, and the cheapest test before anyone builds a pricing page.",
-      "version": "0.4.2",
+      "version": "0.4.3",
       "author": {
         "name": "modootoday"
       },
@@ -606,7 +606,7 @@
     {
       "name": "agent-orchestration",
       "description": "Coordinating subagents: whether and how widely to delegate, briefs with boundaries and hand-back schemas, partitioned writes with an idempotent merge, verifying what a subagent claims, fair comparisons, and fan-out scripts with caps and resume.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "modootoday"
       },

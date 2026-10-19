@@ -7,7 +7,7 @@ metadata:
   domain: agent-workflow
   install: optional
   keywords: [subagents, delegation, parallelization, agent count, token cost, fan out, orchestration]
-  verified-runtimes: [claude-code, gemini-cli, grok-cli]
+  verified-runtimes: [claude-code, codex-cli, gemini-cli, grok-cli]
 ---
 
 # Delegation decision and sizing
@@ -17,12 +17,12 @@ time and money on small, sequential or tightly coupled work. Decide first, then 
 
 ## 1. Classify the task
 
-| Shape | Example | Default |
-| --- | --- | --- |
-| Wide and read-only | audit 40 files, search many sources, review a large diff | fan out |
-| Write-coupled | pieces share a design decision or a file | one agent, or split only on a clean write set |
-| Sequential | each step needs the previous result | one agent |
-| Small | a handful of tool calls | do it yourself |
+| Shape              | Example                                                  | Default                                       |
+| ------------------ | -------------------------------------------------------- | --------------------------------------------- |
+| Wide and read-only | audit 40 files, search many sources, review a large diff | fan out                                       |
+| Write-coupled      | pieces share a design decision or a file                 | one agent, or split only on a clean write set |
+| Sequential         | each step needs the previous result                      | one agent                                     |
+| Small              | a handful of tool calls                                  | do it yourself                                |
 
 Read the references file `references/sizing-examples.md` for worked decisions.
 

@@ -7,7 +7,7 @@ metadata:
   domain: monetization
   install: optional
   keywords: [pricing, price point, pricing hypothesis, plan tiers, willingness to pay]
-  verified-runtimes: [claude-code, codex-cli]
+  verified-runtimes: [claude-code, codex-cli, grok-cli]
 ---
 
 # Pricing as a hypothesis
@@ -34,8 +34,9 @@ Fill each line, marking what is assumed:
 
 ## Question the hypothesis
 
-- If the unit does not track value, heavy users are subsidised or light users
-  leave; say which.
+- Evaluate the proposed unit against different usage levels and the same charge:
+  explain possible relative benefits for heavier users or poor fit for lighter users.
+  Actual cost cross-subsidy remains a hypothesis unless supplied cost data establishes it.
 - If the alternative is free and good enough, the price needs a reason beyond it.
 - Tiers: each step should unlock something the next segment needs, not just more
   of the same.
@@ -45,5 +46,11 @@ Fill each line, marking what is assumed:
 Pick the test that answers the prediction soonest: a price shown on a landing
 page with a waiting list, interviews asking about the alternative's cost,
 a time-boxed offer to a small group. Say what you will measure and for how long.
+
+In a planning-only task, describe future steps without executing or claiming them.
+The proposed test must still fund the work that produces its decision signal.
+Allocate preparation, every planned participant contact and analysis within the
+stated time and participant limits. If no permitted test fits, state the gap and
+hold the hypothesis rather than depending on unbudgeted research.
 
 Do not present any willingness-to-pay figure the user did not provide as fact.

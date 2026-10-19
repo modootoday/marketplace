@@ -8,12 +8,12 @@ Payment integrations, refunds and disputes, payment provider choice and USD pric
 
 ## Runtime support
 
-| Runtime | Supported | Measured on |
-| --- | --- | --- |
-| Claude Code | yes | 2.1.289, with the eval suite in `evals/` (see Verify) |
-| Codex CLI | case-specific pricing-unit/value effect | codex-cli 0.161.0, 2026-10-08; see complete prospective comparison |
-| Grok CLI | untested | - |
-| Gemini CLI | untested | - |
+| Runtime     | Supported                               | Measured on                                                        |
+| ----------- | --------------------------------------- | ------------------------------------------------------------------ |
+| Claude Code | yes                                     | 2.1.289, with the eval suite in `evals/` (see Verify)              |
+| Codex CLI   | case-specific pricing-unit/value effect | codex-cli 0.161.0, 2026-10-08; see complete prospective comparison |
+| Grok CLI    | case-specific pricing-unit/value effect | grok-cli 1.0.50, 2026-10-19; see repaired comparison               |
+| Gemini CLI  | untested                                | -                                                                  |
 
 Requirements: None.
 
@@ -35,8 +35,8 @@ codex plugin add monetization@modootoday
 
 ## What it registers
 
-| Kind | Name | Covers |
-| --- | --- | --- |
+| Kind  | Name                 | Covers                                                                                                                          |
+| ----- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | skill | `pricing-hypothesis` | a price framed as a testable hypothesis: buyer, unit, today's alternative, a prediction with a threshold, and the cheapest test |
 
 ## Failure mode
@@ -64,9 +64,9 @@ The plugin ships an eval suite (`claude plugin eval plugins/monetization --no-pu
 20261004 on Claude Code 2.1.289 with Sonnet as judge; the score is the share of runs that
 passed every grader, without the plugin and with it:
 
-| Case | Skill | Without | With | Runs per arm |
-| --- | --- | --- | --- | --- |
-| `price-feels-right` | pricing-hypothesis | 0.00 | 1.00 | 2 |
+| Case                | Skill              | Without | With | Runs per arm |
+| ------------------- | ------------------ | ------- | ---- | ------------ |
+| `price-feels-right` | pricing-hypothesis | 0.00    | 1.00 | 2            |
 
 At the recorded 20261004 cut, the skill had one case and two more were needed for the three-case release gate.
 
@@ -90,6 +90,44 @@ A separately reviewed complete comparison on 2026-10-08 used codex-cli 0.161.0 a
 Both With answers explain the pricing-unit/value tradeoff of one account fee across different location usage, including poor fit for lighter users and greater value for heavier users without asserting cost cross-subsidy. Both baselines question the location allowance but omit that tradeoff. This is the admitted supplied-segment effect, not proof of demand, an optimal price, conversion, profitability or actual research execution.
 
 One minority With vote rejects a generic free-workflow description in place of the named one-location alternative; the other two votes accept the segment distinction. The dissent and raw majority aggregate remain preserved. All four answers propose bounded future tests and reject invented willingness to pay, completed contacts and guaranteed discount conversion. The unchanged body was measured; no skill-body repair causality or universal rubric agreement is claimed.
+
+### Grok repaired comparison and Codex maintenance
+
+On 2026-10-19, Grok CLI 1.0.50 with grok-4.7-build-fast as subject and judge
+completed two runs per arm with three judge votes, concurrency one, proxy authentication
+and bubblewrap isolation. All four replies and twelve behavioral votes were reviewed.
+
+| Runtime  | Model               | Case                                 | Skill              | Without | With | Fired | Date       |
+| -------- | ------------------- | ------------------------------------ | ------------------ | ------- | ---- | ----- | ---------- |
+| Grok CLI | grok-4.7-build-fast | `pricing-free-alternative-unit-test` | pricing-hypothesis | 0.00    | 1.00 | 2/2   | 2026-10-19 |
+
+An earlier complete comparison scored With 0.50 and Without 0.50. One guided
+proposal spent its entire research budget preparing materials while requiring
+interviews for its decision; another left optional contacts unbudgeted. The
+reinforcement requires preparation, every contact and analysis to fit the total,
+and distinguishes relative value from unproved cost cross-subsidy. The prompt
+and rubric were unchanged. In the fresh comparison both guided proposals allocate
+180 minutes across the work. Both baselines omit the explicit flat-charge/value
+tradeoff by majority; one also allocates 200 minutes. One baseline tradeoff verdict
+has a dissenting pass, which remains part of the evidence.
+
+Codex CLI 0.163.0 with gpt-6.1-sol as subject and judge also completed two
+with-only maintenance runs on the repaired body, with three votes: With 1.00,
+activation 2/2, all six behavioral votes valid. Both replies include scheduling,
+preparation, contacts and analysis in 180 minutes. This maintains the existing
+Codex result; it creates no new paired effect claim. The older comparisons above
+remain unchanged. This measures the supplied research-planning case, not demand,
+purchase conversion, profitability or an optimal price. Three-case coverage remains
+incomplete; no broad coverage claim is made.
+
+The existing `price-feels-right` case also passes two with-only maintenance runs
+on each of Codex CLI 0.163.0 and Grok CLI 1.0.50, with the same respective models
+and three votes: With 1.00 and activation 2/2 on each runtime, all twelve votes
+valid. These answers frame the price and buyer assumptions as hypotheses and
+propose bounded future tests; no purchase is executed. This is additional
+maintenance coverage, not paired effect evidence. The Grok pilot wording varies
+between an activation-conditioned percentage and a ten-contact decision count,
+so those illustrative thresholds should not be treated as a validated protocol.
 
 ## License
 
