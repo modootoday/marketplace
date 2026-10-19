@@ -6,12 +6,12 @@ Numbers that mean what they say: ClickHouse SQL that reads the key and deduplica
 
 ## Runtime support
 
-| Runtime     | Supported | Measured on                                                |
-| ----------- | --------- | ---------------------------------------------------------- |
-| Claude Code | yes       | 2.1.289, with the eval suite in `evals/` (see Verify)      |
-| Codex CLI   | yes       | Codex CLI with gpt-6.1-sol, the new case only (see Verify) |
-| Grok CLI    | untested  | -                                                          |
-| Gemini CLI  | untested  | -                                                          |
+| Runtime     | Supported                | Measured on                                                  |
+| ----------- | ------------------------ | ------------------------------------------------------------ |
+| Claude Code | yes                      | 2.1.289, with the eval suite in `evals/` (see Verify)        |
+| Codex CLI   | selected skills verified | 0.163.0 with gpt-6.1-sol; current and historical cases below |
+| Grok CLI    | two skills verified      | 1.0.50; naver-trend-analysis and cohort-retention only       |
+| Gemini CLI  | untested                 | -                                                            |
 
 Requirements: None. A project can keep its own database facts in an overlay the agent reads with the skill.
 
@@ -108,7 +108,7 @@ The new skill has one case; two more are needed for the three-case release gate.
 
 clickhouse-query-authoring shows no lift yet with the default model: the baseline found the same issues in every case tried. Its cases stay as regression checks. The Codex scores below add a case with lift for it.
 
-metric-definition, naver-trend-analysis show no lift yet: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. The Codex scores below add a case with lift for metric-definition; for naver-trend-analysis the lift is small (the baseline failed one of two runs on one item).
+In these historical Claude Code comparisons, metric-definition and naver-trend-analysis show no lift: the baseline model already passed these cases, or both arms failed. The cases stay as regression checks. The Codex scores below add a case with lift for metric-definition; for naver-trend-analysis the lift is small (the baseline failed one of two runs on one item).
 
 Re-run 20261004 with smaller models answering (`--model`), mean score without and with the plugin over the same cases, 2 runs per arm: clickhouse-query-authoring: Haiku 0.67 to 1.00, Sonnet 1.00 to 1.00.
 
@@ -168,6 +168,88 @@ measured zero. Cached input is included in input, not additional consumption.
 ## License
 
 MIT
+
+## Other runtimes: Naver planning, 2026-10-19
+
+Grok CLI 1.0.50 with grok-4.7-build-fast as subject and judge completed two
+runs per arm, three votes per behavioral grader, concurrency one and
+proxy/bubblewrap isolation. The skill body, prompt and rubrics were unchanged.
+All four answers and 24 behavioral votes for this case were reviewed.
+
+| Runtime  | Model               | Case                           | Skill                | Without | With | Fired | Date       |
+| -------- | ------------------- | ------------------------------ | -------------------- | ------- | ---- | ----- | ---------- |
+| Grok CLI | grok-4.7-build-fast | `cross-request-volume-scaling` | naver-trend-analysis | 0.25    | 1.00 | 2/2   | 2026-10-19 |
+
+The effect is narrow: both baselines already estimate the November value
+correctly and refuse to rank December across different demographic filters.
+One baseline omits the new single same-filter request needed to resolve the
+comparison; both guided replies supply that next step. This is a planning
+improvement, not evidence of better arithmetic, newly recognized ratio limits,
+actual API calls or measured search volumes.
+
+The other baseline does recommend the same-filter request, then adds a December
+estimate. Two judges fail its scaling answer because the recommendation is not
+the final statement, while one passes. Preserve that disputed raw failure;
+the narrow effect above does not depend on it. No score or rubric was rewritten.
+Additional December figures remain assumption-dependent estimates in both arms.
+
+### Cohort diagnosis on Codex and Grok
+
+The cohort body now confirms the denominator and maturity rule before diagnosis,
+keeps actual per-user starts for exact day offsets, and treats campaign mix as
+a hypothesis. Stable old cohorts do not rule out a new-user-only regression.
+Missing data calls for a table layout and required inputs, not invented observed
+rates or runnable SQL. One bounded source repair addressed an initial Grok
+comparison with overconfident causal and old-cohort-only claims.
+
+Fresh comparisons used two runs per arm, three behavioral votes, concurrency one,
+low effort, proxy authentication and bubblewrap isolation. All eight answers and
+24 behavioral votes across the two final runtime comparisons were reviewed.
+
+| Runtime   | Model               | Case                     | Skill            | Without | With | Fired | Date       |
+| --------- | ------------------- | ------------------------ | ---------------- | ------- | ---- | ----- | ---------- |
+| Codex CLI | gpt-6.1-sol         | `blended-retention-drop` | cohort-retention | 0.00    | 1.00 | 2/2   | 2026-10-19 |
+| Grok CLI  | grok-4.7-build-fast | `blended-retention-drop` | cohort-retention | 0.00    | 1.00 | 2/2   | 2026-10-19 |
+
+Both runtimes' baselines already identify mix effects and incomplete follow-up;
+several also request same-age cohort/channel counts. The narrow difference is
+the explicit return-activity/window contract before interpreting those counts,
+not discovery of mixing or better causal identification. One Codex With vote
+dissents on whether activity is fully defined; the other five With votes pass.
+The final Grok With votes all pass. Raw scores retain the native majority rule.
+These are definition-completeness checks on supplied headlines, not executed
+queries or measured retention changes. Actual use must first confirm that the
+headline really blends the proposed denominator.
+
+The final Grok baseline also contains an unscored weighted-average arithmetic
+error. It remains in the original evidence and is not the basis of admission.
+No failed result or rubric was rewritten.
+
+### Metric-definition hold
+
+The same Grok suite gives raw With 1.00 / Without 0.00 for
+`two-dashboards-dau` and `weekly-active-teams-target`, with activation 2/2.
+Those rows do not qualify a Grok badge. DAU judging rejects baselines that
+already identify definition differences for not explicitly writing both cards;
+WAT event-item judging treats similar non-sync filters inconsistently, and
+manual review finds flawed illustrative SQL and guardrail claims.
+
+Two bounded metric-body repairs were tested with Codex With-only maintenance.
+The final WAT replies pass both runs, but one DAU reply still omits an explicit
+source-table check. That body repair remains held and is excluded from this
+release. Existing metric-definition procedure and runtime metadata are unchanged.
+No further wording retry or inferred Grok admission is included.
+
+### Experiment-effect hold
+
+The unchanged `stop-test-early` case records raw Codex With 1.00 / Without 0.00
+and Grok With 1.00 / Without 0.50, both with activation 2/2. The baselines already
+reject an unplanned significance peek and post-hoc Android shipping, discuss
+weekday/weekend effects and the planned sample/duration, and request an interval.
+Their failed votes concern explicitly recommending whole weeks. Grok has one
+dissenting pass on that point. This operational-wording difference is held as
+effect-unconfirmed, with no new experiment badge on either runtime and no source
+or grader change.
 
 ## Maintenance cases: 2026-10-12
 

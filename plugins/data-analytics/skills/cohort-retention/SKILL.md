@@ -7,13 +7,14 @@ metadata:
   domain: data-analysis
   install: optional
   keywords: [cohort analysis, retention curve, churn, SQL cohort query, user retention]
-  verified-runtimes: [claude-code]
+  verified-runtimes: [claude-code, codex-cli, grok-cli]
 ---
 
 # Cohort retention
 
-A blended "30-day retention" mixes old loyal users with this week's sign-ups and
-moves when the mix moves. Cohorts keep starts apart.
+A headline retention rate can mix cohorts and move when the mix moves. Confirm
+the rate's denominator, cohort weights and maturity rule before diagnosing it.
+A mature day-30 metric must not count users who have not reached day 30 as failures.
 
 ## Define first
 
@@ -31,6 +32,12 @@ moves when the mix moves. Cohorts keep starts apart.
 3. Join, compute the period offset, count distinct users per cohort and offset,
    divide by the cohort size.
 
+Keep the actual user start date for exact elapsed-day offsets; grouping starts
+by calendar month does not move every user's day zero to the first of that month.
+Do not interchange day-30 retention and next-calendar-month retention. Without
+the schema or cohort data, give the required table layout and inputs, not invented
+observed rates or a query presented as ready to run.
+
 Keep the cohort size beside every row. Mark cells whose period has not finished
 yet; an incomplete last week looks like a drop.
 
@@ -41,6 +48,12 @@ yet; an incomplete last week looks like a drop.
 - Tie a change between cohorts to what changed for them (release, channel, price)
   and say that it is a correlation unless it was tested.
 - Small cohorts swing; show the size and do not over-read them.
+
+Treat mix shift, acquisition quality and immature windows as hypotheses until
+the actual cohort rates, weights and eligibility rule distinguish them. A stable
+old cohort does not rule out a regression affecting only new users. Compare
+similarly exposed cohorts and channels at the same completed offsets; do not
+attribute the observed drop to the campaign without those observations.
 
 ## Output
 
