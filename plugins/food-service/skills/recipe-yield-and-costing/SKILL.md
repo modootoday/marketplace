@@ -7,7 +7,7 @@ metadata:
   domain: food-service
   install: optional
   keywords: [recipe scaling, yield, trim loss, food cost, cost per portion, purchase quantity]
-  verified-runtimes: [codex-cli]
+  verified-runtimes: [codex-cli, grok-cli]
 ---
 
 # Recipe yield and costing

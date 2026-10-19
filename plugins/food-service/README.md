@@ -12,7 +12,7 @@ Staff allergen tables and quizzes are available to signed-in users.
 | ----------- | ------------------------------------------------------- | ----------------------------------------------------- |
 | Claude Code | yes                                                     | 2.1.289, with the eval suite in `evals/` (see Verify) |
 | Codex CLI   | recipe fidelity and yield worksheet measured; menu held | 0.163.0, gpt-6.1-sol, paired results below            |
-| Grok CLI    | recipe fidelity measured; yield and menu held           | 1.0.50, grok-4.7-build-fast, paired results below     |
+| Grok CLI    | recipe fidelity and yield worksheet measured; menu held | 1.0.50, grok-4.7-build-fast, paired results below     |
 | Gemini CLI  | untested                                                | -                                                     |
 
 Requirements: Nothing is required.
@@ -95,6 +95,7 @@ read-only bwrap isolation. All judge votes were present. Answers were inspected.
 | Codex CLI | gpt-6.1-sol         | `tomato-soup-card-adapt`          | recipe-source-fidelity-and-adaptation | 0.00    | 1.00 | 2/2   | 20261019 |
 | Grok CLI  | grok-4.7-build-fast | `tomato-soup-card-adapt`          | recipe-source-fidelity-and-adaptation | 0.00    | 1.00 | 2/2   | 20261019 |
 | Codex CLI | gpt-6.1-sol         | `yield-purchase-weight-ambiguity` | recipe-yield-and-costing              | 0.00    | 1.00 | 2/2   | 20261019 |
+| Grok CLI  | grok-4.7-build-fast | `yield-purchase-weight-ambiguity` | recipe-yield-and-costing              | 0.00    | 1.00 | 2/2   | 20261019 |
 
 Recipe fidelity evidence covers transcription and estimated substitutions from a
 supplied recipe. The yield baseline answers also calculate purchase quantities
@@ -115,6 +116,10 @@ Subscription token-to-USD conversion is unavailable. The original Grok harness
 underreported total input by excluding cached reads; those historical metrics
 remain flagged and unchanged. Quality scores above depend on answers and votes,
 not those usage totals. Cached input is a subset of normalized total input.
+The replacement Grok yield run uses corrected accounting: 336525 total input,
+including 127360 cached input, and 28744 output, including 20424 reasoning
+tokens. It is complete and all votes are present. Its baseline answers also
+calculate correctly but omit required chef checks.
 
 ## License
 
