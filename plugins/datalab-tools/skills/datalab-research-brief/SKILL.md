@@ -46,7 +46,7 @@ Write a brief from pages that were actually opened and read. Search finds candid
   `non-naver-host`; trying again gives the same answer. A wiki, an agency site or a news site outside Naver stays
   unread: list it under Not confirmed, or ask the user to paste the text. Do not cite it from its search snippet.
 - The result carries `title`, `description`, `wordCount` and `content`. `content` is cut at 8,000 characters and then
-  ends with `…(생략)`. Cite only what is inside the returned `content`. Where the cut marker appears, say the rest of
+  ends with an ellipsis and a short parenthesised "omitted" marker in the tool's own language. Cite only what is inside the returned `content`. Where the cut marker appears, say the rest of
   that page was not read; a long page (`wordCount` far above what the content holds) is partly read, not fully read.
 - `fetch-failed` may be temporary and is worth one retry; `bad-url` needs a corrected address.
 - In the reply, name each page that was cut or could not be opened, and invite the user to paste the text of any page
