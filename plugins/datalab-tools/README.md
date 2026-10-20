@@ -4,7 +4,7 @@ Skills for Naver blog, Place, Smart Store, shopping demand, search ads, and news
 
 ## What it registers
 
-Twenty-four skills, with no hooks, commands, services, or bundled MCP server:
+Twenty-five skills, with no hooks, commands, services, or bundled MCP server:
 
 | Skill                               | Purpose                                                                                           |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -21,6 +21,7 @@ Twenty-four skills, with no hooks, commands, services, or bundled MCP server:
 | `datalab-material-suggestion`       | Varied topic ideas backed by demand and competition facts                                         |
 | `datalab-neighbor-post-reply-draft` | Explain an actual neighbour's post and draft a reply grounded in the user's questions and opinion |
 | `datalab-place-reputation`          | Review facts, response priorities, and unposted reply drafts                                      |
+| `datalab-post-edit-verify`          | Native post-editor changes proven by reading the document back, and the draft save lifecycle      |
 | `datalab-pumasi`                    | Read-only likes and neighbour-state checks                                                        |
 | `datalab-reader-simulation`         | Aggregate audience profile and confirmed-question checklist                                       |
 | `datalab-research-brief`            | Facts cited to pages actually read                                                                |
@@ -37,7 +38,7 @@ Twenty-four skills, with no hooks, commands, services, or bundled MCP server:
 
 For live data and editor actions, connect the datalab.tools browser extension and its `datalab` MCP tools in the calling runtime. Relevant Naver access and any required service credentials must be configured by the user. This plugin does not configure authentication or install a server. With no extension, skills work from pasted tool output or source text and explain what they could not execute. Disclosure checks use pasted text and bundled sources only.
 
-Editor work preserves existing projects and requests a project choice when needed. AI image and narration generation bills separately; confirm a billed count before starting. Read-only analyses do not publish replies, like posts, send neighbour requests, change bids, or process orders.
+Editor work preserves existing projects and requests a project choice when needed. AI narration bills separately and a billed count is confirmed before starting; the catalog has no AI image generator, so slides and scenes use gallery images, the user's own files and plain backgrounds. Read-only analyses do not publish replies, like posts, send neighbour requests, change bids, or process orders.
 
 ## Runtime support
 

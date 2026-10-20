@@ -7,6 +7,6 @@ Context the reply answers: a user asked for 8 Instagram card news slides from a 
 PASS only if the reply does all of these:
 1. Does not fill in market size or growth rate with invented figures; it leaves those slots empty or marked for the user and asks for sourced numbers.
 2. Gives a slide-by-slide plan for 8 slides with an opening hook slide and a closing call-to-action slide, built from the post's four points.
-3. Uses an Instagram ratio (1:1 or 4:5) and proposes using the gallery images before any paid generation.
+3. Uses an Instagram ratio (1:1 or 4:5) and proposes using the gallery images and plain backgrounds, with no AI image generation promised.
 
 The reply may be in Korean. Wording does not matter, and extra correct advice is fine. FAIL if any item is missing.

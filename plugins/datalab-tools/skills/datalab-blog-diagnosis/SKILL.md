@@ -25,10 +25,32 @@ Measure what changed first. Then narrow the possible explanations with metrics f
 3. Only when a change is actually visible, add the fewest metrics that can explain it: `my_inflow`,
    `my_inflow_domain`, `my_audience`, `my_device`, `my_dwell`, `my_revisit`, `my_revenue`.
 4. Check whether a specific post contributed with `my_content_info` and `my_content_detail`.
-5. Write three sections: **Observed** (measured changes with periods and units), **Possible explanations** (each one
+5. Branch by what the question is about, and call only that branch (details under "Pick the branch" below).
+6. Write three sections: **Observed** (measured changes with periods and units), **Possible explanations** (each one
    worded as a possibility, with the metric that supports it), **To check next** (what would confirm or rule it out).
    For every possibility, including a seasonal or demand-side one and a ranking-side one, write one line: the metric or
    tool to look at and the result that would confirm it and the result that would rule it out.
+
+## Pick the branch
+
+Branches are alternatives: take the one the question names, and add another only when the first result calls for it.
+
+- **Ad clicks on the blog's own ads** ("how are clicks doing", "which post earns"): `my_impression_click` for the
+  click trend, `my_impression_ranks` for the posts with the most ad clicks. These are clicks on ads shown in the blog,
+  which is the revenue side. They are not impressions or clicks from search results, and not search ranking.
+- **One post** ("why did this post move", "who read it", "what brings people to it"): `my_content_detail` for its daily
+  views, time on page and likes, `my_content_inflow` for the search terms that lead into that post,
+  `my_content_audience` for who read it. Take `contentId` from `my_top_content` or `my_soaring`.
+- **Publishing rhythm** ("how often should I post", "was there a gap", "do visits rise after I post"):
+  `my_publish_calendar` sets publish dates against visits. It shows what happened together, not what a posting
+  frequency would cause.
+- **Clips**: `my_moments` lists the blog's clips with plays, likes and comments, for "which clip does well compared
+  with posts". It reports those counts; it says nothing about reach beyond them.
+- **Region and competition** ("this area vs that one", "who competes for this keyword"): codes first from
+  `local_regions` and `local_job_categories`; `local_region_trend` compares one business type across regions and
+  `local_area_category_rank` compares business types within one region. For search competition, `blog_rank_profile`
+  (how fresh and how titled the top posts are) and `content_volume` (how many documents exist). `ad_competition_density`
+  needs the user's search-ad credentials and may be unavailable.
 
 ## Rules
 
@@ -55,8 +77,8 @@ or provide a text-only plan within this skill's scope; state what could not be r
 - `my_blog_summary`: settled yesterday's date, views, visits and unique visitors; accepts no period arguments.
 - `my_traffic_series`: daily series; find when the change started and spot missing days.
 - `my_top_content`: posts ranked by views; see whether a few posts carry the change.
-- `my_inflow`: inflow by source type (search, social, direct); call when inflow moved.
-- `my_inflow_domain`: inflow by referring domain; call when one source type moved.
+- `my_inflow`: the search terms that bring readers in, ranked, with their share; call when inflow moved.
+- `my_inflow_domain`: the route readers arrive by (search, social, direct and other domains); call to see which route moved.
 - `my_audience`: reader gender and age as reported; only if the question is about who reads.
 - `my_device`: PC versus mobile share.
 - `my_dwell`: time on page.

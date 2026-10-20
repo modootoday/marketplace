@@ -41,6 +41,22 @@ not measured".
 
 One call per round. Research once and draw several candidates from it; do not re-query per candidate.
 
+### Comparing several candidates
+
+- **Trend side by side**: for up to 5 candidate keywords, `keyword_trend_batch` compares their current interest in one
+  call; `keyword_trend_compare` lines the whole trend of up to 5 keywords on one time axis, which is the one to use for
+  crossovers, reversals and seasonality. A batch call is one round for all candidates, not one call each.
+- **Public supply**: `content_volume` gives the total number of blog and cafe documents for a keyword, a supply count
+  and not a quality measure. `keyword_opportunity` sets monthly search demand against the last 30 days of blog
+  publishing and reports the figure as the tool computed it; it needs a search-ad account and may be unavailable.
+  Quote the demand and the supply numbers; do not turn them into a recommendation score.
+- **Body patterns of the top posts**: `serp_pattern_analyze` reads the bodies of the top blog results and reports
+  common section structure, `coverageGaps` and title and freshness patterns. It can take tens of seconds, so run it
+  for the one or two leading candidates, not all of them. `search_blog` alone shows titles, not bodies.
+- Tools that return a prompt to run (`outline_suggest`, `benchmark_gap`, `content_calendar`) give instructions
+  in `delegate`, not a finished answer. The result exists only after you run that prompt yourself; do not present the
+  returned prompt as the suggestion. This skill does not write the manuscript.
+
 ## Angles and series
 
 Mix angles across candidates: how-to, list, comparison, experience, problem-solution, myth-busting, audience-specific,
@@ -98,6 +114,9 @@ or provide a text-only plan within this skill's scope; state what could not be r
 - `my_top_content`: the user's best posts; only when their direction matters.
 - `search_blog`: top blog posts for a query; age and coverage of competitors.
 - `blog_profile`, `blog_posts`: a competing blog and its posts.
-- `benchmark_gap`: what a competitor covers that the user does not.
+- `benchmark_gap`: what a competitor covers that the user does not; returns a prompt to run.
+- `keyword_trend_batch`, `keyword_trend_compare`: up to 5 candidates, current interest or the whole trend.
+- `content_volume`, `keyword_opportunity`: public blog and cafe supply; demand against recent supply.
+- `serp_pattern_analyze`: body structure and gaps of the top blog posts; slow, use sparingly.
 
 Only when discovery cannot find the required tools, use only pasted tool output and say what was not measured.

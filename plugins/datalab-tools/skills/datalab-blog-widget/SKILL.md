@@ -40,6 +40,20 @@ deliverable.
 3. Post list, body or sidebar.
 4. Category menu as a link list.
 
+## Sidebar HTML or the post body
+
+Two different things carry the word "widget", and only one is made here.
+
+- **Sidebar widget**: an HTML fragment the user pastes into Naver blog admin. Everything below, including the tag list
+  and the 2,000-byte limit, is for this. The extension cannot place it.
+- **Post body**: the post editor holds native components (headings, quotes, dividers, link cards, tables, images), and
+  the editor tools can insert and read them back. A profile card or a list inside a post is better built as those
+  components with the post-edit skill (datalab-post-edit-verify), which can check the result in the document. HTML for
+  the editor's HTML mode is the fallback when the user wants a pasted block; the sidebar byte limit does not apply to
+  it, only the tag and style rules do.
+- Ask which one is meant when the request says only "widget" or "box". Do not hand sidebar HTML to a body edit as if the
+  editor tools had placed it, and do not report a native edit as a pasted widget.
+
 ## Procedure
 
 1. Confirm the type and its content. Ask first when ambiguous.

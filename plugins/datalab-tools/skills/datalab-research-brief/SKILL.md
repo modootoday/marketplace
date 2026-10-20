@@ -26,7 +26,8 @@ Write a brief from pages that were actually opened and read. Search finds candid
 ## Before starting
 
 1. Is the topic clear? If vague, ask once what the user wants to know.
-2. Sources the user gave (URLs, pasted text): read those first with `web_read`.
+2. Sources the user gave (URLs, pasted text): read Naver URLs first with `web_read`. Pasted text counts as read.
+   A URL outside naver.com cannot be opened by this tool (see "What web_read can read").
 3. No search or read tools visible: use discovery first. Only if it finds none, say the web cannot be checked from here and proceed with pasted material.
 
 ## Citation rules
@@ -38,6 +39,16 @@ Write a brief from pages that were actually opened and read. Search finds candid
   only under "Not confirmed" as unread.
 - You may count how many read pages confirm a fact ("confirmed on two pages"). No reliability, accuracy, relevance or
   similarity scores or percentages; if asked, say why there are none.
+
+## What web_read can read
+
+- Naver pages only: a host ending in naver.com (blog, cafe and similar). Any other address comes back `ok: false` with
+  `non-naver-host`; trying again gives the same answer. A wiki, an agency site or a news site outside Naver stays
+  unread: list it under Not confirmed, or ask the user to paste the text. Do not cite it from its search snippet.
+- The result carries `title`, `description`, `wordCount` and `content`. `content` is cut at 8,000 characters and then
+  ends with `…(생략)`. Cite only what is inside the returned `content`. Where the cut marker appears, say the rest of
+  that page was not read; a long page (`wordCount` far above what the content holds) is partly read, not fully read.
+- `fetch-failed` may be temporary and is worth one retry; `bad-url` needs a corrected address.
 
 ## Procedure
 
@@ -86,7 +97,7 @@ Only when discovery cannot find the required tools, work from supplied text or p
 or provide a text-only plan within this skill's scope; state what could not be read or performed.
 
 - `search_web`, `search_news`, `search_blog`: find candidates; their titles and snippets are not read content.
-- `web_read`: open a page; the only basis for a citation.
+- `web_read`: open a Naver page (first 8,000 characters of its text); the only basis for a citation.
 - `run_research`: candidates and a summary for one topic; still read each source before citing.
 - `kin_question_demand`: a count of related questions; one number, not a score.
 
