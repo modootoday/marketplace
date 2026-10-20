@@ -38,6 +38,13 @@ Branches are alternatives: take the one the question names, and add another only
 - **Ad clicks on the blog's own ads** ("how are clicks doing", "which post earns"): `my_impression_click` for the
   click trend, `my_impression_ranks` for the posts with the most ad clicks. These are clicks on ads shown in the blog,
   which is the revenue side. They are not impressions or clicks from search results, and not search ranking.
+- **Revenue** ("which post earns", "which post is worth more per view"): `my_revenue` for the AdPost revenue trend
+  (`period` and `compare` for a month-on-month or year-on-year change). `my_revenue_ranks` lists the top content by
+  ad revenue in won, as of the most recent settlement date. `my_revenue_efficiency` gives each post's RPM, revenue per
+  1,000 views in won. Absolute revenue and RPM answer different questions: a high-traffic post can have low RPM and a
+  low-traffic post a high one. Quote each figure with its unit and the date the tool reported; a post missing from a
+  list has no figure, which is not zero. All three read the user's own account. If another tool needs `blogId`, take
+  it from `my_channels`: the id of the `naver_blog` channel is the `blogId`.
 - **One post** ("why did this post move", "who read it", "what brings people to it"): `my_content_detail` for its daily
   views, time on page and likes, `my_content_inflow` for the search terms that lead into that post,
   `my_content_audience` for who read it. Take `contentId` from `my_top_content` or `my_soaring`.
@@ -84,6 +91,9 @@ or provide a text-only plan within this skill's scope; state what could not be r
 - `my_dwell`: time on page.
 - `my_revisit`: returning-reader rate.
 - `my_revenue`: ad revenue; only for revenue questions.
+- `my_revenue_ranks`: top content by ad revenue (won), as of the latest settlement date.
+- `my_revenue_efficiency`: per-post RPM (revenue per 1,000 views, won); not absolute revenue.
+- `my_channels`: the channels the user owns or can access; the `naver_blog` channel id is the `blogId` other tools take.
 - `my_content_info`: find a post by title or URL.
 - `my_content_detail`: one post's recent daily views and engagement; `contentId` is a URL and `days` defaults to 14.
   It does not accept arbitrary start/end dates; use the returned window and date context rather than assuming the requested period.

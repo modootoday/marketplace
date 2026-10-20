@@ -54,6 +54,17 @@ characters, BODY 40, CTA 20): references/scene-structure.md.
 
 This skill never deletes scenes or elements; a delete needs its own destructive confirmation.
 
+## Templates, post import, undo and rename
+
+Details: references/templates-import-history.md. `video_template_list` (read) shows the ready-made templates.
+`video_template_apply` (destructive) replaces all scenes of the current video with the template's scenes and also
+applies its style pack (transitions, motion, colour); `fill: fill` puts the current video's photos and clips into the
+template's slots in order, `fill: empty` starts with empty slots. Say this before calling and get a fresh
+confirmation; the catalog says one undo cancels it. `video_post_import` (write) builds scenes from a Naver blog, cafe
+or influencer post address, with `targetSec` to keep only the important scenes for that length; it needs the user's
+extension and one undo cancels it. `video_history_undo` and `video_history_redo` step through edits (`steps`
+defaults to 1; one `video_apply` batch is one step). `video_project_rename` (write) renames the open project.
+
 ## Review readability and timing on an editable copy
 
 For a supplied timing problem, compare the actual scene subtitle, duration and narration state with the user's observed reading difficulty and requested pacing.
@@ -152,6 +163,10 @@ or provide a text-only plan within this skill's scope; state what could not be r
 
 - `video_project_get`, `video_timeline_get`: read the project, revision, scenes and narration state first.
 - `video_project_new`, `video_project_list`, `video_project_open`: start or open a project; confirm first.
+- `video_template_list` (read), `video_template_apply` (destructive): replace all scenes with a template.
+- `video_post_import` (write): scenes from a Naver post address.
+- `video_history_undo`, `video_history_redo` (write): step back or forward.
+- `video_project_rename` (write): rename the open project.
 - `video_canvas_resize`: set the ratio before the first scene only.
 - `video_scene_add`: add a scene with its subtitle.
 - `video_subtitle_set`: change a subtitle; regenerate that scene's voice after.

@@ -86,6 +86,19 @@ different change needs a new id. Say the text is in the post only after the stat
   holds changes newer than the last saved draft, both stop with `unsaved-changes`: save first, or set
   `discardUnsaved: true` only when the user said to let that go. `newEditorReady: true` means the blank editor is ready.
 - `editor_reduce_windows` closes or resets windows and three of its modes close tabs; use it only when the user asked.
+- `editor_debug` runs a script inside the writing page and is a developer tool. Do not use it for a user's request.
+
+## Known limits (found by live testing; details in references/live-limits.md)
+
+Say these plainly instead of attempting the action:
+- A quote cannot take font family, strikethrough or background colour, and has no alignment setting: the design
+  decides alignment (`unsupported-in-component`).
+- No tool sets image alt text. Cropping or retouching a picture belongs to the photo editor window. Replacing a picture
+  means inserting the new one, moving it into place, copying the layout and deleting the old one (its own confirmation).
+- Lists have no nesting level here. Typed text cannot carry emoji. Audio goes in as a file attachment only.
+- The editor does not store a value equal to the default, so a read shows `null`; judge by `effective` value and source,
+  not by the missing field.
+- One `editor_undo` can leave the document unchanged: read the document after every undo.
 
 ## Not here
 

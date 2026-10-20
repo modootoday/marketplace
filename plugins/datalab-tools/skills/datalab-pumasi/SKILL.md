@@ -1,38 +1,51 @@
 ---
 name: datalab-pumasi
-description: Check Naver blog pumasi (reciprocal engagement) targets with the user's real account - whether a post was liked, neighbour status, and who reacted or commented - reading state only. Use when the user asks whether they liked someone's post, what their neighbour status is, or who reacted to a post. Not for writing comments, sending or cancelling neighbour requests, pressing like, or submitting anything; comment drafts stay in the answer.
+description: Check Naver blog pumasi (reciprocal engagement) targets with the user's real account - whether a post was liked, neighbour status, who reacted or commented - and, only when the user explicitly asks, open the comment box or neighbour window and fill in the text the user approved, or cancel a mutual-neighbour request the user already sent. Use when the user asks whether they liked someone's post, what their neighbour status is, who reacted to a post, or asks to prepare a comment or a mutual-neighbour request or to cancel one. Not for pressing like, for posting a comment or sending a request (the last click stays with the user), or for judging what another blogger intends.
 metadata:
   tier: open
   level: L2
   domain: blog-community
   install: optional
-  keywords: [naver blog, pumasi, likes, neighbours, blog community, engagement check, datalab]
+  keywords: [naver blog, pumasi, likes, neighbours, blog community, engagement check, comment, neighbour request, datalab]
   requires:
     mcp: [datalab]
   verified-runtimes: [codex-cli]
 ---
 
-# Pumasi status check
+# Pumasi status check and confirmed actions
 
-When a request combines liking, neighbour requests, and comments, identify all three as browser actions for the user. Say none was performed. A comment draft can be supplied in the answer, but the user must post it; checking state does not submit anything.
+Default to reading state. Keep confirmed facts apart from suggested next steps. A comment or a neighbour request can
+be prepared in the browser as a separate step the user asked for, with the exact text the user approved; the user
+presses the final button.
 
-Read the current state of pumasi targets and keep confirmed facts apart from suggested next steps.
+When a request combines liking, neighbour requests and comments: no tool presses like, and this skill does not post
+or send, so those parts are always the user's own clicks in the browser. Say which parts were done and which were not.
 
 ## Procedure
 
 1. Identify the target post or blog. If several candidates fit, ask; never pick one.
-2. Like state: `pumasi_like_state`. Neighbour relation: `pumasi_neighbor_state`.
+2. Like state: `pumasi_like_state`. Neighbour relation and request readiness: `pumasi_neighbor_state`.
 3. Only when a list of people is needed: `pumasi_reactors` or `pumasi_commenters`.
 4. Write three sections: **Confirmed state**, **Could not confirm**, **Suggestions**.
+5. Acting (comment, neighbour request, cancel): only after the user asked for that action. Order, tiers and what to
+   confirm: [comment and neighbour actions](references/comment-and-neighbour.md).
 
 ## Rules
 
-- Only the four reading tools. No opening the comment box, no typing a comment draft, no pressing like, no neighbour
-  request, cancel or submit. When asked, say this skill only reads state and the user does the action in the browser.
-- A requested comment is written as text in the answer only, never put into the browser.
-- A missing, failed or timed-out response is "could not confirm", never "not liked" or "none". If timing matters,
-  suggest checking the state again.
+- Every pumasi tool in this skill, including the four state tools, is tier write or destructive in the catalog, not
+  read. Each needs a Naver blog tab for the target post: the user's own open tab (`tab_open` or `tab_focus`) or one
+  the tool opens itself. Expect the host to ask. The four state tools change nothing on Naver.
+- `pumasi_comment_open` and `pumasi_neighbor_open` only open the input box or window and leave nothing behind.
+- `pumasi_comment_draft` and `pumasi_neighbor_draft` (destructive) put the supplied text in as-is, without editing it.
+  Always call them with `submit` false: they stop after filling and the user presses the final button themselves. This
+  skill never posts a real comment or sends a real request, even when asked to; say that the last click is the user's.
+- `pumasi_neighbor_cancel` (destructive) cancels a request the user already sent, only after `pumasi_neighbor_open`
+  shows the in-progress confirmation window. Verify afterwards with `pumasi_neighbor_state`.
+- A comment or request text the user did not approve is written in the answer only, never put into the browser.
+- A missing, failed or timed-out response is "could not confirm", never "not liked", "not sent" or "none". If timing
+  matters, check the state again.
 - Do not invent the other person's intent or relationship (for example "they ignore you" from a non-mutual state).
+  `alreadyNeighbor: false` in a reactor list means Naver did not say, not "not a neighbour".
 
 ## Tools
 
@@ -44,9 +57,11 @@ Discovery does not expand this skill's scope or replace its payment, target and 
 Only when discovery cannot find the required tools, work from supplied text or pasted tool output,
 or provide a text-only plan within this skill's scope; state what could not be read or performed.
 
-- `pumasi_like_state`: whether the user's account has liked a given post.
-- `pumasi_neighbor_state`: neighbour relation between the user and a blog, each direction.
-- `pumasi_reactors`: who liked a post; only when the list is asked for.
-- `pumasi_commenters`: who commented on a post; same condition.
+- `pumasi_like_state`: which reaction, if any, the user's account left on a post.
+- `pumasi_neighbor_state`: group fullness, already neighbour, request pending, Naver refusal; before any request.
+- `pumasi_reactors`, `pumasi_commenters`: blog ids of people who reacted or commented, newest first; only when asked.
+- `pumasi_comment_open`, `pumasi_neighbor_open`: open the comment box or neighbour window (write); submit nothing.
+- `pumasi_comment_draft`, `pumasi_neighbor_draft`: fill the user's exact text with `submit` false (destructive tier); never send.
+- `pumasi_neighbor_cancel`: cancel a pending request (destructive).
 
 Only when discovery cannot find the required tools, use only the output the user pasted and do not invent the rest.

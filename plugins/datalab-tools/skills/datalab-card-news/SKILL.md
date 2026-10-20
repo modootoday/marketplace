@@ -56,11 +56,14 @@ CTA 15): references/slide-structure.md.
 `photo_canvas_resize` to the platform ratio before the first page. Then per slide: `photo_page_add`;
 `photo_background_set` (solid or gradient by default); images from the gallery first (`photo_gallery_list`,
 `photo_image_add_from_gallery`); `photo_text_add` for title, subtitle, body, CTA; decoration with `photo_shape_add`,
-`photo_sticker_add`, `photo_frame_add`; repeat a layout with `photo_template_apply`; arrange with `photo_node_arrange`;
-reorder with `photo_page_reorder`. Edits go through `photo_node_update`.
+`photo_sticker_add`, `photo_frame_add`; arrange with `photo_node_arrange`; reorder with `photo_page_reorder`. Edits go
+through `photo_node_update`. Starting from a ready-made template, making pages from a published post, undo, rename and
+slideshow timing: references/templates-import-history.md.
 
 This skill never deletes pages or elements. A delete request needs its own destructive confirmation; say so and do
-not run it inside this flow.
+not run it inside this flow. `photo_template_apply` is not a layout-repeat tool: it applies a catalog template, and
+`mode: replace` erases every element on the current page (the catalog says it cannot be undone), so it is a destructive
+call with its own confirmation.
 
 ## Images, and what costs money
 
@@ -151,7 +154,11 @@ or provide a text-only plan within this skill's scope; state what could not be r
 - `photo_background_set`: slide background, solid or gradient by default.
 - `photo_text_add`: title, subtitle, body and CTA text.
 - `photo_shape_add`, `photo_sticker_add`, `photo_frame_add`: decoration, only when asked or needed.
-- `photo_template_apply`: repeat one layout across pages.
+- `photo_template_list` (read), `photo_template_apply` (destructive): pick and apply a catalog template.
+- `photo_post_import` (write): make card pages, or only photos, from a Naver blog, cafe or influencer post address.
+- `photo_history_undo`, `photo_history_redo` (write): step back or forward through edits.
+- `photo_project_rename` (write): rename the open project.
+- `photo_slideshow_set` (write): hold time and transition per page, or document defaults and loop.
 - `photo_node_arrange`, `photo_node_update`: position elements; edit existing ones.
 - `photo_gallery_list`, `photo_image_add_from_gallery`: reuse the user's gallery images before generating any.
 - `photo_apply`: a batch of the editing ops above, all or nothing, with `$N` references between ops.

@@ -4,7 +4,7 @@ Skills for Naver blog, Place, Smart Store, shopping demand, search ads, and news
 
 ## What it registers
 
-Twenty-five skills, with no hooks, commands, services, or bundled MCP server:
+Thirty-one skills, with no hooks, commands, services, or bundled MCP server:
 
 | Skill                               | Purpose                                                                                           |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -22,7 +22,13 @@ Twenty-five skills, with no hooks, commands, services, or bundled MCP server:
 | `datalab-neighbor-post-reply-draft` | Explain an actual neighbour's post and draft a reply grounded in the user's questions and opinion |
 | `datalab-place-reputation`          | Review facts, response priorities, and unposted reply drafts                                      |
 | `datalab-post-edit-verify`          | Native post-editor changes proven by reading the document back, and the draft save lifecycle      |
-| `datalab-pumasi`                    | Read-only likes and neighbour-state checks                                                        |
+| `datalab-pumasi`                    | Likes and neighbour-state checks, and comment or request text filled in but never sent            |
+| `datalab-place-competitor-scan`     | Other Place listings and the local market: search, nearby, promotions and keyword pre-checks      |
+| `datalab-cafe-research`             | Naver Cafe volume, community profile, boards and popular posts                                    |
+| `datalab-influencer-scan`           | Influencer profiles, topics, category rankings and their stated limits                            |
+| `datalab-search-surface-scan`       | Integrated, cafe, Q and A, video, image and ad results, and a rank snapshot                       |
+| `datalab-post-seo-review`           | Scorecard counts, title and outline prompts run by the model, and no rank promise                 |
+| `datalab-competitor-blog-benchmark` | A named blog or a keyword's top results: profile, posts, categories and public visit series       |
 | `datalab-reader-simulation`         | Aggregate audience profile and confirmed-question checklist                                       |
 | `datalab-research-brief`            | Facts cited to pages actually read                                                                |
 | `datalab-shopping-demand`           | Shopping trend and audience interpretation                                                        |

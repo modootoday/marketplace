@@ -55,6 +55,10 @@ for general explanations, other platforms, or anything the pasted material alrea
   reply. Use a new id per change, pass `target`, and after a timeout call `editor_operation_status` before any resend:
   references/write-safety.md.
 
+- `tab_list`, `tab_open`, `tab_focus`, `tab_close` manage the user's Naver blog and datalab.tools tabs, ask every time,
+  and `tab_close` can lose unsaved writing: references/tabs.md. A whole title, body and image run without watching:
+  references/unattended-manifest.md.
+
 ## Check observations and returned output
 
 For a requested count, format or required-element list, compare the actual returned material with that request before reporting completion.
