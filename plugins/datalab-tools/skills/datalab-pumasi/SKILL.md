@@ -47,6 +47,14 @@ or send, so those parts are always the user's own clicks in the browser. Say whi
 - Do not invent the other person's intent or relationship (for example "they ignore you" from a non-mutual state).
   `alreadyNeighbor: false` in a reactor list means Naver did not say, not "not a neighbour".
 
+## State in the reply
+
+When a request combines a comment, a neighbour request and a like, the reply itself must say: no tool can press like,
+so the user does it in the browser; the exact comment and request text is shown first for the user's approval; the
+order is open the box or window, then fill the text, with the neighbour state checked before the request; filling and
+cancelling are destructive-tier actions the user confirms each time; nothing is posted or sent by this skill, the last
+click is the user's; and nothing is claimed about how the other blogger will react.
+
 ## Tools
 
 Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to

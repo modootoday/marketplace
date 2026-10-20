@@ -72,6 +72,14 @@ body change just because a candidate was generated.
 - `qra_keywords` returns related popular-topic keywords in order of display. The rank is display order, not search
   volume; do not read size into it.
 
+## State in the reply
+
+The reply itself must say: the tools return counts and flags and no tool predicts placement or traffic; the scorecard
+reads the post open in the writing window, so for pasted text the counts are your own counting and the scorecard did
+not run; when the target keyword occurs zero times, say it does not appear and give no density figure (not even
+0 percent); title candidates come with a reason each and the user picks one first, because setting the title is a
+separate step that changes the post and needs confirmation.
+
 ## Tools
 
 Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to

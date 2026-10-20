@@ -93,11 +93,19 @@ different change needs a new id. Say the text is in the post only after the stat
 Say these plainly instead of attempting the action:
 - A quote cannot take font family, strikethrough or background colour, and has no alignment setting: the design
   decides alignment (`unsupported-in-component`).
-- No tool sets image alt text. Cropping or retouching a picture belongs to the photo editor window. Replacing a picture
-  means inserting the new one, moving it into place, copying the layout and deleting the old one (its own confirmation).
-- Lists have no nesting level here. Typed text cannot carry emoji. Audio goes in as a file attachment only.
-- The editor does not store a value equal to the default, so a read shows `null`; judge by `effective` value and source,
-  not by the missing field.
+- No tool sets image alt text. Cropping or retouching a picture belongs to the photo editor window. Offer what does
+  exist instead: `editor_set_image_caption` for each picture by its component id, read back afterwards.
+- Replacing a picture has no single tool. Order: read the document, insert the new picture (the user confirms the
+  insert), move it into the old position, copy the old alignment and display mode with `editor_set_image_layout`, read
+  again, and only then delete the old one. That delete is a destructive step with its own confirmation, and the old
+  caption is not carried over unless set again.
+- Lists have no nesting level here: say it cannot be set or confirmed. Typed text cannot carry emoji
+  (`editor_type_text` refuses them): say so and offer the text without it. Audio goes in as a file attachment only.
+- The editor does not store a value equal to the default, so a read shows `null` after a write that worked. Judge by
+  the `effective` value and its source (`default` counts as applied); a key missing from `effective` means unknown,
+  not default. Do not resend the write; act only if the effective value or source differs from what was asked.
+- Count paragraphs from zero: "the second paragraph" is index 1, "the third" is index 2. Use the component id and
+  paragraph number from the latest read, with the session and revision as the target.
 - One `editor_undo` can leave the document unchanged: read the document after every undo.
 
 ## Not here

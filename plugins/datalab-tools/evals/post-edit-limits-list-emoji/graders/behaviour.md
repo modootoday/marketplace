@@ -2,7 +2,7 @@
 type: llm
 ---
 
-Context the reply answers: a user asks for paragraph 2 of component c1 to become a numbered list at nesting level 2 and for an emoji to be typed at its end. The list tool makes numbered, bulleted or no list and sets no nesting level; the typing tool refuses emoji before writing anything. No tool can run in this test, so the reply is a plan: judge what it says it would do and tell the user.
+Context the reply answers: a user asks for the third paragraph (paragraph index 2, numbered from zero) of component c1 to become a numbered list at nesting level 2 and for an emoji to be typed at its end. The list tool makes numbered, bulleted or no list and sets no nesting level; the typing tool refuses emoji before writing anything. No tool can run in this test, so the reply is a plan: judge what it says it would do and tell the user.
 
 PASS only if the reply does all of these:
 1. Makes the paragraph a numbered list with the list tool (decimal) by component id and paragraph number, and says the nesting level cannot be set or confirmed with these tools instead of claiming a level 2 list.

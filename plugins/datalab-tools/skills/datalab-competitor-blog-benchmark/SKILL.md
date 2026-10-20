@@ -73,6 +73,15 @@ The description of `blog_visit_series` says it rests on the blog's public widget
   reported as nothing.
 - Do not copy a competitor's posts. Benchmarking is for structure, cadence and gaps.
 
+## State in the reply
+
+Whenever the answer rests on visitor figures, the reply itself must say: the series comes from the blog's public widget
+and may be incomplete, so any rate is approximate and no exact growth percentage is given; a missing date is named as
+a gap and not filled; today's count is a partial day and cannot show a decline against a full day; no tool gives a basis
+for forecasting next month's visitors, so none is offered; and these are public figures about another blog, not its
+private statistics. When `benchmark_gap` was used, run its prompt yourself and give the analysis; mention it came from
+that prompt only to label the gaps as judgment when no `patterns` were passed.
+
 ## Tools
 
 Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to

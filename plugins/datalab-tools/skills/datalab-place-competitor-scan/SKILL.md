@@ -62,6 +62,11 @@ A short comparison: the anchor place, the places compared, one line per fact wit
 not be read (empty results, unavailable features). Recommendations for the user's store come last and are labelled as
 suggestions.
 
+When `place_keyword_precheck` was used, the reply must say: it is a rules check of the user's own store name and
+keywords only, it does not guarantee Naver's final decision, it never looked at a competitor, and a neighbouring
+store's keywords would need a separate lookup of that place (`place_search`, then the place's own data) that has not
+been done. Report flagged keywords as found and never say all of them will pass.
+
 ## Tools
 
 Use the actual tools needed for the request directly when they are visible. Otherwise, send the original user intent to

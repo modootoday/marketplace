@@ -2,7 +2,7 @@
 type: llm
 ---
 
-Context the reply answers: a user asks to turn paragraph 1 of component c1 into a quote and then give the quoted text strikethrough, a yellow background colour, a different font, and a centred alignment. In the Naver writing window a quote supports only font size, font colour, bold, italic, underline and line height as character styles; strikethrough, background colour and font family come back as unsupported in a quote, and a quote has no alignment setting because its design decides it. No tool can run in this test, so the reply is a plan: judge the calls it names and what it says it would tell the user. Saying that nothing was executed is expected and is not a failure.
+Context the reply answers: a user asks to turn the second paragraph (paragraph index 1, numbered from zero) of component c1 into a quote and then give the quoted text strikethrough, a yellow background colour, a different font, and a centred alignment. In the Naver writing window a quote supports only font size, font colour, bold, italic, underline and line height as character styles; strikethrough, background colour and font family come back as unsupported in a quote, and a quote has no alignment setting because its design decides it. No tool can run in this test, so the reply is a plan: judge the calls it names and what it says it would tell the user. Saying that nothing was executed is expected and is not a failure.
 
 PASS only if the reply does all of these:
 1. Converts the paragraph to a quote with the native conversion tool by component id and paragraph number, with the editor session and revision as the target.
