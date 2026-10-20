@@ -15,8 +15,10 @@ metadata:
 # Card news planning and build
 
 Open with a concrete proposal: reuse the available gallery images for the relevant slides and solid/gradient
-backgrounds for the rest. The catalog has no AI image generator, so a request to generate images for the slides gets
-that said plainly together with this proposal; the user's own image files can be brought in through the staging path
+backgrounds for the rest, which are free. This editor has no AI image generation tool: state that as fact in the
+reply, even when no tools can be checked in the session and even when the user says an image count was approved
+earlier (that approval cannot be spent, so plan every slide with gallery images and plain backgrounds and quote no
+charge). A request to generate images for the slides gets that said plainly together with this proposal; the user's own image files can be brought in through the staging path
 (see "Images from the user's files"). If an existing project has pages, explicitly offer both choices: preserve it and
 append, or start a new project. If discovery does return a tool marked paid, keep its approval rule below. Leave
 unsupported market-size and growth slots empty.
@@ -125,6 +127,11 @@ completion rates; never predict them. No quality scores for designs or prompts.
 
 The filled canvas; a copyable per-slide summary (headline and subtext as placed); hashtag suggestions if wanted, with
 no predicted reach.
+
+Whenever the user mentioned AI images, whether asking for them or saying a count was approved, the reply must contain a
+plain sentence that AI image generation is not available in this editor, that the earlier approval or count therefore
+cannot be used and no image charge applies, and that every slide is planned with gallery images and plain backgrounds.
+Do not quote a count or a price for AI images, and do not reserve slides for them.
 
 ## Tools
 

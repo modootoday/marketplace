@@ -1,6 +1,6 @@
 ---
 name: datalab-research-brief
-description: Write a research brief that cites only pages actually opened and read, never search result titles or snippets, with each fact linked to the page title and URL and no reliability scores. Use when the user asks to research a topic, wants a sourced report, or hands over search results to turn into a brief. Not for scoring source credibility, percent relevance figures, or claims about pages nobody read.
+description: Write a research brief that cites only pages actually opened and read, never search result titles or snippets, with each fact linked to the page title and URL and no reliability scores. Use when the user asks to research a topic ("research this and sum it up with sources"), wants a sourced report, or hands over search results and page reads to turn into a brief, including when some pages could not be opened or were cut. Not for scoring source credibility, percent relevance figures, or claims about pages nobody read.
 metadata:
   tier: open
   level: L3
@@ -49,6 +49,8 @@ Write a brief from pages that were actually opened and read. Search finds candid
   ends with `…(생략)`. Cite only what is inside the returned `content`. Where the cut marker appears, say the rest of
   that page was not read; a long page (`wordCount` far above what the content holds) is partly read, not fully read.
 - `fetch-failed` may be temporary and is worth one retry; `bad-url` needs a corrected address.
+- In the reply, name each page that was cut or could not be opened, and invite the user to paste the text of any page
+  that matters; pasted text counts as read.
 
 ## Procedure
 

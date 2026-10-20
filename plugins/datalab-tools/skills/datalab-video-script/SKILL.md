@@ -1,6 +1,6 @@
 ---
 name: datalab-video-script
-description: Turn a topic or idea into a scene-by-scene short-form script and build it in the datalab.tools video editor - subtitles written for the ear, colour or gallery backgrounds, the user's own clips and music, paid AI narration only after the user confirms the count, and a preview and exported file when asked. Use when the user asks for a shorts or reels script, a scene plan, subtitles, AI narration or an exported video in the datalab.tools video editor. Not for camera shoots (shot lists, angles, lighting), outside video generators, or view and engagement predictions.
+description: Turn a topic or idea into a scene-by-scene short-form script and build it in the datalab.tools video editor - subtitles written for the ear, colour or gallery backgrounds, the user's own clips and music, paid AI narration only after the user confirms the count, and a preview and exported file when asked. Use when the user asks for a shorts or reels script, a scene plan, subtitles, AI narration or an exported video in the datalab.tools video editor, or to put a video file or music file from their computer into it as a scene background or background music. Not for camera shoots (shot lists, angles, lighting), outside video generators, or view and engagement predictions.
 metadata:
   tier: open
   level: L3
@@ -14,7 +14,7 @@ metadata:
 
 # Video script planning and build
 
-This editor builds scenes from images, the user's own video and audio files, subtitles, and AI voice. It does not direct a camera shoot; explain that distinction when camera angles or lighting are requested. When scenes already exist, explicitly ask whether to preserve and continue the existing project or start a new one. Count voices still missing in the current timeline, separately from voices for any proposed added scenes, before seeking paid-generation approval. Convert every parenthetical repetition count and numeric unit into spoken subtitle text before presenting the scene plan.
+This editor builds scenes from images, the user's own video and audio files, subtitles, and AI voice. It does not direct a camera shoot: when camera angles or lighting are requested, say in the reply that this editor makes image, subtitle and voice scenes, not live-action shoots. State as fact that it has no AI image generation tool, so no image count or charge applies, even if the user says images were approved. When scenes already exist, explicitly ask whether to preserve and continue the existing project or start a new one. Count voices still missing in the current timeline, separately from voices for any proposed added scenes, before seeking paid-generation approval. Convert every parenthetical repetition count and numeric unit into spoken subtitle text before presenting the scene plan.
 
 Plan a topic or script idea as scenes and build each scene on the video editor timeline. The finished timeline is the
 deliverable, plus a copyable script summary.
@@ -78,8 +78,12 @@ The user's own video and audio files can be added (see "Clips and music from the
 
 ## Clips and music from the user's files
 
-A video or audio file on the user's machine is staged first (`media_stage_begin`, upload, `media_stage_commit`; limits
-and the upload step: the workbench skill's references/media-staging.md). Then `video_source_add` with the `handle`:
+A video or audio file on the user's machine is staged first, before any other call that depends on it. The four
+`media_stage_*` tools are already in the host's own tool list: do not look for them with `datalab_find_tools` and do not
+run them through `datalab_call`. The steps: `media_stage_begin` (declared bytes, six identifiers) returns an upload
+path and token; the bytes are sent outside MCP by a POST to that path with the token as a bearer header; then
+`media_stage_commit` with the file's `sha256` and byte count seals it and returns the `handle`. Limits and details: the
+workbench skill's references/media-staging.md. Then `video_source_add` with the `handle`:
 `as: clip` makes it the scene background (the scene defaults to the active one; at most 10 minutes from the start, or
 the `range` given in seconds; `quality` defaults to balanced), and `as: bgm` makes it the background music
 (`start_ms` places a new track when one exists). It returns a job: follow it with `video_job_status` and read the

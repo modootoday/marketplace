@@ -1,6 +1,6 @@
 ---
 name: datalab-post-edit-verify
-description: Change the post open in the datalab.tools Naver writing window with the native editor tools - text styles, headings, quotes, dividers, lists, tables, images, captions, link cards, attachments - and prove each change by reading the document back, then save it as a draft, list drafts, start a blank post or reopen a saved one. Use when the user asks to fix, format or restructure a post that is already in the editor, or to check that an edit and a save really held. Not for writing a new draft from a topic, for publishing, for sidebar widget HTML, or for claims about SEO effect or how the published post looks.
+description: Change the post open in the datalab.tools Naver writing window with the native editor tools - text styles, headings, quotes, dividers, lists, tables, images, captions, link cards, attachments - and prove each change by reading the document back, then save it as a draft, list drafts, start a blank post or reopen a saved one. Use when the user says things like "turn this paragraph into a quote", "make this a numbered list", "add a divider or table", "change the caption", "save it as a draft and check it saved", "open my saved draft", or "the edit timed out, put it in again" about a post that is already in the datalab.tools Naver writing window. Not for writing a new draft from a topic, for publishing, for sidebar widget HTML, or for claims about SEO effect or how the published post looks.
 metadata:
   tier: open
   level: L3
@@ -32,6 +32,14 @@ found, the call returned, the document shows the change, and the draft was saved
    have moved) and an `operationId` where the schema has one: the workbench skill's references/write-safety.md.
 5. Read back and compare with what was asked. Many tools return `requested`, `observed` and `applied`; `applied: false`
    means the change is not there, whatever else the reply says.
+
+## When a write times out or the reply is lost
+
+Do not resend first. Call `editor_operation_status` with the same `operationId`: `succeeded` means applied (do not
+resend), `not_applied` means resending with the same `operationId` and the same `target` is safe, `in_progress` means
+check again, `unverified` means read the document with `editor_read_document` and report what is there, `unknown`
+means there is no record. Reusing an `operationId` with different arguments is refused as `operation_conflict`; a
+different change needs a new id. Say the text is in the post only after the status or a read shows it.
 
 ## What each need uses
 

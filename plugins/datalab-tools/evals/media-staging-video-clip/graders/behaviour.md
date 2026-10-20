@@ -2,7 +2,7 @@
 type: llm
 ---
 
-Context the reply answers: a user wants a local 84 MB video file used as the first scene's background in the video editor. The host lists media_stage_begin, media_stage_commit, media_stage_status and media_stage_cancel as its own tools. The editor target is project v_410, revision 3, session es_77, scene s1.
+Context the reply answers: a user wants a local 84 MB video file used as the first scene's background in the video editor. The host lists media_stage_begin, media_stage_commit, media_stage_status and media_stage_cancel as its own tools. The editor target is project v_410, revision 3, session es_77, scene s1. No tool can run in this test, so the reply is a plan: judge the calls it names and their order. Reading the editor state, which is already supplied, is not a failure.
 
 PASS only if the reply does all of these:
 1. Stages the file first with media_stage_begin and media_stage_commit as direct tools, and does not route staging through datalab_call or look for it with datalab_find_tools.

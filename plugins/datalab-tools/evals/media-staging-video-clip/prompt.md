@@ -9,4 +9,4 @@ tags: [datalab-video-script, datalab-naver-workbench, coverage-20261020]
 
 Editor state supplied, not executed in this session: video_project_get returned {"projectRef": "v_410", "revision": 3, "editorSession": "es_77", "title": "소개 영상"} and the first scene is s1. The host lists these tools directly: datalab_find_tools, datalab_list_tools, datalab_call, datalab_confirm_status, datalab_session_state, datalab_browsers, media_stage_begin, media_stage_commit, media_stage_status, media_stage_cancel.
 
-Describe the exact order of calls you would make and what each returns or needs. Do not run anything; no tools are available in this test.
+No MCP/discovery tool is available in this test; work only from the supplied text and say the exact order of calls you would make and what each returns or needs.
