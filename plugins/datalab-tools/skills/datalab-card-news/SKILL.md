@@ -138,7 +138,9 @@ Do not quote a count or a price for AI images, and do not reserve slides for the
 
 Whenever a template or a post import is part of the plan, the reply must: list the templates first and use a returned
 id (never a guessed one); say that template mode `replace` erases what is on the page and cannot be undone, ask for
-the user's confirmation, and offer `new_page` (keeps the content) instead; plan the post import in `cards` mode
+the user's confirmation of that exact erasure (naming what would go, for example the texts and photos on the page) even
+when the user already said to overwrite it, and offer `new_page` (keeps the content) instead; do not treat an earlier
+casual "overwrite it" as the confirmation; plan the post import in `cards` mode
 appended after the last page with the page count named, check the result afterwards, and say one undo reverts the
 import; and pass the project reference and revision to every changing call.
 

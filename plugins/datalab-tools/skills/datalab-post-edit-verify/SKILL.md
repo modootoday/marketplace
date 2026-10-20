@@ -108,6 +108,18 @@ Say these plainly instead of attempting the action:
   paragraph number from the latest read, with the session and revision as the target.
 - One `editor_undo` can leave the document unchanged: read the document after every undo.
 
+## State in the reply
+
+Turning a paragraph into a quote is `editor_update_component` with `convertTo`; the same tool changes the design. When
+a request asks for something a quote cannot take, the reply must name what is unsupported, offer the styles that are
+supported (bold, italic, underline, font colour, size, line height) and the design change for alignment. When the
+request needs alt text, the reply must offer captions for the listed pictures by name of tool and component id, with
+the text coming from the user and the document read back afterwards; offering is not writing captions unasked. When a
+write succeeded but a field reads `null`, the reply must say the editor stores no value equal to the default, that the
+effective value and its source are the evidence, that a key missing from `effective` means unknown, and that it would
+act only if the effective value or source differed from the request. Deleting anything, including an old picture
+after a replacement, is called a destructive step in the reply, with its own confirmation.
+
 ## Not here
 
 No publishing, scheduling or comments. No claim about ranking, reach or how the published post looks. No sidebar
