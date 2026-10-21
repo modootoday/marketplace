@@ -49,6 +49,9 @@ or send, so those parts are always the user's own clicks in the browser. Say whi
 
 ## State in the reply
 
+When a state read failed or timed out, the reply reports that target as unconfirmed, not as "no like" or "not sent",
+and suggests checking its state again.
+
 When a request combines a comment, a neighbour request and a like, the reply itself must say: no tool can press like,
 so the user does it in the browser; the exact comment and request text is shown first for the user's approval; the
 order is open the box or window, then fill the text, with the neighbour state checked before the request; filling and

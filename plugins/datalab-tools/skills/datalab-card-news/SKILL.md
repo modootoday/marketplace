@@ -136,6 +136,9 @@ plain sentence that AI image generation is not available in this editor, that th
 cannot be used and no image charge applies, and that every slide is planned with gallery images and plain backgrounds.
 Do not quote a count or a price for AI images, and do not reserve slides for them.
 
+Every plan names the canvas ratio it uses (Instagram 1:1 or 4:5 unless the user chose another platform) and the slide
+roles, with the hook slide first and the call-to-action slide last.
+
 Whenever a template or a post import is part of the plan, the reply must: list the templates first and use a returned
 id (never a guessed one); say that template mode `replace` erases what is on the page and cannot be undone, ask for
 the user's confirmation of that exact erasure (naming what would go, for example the texts and photos on the page) even

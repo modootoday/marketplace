@@ -50,7 +50,7 @@ Editor work preserves existing projects and requests a project choice when neede
 
 | Runtime         | Supported                                                                                                                                                                                       | Measured on                                |
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| Claude Code     | Procedures available; untested                                                                                                                                                                  | No behavioral measurement                  |
+| Claude Code     | Procedures available; no skill measurement                                                                                                                                                      | Routing baseline only, mock server         |
 | Codex CLI       | Historical qualification covers 16 of the prior 20 skills; group-buy adds one narrow evidence-request result, while sponsorship quoting, approval timeline and payment evidence are unqualified | codex-cli 0.160.1 and 0.161.0; gpt-6.1-sol |
 | Gemini CLI      | Extension manifest provided; untested                                                                                                                                                           | No behavioral measurement                  |
 | Grok CLI        | Procedures available; untested                                                                                                                                                                  | No behavioral measurement                  |
@@ -214,6 +214,32 @@ This original comparison preserves four answers and twelve PASS votes. Both arms
 | Codex CLI | gpt-6.1-sol | sponsor-payment-missing-agreement-and-receipt-identity      | datalab-sponsor-payment-evidence  | 1.00    | 1.00 (open) | 2/2   | 2026-10-10 |
 
 All five comparisons are regression-only: both arms pass, and all twenty answers and sixty original semantic votes are retained. Timeline cases distinguish valid version-specific approval from separate publication authority and unresolved forwarded-message anchors. Payment cases distinguish fee, reimbursement and gift; identified cash from ambiguous credits; duplicate evidence from additional transactions; and acceptance-based due conditions from delivery. These results establish no incremental advantage or new runtime badge. The prior timeline result and both quote revisions remain unchanged. CLI 0.161.0 used two runs per arm, three judge votes and concurrency one with subscription proxy and bwrap; no external MCP or bank action occurred. Inputs stayed frozen, errors and partial flags were absent, and USD remains unknown.
+
+### 0.3.0: full tool coverage and what was measured
+
+Version 0.3.0 names all 279 tools of the extension MCP 1.17.1 catalog in some skill (checked by script against the
+catalog) and adds six skills for the tools that no skill covered: Place competitor scan, Cafe research, influencer
+scan, search surface scan, post SEO review and competitor blog benchmark. Pumasi, blog diagnosis, card news, video
+script, the workbench and post edit verify gain the missing tools and the limits found by live testing of the writing
+window. The catalog has no AI image generator, so card news and video script no longer promise one.
+
+Measured 2026-10-20 and 2026-10-21 on Codex CLI with gpt-6.1-sol as subject and judge, three judge votes:
+
+- 21 new cases: 18 reach 1.00 with the plugin; three are mixed (template replace confirmation, pumasi comment text,
+  order of a picture replacement) and are open. Four of the 21 also score 1.00 without the plugin and are regression
+  checks only. The cases were written by the maintainers, not taken from user requests.
+- Routing of unnamed requests ("analyse my blog") to the datalab tools, 48 mock-host runs per condition: 11 passed
+  without the plugin and 34 with the skills installed (abstract wording 3 and 13 of 24). Server instructions, a
+  description sentence and a skills MCP the model must query did not change the result. This holds for Codex CLI only.
+  On Claude Code the same requests reached the datalab tools in 48 of 48 runs without skills (42 passed), so the
+  routing effect is not shown there; a setup with many MCP servers and deferred tool definitions was not measured.
+- Regression of 21 originally recorded cases, two runs each with the plugin: 17 equal or higher than the rows above and
+  four lower by 0.08 to 0.17 (closing CTA, comment surge, like check, next topics; three of the four skills were not
+  changed in 0.3.0, so judge variance is the likelier cause); no skill stopped firing. Two cases that fell further
+  (card news and like check) were fixed with a reply statement and rerun: 1.00 and 1.00 for card news, 0.67 and 1.00
+  for like check.
+
+Mock hosts return fixed values, so no case shows that a tool call worked on a live account.
 
 ## Configuration and data
 
